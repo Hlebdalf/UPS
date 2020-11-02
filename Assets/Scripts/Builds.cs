@@ -9,12 +9,19 @@ public class Builds : MonoBehaviour {
 
     void Start() {
         objects = new List <GameObject> ();
-        for (int i = 0; i < preFubs.Length; ++i) {
-            objects.Add(Instantiate(preFubs[i], new Vector3(0, 0, 0), Quaternion.identity));
-        }
     }
 
-    void Update() {
-        
+    public void BuildObject(string type) {
+        switch (type) {
+            case "House1":
+                objects.Add(Instantiate(preFubs[0], new Vector3(0, 0, 10), preFubs[0].transform.rotation));
+                break;
+            case "House2":
+                //objects.Add(Instantiate());
+                break;
+            case "Road":
+                //objects.Add(Instantiate());
+                break;
+        }
     }
 }
