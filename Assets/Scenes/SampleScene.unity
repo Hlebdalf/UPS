@@ -306,6 +306,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e84092b780af6d94987fda0fc9dcaf31, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c521c36f8d0bea4f919382ed4f852b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  preFubs:
+  - {fileID: 73875128406012941, guid: f770611680ac76845a7e78490ec0d053, type: 3}
+  - {fileID: 2786522462475726212, guid: e1b64a4a7a42df84f97695b20c7e5a66, type: 3}
+  - {fileID: 7947036497144093894, guid: b63f0230e6d0d4b4aa1f55cf1ca811b6, type: 3}
