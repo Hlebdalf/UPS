@@ -6,11 +6,19 @@ public class Builds : MonoBehaviour {
 
     public GameObject[] preFubs;
     private List <GameObject> objects;
-
+    private Vector3 mousePos;
     void Start() {
         objects = new List <GameObject> ();
     }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0)) {
+            Debug.Log(Input.mousePosition);
+        }
+    }
 
+ 
+    
     public void BuildObject(string type) {
         switch (type) {
             case "House1":
