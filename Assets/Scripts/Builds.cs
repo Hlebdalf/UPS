@@ -16,7 +16,7 @@ public class Builds : MonoBehaviour {
                 objects.Add(Instantiate(preFubs[0], point, preFubs[0].transform.rotation));
                 break;
             case "House2":
-                //objects.Add(Instantiate());
+                objects.Add(Instantiate(preFubs[1], point, preFubs[1].transform.rotation));
                 break;
             case "Road":
                 //objects.Add(Instantiate());
