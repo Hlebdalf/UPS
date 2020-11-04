@@ -5,16 +5,15 @@ using UnityEngine;
 
 public class Builds : MonoBehaviour {
     public GameObject[] preFubs;
-    public int RoundCoordinatesConst;
     private List <GameObject> objects;
+    public float RoundCoordinatesConst;
 
     void Start() {
         objects = new List <GameObject> ();
     }
 
     private Vector3 RoundCoodinates(Vector3 point) {
-        float x = point.x, y = point.y, z = point.z;
-        int low, high;
+        float x = point.x, y = point.y, z = point.z, low, high;
 
         low = (int)(x / RoundCoordinatesConst) * RoundCoordinatesConst;
         high = low + RoundCoordinatesConst;
