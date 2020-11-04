@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CameraMoovingLF : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class MoovingCameraPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public CameraMooving CameraMoovingClass;
 
@@ -14,12 +14,14 @@ public class CameraMoovingLF : MonoBehaviour, IPointerEnterHandler, IPointerExit
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        CameraMoovingClass.SwitchDirection("Forward-Left");
+        CameraMoovingClass.SwitchDirection("Begin");
+        print("Begin");
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        CameraMoovingClass.SwitchDirection("None");
+        CameraMoovingClass.SwitchDirection("Finish");
+        print("Finish");
     }
 
     void Update()

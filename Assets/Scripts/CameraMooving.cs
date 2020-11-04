@@ -6,72 +6,31 @@ public class CameraMooving : MonoBehaviour
 {
     public float XMoovingMP;
     public float ZMoovingMP;
-    private Vector3 XMoovingVector = new Vector3(0, 0, 0);
-    private Vector3 ZMoovingVector = new Vector3(0, 0, 0);
+    public float Sensivity1;
+    public float Sensivity2;
+    private Vector3 MoovingVector = new Vector3(0, 0, 0);
 
-    float XSpeedMultiplyer(float x)
+    float Stepen(float a, int b)
     {
-        if (x > 960)
+        float c = a;
+        for (int i = 1; i < b; i++)
         {
-            return Mathf.Pow((x -1720) / 200, 2);
+            c = c * a;
         }
-        else
-        {
-            return Mathf.Pow((200 - x) / 200, 2);
-        }
+        return c;
     }
-
-    float ZSpeedMultiplyer(float z)
-    {
-        if (z > 540)
-        {
-            return Mathf.Pow((z - 880) / 200, 2);
-        }
-        else
-        {
-            return Mathf.Pow((200 - z) / 200, 2);
-        }
-    }
-
     public void SwitchDirection(string direction)
     {
         switch (direction)
         {
-            case "Left":
-                XMoovingVector = new Vector3(-XMoovingMP, 0, 0);
+            case "Begin":
+                MoovingVector = new Vector3(1, 0, 1);
                 break;
-            case "Right":
-                XMoovingVector = new Vector3 (XMoovingMP, 0, 0);
-                break;
-            case "Forward":
-                ZMoovingVector = new Vector3(0, 0, ZMoovingMP);
-                break;
-            case "Back":
-                ZMoovingVector = new Vector3(0, 0, -ZMoovingMP);
-                break;
-            /*case "Forward-Left":
-                ZMoovingVector = new Vector3(-XMoovingMP, 0, ZMoovingMP);
-                break;
-            case "Back-Left":
-                ZMoovingVector = new Vector3(-XMoovingMP, 0, -ZMoovingMP);
-                break;
-            case "Back-Right":
-                ZMoovingVector = new Vector3(XMoovingMP, 0, -ZMoovingMP);
-                break;
-            case "Forward-Right":
-                ZMoovingVector = new Vector3(XMoovingMP, 0, ZMoovingMP);
-                break;*/
-            case "None":
-                XMoovingVector = new Vector3(0, 0, 0);
-                ZMoovingVector = new Vector3(0, 0, 0);
+            case "Finish":
+                MoovingVector = new Vector3(0, 0, 0);
                 break;
         }
     }
-    void Start()
-    {
-
-    }
-
     void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) ||
@@ -96,8 +55,11 @@ public class CameraMooving : MonoBehaviour
         }
         else
         {
-            transform.position += XMoovingVector * XSpeedMultiplyer(Input.mousePosition.x);
-            transform.position += ZMoovingVector * ZSpeedMultiplyer(Input.mousePosition.y);
+            float MoovingDirectionX = MoovingVector.x * (Input.mousePosition.x - 980) / 2000;
+            float MoovingDirectionZ = MoovingVector.z * (Input.mousePosition.y - 540)/1600;
+            transform.position += new Vector3(MoovingDirectionX,0,MoovingDirectionZ);
+            //print(MoovingDirectionX);
+            print(MoovingDirectionX/160);
         }
     }
 }
