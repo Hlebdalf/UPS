@@ -30,4 +30,9 @@ public class Interface : MonoBehaviour {
             typeObject = "";
         }
     }
+
+    public bool IsTypeSelected() {
+        if (typeObject == "") return false;
+        else return true;
+    }
 }

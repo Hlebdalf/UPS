@@ -5,46 +5,51 @@ using UnityEngine;
 
 public class Builds : MonoBehaviour {
     public GameObject[] preFubs;
+    public GameObject[] preFubsGhost;
+    public float roundCoordinatesConst;
     private List <GameObject> objects;
-    public float RoundCoordinatesConst;
+    private List <GameObject> ghostObjects;
 
     void Start() {
         objects = new List <GameObject> ();
+        ghostObjects = new List <GameObject> ();
     }
 
-    private Vector3 RoundCoodinates(Vector3 point) {
-        float x = point.x, y = point.y, z = point.z, low, high;
+    public Vector3 RoundCoodinates(Vector3 point) {
+        float x = point.x, z = point.z, low, high;
 
-        low = (int)(x / RoundCoordinatesConst) * RoundCoordinatesConst;
-        high = low + RoundCoordinatesConst;
+        low = (int)(x / roundCoordinatesConst) * roundCoordinatesConst;
+        high = low + roundCoordinatesConst;
         if (Math.Abs(x - low) < Math.Abs(x - high)) point.x = low;
         else point.x = high;
+        point.x -= 0.5f;
 
-        low = (int)(y / RoundCoordinatesConst) * RoundCoordinatesConst;
-        high = low + RoundCoordinatesConst;
-        if (Math.Abs(y - low) < Math.Abs(y - high)) point.y = low;
-        else point.y = high;
+        point.y = 0;
 
-        low = (int)(z / RoundCoordinatesConst) * RoundCoordinatesConst;
-        high = low + RoundCoordinatesConst;
+        low = (int)(z / roundCoordinatesConst) * roundCoordinatesConst;
+        high = low + roundCoordinatesConst;
         if (Math.Abs(z - low) < Math.Abs(z - high)) point.z = low;
         else point.z = high;
+        point.z -= 0.5f;
 
         return point;
     }
 
+    private int ToIndex(string type) {
+        int choose = -1;
+        if (type == "House1" || type == "House1Ghost") choose = 0;
+        if (type == "House2" || type == "House2Ghost") choose = 1;
+        if (type == "Road" || type == "RoadGhost") choose = 2;
+        return choose;
+    }
+
     public void BuildObject(string type, Vector3 point) {
         point = RoundCoodinates(point);
-        switch (type) {
-            case "House1":
-                objects.Add(Instantiate(preFubs[0], point, preFubs[0].transform.rotation));
-                break;
-            case "House2":
-                objects.Add(Instantiate(preFubs[1], point, preFubs[1].transform.rotation));
-                break;
-            case "Road":
-                //objects.Add(Instantiate());
-                break;
-        }
+        objects.Add(Instantiate(preFubs[ToIndex(type)], point, preFubs[ToIndex(type)].transform.rotation));
+    }
+
+    public void CreateGhost(string type, Vector3 point) {
+        ghostObjects.Add(Instantiate(preFubsGhost[ToIndex(type)], point, preFubsGhost[ToIndex(type)].transform.rotation));
+        ghostObjects[ghostObjects.Count - 1].AddComponent <MoveBuild> ();
     }
 }

@@ -937,9 +937,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   preFubs:
-  - {fileID: 919132149155446097, guid: a66640a99f3a261408457b8398d6ea60, type: 3}
-  - {fileID: 919132149155446097, guid: 117c6457181591b40802df17054db5cc, type: 3}
-  RoundCoordinatesConst: 3.5
+  - {fileID: 7170480068232008434, guid: d2a4e17c34662994d942ccd03ccc5a32, type: 3}
+  - {fileID: 5809488289616024822, guid: d5ffb879e64f7fe40961b953af4733d5, type: 3}
+  preFubsGhost:
+  - {fileID: 8623912609162062240, guid: f30d09db53fb0b44d93e91954daf3fa7, type: 3}
+  roundCoordinatesConst: 3.5
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -952,7 +954,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d27847345ffd276439e62b060a52ab10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayDistance: 1000
   InterfaceClass: {fileID: 963194229}
 --- !u!1 &1306430813
 GameObject:
@@ -1211,6 +1212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InterfaceClass: {fileID: 963194229}
+  BuildsClass: {fileID: 963194230}
 --- !u!1 &1746214218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1611,6 +1613,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -124.78998, y: -45.265}
+  m_AnchoredPosition: {x: -124.79004, y: -45.264893}
   m_SizeDelta: {x: 249.59021, y: -90.529175}
   m_Pivot: {x: 0.5, y: 0.5}
