@@ -9,24 +9,20 @@ public class CameraMooving : MonoBehaviour
     public float Sensivity1;
     public float Sensivity2;
     private Vector3 MoovingVector = new Vector3(0, 0, 0);
+    private bool IsMooving = false;
 
-    float Stepen(float a, int b)
-    {
-        float c = a;
-        for (int i = 1; i < b; i++)
-        {
-            c = c * a;
-        }
-        return c;
-    }
+    
+
     public void SwitchDirection(string direction)
     {
         switch (direction)
         {
             case "Begin":
                 MoovingVector = new Vector3(1, 0, 1);
+                IsMooving = true;
                 break;
             case "Finish":
+                IsMooving = false;
                 MoovingVector = new Vector3(0, 0, 0);
                 break;
         }
@@ -53,12 +49,16 @@ public class CameraMooving : MonoBehaviour
                 transform.position += new Vector3(XMoovingMP, 0, 0);
             }
         }
-        else
+        else if (IsMooving)
         {
-            float MoovingDirectionX = MoovingVector.x * (Input.mousePosition.x - 980) / 2000;
-            float MoovingDirectionZ = MoovingVector.z * (Input.mousePosition.y - 540)/1600;
-            transform.position += new Vector3(MoovingDirectionX,0,MoovingDirectionZ);
-            //print(MoovingDirectionX);
+            float x = Input.mousePosition.x;
+            float y = Input.mousePosition.y;
+            float MoovingDirectionX = MoovingVector.x * (x - 980)/16f*9f /1500 ;
+            float MoovingDirectionZ = MoovingVector.z * (y - 540) / 1500;
+
+            transform.position += new Vector3(MoovingDirectionX / Sensivity1, 0, MoovingDirectionZ / Sensivity2);
+
+
             print(MoovingDirectionX/160);
         }
     }
