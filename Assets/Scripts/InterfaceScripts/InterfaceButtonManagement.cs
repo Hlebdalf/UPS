@@ -21,20 +21,14 @@ public class InterfaceButtonManagement : MonoBehaviour {
     }
 
     public void House1() {
-        if (!InterfaceClass.IsTypeSelected())
-            BuildsClass.CreateGhost("House1", GetMousePosition());
-        InterfaceClass.SetTypeObject("House1");
+        BuildsClass.CreateGhost("House1", GetMousePosition());
     }
 
     public void House2() {
-        if (!InterfaceClass.IsTypeSelected())
-            BuildsClass.CreateGhost("House2", GetMousePosition());
-        InterfaceClass.SetTypeObject("House2");
+        BuildsClass.CreateGhost("House2", GetMousePosition());
     }
 
     public void Road() {
-        if (!InterfaceClass.IsTypeSelected())
-            BuildsClass.CreateGhost("Road", GetMousePosition());
-        InterfaceClass.SetTypeObject("Road");
+        BuildsClass.CreateGhost("Road", GetMousePosition());
     }
 }

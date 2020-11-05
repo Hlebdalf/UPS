@@ -23,14 +23,18 @@ public class MoveBuild : MonoBehaviour {
             if (Input.GetMouseButtonDown(0)) {
                 gameObject.layer = 0;
                 isFollow = !isFollow;
+                BuildsClass.SetIsFollowGhost(false);
             }
         }
         isBusy = false;
     }
 
     void OnMouseDown() {
-        gameObject.layer = 2;
-        isFollow = !isFollow;
-        isBusy = true;
+        if (!BuildsClass.GetIsFollowGhost()) {
+            gameObject.layer = 2;
+            isFollow = !isFollow;
+            isBusy = true;
+            BuildsClass.SetIsFollowGhost(true);
+        }
     }
 }

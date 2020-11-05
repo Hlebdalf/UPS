@@ -4,15 +4,27 @@ using System;
 using UnityEngine;
 
 public class Builds : MonoBehaviour {
+    private List <GameObject> objects;
+    private List <GameObject> ghostObjects;
+    private List <int> ghostObjectsIdx;
+    private bool isFollowGhost = false;
+    
     public GameObject[] preFubs;
     public GameObject[] preFubsGhost;
     public float roundCoordinatesConst;
-    private List <GameObject> objects;
-    private List <GameObject> ghostObjects;
 
-    void Start() {
+    private void Start() {
         objects = new List <GameObject> ();
         ghostObjects = new List <GameObject> ();
+        ghostObjectsIdx = new List <int> ();
+    }
+
+    private int ToIndex(string type) {
+        int choose = -1;
+        if (type == "House1" || type == "House1Ghost") choose = 0;
+        if (type == "House2" || type == "House2Ghost") choose = 1;
+        if (type == "Road" || type == "RoadGhost") choose = 2;
+        return choose;
     }
 
     public Vector3 RoundCoodinates(Vector3 point) {
@@ -35,21 +47,28 @@ public class Builds : MonoBehaviour {
         return point;
     }
 
-    private int ToIndex(string type) {
-        int choose = -1;
-        if (type == "House1" || type == "House1Ghost") choose = 0;
-        if (type == "House2" || type == "House2Ghost") choose = 1;
-        if (type == "Road" || type == "RoadGhost") choose = 2;
-        return choose;
+    public bool GetIsFollowGhost() {
+        return isFollowGhost;
     }
 
-    public void BuildObject(string type, Vector3 point) {
-        point = RoundCoodinates(point);
-        objects.Add(Instantiate(preFubs[ToIndex(type)], point, preFubs[ToIndex(type)].transform.rotation));
+    public void SetIsFollowGhost(bool p) {
+        isFollowGhost = p;
     }
 
     public void CreateGhost(string type, Vector3 point) {
         ghostObjects.Add(Instantiate(preFubsGhost[ToIndex(type)], point, preFubsGhost[ToIndex(type)].transform.rotation));
+        ghostObjectsIdx.Add(ToIndex(type));
         ghostObjects[ghostObjects.Count - 1].AddComponent <MoveBuild> ();
+        isFollowGhost = true;
+    }
+
+    public void CreateObjects() {
+        for (int i = 0; i < ghostObjects.Count; ++i) {
+            GameObject ghostObject = ghostObjects[i];
+            objects.Add(Instantiate(preFubs[ghostObjectsIdx[i]], ghostObject.transform.position, ghostObject.transform.rotation));
+            ghostObjects.RemoveAt(i);
+            ghostObjectsIdx.RemoveAt(i);
+            Destroy(ghostObject);
+        }
     }
 }

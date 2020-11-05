@@ -3,19 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ButtonManagement : MonoBehaviour {
-    public Interface InterfaceClass;
+    public Builds BuildsClass;
 
     void Start() {
-        InterfaceClass = InterfaceClass.GetComponent <Interface> ();
+        BuildsClass = BuildsClass.GetComponent <Builds> ();
     }
 
     void Update() {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Input.GetMouseButtonDown(0)) {
-            if (Physics.Raycast(ray, out hit)) {
-                //InterfaceClass.SetPosAndBuildObject(hit.point);
-            }
+        if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter)) {
+            BuildsClass.CreateObjects();
         }
     }
 }
