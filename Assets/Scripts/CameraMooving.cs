@@ -55,11 +55,7 @@ public class CameraMooving : MonoBehaviour
             float y = Input.mousePosition.y;
             float MoovingDirectionX = MoovingVector.x * (x - 980)/16f*9f /1500 ;
             float MoovingDirectionZ = MoovingVector.z * (y - 540) / 1500;
-
             transform.position += new Vector3(MoovingDirectionX / Sensivity1, 0, MoovingDirectionZ / Sensivity2);
-
-
-            print(MoovingDirectionX/160);
         }
     }
 }

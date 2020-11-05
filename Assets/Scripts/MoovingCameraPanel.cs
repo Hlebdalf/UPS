@@ -15,13 +15,11 @@ public class MoovingCameraPanel : MonoBehaviour, IPointerEnterHandler, IPointerE
     public void OnPointerEnter(PointerEventData eventData)
     {
         CameraMoovingClass.SwitchDirection("Begin");
-        print("Begin");
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         CameraMoovingClass.SwitchDirection("Finish");
-        print("Finish");
     }
 
     void Update()
