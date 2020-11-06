@@ -1000,7 +1000,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78e7648c324cae48bc99241006c37d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BuildsClass: {fileID: 963194230}
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1014,9 +1013,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   preFubs:
-  - {fileID: 919132149155446097, guid: a66640a99f3a261408457b8398d6ea60, type: 3}
-  - {fileID: 919132149155446097, guid: 117c6457181591b40802df17054db5cc, type: 3}
-  RoundCoordinatesConst: 3.5
+  - {fileID: 7170480068232008434, guid: d2a4e17c34662994d942ccd03ccc5a32, type: 3}
+  - {fileID: 2620088511090270871, guid: e6bae43cbdc71134e93c60ea27ed6b0e, type: 3}
+  preFubsGhost:
+  - {fileID: 2496509194798482247, guid: 9eb40738f596469428f341c8a251c25c, type: 3}
+  - {fileID: 3333965922300697059, guid: 4e68a33a9595c8e48bf258bf5a983c20, type: 3}
+  roundCoordinatesConst: 3.5
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0
