@@ -55,20 +55,38 @@ public class Builds : MonoBehaviour {
         isFollowGhost = p;
     }
 
+    public int GetCountGhostObjects() {
+        return ghostObjects.Count;
+    }
+
+    public int GetCountObjects() {
+        return objects.Count;
+    }
+
     public void CreateGhost(string type, Vector3 point) {
         ghostObjects.Add(Instantiate(preFubsGhost[ToIndex(type)], point, preFubsGhost[ToIndex(type)].transform.rotation));
         ghostObjectsIdx.Add(ToIndex(type));
-        ghostObjects[ghostObjects.Count - 1].AddComponent <MoveBuild> ();
+        ghostObjects[ghostObjects.Count - 1].AddComponent <MoveGhostBuild> ();
         isFollowGhost = true;
+    }
+
+    public void DeleteGhost(GameObject ghostObject) {
+        Destroy(ghostObject);
+        ghostObjectsIdx.RemoveAt(ghostObjects.IndexOf(ghostObject));
+        ghostObjects.Remove(ghostObject);
     }
 
     public void CreateObjects() {
         for (int i = 0; i < ghostObjects.Count; ++i) {
             GameObject ghostObject = ghostObjects[i];
             objects.Add(Instantiate(preFubs[ghostObjectsIdx[i]], ghostObject.transform.position, ghostObject.transform.rotation));
-            ghostObjects.RemoveAt(i);
-            ghostObjectsIdx.RemoveAt(i);
-            Destroy(ghostObject);
+            objects[objects.Count - 1].AddComponent <MoveBuild> ();
+            DeleteGhost(ghostObject);
         }
+    }
+
+    public void DeleteObject(GameObject obj) {
+        Destroy(obj);
+        objects.Remove(obj);
     }
 }
