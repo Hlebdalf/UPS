@@ -1031,8 +1031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d27847345ffd276439e62b060a52ab10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayDistance: 1000
-  InterfaceClass: {fileID: 963194229}
+  BuildsClass: {fileID: 963194230}
 --- !u!114 &963194232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1045,8 +1044,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d0e8081cd6c0cf4ab53bcfb9570b810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XMoovingMP: 1
-  ZMoovingMP: 1
+  XMoovingMP: 0.5
+  ZMoovingMP: 0.5
   Sensivity1: 2
   Sensivity2: 2
 --- !u!1 &1306430813
@@ -1306,6 +1305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InterfaceClass: {fileID: 963194229}
+  BuildsClass: {fileID: 963194230}
 --- !u!1 &1393752923
 GameObject:
   m_ObjectHideFlags: 0
