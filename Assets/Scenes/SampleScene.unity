@@ -914,9 +914,9 @@ GameObject:
   - component: {fileID: 963194226}
   - component: {fileID: 963194230}
   - component: {fileID: 963194229}
-  - component: {fileID: 963194231}
   - component: {fileID: 963194232}
   - component: {fileID: 963194233}
+  - component: {fileID: 963194231}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1031,7 +1031,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d27847345ffd276439e62b060a52ab10, type: 3}
+  m_Script: {fileID: 11500000, guid: 1fc7ca98b1624e344b5a0982280c5fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BuildsClass: {fileID: 963194230}
@@ -1047,8 +1047,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d0e8081cd6c0cf4ab53bcfb9570b810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XMoovingMP: 0.5
-  ZMoovingMP: 0.5
+  XMovingMP: 0.5
+  ZMovingMP: 0.5
   Sensivity1: 2
   Sensivity2: 2
 --- !u!114 &963194233
@@ -1411,7 +1411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71a095d43cb8b0448979ed5e9d35a762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraMoovingClass: {fileID: 963194232}
+  CameraMovingClass: {fileID: 963194232}
 --- !u!1 &1746214218
 GameObject:
   m_ObjectHideFlags: 0

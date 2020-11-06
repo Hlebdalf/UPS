@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonManagement : MonoBehaviour {
+public class BuildsButtonManagment : MonoBehaviour {
     public Builds BuildsClass;
 
-    void Start() {
+    private void Start() {
         BuildsClass = BuildsClass.GetComponent <Builds> ();
     }
 
-    void Update() {
+    private void Update() {
         if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter)) {
             BuildsClass.CreateObjects();
         }
