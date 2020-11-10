@@ -19,11 +19,16 @@ public class Builds : MonoBehaviour {
         ghostObjectsIdx = new List <int> ();
     }
 
+    private void Update() {
+        if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter)) {
+            CreateObjects();
+        }
+    }
+
     private int ToIndex(string type) {
         int choose = -1;
         if (type == "House1" || type == "House1Ghost") choose = 0;
         if (type == "House2" || type == "House2Ghost") choose = 1;
-        if (type == "Road" || type == "RoadGhost") choose = 2;
         return choose;
     }
 
@@ -53,14 +58,6 @@ public class Builds : MonoBehaviour {
 
     public void SetIsFollowGhost(bool p) {
         isFollowGhost = p;
-    }
-
-    public int GetCountGhostObjects() {
-        return ghostObjects.Count;
-    }
-
-    public int GetCountObjects() {
-        return objects.Count;
     }
 
     public void CreateGhost(string type, Vector3 point) {

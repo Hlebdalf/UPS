@@ -5,10 +5,12 @@ using UnityEngine;
 public class InterfaceButtonManagement : MonoBehaviour {
     public Interface InterfaceClass;
     public Builds BuildsClass;
+    public Roads RoadsClass;
 
     void Start() {
         InterfaceClass = InterfaceClass.GetComponent <Interface> ();
         BuildsClass = BuildsClass.GetComponent <Builds> ();
+        RoadsClass = RoadsClass.GetComponent <Roads> ();
     }
 
     private Vector3 GetMousePosition() {
@@ -29,6 +31,6 @@ public class InterfaceButtonManagement : MonoBehaviour {
     }
 
     public void Road() {
-        BuildsClass.CreateGhost("Road", GetMousePosition());
+        RoadsClass.SetRoadType("Road");
     }
 }
