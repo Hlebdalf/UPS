@@ -132,7 +132,7 @@ public class Roads : MonoBehaviour {
             GameObject ghostObject = ghostObjects[i];
             objects.Add(Instantiate(preFubs[ghostObjectsData[i].idx], ghostObject.transform.position, ghostObject.transform.rotation));
             objects[objects.Count - 1].transform.localScale = ghostObject.transform.localScale;
-            MeshRenderer MeshRendererClass = ghostObject.GetComponent <MeshRenderer> ();
+            MeshRenderer MeshRendererClass = objects[objects.Count - 1].GetComponent <MeshRenderer> ();
             MeshRendererClass.materials[0].SetTextureScale("_MainTex", new Vector2(ghostObjectsData[i].len / 2, 1));
             //objects[objects.Count - 1].AddComponent <MoveRoad> ();
             DeleteGhost(ghostObject);

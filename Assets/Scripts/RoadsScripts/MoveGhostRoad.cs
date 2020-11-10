@@ -26,7 +26,7 @@ public class MoveGhostRoad : MonoBehaviour {
                 float y2 = hit.point.z;
                 float dist = (float)Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
                 float leg = x2 - x1;
-                transform.rotation = Quaternion.Euler(1, funcK(dist, leg, x1, y1, x2, y2), 1);
+                transform.rotation = Quaternion.Euler(0, funcK(dist, leg, x1, y1, x2, y2), 0);
                 transform.position = new Vector3((x1 + x2) / 2, 0, (y1 + y2) / 2);
                 transform.localScale = new Vector3(1, 1, dist / 2);
                 MeshRenderer MeshRendererClass = gameObject.GetComponent <MeshRenderer> ();
@@ -71,13 +71,10 @@ public class MoveGhostRoad : MonoBehaviour {
     }
 
     public float funcK(float dist, float leg, float x1, float y1, float x2, float y2) {
-        if (dist == 0) return 1;
+        if (dist == 0) return 0;
         else {
-            if (y1 <= y2) return 90 * leg / dist;
-            else {
-                if (x1 <= x2) return 180 - 90 * leg / dist;
-                else return -180 - 90 * leg / dist;
-            }
+            if (y1 <= y2) return (float)(90 - Math.Acos(leg / dist) * 57.3);
+            else return (float)(-270 + Math.Acos(leg / dist) * 57.3);
         }
     }
 }
