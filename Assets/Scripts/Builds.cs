@@ -68,9 +68,9 @@ public class Builds : MonoBehaviour {
     }
 
     public void DeleteGhost(GameObject ghostObject) {
-        Destroy(ghostObject);
         ghostObjectsIdx.RemoveAt(ghostObjects.IndexOf(ghostObject));
         ghostObjects.Remove(ghostObject);
+        Destroy(ghostObject);
     }
 
     public void CreateObjects() {
@@ -83,7 +83,7 @@ public class Builds : MonoBehaviour {
     }
 
     public void DeleteObject(GameObject obj) {
-        Destroy(obj);
         objects.Remove(obj);
+        Destroy(obj);
     }
 }

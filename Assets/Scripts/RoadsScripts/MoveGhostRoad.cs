@@ -31,18 +31,21 @@ public class MoveGhostRoad : MonoBehaviour {
                 transform.localScale = new Vector3(1, 1, dist / 2);
                 MeshRenderer MeshRendererClass = gameObject.GetComponent <MeshRenderer> ();
                 MeshRendererClass.materials[0].SetTextureScale("_MainTex", new Vector2(dist / 2, 1));
-            }
-            if (Input.GetMouseButtonDown(0)) {
-                gameObject.layer = 0;
-                isFollow = !isFollow;
-                RoadsClass.SetIsFollowGhost(false);
-                RoadsClass.SetRoadType("");
-            }
-            if (Input.GetMouseButtonDown(1)) {
-                gameObject.layer = 0;
-                isFollow = !isFollow;
-                RoadsClass.SetIsFollowGhost(false);
-                //RoadsClass.DeleteGhost(gameObject);
+                if (Input.GetMouseButtonDown(0)) {
+                    gameObject.layer = 0;
+                    isFollow = !isFollow;
+                    RoadsClass.SetIsFollowGhost(false);
+                    RoadsClass.SetRoadType("");
+                    RoadsClass.SetSecondCoordinatesGhostObject(gameObject, hit.point);
+                    RoadsClass.SetLenGhostObject(gameObject, dist);
+                }
+                if (Input.GetMouseButtonDown(1)) {
+                    gameObject.layer = 0;
+                    isFollow = !isFollow;
+                    RoadsClass.SetIsFollowGhost(false);
+                    RoadsClass.SetRoadType("");
+                    RoadsClass.DeleteGhost(gameObject);
+                }
             }
         }
         isBusy = false;
@@ -50,12 +53,16 @@ public class MoveGhostRoad : MonoBehaviour {
 
     void OnMouseOver() {
         if (!RoadsClass.GetIsFollowGhost() && Input.GetMouseButtonDown(1)) {
-            //RoadsClass.DeleteGhost(gameObject);
+            RoadsClass.DeleteGhost(gameObject);
         }
     }
 
     void OnMouseDown() {
         if (!RoadsClass.GetIsFollowGhost()) {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+                RoadsClass.SetFirstCoordinatesGhostObject(gameObject, hit.point);
             gameObject.layer = 2;
             isFollow = !isFollow;
             isBusy = true;
