@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RadialMenu : MonoBehaviour
+public class RadialMenuVisibility : MonoBehaviour
 {
     public float blur = 0;
     private Material MaterialClass;

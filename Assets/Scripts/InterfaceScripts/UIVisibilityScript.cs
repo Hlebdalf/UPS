@@ -17,7 +17,7 @@ public class UIVisibilityScript : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             isActive2 = !isActive2;
-            RadialPanel.GetComponent<RadialMenu>().radialMenuDisability = isActive2;
+            RadialPanel.GetComponent<RadialMenuVisibility>().radialMenuDisability = isActive2;
             RadialPanel.SetActive(isActive2);
             RadialPanel.GetComponent<Animator>().SetBool("isOpened", isActive2);
             RadialImage.GetComponent<Animator>().SetBool("isOpened", isActive2);
