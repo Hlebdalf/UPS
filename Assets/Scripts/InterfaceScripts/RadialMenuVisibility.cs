@@ -13,7 +13,7 @@ public class RadialMenuVisibility : MonoBehaviour
     {
         Image ImageClass = gameObject.GetComponent<Image>();
         MaterialClass = ImageClass.material;
-    }
+    } 
 
     void FixedUpdate()
     {
@@ -21,8 +21,4 @@ public class RadialMenuVisibility : MonoBehaviour
             gameObject.SetActive(radialMenuDisability);
     }
 
-    public void IsDisabled(bool dis)
-    {
-        
-    }
 }
