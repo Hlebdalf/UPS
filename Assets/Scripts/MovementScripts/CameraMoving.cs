@@ -27,8 +27,8 @@ public class CameraMoving : MonoBehaviour {
         else if (IsMoving) {
             float x = Input.mousePosition.x;
             float y = Input.mousePosition.y;
-            float MovingDirectionX = MovingVector.x * (x - 980) / 16f * 9f / 1500;
-            float MovingDirectionZ = MovingVector.z * (y - 540) / 1500;
+            float MovingDirectionX = MovingVector.x * (x - Screen.width/2) / 16f * 9f / 1500;
+            float MovingDirectionZ = MovingVector.z * (y - Screen.height/2) / 1500;
             transform.Translate(MovingDirectionX / Sensivity1 * koeff, 0, MovingDirectionZ / Sensivity2 * koeff);
         }
     }
