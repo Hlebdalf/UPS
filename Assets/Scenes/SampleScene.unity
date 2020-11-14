@@ -902,6 +902,7 @@ GameObject:
   - component: {fileID: 817154477}
   - component: {fileID: 817154476}
   - component: {fileID: 817154475}
+  - component: {fileID: 817154479}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -921,8 +922,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c09dce3ccb91147a56404a9faf7840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blurRoof: 1.5
   blur: 0
+  radialMenuDisability: 1
 --- !u!114 &817154476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -980,6 +981,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &817154479
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817154474}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7c06e3ff06e9d86408456a64f85c9684, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &958861641
 GameObject:
   m_ObjectHideFlags: 0
@@ -1543,6 +1563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BuildPanel: {fileID: 2120651707}
   RadialPanel: {fileID: 817154474}
+  RadialImage: {fileID: 1316715165}
 --- !u!114 &1344676611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1925,7 +1946,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &1886171875
 MeshCollider:
   m_ObjectHideFlags: 0

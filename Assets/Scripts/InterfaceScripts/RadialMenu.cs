@@ -5,32 +5,24 @@ using UnityEngine.UI;
 
 public class RadialMenu : MonoBehaviour
 {
-    public float blurRoof = 1.5f;
     public float blur = 0;
     private Material MaterialClass;
+    public bool radialMenuDisability = true;
     
     void Start()
     {
         Image ImageClass = gameObject.GetComponent<Image>();
         MaterialClass = ImageClass.material;
-        /*Color imageColor = ImageClass.color;
-        imageColor.a = 0;
-        ImageClass.color = imageColor;*/
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (blur < blurRoof)
-        {
-            blur += Time.deltaTime * 2;
             MaterialClass.SetFloat("_Size", blur);
-        }
+            gameObject.SetActive(radialMenuDisability);
     }
 
-    public void SetBlur(float num)
+    public void IsDisabled(bool dis)
     {
-        blur = num;
-        MaterialClass.SetFloat("_Size", blur);
+        
     }
-
 }
