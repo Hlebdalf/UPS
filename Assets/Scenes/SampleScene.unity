@@ -909,7 +909,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &817154475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1460,6 +1460,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 298ad7405c3ce2b40bd7ab0cd5260bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PreSprites:
+  - {fileID: 21300000, guid: 3b0c8bf0ac5b6214e91a7dbad229f0e7, type: 3}
+  - {fileID: 21300000, guid: d2a19ce215b64fb4695904a428dfb224, type: 3}
+  - {fileID: 21300000, guid: c88f9324efde3b248a6dead9fdc4c34f, type: 3}
+  - {fileID: 21300000, guid: faed9aa9ee3d7df4d91f5270f487fcbb, type: 3}
+  - {fileID: 21300000, guid: 33a42dbe3d285d242b256bf7ea415dd7, type: 3}
+  - {fileID: 21300000, guid: f6dbdf0abf8546943a6eac9b8ee6d87b, type: 3}
+  - {fileID: 21300000, guid: f71e37a72d22b1148b90594a6a36e169, type: 3}
+  - {fileID: 21300000, guid: 2a55cecf56a86774ba9fde12f7bafc14, type: 3}
+  - {fileID: 21300000, guid: c72ceb837d7162341a36fb4ab48b0847, type: 3}
   RadialMenuManagerClass: {fileID: 1344676612}
 --- !u!1 &1344676605
 GameObject:
@@ -1606,7 +1616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a375bcb8c04284f93ce620a1086b0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radialMenuButton: 0
+  radialMenuDirection: 0
 --- !u!1 &1393752923
 GameObject:
   m_ObjectHideFlags: 0

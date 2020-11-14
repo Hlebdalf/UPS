@@ -7,7 +7,6 @@ public class UIVisibilityScript : MonoBehaviour {
     public GameObject BuildPanel;
     public GameObject RadialPanel;
     public GameObject RadialImage;
-    //private Animator AnimatorClass;
     private bool isActive = false;
     private bool isActive2 = false;
 
@@ -25,6 +24,7 @@ public class UIVisibilityScript : MonoBehaviour {
         else if (Input.GetKeyUp(KeyCode.Space))
         {   
             isActive2 = !isActive2;
+            RadialImage.GetComponent<RadialMenuButtons>().ReturnAngle();
             RadialPanel.GetComponent<Animator>().SetBool("isOpened", isActive2);
             RadialImage.GetComponent<Animator>().SetBool("isOpened", isActive2);
         }
