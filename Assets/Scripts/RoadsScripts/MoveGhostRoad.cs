@@ -70,7 +70,7 @@ public class MoveGhostRoad : MonoBehaviour {
         }
     }
 
-    public float funcK(float dist, float leg, float x1, float y1, float x2, float y2) {
+    private float funcK(float dist, float leg, float x1, float y1, float x2, float y2) {
         if (dist == 0) return 0;
         else {
             if (y1 <= y2) return (float)(90 - Math.Acos(leg / dist) * 57.3);

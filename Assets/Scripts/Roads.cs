@@ -18,11 +18,12 @@ public class Pair<T, U> {
 
 public struct RoadObject {
     public float x1, y1, x2, y2, len;
-    public int idx;
+    public int idxPreFab;
 }
 
 public class Roads : MonoBehaviour {
     private List <GameObject> objects;
+    private List <RoadObject> objectsData;
     private List <GameObject> ghostObjects;
     private List <RoadObject> ghostObjectsData;
     private bool isFollowGhost = false;
@@ -33,8 +34,10 @@ public class Roads : MonoBehaviour {
 
     private void Start() {
         objects = new List <GameObject> ();
+        objectsData = new List <RoadObject> ();
         ghostObjects = new List <GameObject> ();
         ghostObjectsData = new List <RoadObject> ();
+        CreateDefaultRoad("Road");
     }
 
     private void Update() {
@@ -49,6 +52,30 @@ public class Roads : MonoBehaviour {
         if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter)) {
                 CreateObjects();
             }
+    }
+
+    private void CreateDefaultRoad(string type) {
+        RoadObject objectData;
+        objectData.x1 = 0;
+        objectData.y1 = 100;
+        objectData.x2 = 0;
+        objectData.y2 = 110;
+        objectData.len = (float)Math.Sqrt(Math.Pow(objectData.x2 - objectData.x1, 2) + Math.Pow(objectData.y2 - objectData.y1, 2));
+        objectData.idxPreFab = ToIndex(type);
+        objectsData.Add(objectData);
+        objects.Add(Instantiate(preFubs[objectData.idxPreFab], new Vector3((objectData.x1 + objectData.x2) / 2, 0, (objectData.y1 + objectData.y2) / 2),
+                    Quaternion.Euler(0, funcK(objectData.len, objectData.x2 - objectData.x1, objectData.x1, objectData.y1, objectData.x2, objectData.y2), 0)));
+        objects[objects.Count - 1].transform.localScale = new Vector3(1, 1, objectData.len / 2);
+        MeshRenderer MeshRendererClass = objects[objects.Count - 1].GetComponent <MeshRenderer> ();
+        MeshRendererClass.materials[0].SetTextureScale("_MainTex", new Vector2(objectData.len / 2, 1));
+    }
+
+    private float funcK(float dist, float leg, float x1, float y1, float x2, float y2) {
+        if (dist == 0) return 0;
+        else {
+            if (y1 <= y2) return (float)(90 - Math.Acos(leg / dist) * 57.3);
+            else return (float)(-270 + Math.Acos(leg / dist) * 57.3);
+        }
     }
 
     private int ToIndex(string type) {
@@ -114,7 +141,7 @@ public class Roads : MonoBehaviour {
         ghostObjects.Add(Instantiate(preFubsGhost[ToIndex(type)], point, preFubsGhost[ToIndex(type)].transform.rotation));
         ghostObjects[ghostObjects.Count - 1].AddComponent <MoveGhostRoad> ();
         RoadObject newGhostObjectData = new RoadObject();
-        newGhostObjectData.idx = ToIndex(type);
+        newGhostObjectData.idxPreFab = ToIndex(type);
         newGhostObjectData.x1 = point.x;
         newGhostObjectData.y1 = point.z;
         ghostObjectsData.Add(newGhostObjectData);
@@ -130,7 +157,8 @@ public class Roads : MonoBehaviour {
     public void CreateObjects() {
         for (int i = 0; i < ghostObjects.Count; ++i) {
             GameObject ghostObject = ghostObjects[i];
-            objects.Add(Instantiate(preFubs[ghostObjectsData[i].idx], ghostObject.transform.position, ghostObject.transform.rotation));
+            objects.Add(Instantiate(preFubs[ghostObjectsData[i].idxPreFab], ghostObject.transform.position, ghostObject.transform.rotation));
+            objectsData.Add(ghostObjectsData[i]);
             objects[objects.Count - 1].transform.localScale = ghostObject.transform.localScale;
             MeshRenderer MeshRendererClass = objects[objects.Count - 1].GetComponent <MeshRenderer> ();
             MeshRendererClass.materials[0].SetTextureScale("_MainTex", new Vector2(ghostObjectsData[i].len / 2, 1));
