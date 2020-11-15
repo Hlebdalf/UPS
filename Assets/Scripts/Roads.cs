@@ -27,6 +27,7 @@ public class Roads : MonoBehaviour {
     private List <GameObject> ghostObjects;
     private List <RoadObject> ghostObjectsData;
     private bool isFollowGhost = false;
+    private int idxOverRoad = -1;
     private string RoadType = "";
     
     public GameObject[] preFubs;
@@ -45,13 +46,23 @@ public class Roads : MonoBehaviour {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
-                if (Input.GetMouseButtonDown(0))
-                    CreateGhost(RoadType, hit.point);
+                if (Input.GetMouseButtonDown(0) && idxOverRoad != -1) {
+                    float x = hit.point.x;
+                    float y = hit.point.z;
+                    float x1 = objectsData[idxOverRoad].x1;
+                    float y1 = objectsData[idxOverRoad].y1;
+                    float x2 = objectsData[idxOverRoad].x2;
+                    float y2 = objectsData[idxOverRoad].y2;
+                    float dist1 = (float)Math.Sqrt(Math.Pow(x1 - x, 2) + Math.Pow(y1 - y, 2));
+                    float dist2 = (float)Math.Sqrt(Math.Pow(x2 - x, 2) + Math.Pow(y2 - y, 2));
+                    if (dist1 < dist2) CreateGhost(RoadType, new Vector3(x1, 0, y1));
+                    else CreateGhost(RoadType, new Vector3(x2, 0, y2));
+                }
             }
         }
         if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter)) {
-                CreateObjects();
-            }
+            CreateObjects();
+        }
     }
 
     private void CreateDefaultRoad(string type) {
@@ -68,6 +79,7 @@ public class Roads : MonoBehaviour {
         objects[objects.Count - 1].transform.localScale = new Vector3(1, 1, objectData.len / 2);
         MeshRenderer MeshRendererClass = objects[objects.Count - 1].GetComponent <MeshRenderer> ();
         MeshRendererClass.materials[0].SetTextureScale("_MainTex", new Vector2(objectData.len / 2, 1));
+        objects[objects.Count - 1].AddComponent <MoveRoad> ();
     }
 
     private float funcK(float dist, float leg, float x1, float y1, float x2, float y2) {
@@ -84,12 +96,16 @@ public class Roads : MonoBehaviour {
         return choose;
     }
 
-    public void GetRoadType(string type) {
-        RoadType = type;
+    public int GetIndex(GameObject RoadObject) {
+        return objects.IndexOf(RoadObject);
     }
 
     public void SetRoadType(string type) {
         RoadType = type;
+    }
+
+    public void SetIsOverRoad(int idx) {
+        idxOverRoad = idx;
     }
 
     public bool GetIsFollowGhost() {
@@ -162,7 +178,7 @@ public class Roads : MonoBehaviour {
             objects[objects.Count - 1].transform.localScale = ghostObject.transform.localScale;
             MeshRenderer MeshRendererClass = objects[objects.Count - 1].GetComponent <MeshRenderer> ();
             MeshRendererClass.materials[0].SetTextureScale("_MainTex", new Vector2(ghostObjectsData[i].len / 2, 1));
-            //objects[objects.Count - 1].AddComponent <MoveRoad> ();
+            objects[objects.Count - 1].AddComponent <MoveRoad> ();
             DeleteGhost(ghostObject);
         }
     }
