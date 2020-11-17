@@ -10,6 +10,7 @@ public struct RoadObject {
 }
 
 public class Roads : MonoBehaviour {
+    private float eps = 1e-5f;
     private List <GameObject> objects;
     private List <RoadObject> objectsData;
     private List <GameObject> ghostObjects;
@@ -127,15 +128,24 @@ public class Roads : MonoBehaviour {
 
     public Vector2 RoundCoordinateOnTheRoad(Vector2 point, int idxRoad) {
         RoadObject data = objectsData[idxRoad];
-        if (data.a == 0) return new Vector2(point.x, -data.c / data.b);
-        if (data.b == 0) return new Vector2(-data.c / data.a, point.y);
+        Vector2 ans;
+        if (data.a == 0) ans = new Vector2(point.x, -data.c / data.b);
+        if (data.b == 0) ans = new Vector2(-data.c / data.a, point.y);
         else {
             float x1 = point.x;
             float y1 = -(data.a * point.x + data.c) / data.b;
             float x2 = -(data.b * point.y + data.c) / data.a;
             float y2 = point.y;
-            return new Vector2((x1 + x2) / 2, (y1 + y2) / 2);
+            ans = new Vector2((x1 + x2) / 2, (y1 + y2) / 2);
         }
+        float dist1 = (float)Math.Sqrt(Math.Pow(ans.x - data.x1, 2) + Math.Pow(ans.y - data.y1, 2));
+        float dist2 = (float)Math.Sqrt(Math.Pow(ans.x - data.x2, 2) + Math.Pow(ans.y - data.y2, 2));
+        float dist = (float)Math.Sqrt(Math.Pow(data.x2 - data.x1, 2) + Math.Pow(data.y2 - data.y1, 2));
+        if (dist1 + dist2 - dist > eps) {
+            if (dist1 < dist2) ans = new Vector2(data.x1, data.y1);
+            else ans = new Vector2(data.x2, data.y2);
+        }
+        return ans;
     }
 
     public void CreateGhost(string type, Vector3 point, int idxRoad) {
@@ -152,6 +162,7 @@ public class Roads : MonoBehaviour {
 
     public void DeleteGhost(GameObject ghostObject) {
         ghostObjectsData.RemoveAt(ghostObjects.IndexOf(ghostObject));
+        ghostObjectsConnect.RemoveAt(ghostObjects.IndexOf(ghostObject));
         ghostObjects.Remove(ghostObject);
         Destroy(ghostObject);
     }
