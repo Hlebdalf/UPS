@@ -4,8 +4,7 @@ using System;
 using UnityEngine;
 
 public struct RoadObject {
-    public float x1, y1, x2, y2;
-    public float len, a, b, c;
+    public float x1, y1, x2, y2, len;
     public int idxPreFab;
 }
 
@@ -54,9 +53,6 @@ public class Roads : MonoBehaviour {
         objectData.y1 = 100;
         objectData.x2 = 0;
         objectData.y2 = 110;
-        objectData.a = objectData.y1 - objectData.y2;
-        objectData.b = objectData.x2 - objectData.x1;
-        objectData.c = objectData.x1 * objectData.y2 - objectData.x2 * objectData.y1;
         objectData.len = (float)Math.Sqrt(Math.Pow(objectData.x2 - objectData.x1, 2) + Math.Pow(objectData.y2 - objectData.y1, 2));
         objectData.idxPreFab = ToIndex(type);
         objectsData.Add(objectData);
@@ -128,18 +124,31 @@ public class Roads : MonoBehaviour {
 
     public Vector2 RoundCoordinateOnTheRoad(Vector2 point, int idxRoad) {
         RoadObject data = objectsData[idxRoad];
-        Vector2 ans;
-        if (data.a == 0) ans = new Vector2(point.x, -data.c / data.b);
-        if (data.b == 0) ans = new Vector2(-data.c / data.a, point.y);
-        else {
-            float x1 = point.x;
-            float y1 = -(data.a * point.x + data.c) / data.b;
-            float x2 = -(data.b * point.y + data.c) / data.a;
-            float y2 = point.y;
-            ans = new Vector2((x1 + x2) / 2, (y1 + y2) / 2);
+        float a1 = data.y1 - data.y2, b1 = data.x2 - data.x1, c1 = data.x1 * data.y2 - data.x2 * data.y1; // line
+        float a2 = -b1, b2 = a1, c2 = -(a2 * point.x + b2 * point.y); // norm
+        if (a1 * b2 - a2 * b1 == 0) return point; // parallel
+        float x = -(c1 * b2 - c2 * b1) / (a1 * b2 - a2 * b1);
+        float y = -(a1 * c2 - a2 * c1) / (a1 * b2 - a2 * b1);
+        Vector2 ans = new Vector2(x, y);
+        float dist1 = (float)Math.Sqrt(Math.Pow(x - data.x1, 2) + Math.Pow(y - data.y1, 2));
+        float dist2 = (float)Math.Sqrt(Math.Pow(x - data.x2, 2) + Math.Pow(y - data.y2, 2));
+        float dist = (float)Math.Sqrt(Math.Pow(data.x2 - data.x1, 2) + Math.Pow(data.y2 - data.y1, 2));
+        if (dist1 + dist2 - dist > eps) {
+            if (dist1 < dist2) ans = new Vector2(data.x1, data.y1);
+            else ans = new Vector2(data.x2, data.y2);
         }
-        float dist1 = (float)Math.Sqrt(Math.Pow(ans.x - data.x1, 2) + Math.Pow(ans.y - data.y1, 2));
-        float dist2 = (float)Math.Sqrt(Math.Pow(ans.x - data.x2, 2) + Math.Pow(ans.y - data.y2, 2));
+        return ans;
+    }
+
+    public Vector2 RoundMovingCoordinateOnTheRoad(RoadObject dataGhost, int idxRoad) {
+        RoadObject data = objectsData[idxRoad];
+        float a1 = data.y1 - data.y2, b1 = data.x2 - data.x1, c1 = data.x1 * data.y2 - data.x2 * data.y1;
+        float a2 = dataGhost.y1 - dataGhost.y2, b2 = dataGhost.x2 - dataGhost.x1, c2 = dataGhost.x1 * dataGhost.y2 - dataGhost.x2 * dataGhost.y1;
+        float x = -(c1 * b2 - c2 * b1) / (a1 * b2 - a2 * b1);
+        float y = -(a1 * c2 - a2 * c1) / (a1 * b2 - a2 * b1);
+        Vector2 ans = new Vector2(x, y);
+        float dist1 = (float)Math.Sqrt(Math.Pow(x - data.x1, 2) + Math.Pow(y - data.y1, 2));
+        float dist2 = (float)Math.Sqrt(Math.Pow(x - data.x2, 2) + Math.Pow(y - data.y2, 2));
         float dist = (float)Math.Sqrt(Math.Pow(data.x2 - data.x1, 2) + Math.Pow(data.y2 - data.y1, 2));
         if (dist1 + dist2 - dist > eps) {
             if (dist1 < dist2) ans = new Vector2(data.x1, data.y1);

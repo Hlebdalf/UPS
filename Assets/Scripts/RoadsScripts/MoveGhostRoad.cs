@@ -24,7 +24,9 @@ public class MoveGhostRoad : MonoBehaviour {
             if (Physics.Raycast(ray, out hit)) {
                 RoadObject data = RoadsClass.GetGhostRoadObject(idx);
                 if (isFirst) {
-                    Vector2 point = RoadsClass.RoundCoordinateOnTheRoad(new Vector2(hit.point.x, hit.point.z), RoadsClass.GetIdxGhostObjectConnect(idx));
+                    data.x1 = hit.point.x;
+                    data.y1 = hit.point.z;
+                    Vector2 point = RoadsClass.RoundMovingCoordinateOnTheRoad(data, RoadsClass.GetIdxGhostObjectConnect(idx));
                     data.x1 = point.x;
                     data.y1 = point.y;
                 }
@@ -38,9 +40,6 @@ public class MoveGhostRoad : MonoBehaviour {
                 x2 = data.x2;
                 y2 = data.y2;
                 len = data.len = (float)Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
-                data.a = y1 - y2;
-                data.b = x2 - x1;
-                data.c = x1 * y2 - x2 * y1;
                 transform.rotation = Quaternion.Euler(0, funcAngle(len, x2 - x1, x1, y1, x2, y2), 0);
                 transform.position = new Vector3((x1 + x2) / 2, 0, (y1 + y2) / 2);
                 transform.localScale = new Vector3(1, 1, len / 2);
