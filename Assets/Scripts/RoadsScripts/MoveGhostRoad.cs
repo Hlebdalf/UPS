@@ -26,7 +26,7 @@ public class MoveGhostRoad : MonoBehaviour {
                 if (isFirst) {
                     data.x1 = hit.point.x;
                     data.y1 = hit.point.z;
-                    Vector2 point = RoadsClass.RoundMovingCoordinateOnTheRoad(data, RoadsClass.GetIdxGhostObjectConnect(idx));
+                    Vector2 point = RoadsClass.RoundMovingCoordinateOnTheRoad(data, idx, RoadsClass.GetIdxGhostObjectConnect(idx));
                     data.x1 = point.x;
                     data.y1 = point.y;
                 }
