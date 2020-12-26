@@ -7,10 +7,10 @@ public class RoadGhostObject : MonoBehaviour {
     private GameObject MainCamera;
     private Roads RoadsClass;
     private float eps = 1e-5f;
-    private bool isFollow = true, isBusy = false, isFirst = false, isCollision;
+    public bool isFollow = true, isBusy = false, isFirst = false, isCollision;
 
     public float x1, y1, x2, y2, len;
-    public int idx, connectedRoad;
+    public int idx, idxPreFub, connectedRoad, connectedRoad2 = -1;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -32,9 +32,16 @@ public class RoadGhostObject : MonoBehaviour {
                     data.y1 = point2.y;
                 }
                 else {
-                    Vector2 point = RoundCoodinate(new Vector2(hit.point.x, hit.point.z));
-                    data.x2 = point.x;
-                    data.y2 = point.y;
+                    if (connectedRoad2 == -1) {
+                        Vector2 point = RoundCoodinate(new Vector2(hit.point.x, hit.point.z));
+                        data.x2 = point.x;
+                        data.y2 = point.y;
+                    }
+                    else {
+                        Vector3 point = RoadsClass.RoundCoordinateOnTheRoad(hit.point, connectedRoad2);
+                        data.x2 = point.x;
+                        data.y2 = point.z;
+                    }
                 }
 
                 data.len = (float)Math.Sqrt(Math.Pow(data.x2 - data.x1, 2) + Math.Pow(data.y2 - data.y1, 2));
@@ -67,12 +74,37 @@ public class RoadGhostObject : MonoBehaviour {
     }
 
     private void OnTriggerStay(Collider other) {
-        if (RoadsClass.objects.IndexOf(other.gameObject) != connectedRoad)
+        if (other.gameObject.GetComponent <RoadObject> ()) {
+            int idxCollision = RoadsClass.objects.IndexOf(other.gameObject);
+            if (idxCollision != connectedRoad) {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit)) {
+                    RoadObject dataRoad = RoadsClass.objects[idxCollision].GetComponent <RoadObject> ();
+                    float mainRoadA = dataRoad.y1 - dataRoad.y2, mainRoadB = dataRoad.x2 - dataRoad.x1, mainRoadC = dataRoad.x1 * dataRoad.y2 - dataRoad.x2 * dataRoad.y1; // main road line
+                    float normA = -mainRoadB, normB = mainRoadA, normC = -(normA * hit.point.x + normB * hit.point.z); // norm
+                    float normCrossMainRoadX = -(mainRoadC * normB - normC * mainRoadB) / (mainRoadA * normB - normA * mainRoadB); // rounded coordinate
+                    float normCrossMainRoadY = -(mainRoadA * normC - normA * mainRoadC) / (mainRoadA * normB - normA * mainRoadB); // rounded coordinate
+                    float dist = (float)Math.Sqrt(Math.Pow(normCrossMainRoadX - hit.point.x, 2) + Math.Pow(normCrossMainRoadY - hit.point.z, 2));
+                    if (dist < 2 || !isFollow || isFirst) {
+                        isCollision = false;
+                        connectedRoad2 = idxCollision;
+                    }
+                    else {
+                        isCollision = true;
+                        connectedRoad2 = -1;
+                    }
+                }
+            }
+        }
+        else if (RoadsClass.ghostObjects.IndexOf(other.gameObject) != connectedRoad) {
             isCollision = true;
+        }
     }
 
     private void OnTriggerExit(Collider other) {
         isCollision = false;
+        connectedRoad2 = -1;
     }
 
     private void OnMouseDown() {

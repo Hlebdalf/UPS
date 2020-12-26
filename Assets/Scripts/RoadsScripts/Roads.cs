@@ -48,7 +48,7 @@ public class Roads : MonoBehaviour {
         objectClass.x2 = x2;
         objectClass.y2 = y2;
         objectClass.len = len;
-        objectClass.idx = idx;
+        objectClass.idx = objects.Count - 1;
 
         objects[objects.Count - 1].transform.localScale = new Vector3(1, 1, len / 2);
         MeshRenderer MeshRendererClass = objects[objects.Count - 1].GetComponent <MeshRenderer> ();
@@ -56,25 +56,6 @@ public class Roads : MonoBehaviour {
 
         objects[objects.Count - 1].AddComponent <Rigidbody> ();
         objects[objects.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
-    }
-
-    private Vector3 RoundCoordinateOnTheRoad(Vector3 point, int idxRoad) {
-        RoadObject data = objects[idxRoad].GetComponent <RoadObject> ();
-        float a1 = data.y1 - data.y2, b1 = data.x2 - data.x1, c1 = data.x1 * data.y2 - data.x2 * data.y1; // line
-        float a2 = -b1, b2 = a1, c2 = -(a2 * point.x + b2 * point.z); // norm
-        if (a1 * b2 - a2 * b1 == 0) return point; // parallel
-        float x = -(c1 * b2 - c2 * b1) / (a1 * b2 - a2 * b1);
-        float y = -(a1 * c2 - a2 * c1) / (a1 * b2 - a2 * b1);
-        Vector3 ans = new Vector3(x, 0, y);
-        float dist1 = (float)Math.Sqrt(Math.Pow(x - data.x1, 2) + Math.Pow(y - data.y1, 2));
-        float dist2 = (float)Math.Sqrt(Math.Pow(x - data.x2, 2) + Math.Pow(y - data.y2, 2));
-        float dist = (float)Math.Sqrt(Math.Pow(data.x2 - data.x1, 2) + Math.Pow(data.y2 - data.y1, 2));
-        if (dist1 + dist2 - dist > eps) {
-            if (dist1 < dist2) ans = new Vector3(data.x1, 0, data.y1);
-            else ans = new Vector3(data.x2, 0, data.y2);
-        }
-        ans = RoundCoodinate(ans);
-        return ans;
     }
 
     private Vector3 RoundCoodinate(Vector3 point) {
@@ -111,15 +92,38 @@ public class Roads : MonoBehaviour {
         }
     }
 
+    public Vector3 RoundCoordinateOnTheRoad(Vector3 point, int idxRoad) {
+        RoadObject data = objects[idxRoad].GetComponent <RoadObject> ();
+        float a1 = data.y1 - data.y2, b1 = data.x2 - data.x1, c1 = data.x1 * data.y2 - data.x2 * data.y1; // line
+        float a2 = -b1, b2 = a1, c2 = -(a2 * point.x + b2 * point.z); // norm
+        if (a1 * b2 - a2 * b1 == 0) return point; // parallel
+        float x = -(c1 * b2 - c2 * b1) / (a1 * b2 - a2 * b1);
+        float y = -(a1 * c2 - a2 * c1) / (a1 * b2 - a2 * b1);
+        Vector3 ans = new Vector3(x, 0, y);
+        float dist1 = (float)Math.Sqrt(Math.Pow(x - data.x1, 2) + Math.Pow(y - data.y1, 2));
+        float dist2 = (float)Math.Sqrt(Math.Pow(x - data.x2, 2) + Math.Pow(y - data.y2, 2));
+        float dist = (float)Math.Sqrt(Math.Pow(data.x2 - data.x1, 2) + Math.Pow(data.y2 - data.y1, 2));
+        if (dist1 + dist2 - dist > eps) {
+            if (dist1 < dist2) ans = new Vector3(data.x1, 0, data.y1);
+            else ans = new Vector3(data.x2, 0, data.y2);
+        }
+        ans = RoundCoodinate(ans);
+        return ans;
+    }
+
     public void CreateGhost(string name, Vector3 point, int idxRoad) {
         ghostObjects.Add(Instantiate(preFubsGhost[ToIndex(name)], point, preFubsGhost[ToIndex(name)].transform.rotation));
         ghostObjects[ghostObjects.Count - 1].AddComponent <RoadGhostObject> ();
         RoadGhostObject data = ghostObjects[ghostObjects.Count - 1].GetComponent <RoadGhostObject> ();
-        data.idx = ToIndex(name);
+        data.idx = ghostObjects.Count - 1;
+        data.idxPreFub = ToIndex(name);
         data.x1 = point.x;
         data.y1 = point.z;
         data.connectedRoad = idxRoad;
         isFollowGhost = true;
+
+        ghostObjects[ghostObjects.Count - 1].AddComponent <Rigidbody> ();
+        ghostObjects[ghostObjects.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
     }
 
     public void DeleteGhost(GameObject ghostObject) {
@@ -131,7 +135,8 @@ public class Roads : MonoBehaviour {
         for (int i = 0; i < ghostObjects.Count; ++i) {
             GameObject ghostObject = ghostObjects[i];
             RoadGhostObject ghostObjectClass = ghostObject.GetComponent <RoadGhostObject> ();
-            objects.Add(Instantiate(preFubs[ghostObjectClass.idx], new Vector3(ghostObject.transform.position.x, 0, ghostObject.transform.position.z), ghostObject.transform.rotation));
+            objects.Add(Instantiate(preFubs[ghostObjectClass.idxPreFub], new Vector3(ghostObject.transform.position.x, 0, ghostObject.transform.position.z),
+                        ghostObject.transform.rotation));
             objects[objects.Count - 1].AddComponent <RoadObject> ();
             RoadObject objectClass = objects[objects.Count - 1].GetComponent <RoadObject> ();
 
