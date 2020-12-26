@@ -3,33 +3,21 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public struct RoadObject {
-    public float x1, y1, x2, y2, len;
-    public int idxPreFab;
-    public List <int> connectedRoads;
-}
-
 public class Roads : MonoBehaviour {
     private float eps = 1e-5f;
-    private List <GameObject> objects;
-    private List <RoadObject> objectsData;
-    private List <GameObject> ghostObjects;
-    private List <RoadObject> ghostObjectsData;
-    private List <int> ghostObjectsConnect;
-    private bool isFollowGhost = false;
-    private int idxOverRoad = -1;
-    private string RoadType = "";
     
     public GameObject[] preFubs;
     public GameObject[] preFubsGhost;
+    public List <GameObject> objects;
+    public List <GameObject> ghostObjects;
+    public bool isFollowGhost = false;
+    public int idxOverRoad = -1;
+    public string RoadType = "";
 
     private void Start() {
         objects = new List <GameObject> ();
-        objectsData = new List <RoadObject> ();
         ghostObjects = new List <GameObject> ();
-        ghostObjectsData = new List <RoadObject> ();
-        ghostObjectsConnect = new List <int> ();
-        CreateDefaultRoad("Road");
+        CreateDefaultRoad(0);
     }
 
     private void Update() {
@@ -48,25 +36,36 @@ public class Roads : MonoBehaviour {
         }
     }
 
-    private void CreateDefaultRoad(string type) {
-        RoadObject objectData;
-        objectData.x1 = 0;
-        objectData.y1 = 100;
-        objectData.x2 = 0;
-        objectData.y2 = 110;
-        objectData.len = (float)Math.Sqrt(Math.Pow(objectData.x2 - objectData.x1, 2) + Math.Pow(objectData.y2 - objectData.y1, 2));
-        objectData.idxPreFab = ToIndex(type);
-        objectData.connectedRoads = new List <int> ();
-        objectsData.Add(objectData);
-        objects.Add(Instantiate(preFubs[objectData.idxPreFab], new Vector3((objectData.x1 + objectData.x2) / 2, 0, (objectData.y1 + objectData.y2) / 2),
-                    Quaternion.Euler(0, funcAngle(objectData.len, objectData.x2 - objectData.x1, objectData.x1, objectData.y1, objectData.x2, objectData.y2), 0)));
-        objects[objects.Count - 1].transform.localScale = new Vector3(1, 1, objectData.len / 2);
+    private void CreateDefaultRoad(int idx) {
+        float x1 = 0, y1 = 100, x2 = 0, y2 = 110;
+        float len = (float)Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
+
+        objects.Add(Instantiate(preFubs[idx], new Vector3((x1 + x2) / 2, 0, (y1 + y2) / 2), Quaternion.Euler(0, funcAngle(len, x2 - x1, x1, y1, x2, y2), 0)));
+        objects[objects.Count - 1].AddComponent <RoadObject> ();
+        RoadObject objectClass = objects[objects.Count - 1].GetComponent <RoadObject> ();
+
+        objectClass.x1 = x1;
+        objectClass.y1 = y1;
+        objectClass.x2 = x2;
+        objectClass.y2 = y2;
+        objectClass.len = len;
+        objectClass.idx = idx;
+
+        objects[objects.Count - 1].transform.localScale = new Vector3(1, 1, len / 2);
         MeshRenderer MeshRendererClass = objects[objects.Count - 1].GetComponent <MeshRenderer> ();
-        MeshRendererClass.materials[0].SetTextureScale("_MainTex", new Vector2(objectData.len / 2, 1));
-        objects[objects.Count - 1].AddComponent <MoveRoad> ();
+        MeshRendererClass.materials[0].SetTextureScale("_MainTex", new Vector2(len / 2, 1));
     }
 
-    private float funcAngle(float dist, float leg, float x1, float y1, float x2, float y2) {
+    private int ToIndex(string name) {
+        for (int i = 0; i < preFubs.Length; ++i) {
+            if (preFubs[i].name == name || preFubsGhost[i].name == name) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public float funcAngle(float dist, float leg, float x1, float y1, float x2, float y2) {
         if (dist == 0) return 0;
         else {
             if (y1 <= y2) return (float)(90 - Math.Acos(leg / dist) * 57.3);
@@ -74,62 +73,8 @@ public class Roads : MonoBehaviour {
         }
     }
 
-    private int ToIndex(string type) {
-        int choose = -1;
-        if (type == "Road" || type == "RoadGhost") choose = 0;
-        return choose;
-    }
-
-    public int GetIndex(GameObject RoadObject) {
-        return objects.IndexOf(RoadObject);
-    }
-
-    public int GetGhostIndex(GameObject GhostRoadObject) {
-        return ghostObjects.IndexOf(GhostRoadObject);
-    }
-
-    public string GetRoadType() {
-        return RoadType;
-    }
-
-    public void SetRoadType(string type) {
-        RoadType = type;
-    }
-
-    public int GetIsOverRoad() {
-        return idxOverRoad;
-    }
-
-    public void SetIsOverRoad(int idx) {
-        idxOverRoad = idx;
-    }
-
-    public bool GetIsFollowGhost() {
-        return isFollowGhost;
-    }
-
-    public void SetIsFollowGhost(bool p) {
-        isFollowGhost = p;
-    }
-
-    public RoadObject GetGhostRoadObject(int idx) {
-        return ghostObjectsData[idx];
-    }
-
-    public void SetGhostRoadObject(RoadObject data, int idx) {
-        ghostObjectsData[idx] = data;
-    }
-
-    public int GetIdxGhostObjectConnect(int idx) {
-        return ghostObjectsConnect[idx];
-    }
-
-    public void SetIdxGhostObjectConnect(int idx, int idxRoad) {
-        ghostObjectsConnect[idx] = idxRoad;
-    }
-
     public Vector2 RoundCoordinateOnTheRoad(Vector2 point, int idxRoad) {
-        RoadObject data = objectsData[idxRoad];
+        RoadObject data = objects[idxRoad].GetComponent <RoadObject> ();
         float a1 = data.y1 - data.y2, b1 = data.x2 - data.x1, c1 = data.x1 * data.y2 - data.x2 * data.y1; // line
         float a2 = -b1, b2 = a1, c2 = -(a2 * point.x + b2 * point.y); // norm
         if (a1 * b2 - a2 * b1 == 0) return point; // parallel
@@ -146,8 +91,8 @@ public class Roads : MonoBehaviour {
         return ans;
     }
 
-    public Vector2 RoundMovingCoordinateOnTheRoad(RoadObject dataGhost, int idxGhost, int idxRoad) {
-        RoadObject data = objectsData[idxRoad];
+    public Vector2 RoundMovingCoordinateOnTheRoad(RoadGhostObject dataGhost, int idxGhost, int idxRoad) {
+        RoadObject data = objects[idxRoad].GetComponent <RoadObject> ();
         float cursorX = dataGhost.x1;
         float cursorY = dataGhost.y1;
 
@@ -164,7 +109,7 @@ public class Roads : MonoBehaviour {
         int minDistIdx = idxRoad;
         float bestLineA = mainRoadA, bestLineB = mainRoadB, bestLineC = mainRoadC;
         for (int i = 0; i < data.connectedRoads.Count; ++i) {
-            RoadObject tmpData = objectsData[data.connectedRoads[i]];
+            RoadObject tmpData = objects[data.connectedRoads[i]].GetComponent <RoadObject> ();
 
             float tmpA = tmpData.y1 - tmpData.y2, tmpB = tmpData.x2 - tmpData.x1, tmpC = tmpData.x1 * tmpData.y2 - tmpData.x2 * tmpData.y1; // tmp road line
             float tmpNormA = -tmpB, tmpNormB = tmpA, tmpNormC = -(tmpNormA * cursorX + tmpNormB * cursorY); // norm
@@ -185,7 +130,7 @@ public class Roads : MonoBehaviour {
         float y = -(bestLineA * ghostRoadC - ghostRoadA * bestLineC) / (bestLineA * ghostRoadB - ghostRoadA * bestLineB); // rounded coordinate
 
         Vector2 ans = new Vector2(x, y);
-        ghostObjectsConnect[idxGhost] = minDistIdx;
+        ghostObjects[idxGhost].GetComponent <RoadGhostObject> ().connectedRoad = minDistIdx;
         float dist1 = (float)Math.Sqrt(Math.Pow(mainRoadCrossGhostRoadX - data.x1, 2) + Math.Pow(mainRoadCrossGhostRoadY - data.y1, 2));
         float dist2 = (float)Math.Sqrt(Math.Pow(mainRoadCrossGhostRoadX - data.x2, 2) + Math.Pow(mainRoadCrossGhostRoadY - data.y2, 2));
         float dist = (float)Math.Sqrt(Math.Pow(data.x2 - data.x1, 2) + Math.Pow(data.y2 - data.y1, 2));
@@ -196,22 +141,18 @@ public class Roads : MonoBehaviour {
         return ans;
     }
 
-    public void CreateGhost(string type, Vector3 point, int idxRoad) {
-        ghostObjects.Add(Instantiate(preFubsGhost[ToIndex(type)], point, preFubsGhost[ToIndex(type)].transform.rotation));
-        ghostObjects[ghostObjects.Count - 1].AddComponent <MoveGhostRoad> ();
-        RoadObject data = new RoadObject();
-        data.idxPreFab = ToIndex(type);
+    public void CreateGhost(string name, Vector3 point, int idxRoad) {
+        ghostObjects.Add(Instantiate(preFubsGhost[ToIndex(name)], point, preFubsGhost[ToIndex(name)].transform.rotation));
+        ghostObjects[ghostObjects.Count - 1].AddComponent <RoadGhostObject> ();
+        RoadGhostObject data = ghostObjects[ghostObjects.Count - 1].GetComponent <RoadGhostObject> ();
+        data.idx = ToIndex(name);
         data.x1 = point.x;
         data.y1 = point.z;
-        data.connectedRoads = new List <int> ();
-        ghostObjectsData.Add(data);
-        ghostObjectsConnect.Add(idxRoad);
+        data.connectedRoad = idxRoad;
         isFollowGhost = true;
     }
 
     public void DeleteGhost(GameObject ghostObject) {
-        ghostObjectsData.RemoveAt(ghostObjects.IndexOf(ghostObject));
-        ghostObjectsConnect.RemoveAt(ghostObjects.IndexOf(ghostObject));
         ghostObjects.Remove(ghostObject);
         Destroy(ghostObject);
     }
@@ -219,21 +160,26 @@ public class Roads : MonoBehaviour {
     public void CreateObjects() {
         for (int i = 0; i < ghostObjects.Count; ++i) {
             GameObject ghostObject = ghostObjects[i];
-            objects.Add(Instantiate(preFubs[ghostObjectsData[i].idxPreFab], ghostObject.transform.position, ghostObject.transform.rotation));
-            ghostObjectsData[i].connectedRoads.Add(GetIdxGhostObjectConnect(i));
-            objectsData[GetIdxGhostObjectConnect(i)].connectedRoads.Add(objects.Count - 1);
-            objectsData.Add(ghostObjectsData[i]);
+            RoadGhostObject ghostObjectClass = ghostObject.GetComponent <RoadGhostObject> ();
+            objects.Add(Instantiate(preFubs[ghostObjectClass.idx], ghostObject.transform.position, ghostObject.transform.rotation));
+            objects[objects.Count - 1].AddComponent <RoadObject> ();
+            RoadObject objectClass = objects[objects.Count - 1].GetComponent <RoadObject> ();
+
+            objectClass.connectedRoads.Add(ghostObjectClass.connectedRoad);
+            RoadObject tmpObjectClass = objects[ghostObjectClass.connectedRoad].GetComponent <RoadObject> ();
+            tmpObjectClass.connectedRoads.Add(objects.Count - 1);
+
+            objectClass.x1 = ghostObjectClass.x1;
+            objectClass.y1 = ghostObjectClass.y1;
+            objectClass.x2 = ghostObjectClass.x2;
+            objectClass.y2 = ghostObjectClass.y2;
+            objectClass.len = ghostObjectClass.len;
+            objectClass.idx = objects.Count - 1;
+
             objects[objects.Count - 1].transform.localScale = ghostObject.transform.localScale;
             MeshRenderer MeshRendererClass = objects[objects.Count - 1].GetComponent <MeshRenderer> ();
-            MeshRendererClass.materials[0].SetTextureScale("_MainTex", new Vector2(ghostObjectsData[i].len / 2, 1));
-            objects[objects.Count - 1].AddComponent <MoveRoad> ();
+            MeshRendererClass.materials[0].SetTextureScale("_MainTex", new Vector2(objectClass.len / 2, 1));
             DeleteGhost(ghostObject);
         }
-    }
-
-    public void DeleteObject(GameObject obj) {
-        objectsData.RemoveAt(objects.IndexOf(obj));
-        objects.Remove(obj);
-        Destroy(obj);
     }
 }

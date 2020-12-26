@@ -31,6 +31,6 @@ public class InterfaceButtonManagement : MonoBehaviour {
     }
 
     public void Road() {
-        RoadsClass.SetRoadType("Road");
+        RoadsClass.RoadType = "Road1";
     }
 }

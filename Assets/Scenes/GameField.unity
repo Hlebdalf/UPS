@@ -1208,6 +1208,11 @@ MonoBehaviour:
   - {fileID: 7642933111962891932, guid: 46fbd16663092a24c845a5efd7b909c8, type: 3}
   preFubsGhost:
   - {fileID: 4607556241077156454, guid: bb2c2e56269999547a54bd8c561d4980, type: 3}
+  objects: []
+  ghostObjects: []
+  isFollowGhost: 0
+  idxOverRoad: -1
+  RoadType: 
 --- !u!114 &963194233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1977,7 +1982,6 @@ GameObject:
   - component: {fileID: 1886171877}
   - component: {fileID: 1886171876}
   - component: {fileID: 1886171875}
-  - component: {fileID: 1886171879}
   m_Layer: 0
   m_Name: GridPlane
   m_TagString: Untagged
@@ -2060,20 +2064,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1886171879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1886171874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ed90eb620ab3db4cb033c3c5f163acb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CameraClass: {fileID: 963194227}
-  sizeGrid: 1000
 --- !u!1 &2045697039
 GameObject:
   m_ObjectHideFlags: 0
