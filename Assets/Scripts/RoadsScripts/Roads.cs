@@ -53,6 +53,9 @@ public class Roads : MonoBehaviour {
         objects[objects.Count - 1].transform.localScale = new Vector3(1, 1, len / 2);
         MeshRenderer MeshRendererClass = objects[objects.Count - 1].GetComponent <MeshRenderer> ();
         MeshRendererClass.materials[0].SetTextureScale("_MainTex", new Vector2(len / 2, 1));
+
+        objects[objects.Count - 1].AddComponent <Rigidbody> ();
+        objects[objects.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
     }
 
     private Vector3 RoundCoordinateOnTheRoad(Vector3 point, int idxRoad) {
@@ -146,6 +149,10 @@ public class Roads : MonoBehaviour {
             objects[objects.Count - 1].transform.localScale = ghostObject.transform.localScale;
             MeshRenderer MeshRendererClass = objects[objects.Count - 1].GetComponent <MeshRenderer> ();
             MeshRendererClass.materials[0].SetTextureScale("_MainTex", new Vector2(objectClass.len / 2, 1));
+
+            objects[objects.Count - 1].AddComponent <Rigidbody> ();
+            objects[objects.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
+
             DeleteGhost(ghostObject);
         }
     }

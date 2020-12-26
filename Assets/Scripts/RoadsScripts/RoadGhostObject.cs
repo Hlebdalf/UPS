@@ -7,13 +7,10 @@ public class RoadGhostObject : MonoBehaviour {
     private GameObject MainCamera;
     private Roads RoadsClass;
     private float eps = 1e-5f;
-    private bool isFollow = true;
-    private bool isBusy = false;
-    private bool isFirst = false;
+    private bool isFollow = true, isBusy = false, isFirst = false, isCollision;
 
     public float x1, y1, x2, y2, len;
-    public int idx;
-    public int connectedRoad;
+    public int idx, connectedRoad;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -48,7 +45,7 @@ public class RoadGhostObject : MonoBehaviour {
                 MeshRenderer MeshRendererClass = gameObject.GetComponent <MeshRenderer> ();
                 MeshRendererClass.materials[0].SetTextureScale("_MainTex", new Vector2(data.len / 2, 1));
 
-                if (Input.GetMouseButtonDown(0)) {
+                if (Input.GetMouseButtonDown(0) && !isCollision) {
                     gameObject.layer = 0;
                     RoadsClass.isFollowGhost = isFollow = false;
                     RoadsClass.RoadType = "";
@@ -63,6 +60,19 @@ public class RoadGhostObject : MonoBehaviour {
             }
         }
         isBusy = false;
+    }
+
+    private bool CheckCollision() {
+        return true;
+    }
+
+    private void OnTriggerStay(Collider other) {
+        if (RoadsClass.objects.IndexOf(other.gameObject) != connectedRoad)
+            isCollision = true;
+    }
+
+    private void OnTriggerExit(Collider other) {
+        isCollision = false;
     }
 
     private void OnMouseDown() {
