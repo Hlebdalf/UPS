@@ -4,19 +4,15 @@ using System;
 using UnityEngine;
 
 public class Builds : MonoBehaviour {
-    private List <GameObject> objects;
-    private List <GameObject> ghostObjects;
-    private List <int> ghostObjectsIdx;
-    private bool isFollowGhost = false;
-    
     public GameObject[] preFubs;
     public GameObject[] preFubsGhost;
-    public float roundCoordinatesConst;
+    public List <GameObject> objects;
+    public List <GameObject> ghostObjects;
+    public bool isFollowGhost = false;
 
     private void Start() {
         objects = new List <GameObject> ();
         ghostObjects = new List <GameObject> ();
-        ghostObjectsIdx = new List <int> ();
     }
 
     private void Update() {
@@ -25,50 +21,28 @@ public class Builds : MonoBehaviour {
         }
     }
 
-    private int ToIndex(string type) {
-        int choose = -1;
-        if (type == "House1" || type == "House1Ghost") choose = 0;
-        if (type == "House2" || type == "House2Ghost") choose = 1;
-        return choose;
+    private int ToIndex(string name) {
+        for (int i = 0; i < preFubs.Length; ++i) {
+            if (preFubs[i].name == name || preFubsGhost[i].name == name) {
+                return i;
+            }
+        }
+        return -1;
     }
 
-    public Vector3 RoundCoodinates(Vector3 point) {
-        float x = point.x, z = point.z, low, high;
-
-        low = (int)(x / roundCoordinatesConst) * roundCoordinatesConst;
-        high = low + roundCoordinatesConst;
-        if (Math.Abs(x - low) < Math.Abs(x - high)) point.x = low;
-        else point.x = high;
-        point.x -= 0.5f;
-
-        point.y = 0;
-
-        low = (int)(z / roundCoordinatesConst) * roundCoordinatesConst;
-        high = low + roundCoordinatesConst;
-        if (Math.Abs(z - low) < Math.Abs(z - high)) point.z = low;
-        else point.z = high;
-        point.z -= 0.5f;
-
-        return point;
-    }
-
-    public bool GetIsFollowGhost() {
-        return isFollowGhost;
-    }
-
-    public void SetIsFollowGhost(bool p) {
-        isFollowGhost = p;
-    }
-
-    public void CreateGhost(string type, Vector3 point) {
-        ghostObjects.Add(Instantiate(preFubsGhost[ToIndex(type)], point, preFubsGhost[ToIndex(type)].transform.rotation));
-        ghostObjectsIdx.Add(ToIndex(type));
-        ghostObjects[ghostObjects.Count - 1].AddComponent <MoveGhostBuild> ();
+    public void CreateGhost(string name, Vector3 point) {
+        ghostObjects.Add(Instantiate(preFubsGhost[ToIndex(name)], point, preFubsGhost[ToIndex(name)].transform.rotation));
+        ghostObjects[ghostObjects.Count - 1].AddComponent <BuildGhostObject> ();
         isFollowGhost = true;
+
+        BuildGhostObject data = ghostObjects[ghostObjects.Count - 1].GetComponent <BuildGhostObject> ();
+        data.x = point.x;
+        data.y = point.z;
+        data.idx = ghostObjects.Count - 1;
+        data.idxPreFub = ToIndex(name);
     }
 
     public void DeleteGhost(GameObject ghostObject) {
-        ghostObjectsIdx.RemoveAt(ghostObjects.IndexOf(ghostObject));
         ghostObjects.Remove(ghostObject);
         Destroy(ghostObject);
     }
@@ -76,14 +50,16 @@ public class Builds : MonoBehaviour {
     public void CreateObjects() {
         for (int i = 0; i < ghostObjects.Count; ++i) {
             GameObject ghostObject = ghostObjects[i];
-            objects.Add(Instantiate(preFubs[ghostObjectsIdx[i]], ghostObject.transform.position, ghostObject.transform.rotation));
-            objects[objects.Count - 1].AddComponent <MoveBuild> ();
+            BuildGhostObject ghostObjectClass = ghostObject.GetComponent <BuildGhostObject> ();
+            objects.Add(Instantiate(preFubs[ghostObjectClass.idxPreFub], ghostObject.transform.position, ghostObject.transform.rotation));
+            objects[objects.Count - 1].AddComponent <BuildObject> ();
+
+            BuildObject data = objects[objects.Count - 1].GetComponent <BuildObject> ();
+            data.x = ghostObjectClass.x;
+            data.y = ghostObjectClass.y;
+            data.idx = objects.Count - 1;
+            data.connectedRoad = ghostObjectClass.connectedRoad;
             DeleteGhost(ghostObject);
         }
-    }
-
-    public void DeleteObject(GameObject obj) {
-        objects.Remove(obj);
-        Destroy(obj);
     }
 }

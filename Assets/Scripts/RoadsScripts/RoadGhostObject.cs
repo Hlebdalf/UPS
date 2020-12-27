@@ -6,15 +6,17 @@ using UnityEngine;
 public class RoadGhostObject : MonoBehaviour {
     private GameObject MainCamera;
     private Roads RoadsClass;
+    private Field FieldClass;
     private float eps = 1e-5f;
-    public bool isFollow = true, isBusy = false, isFirst = false, isCollision;
 
     public float x1, y1, x2, y2, len;
     public int idx, idxPreFub, connectedRoad, connectedRoad2 = -1;
+    public bool isFollow = true, isBusy = false, isFirst = false, isCollision;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         RoadsClass = MainCamera.GetComponent <Roads> ();
+        FieldClass = MainCamera.GetComponent <Field> ();
     }
 
     private void Update() {
@@ -124,16 +126,15 @@ public class RoadGhostObject : MonoBehaviour {
     }
 
     public Vector2 RoundCoodinate(Vector2 point) {
-        int gridSize = 1;
         float x = point.x, y = point.y, low, high;
 
-        low = (int)(x / gridSize) * gridSize;
-        high = low + gridSize;
+        low = (int)(x / FieldClass.gridSize) * FieldClass.gridSize;
+        high = low + FieldClass.gridSize;
         if (Math.Abs(x - low) < Math.Abs(x - high)) point.x = low;
         else point.x = high;
         
-        low = (int)(y / gridSize) * gridSize;
-        high = low + gridSize;
+        low = (int)(y / FieldClass.gridSize) * FieldClass.gridSize;
+        high = low + FieldClass.gridSize;
         if (Math.Abs(y - low) < Math.Abs(y - high)) point.y = low;
         else point.y = high;
 

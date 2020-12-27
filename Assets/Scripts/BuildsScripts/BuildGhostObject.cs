@@ -2,51 +2,53 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveGhostBuild : MonoBehaviour {
-    private bool isFollow = true;
-    private bool isBusy = false;
+public class BuildGhostObject : MonoBehaviour {
     private GameObject MainCamera;
     private Builds BuildsClass;
+    private bool isFollow = true, isBusy = false;
 
-    void Start() {
+    public float x, y;
+    public int idx, idxPreFub, connectedRoad = -1;
+
+    private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         BuildsClass = MainCamera.GetComponent <Builds> ();
     }
 
-    void Update() {
+    private void Start() {
+        gameObject.layer = 2;
+    }
+
+    private void Update() {
         if (isFollow && !isBusy) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
-                transform.position = BuildsClass.RoundCoodinates(hit.point);
+                transform.position = hit.point;
             }
             if (Input.GetMouseButtonDown(0)) {
                 gameObject.layer = 0;
-                isFollow = !isFollow;
-                BuildsClass.SetIsFollowGhost(false);
+                BuildsClass.isFollowGhost = isFollow = false;
             }
             if (Input.GetMouseButtonDown(1)) {
                 gameObject.layer = 0;
-                isFollow = !isFollow;
-                BuildsClass.SetIsFollowGhost(false);
+                BuildsClass.isFollowGhost = isFollow = false;
                 BuildsClass.DeleteGhost(gameObject);
             }
         }
         isBusy = false;
     }
 
-    void OnMouseOver() {
-        if (!BuildsClass.GetIsFollowGhost() && Input.GetMouseButtonDown(1)) {
+    private void OnMouseOver() {
+        if (!BuildsClass.isFollowGhost && Input.GetMouseButtonDown(1)) {
             BuildsClass.DeleteGhost(gameObject);
         }
     }
 
-    void OnMouseDown() {
-        if (!BuildsClass.GetIsFollowGhost()) {
+    private void OnMouseDown() {
+        if (!BuildsClass.isFollowGhost) {
             gameObject.layer = 2;
-            isFollow = !isFollow;
-            isBusy = true;
-            BuildsClass.SetIsFollowGhost(true);
+            BuildsClass.isFollowGhost = isFollow = isBusy = true;
         }
     }
 }
