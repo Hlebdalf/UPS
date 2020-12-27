@@ -8,10 +8,10 @@ public class RoadGhostObject : MonoBehaviour {
     private Roads RoadsClass;
     private Field FieldClass;
     private float eps = 1e-5f;
+    private bool isFollow = true, isBusy = false, isFirst = false, isCollision = false;
 
     public float x1, y1, x2, y2, len;
     public int idx, idxPreFub, connectedRoad, connectedRoad2 = -1;
-    public bool isFollow = true, isBusy = false, isFirst = false, isCollision;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -24,35 +24,34 @@ public class RoadGhostObject : MonoBehaviour {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
-                RoadGhostObject data = gameObject.GetComponent <RoadGhostObject> ();
                 if (isFirst) {
-                    data.x1 = hit.point.x;
-                    data.y1 = hit.point.z;
-                    Vector2 point1 = RoundMovingCoordinateOnTheRoad(data, idx, connectedRoad);
+                    x1 = hit.point.x;
+                    y1 = hit.point.z;
+                    Vector2 point1 = RoundMovingCoordinateOnTheRoad(idx, connectedRoad);
                     Vector2 point2 = RoundCoodinate(point1);
-                    data.x1 = point2.x;
-                    data.y1 = point2.y;
+                    x1 = point2.x;
+                    y1 = point2.y;
                 }
                 else {
                     if (connectedRoad2 == -1) {
                         Vector2 point = RoundCoodinate(new Vector2(hit.point.x, hit.point.z));
-                        data.x2 = point.x;
-                        data.y2 = point.y;
+                        x2 = point.x;
+                        y2 = point.y;
                     }
                     else {
                         Vector3 point = RoadsClass.RoundCoordinateOnTheRoad(hit.point, connectedRoad2);
-                        data.x2 = point.x;
-                        data.y2 = point.z;
+                        x2 = point.x;
+                        y2 = point.z;
                     }
                 }
 
-                data.len = (float)Math.Sqrt(Math.Pow(data.x2 - data.x1, 2) + Math.Pow(data.y2 - data.y1, 2));
-                transform.rotation = Quaternion.Euler(0, RoadsClass.funcAngle(len, data.x2 - data.x1, data.x1, data.y1, data.x2, data.y2), 0);
-                transform.position = new Vector3((data.x1 + data.x2) / 2, 0.2f, (data.y1 + data.y2) / 2);
-                transform.localScale = new Vector3(1, 1, data.len / 2);
+                len = (float)Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
+                transform.rotation = Quaternion.Euler(0, RoadsClass.funcAngle(len, x2 - x1, x1, y1, x2, y2), 0);
+                transform.position = new Vector3((x1 + x2) / 2, 0.2f, (y1 + y2) / 2);
+                transform.localScale = new Vector3(1, 1, len / 2);
 
                 MeshRenderer MeshRendererClass = gameObject.GetComponent <MeshRenderer> ();
-                MeshRendererClass.materials[0].SetTextureScale("_MainTex", new Vector2(data.len / 2, 1));
+                MeshRendererClass.materials[0].SetTextureScale("_MainTex", new Vector2(len / 2, 1));
 
                 if (Input.GetMouseButtonDown(0) && !isCollision) {
                     gameObject.layer = 0;
@@ -69,10 +68,6 @@ public class RoadGhostObject : MonoBehaviour {
             }
         }
         isBusy = false;
-    }
-
-    private bool CheckCollision() {
-        return true;
     }
 
     private void OnTriggerStay(Collider other) {
@@ -99,7 +94,7 @@ public class RoadGhostObject : MonoBehaviour {
                 }
             }
         }
-        else if (RoadsClass.ghostObjects.IndexOf(other.gameObject) != connectedRoad) {
+        else if (other.gameObject.GetComponent <RoadGhostObject> () && RoadsClass.ghostObjects.IndexOf(other.gameObject) != connectedRoad) {
             isCollision = true;
         }
     }
@@ -141,13 +136,13 @@ public class RoadGhostObject : MonoBehaviour {
         return point;
     }
 
-    private Vector2 RoundMovingCoordinateOnTheRoad(RoadGhostObject dataGhost, int idxGhost, int idxRoad) {
+    private Vector2 RoundMovingCoordinateOnTheRoad(int idxGhost, int idxRoad) {
         RoadObject data = RoadsClass.objects[idxRoad].GetComponent <RoadObject> ();
-        float cursorX = dataGhost.x1;
-        float cursorY = dataGhost.y1;
+        float cursorX = x1;
+        float cursorY = y1;
 
         float mainRoadA = data.y1 - data.y2, mainRoadB = data.x2 - data.x1, mainRoadC = data.x1 * data.y2 - data.x2 * data.y1; // main road line
-        float ghostRoadA = dataGhost.y1 - dataGhost.y2, ghostRoadB = dataGhost.x2 - dataGhost.x1, ghostRoadC = dataGhost.x1 * dataGhost.y2 - dataGhost.x2 * dataGhost.y1; // ghost road line
+        float ghostRoadA = y1 - y2, ghostRoadB = x2 - x1, ghostRoadC = x1 * y2 - x2 * y1; // ghost road line
         float mainRoadCrossGhostRoadX = -(mainRoadC * ghostRoadB - ghostRoadC * mainRoadB) / (mainRoadA * ghostRoadB - ghostRoadA * mainRoadB); // rounded coordinate
         float mainRoadCrossGhostRoadY = -(mainRoadA * ghostRoadC - ghostRoadA * mainRoadC) / (mainRoadA * ghostRoadB - ghostRoadA * mainRoadB); // rounded coordinate
 
