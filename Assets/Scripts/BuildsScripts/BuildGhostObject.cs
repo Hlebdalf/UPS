@@ -131,12 +131,13 @@ public class BuildGhostObject : MonoBehaviour {
             if (dist < 0) {
                 point.x = normCrossMainRoadX + x;
                 point.z = normCrossMainRoadY + y;
+                rotate = RoundRotateOnRoad(dataRoad.x1, dataRoad.y1, dataRoad.x2, dataRoad.y2);
             }
             else {
                 point.x = normCrossMainRoadX - x;
                 point.z = normCrossMainRoadY - y;
+                rotate = RoundRotateOnRoad(dataRoad.x1, dataRoad.y1, dataRoad.x2, dataRoad.y2) * -1;
             }
-            rotate = RoundRotateOnRoad(dataRoad.x1, dataRoad.y1, dataRoad.x2, dataRoad.y2);
         }
         else {
             RoadGhostObject dataRoad = RoadsClass.ghostObjects[ansIdGhost].GetComponent <RoadGhostObject> ();
@@ -151,12 +152,13 @@ public class BuildGhostObject : MonoBehaviour {
             if (dist < 0) {
                 point.x = normCrossMainRoadX + x;
                 point.z = normCrossMainRoadY + y;
+                rotate = RoundRotateOnRoad(dataRoad.x1, dataRoad.y1, dataRoad.x2, dataRoad.y2);
             }
             else {
                 point.x = normCrossMainRoadX - x;
                 point.z = normCrossMainRoadY - y;
+                rotate = RoundRotateOnRoad(dataRoad.x1, dataRoad.y1, dataRoad.x2, dataRoad.y2) * -1;
             }
-            rotate = RoundRotateOnRoad(dataRoad.x1, dataRoad.y1, dataRoad.x2, dataRoad.y2);
         }
 
         point = RoundCoordinate(point);
