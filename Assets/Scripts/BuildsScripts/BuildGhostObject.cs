@@ -136,7 +136,7 @@ public class BuildGhostObject : MonoBehaviour {
             else {
                 point.x = normCrossMainRoadX - x;
                 point.z = normCrossMainRoadY - y;
-                rotate = RoundRotateOnRoad(dataRoad.x1, dataRoad.y1, dataRoad.x2, dataRoad.y2) * -1;
+                rotate = RoundRotateOnRoad(dataRoad.x1, dataRoad.y1, dataRoad.x2, dataRoad.y2);
             }
         }
         else {
@@ -157,7 +157,7 @@ public class BuildGhostObject : MonoBehaviour {
             else {
                 point.x = normCrossMainRoadX - x;
                 point.z = normCrossMainRoadY - y;
-                rotate = RoundRotateOnRoad(dataRoad.x1, dataRoad.y1, dataRoad.x2, dataRoad.y2) * -1;
+                rotate = RoundRotateOnRoad(dataRoad.x1, dataRoad.y1, dataRoad.x2, dataRoad.y2);
             }
         }
 

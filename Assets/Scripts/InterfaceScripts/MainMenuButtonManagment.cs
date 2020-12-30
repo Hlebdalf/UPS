@@ -9,14 +9,7 @@ public class MainMenuButtonManagment : MonoBehaviour
     private Animator GodAnimator;
     void Start()
     {
-        GodAnimator = God.GetComponent<Animator>();
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GodAnimator = God.GetComponent<Animator>();   
     }
 
     public void StartLoadMenu()
@@ -50,6 +43,6 @@ public class MainMenuButtonManagment : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("GameField");
     }
 }

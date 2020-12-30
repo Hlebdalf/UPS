@@ -6,14 +6,14 @@ public class RoadObject : MonoBehaviour {
     private GameObject MainCamera;
     private Roads RoadsClass;
 
-    public float x1, y1, x2, y2, len;
+    public float x1, y1, x2, y2, len, angle;
     public int idx;
-    public List <int> connectedRoads;
+    public List <int> connectedCrossroads;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         RoadsClass = MainCamera.GetComponent <Roads> ();
-        connectedRoads = new List <int> ();
+        connectedCrossroads = new List <int> ();
     }
 
     private void OnMouseOver() {

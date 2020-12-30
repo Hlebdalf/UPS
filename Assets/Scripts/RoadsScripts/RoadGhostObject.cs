@@ -10,7 +10,7 @@ public class RoadGhostObject : MonoBehaviour {
     private float eps = 1e-5f;
     private bool isFollow = true, isBusy = false, isFirst = false, isCollision = false;
 
-    public float x1, y1, x2, y2, len;
+    public float x1, y1, x2, y2, len, angle;
     public int idx, idxPreFub, connectedRoad, connectedRoad2 = -1;
 
     private void Awake() {
@@ -46,6 +46,7 @@ public class RoadGhostObject : MonoBehaviour {
                 }
 
                 len = (float)Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
+                angle = (float)Math.Acos((x2 - x1) / len);
                 transform.rotation = Quaternion.Euler(0, RoadsClass.funcAngle(len, x2 - x1, x1, y1, x2, y2), 0);
                 transform.position = new Vector3((x1 + x2) / 2, 0.2f, (y1 + y2) / 2);
                 transform.localScale = new Vector3(1, 1, len / 2);
@@ -73,28 +74,62 @@ public class RoadGhostObject : MonoBehaviour {
     private void OnTriggerStay(Collider other) {
         if (other.gameObject.GetComponent <RoadObject> ()) {
             int idxCollision = RoadsClass.objects.IndexOf(other.gameObject);
-            if (idxCollision != connectedRoad) {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit)) {
-                    RoadObject dataRoad = RoadsClass.objects[idxCollision].GetComponent <RoadObject> ();
-                    float mainRoadA = dataRoad.y1 - dataRoad.y2, mainRoadB = dataRoad.x2 - dataRoad.x1, mainRoadC = dataRoad.x1 * dataRoad.y2 - dataRoad.x2 * dataRoad.y1; // main road line
-                    float normA = -mainRoadB, normB = mainRoadA, normC = -(normA * hit.point.x + normB * hit.point.z); // norm
-                    float normCrossMainRoadX = -(mainRoadC * normB - normC * mainRoadB) / (mainRoadA * normB - normA * mainRoadB); // rounded coordinate
-                    float normCrossMainRoadY = -(mainRoadA * normC - normA * mainRoadC) / (mainRoadA * normB - normA * mainRoadB); // rounded coordinate
-                    float dist = (float)Math.Sqrt(Math.Pow(normCrossMainRoadX - hit.point.x, 2) + Math.Pow(normCrossMainRoadY - hit.point.z, 2));
-                    if (dist < 2 || !isFollow || isFirst) {
-                        isCollision = false;
-                        connectedRoad2 = idxCollision;
+            Vector2 point = RoundCoodinate(new Vector2(x1, y1));
+            if (FieldClass.objects[(int)point.x + FieldClass.fieldSizeHalf, (int)point.y + FieldClass.fieldSizeHalf] == null) {
+                if (idxCollision != connectedRoad) {
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    RaycastHit hit;
+                    if (Physics.Raycast(ray, out hit)) {
+                        RoadObject dataRoad = RoadsClass.objects[idxCollision].GetComponent <RoadObject> ();
+                        float mainRoadA = dataRoad.y1 - dataRoad.y2, mainRoadB = dataRoad.x2 - dataRoad.x1, mainRoadC = dataRoad.x1 * dataRoad.y2 - dataRoad.x2 * dataRoad.y1; // main road line
+                        float normA = -mainRoadB, normB = mainRoadA, normC = -(normA * hit.point.x + normB * hit.point.z); // norm
+                        float normCrossMainRoadX = -(mainRoadC * normB - normC * mainRoadB) / (mainRoadA * normB - normA * mainRoadB); // rounded coordinate
+                        float normCrossMainRoadY = -(mainRoadA * normC - normA * mainRoadC) / (mainRoadA * normB - normA * mainRoadB); // rounded coordinate
+                        float dist = (float)Math.Sqrt(Math.Pow(normCrossMainRoadX - hit.point.x, 2) + Math.Pow(normCrossMainRoadY - hit.point.z, 2));
+                        if (isFollow) {
+                            if (dist < 2) {
+                                isCollision = false;
+                                connectedRoad2 = idxCollision;
+                            }
+                            else {
+                                isCollision = true;
+                                connectedRoad2 = -1;
+                            }
+                        }
                     }
-                    else {
-                        isCollision = true;
-                        connectedRoad2 = -1;
+                }
+            }
+            else {
+                CrossroadObject crossroad = FieldClass.objects[(int)point.x + FieldClass.fieldSizeHalf, (int)point.y + FieldClass.fieldSizeHalf].GetComponent <CrossroadObject> ();
+                bool p = true;
+                for (int i = 0; i < crossroad.connectedRoads.Count; ++i) {
+                    if (crossroad.connectedRoads[i] == idxCollision) p = false;
+                }
+                if (p) {
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    RaycastHit hit;
+                    if (Physics.Raycast(ray, out hit)) {
+                        RoadObject dataRoad = RoadsClass.objects[idxCollision].GetComponent <RoadObject> ();
+                        float mainRoadA = dataRoad.y1 - dataRoad.y2, mainRoadB = dataRoad.x2 - dataRoad.x1, mainRoadC = dataRoad.x1 * dataRoad.y2 - dataRoad.x2 * dataRoad.y1; // main road line
+                        float normA = -mainRoadB, normB = mainRoadA, normC = -(normA * hit.point.x + normB * hit.point.z); // norm
+                        float normCrossMainRoadX = -(mainRoadC * normB - normC * mainRoadB) / (mainRoadA * normB - normA * mainRoadB); // rounded coordinate
+                        float normCrossMainRoadY = -(mainRoadA * normC - normA * mainRoadC) / (mainRoadA * normB - normA * mainRoadB); // rounded coordinate
+                        float dist = (float)Math.Sqrt(Math.Pow(normCrossMainRoadX - hit.point.x, 2) + Math.Pow(normCrossMainRoadY - hit.point.z, 2));
+                        if (isFollow) {
+                            if (dist < 2) {
+                                isCollision = false;
+                                connectedRoad2 = idxCollision;
+                            }
+                            else {
+                                isCollision = true;
+                                connectedRoad2 = -1;
+                            }
+                        }
                     }
                 }
             }
         }
-        else if (other.gameObject.GetComponent <RoadGhostObject> () && RoadsClass.ghostObjects.IndexOf(other.gameObject) != connectedRoad) {
+        else if (other.gameObject.GetComponent <RoadGhostObject> ()) {
             isCollision = true;
         }
     }
@@ -153,21 +188,24 @@ public class RoadGhostObject : MonoBehaviour {
         float minDist = (float)Math.Sqrt(Math.Pow(normCrossMainRoadX - cursorX, 2) + Math.Pow(normCrossMainRoadY - cursorY, 2));
         int minDistIdx = idxRoad;
         float bestLineA = mainRoadA, bestLineB = mainRoadB, bestLineC = mainRoadC;
-        for (int i = 0; i < data.connectedRoads.Count; ++i) {
-            RoadObject tmpData = RoadsClass.objects[data.connectedRoads[i]].GetComponent <RoadObject> ();
+        for (int i = 0; i < data.connectedCrossroads.Count; ++i) {
+            for (int j = 0; j < RoadsClass.crossroads[data.connectedCrossroads[i]].GetComponent <CrossroadObject> ().connectedRoads.Count; ++j) {
+                if (RoadsClass.crossroads[data.connectedCrossroads[i]].GetComponent <CrossroadObject> ().connectedRoads[j] == connectedRoad) continue;
+                RoadObject tmpData = RoadsClass.objects[RoadsClass.crossroads[data.connectedCrossroads[i]].GetComponent <CrossroadObject> ().connectedRoads[j]].GetComponent <RoadObject> ();
 
-            float tmpA = tmpData.y1 - tmpData.y2, tmpB = tmpData.x2 - tmpData.x1, tmpC = tmpData.x1 * tmpData.y2 - tmpData.x2 * tmpData.y1; // tmp road line
-            float tmpNormA = -tmpB, tmpNormB = tmpA, tmpNormC = -(tmpNormA * cursorX + tmpNormB * cursorY); // norm
-            float tmpNormCrossTmpX = -(tmpC * tmpNormB - tmpNormC * tmpB) / (tmpA * tmpNormB - tmpNormA * tmpB); // rounded coordinate
-            float tmpNormCrossTmpY = -(tmpA * tmpNormC - tmpNormA * tmpC) / (tmpA * tmpNormB - tmpNormA * tmpB); // rounded coordinate
+                float tmpA = tmpData.y1 - tmpData.y2, tmpB = tmpData.x2 - tmpData.x1, tmpC = tmpData.x1 * tmpData.y2 - tmpData.x2 * tmpData.y1; // tmp road line
+                float tmpNormA = -tmpB, tmpNormB = tmpA, tmpNormC = -(tmpNormA * cursorX + tmpNormB * cursorY); // norm
+                float tmpNormCrossTmpX = -(tmpC * tmpNormB - tmpNormC * tmpB) / (tmpA * tmpNormB - tmpNormA * tmpB); // rounded coordinate
+                float tmpNormCrossTmpY = -(tmpA * tmpNormC - tmpNormA * tmpC) / (tmpA * tmpNormB - tmpNormA * tmpB); // rounded coordinate
 
-            float tmpDist = (float)Math.Sqrt(Math.Pow(tmpNormCrossTmpX - cursorX, 2) + Math.Pow(tmpNormCrossTmpY - cursorY, 2));
-            if (tmpDist < minDist) {
-                minDist = tmpDist;
-                minDistIdx = data.connectedRoads[i];
-                bestLineA = tmpNormA;
-                bestLineB = tmpNormB;
-                bestLineC = tmpNormC;
+                float tmpDist = (float)Math.Sqrt(Math.Pow(tmpNormCrossTmpX - cursorX, 2) + Math.Pow(tmpNormCrossTmpY - cursorY, 2));
+                if (tmpDist < minDist) {
+                    minDist = tmpDist;
+                    minDistIdx = RoadsClass.crossroads[data.connectedCrossroads[i]].GetComponent <CrossroadObject> ().connectedRoads[j];
+                    bestLineA = tmpNormA;
+                    bestLineB = tmpNormB;
+                    bestLineC = tmpNormC;
+                }
             }
         }
 
