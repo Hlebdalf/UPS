@@ -198,6 +198,20 @@ public class RoadGhostObject : MonoBehaviour {
                 float tmpNormCrossTmpX = -(tmpC * tmpNormB - tmpNormC * tmpB) / (tmpA * tmpNormB - tmpNormA * tmpB); // rounded coordinate
                 float tmpNormCrossTmpY = -(tmpA * tmpNormC - tmpNormA * tmpC) / (tmpA * tmpNormB - tmpNormA * tmpB); // rounded coordinate
 
+                float tmpDist1 = (float)Math.Sqrt(Math.Pow(tmpNormCrossTmpX - tmpData.x1, 2) + Math.Pow(tmpNormCrossTmpY - tmpData.y1, 2));
+                float tmpDist2 = (float)Math.Sqrt(Math.Pow(tmpNormCrossTmpX - tmpData.x2, 2) + Math.Pow(tmpNormCrossTmpY - tmpData.y2, 2));
+                float tmpLen = (float)Math.Sqrt(Math.Pow(tmpData.x2 - tmpData.x1, 2) + Math.Pow(tmpData.y2 - tmpData.y1, 2));
+                if (tmpDist1 + tmpDist2 - tmpLen > eps) {
+                    if (tmpDist1 < tmpDist2) {
+                        tmpNormCrossTmpX = tmpData.x1;
+                        tmpNormCrossTmpY = tmpData.y1;
+                    }
+                    else {
+                        tmpNormCrossTmpX = tmpData.x2;
+                        tmpNormCrossTmpY = tmpData.y2;
+                    }
+                }
+
                 float tmpDist = (float)Math.Sqrt(Math.Pow(tmpNormCrossTmpX - cursorX, 2) + Math.Pow(tmpNormCrossTmpY - cursorY, 2));
                 if (tmpDist < minDist) {
                     minDist = tmpDist;
