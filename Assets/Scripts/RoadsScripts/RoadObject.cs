@@ -8,6 +8,7 @@ public class RoadObject : MonoBehaviour {
 
     public float x1, y1, x2, y2, len, angle;
     public int idx;
+    public bool inProgress = true;
     public List <int> connectedCrossroads;
 
     private void Awake() {
@@ -15,6 +16,13 @@ public class RoadObject : MonoBehaviour {
         RoadsClass = MainCamera.GetComponent <Roads> ();
         connectedCrossroads = new List <int> ();
     }
+
+    // private void OnTriggerStay(Collider other) {
+    //     if (inProgress) {
+    //         RoadsClass.objects.Remove(gameObject);
+    //         Destroy(gameObject);
+    //     }
+    // }
 
     private void OnMouseOver() {
         RoadsClass.idxOverRoad = idx;
