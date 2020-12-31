@@ -80,7 +80,7 @@ public class GenerationRoads : MonoBehaviour {
         return ans;
     }
 
-    private bool CheckCollision(Vector3 point1, Vector3 point2, int connectedRoad) {
+    private bool CheckCollision(Vector3 point1, Vector3 point2, float angle, int connectedRoad) {
         if (FieldClass.objects[(int)point1.x + FieldClass.fieldSizeHalf, (int)point1.z + FieldClass.fieldSizeHalf] == null) {
             for (int i = 0; i < RoadsClass.objects.Count; ++i) {
                 if (connectedRoad != i) {
@@ -99,6 +99,10 @@ public class GenerationRoads : MonoBehaviour {
         }
         else {
             CrossroadObject crossroad = FieldClass.objects[(int)point1.x + FieldClass.fieldSizeHalf, (int)point1.z + FieldClass.fieldSizeHalf].GetComponent <CrossroadObject> ();
+            for (int i = 0; i < crossroad.connectedRoads.Count; ++i) {
+                RoadObject tmpRoad = RoadsClass.objects[crossroad.connectedRoads[i]].GetComponent <RoadObject> ();
+                if (Math.Abs(angle - tmpRoad.angle) < 30) return false;
+            }
             for (int i = 0; i < RoadsClass.objects.Count; ++i) {
                 bool p = true;
                 for (int j = 0; j < crossroad.connectedRoads.Count; ++j) {
@@ -128,7 +132,7 @@ public class GenerationRoads : MonoBehaviour {
         seed = newSeed;
         RoadsClass.CreateObject("Road1", new Vector3(0, 0, 100), new Vector3 (0, 0, 110), 90);
         AddBlock((int)(seed % 1e9), new Vector3 (0, 0, 110), RoadsClass.objects.Count - 1);
-        int n = 1000 + (int)(seed % 500);
+        int n = 10000 + (int)(seed % 500);
         seed = (ulong)((GenerationClass.phi(seed) * seed) % 1e9) + 1;
         for (int i = 0; i < n; ++i) {
             (Vector3 point, int roadIdx) startPoint = GetMinBlock();
@@ -142,7 +146,7 @@ public class GenerationRoads : MonoBehaviour {
 
             Vector3 endPoint = RoadsClass.RoundCoodinate(new Vector3(startPoint.point.x + x, 0, startPoint.point.z + y));
 
-            if (CheckCollision(startPoint.point, endPoint, startPoint.roadIdx)) {
+            if (CheckCollision(startPoint.point, endPoint, angle, startPoint.roadIdx)) {
                 RoadsClass.CreateObject("Road1", startPoint.point, endPoint, angle, startPoint.roadIdx);
                 AddBlock((int)(seed % 1e9), endPoint, RoadsClass.objects.Count - 1);
                 seed = (ulong)((GenerationClass.phi(seed) * seed) % 1e9) + 1;
