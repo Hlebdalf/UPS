@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7190236104168884069}
   - component: {fileID: 440519158268875711}
   - component: {fileID: 5635241073644383049}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Handrail_Cube.007_WallGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 4255334506164289781}
   - component: {fileID: 2630681426490754000}
   - component: {fileID: 7794614642956786044}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Stairs_Cube.005_FloorMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 4885883356797164485}
   - component: {fileID: 7256828854420204180}
   - component: {fileID: 4410899876182915412}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Turbine_Cylinder.110_LightMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 3221536953797924835}
   - component: {fileID: 4839250040925111974}
   - component: {fileID: 1501855971231037929}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Column_Cylinder.071_ColumnMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 7622949353711900966}
   - component: {fileID: 5675906781901363818}
   - component: {fileID: 7273787869032675644}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Circle_Circle_None
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 2548314174284899242}
   - component: {fileID: 1861132568029633031}
   - component: {fileID: 640701058044090110}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House8_Cube_FloorMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 2058737596543127468}
   - component: {fileID: 5685217673896443997}
   - component: {fileID: 6189471462361132292}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Column2_Cylinder.074_WallGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 933346240443997090}
   - component: {fileID: 1661829464854085725}
   - component: {fileID: 7554638782999805903}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SunPanel_Cube.019_SunPanelMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -643,7 +643,7 @@ GameObject:
   - component: {fileID: 6875463436280120555}
   - component: {fileID: 6394220480233530724}
   - component: {fileID: 9163212092294367518}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House8_Cube_RoofMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -722,7 +722,7 @@ GameObject:
   - component: {fileID: 6804691559623464437}
   - component: {fileID: 2230368273038758032}
   - component: {fileID: 2412026882360193465}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House8_Cube_WindowsMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -801,7 +801,7 @@ GameObject:
   - component: {fileID: 9152498847799912097}
   - component: {fileID: 6458021715391369773}
   - component: {fileID: 3934028607349499364}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Frames_Cube.053_FrameMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -879,7 +879,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6403364528821773966}
   - component: {fileID: 7514048300709188225}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -939,7 +939,7 @@ GameObject:
   - component: {fileID: 1337951828346718417}
   - component: {fileID: 2188515795292970251}
   - component: {fileID: 6098514120576732228}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TurbinePlane_Cube.045_WallGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1018,7 +1018,7 @@ GameObject:
   - component: {fileID: 3997653997942594423}
   - component: {fileID: 2706731310621171621}
   - component: {fileID: 8334141907913394601}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House8_Cube_LightMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1097,7 +1097,7 @@ GameObject:
   - component: {fileID: 6292523755416669479}
   - component: {fileID: 1328770918061652638}
   - component: {fileID: 6131030715766581545}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Turbine_Cylinder.110_TurbineMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1176,7 +1176,7 @@ GameObject:
   - component: {fileID: 3840860612199076577}
   - component: {fileID: 5834961641258099481}
   - component: {fileID: 1188914475145074040}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House8_Cube_WallGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}

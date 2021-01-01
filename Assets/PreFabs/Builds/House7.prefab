@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3486718511590972608}
   - component: {fileID: 8919104865379054146}
   - component: {fileID: 7910881697911565864}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Roof_Cube.095_BorderMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 1008936762940675592}
   - component: {fileID: 3235997303787061861}
   - component: {fileID: 8140530353768729087}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House6Block.002_Cube.003_House6Material
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 4163086799650611997}
   - component: {fileID: 7185706735486267843}
   - component: {fileID: 3183940754995279080}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Roof_Cube.095_RoofMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3468552427847923488}
   - component: {fileID: 503181967981980638}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,7 +285,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 120, y: 90, z: 40}
+  m_Size: {x: 110, y: 90, z: 30}
   m_Center: {x: 0, y: 45, z: 0}
 --- !u!1 &5388773063701183204
 GameObject:
@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 3372846349306830547}
   - component: {fileID: 223935504213548691}
   - component: {fileID: 8192601743704279683}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Decor_Cube.021_DecorMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,7 +377,7 @@ GameObject:
   - component: {fileID: 1428139308633378686}
   - component: {fileID: 8654718804131401390}
   - component: {fileID: 3969121723195397960}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Corner_Cube.017_Crab2Material
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -456,7 +456,7 @@ GameObject:
   - component: {fileID: 2134938554498994870}
   - component: {fileID: 2084032809035928471}
   - component: {fileID: 2714315659099431163}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Booth.004_Cube.100_BoothMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}

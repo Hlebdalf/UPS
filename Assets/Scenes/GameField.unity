@@ -1326,8 +1326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seed: 78949672027987
-  minCntRoads: 1000
-  deltaCntRoads: 500
+  timeRoadsBuild: 100
   minLenRoads: 20
   deltaLenRoads: 20
 --- !u!1 &1306430813

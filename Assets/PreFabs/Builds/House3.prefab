@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8626444247977581060}
   - component: {fileID: 458999670548196539}
   - component: {fileID: 8287295248632302712}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House3_Cylinder.002_WindowsMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 1571750909845203950}
   - component: {fileID: 8619812470921001793}
   - component: {fileID: 4243032395342743036}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House3_Cylinder.002_CrabMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 8057291261106688764}
   - component: {fileID: 1052259657615490149}
   - component: {fileID: 258990482689694171}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Crab_Cylinder.008_CrabMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5158766397798691787}
   - component: {fileID: 2091638318304241719}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

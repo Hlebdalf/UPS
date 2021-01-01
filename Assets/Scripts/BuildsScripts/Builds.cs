@@ -63,6 +63,10 @@ public class Builds : MonoBehaviour {
             data.y = ghostObjectClass.y;
             data.idx = objects.Count - 1;
             data.connectedRoad = ghostObjectClass.connectedRoad;
+
+            objects[objects.Count - 1].AddComponent <Rigidbody> ();
+            objects[objects.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
+
             DeleteGhost(ghostObject);
         }
     }
@@ -76,5 +80,8 @@ public class Builds : MonoBehaviour {
         data.y = point.z;
         data.idx = objects.Count - 1;
         data.connectedRoad = connectedRoad;
+
+        objects[objects.Count - 1].AddComponent <Rigidbody> ();
+        objects[objects.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
     }
 }

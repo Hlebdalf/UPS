@@ -81,6 +81,10 @@ public class GenerationRoads : MonoBehaviour {
     }
 
     private bool CheckCollision(Vector3 point1, Vector3 point2, float angle, int connectedRoad) {
+        if (point1.x <= -FieldClass.fieldSizeHalf || point1.x >= FieldClass.fieldSizeHalf ||
+            point1.z <= -FieldClass.fieldSizeHalf || point1.z >= FieldClass.fieldSizeHalf ||
+            point2.x <= -FieldClass.fieldSizeHalf || point2.x >= FieldClass.fieldSizeHalf ||
+            point2.z <= -FieldClass.fieldSizeHalf || point2.z >= FieldClass.fieldSizeHalf) return false;
         if (FieldClass.objects[(int)point1.x + FieldClass.fieldSizeHalf, (int)point1.z + FieldClass.fieldSizeHalf] == null) {
             for (int i = 0; i < RoadsClass.objects.Count; ++i) {
                 if (connectedRoad != i) {
@@ -134,9 +138,8 @@ public class GenerationRoads : MonoBehaviour {
         seed = newSeed;
         RoadsClass.CreateObject("Road1", new Vector3(0, 0, 100), new Vector3 (0, 0, 110), 90);
         AddBlock((int)(seed % 1e9), new Vector3 (0, 0, 110), RoadsClass.objects.Count - 1);
-        int n = GenerationClass.minCntRoads + (int)(seed % (ulong)GenerationClass.deltaCntRoads);
         seed = GenerationClass.funcSeed(seed);
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < GenerationClass.timeRoadsBuild; ++i) {
             (Vector3 point, int roadIdx) startPoint = GetMinBlock();
 
             RoadObject RoadObjectClass = RoadsClass.objects[startPoint.roadIdx].GetComponent <RoadObject> ();
