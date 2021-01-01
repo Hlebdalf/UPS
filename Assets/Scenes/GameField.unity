@@ -1192,11 +1192,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   preFubs:
-  - {fileID: 7170480068232008434, guid: d2a4e17c34662994d942ccd03ccc5a32, type: 3}
-  - {fileID: 2620088511090270871, guid: e6bae43cbdc71134e93c60ea27ed6b0e, type: 3}
+  - {fileID: 5822568859360230498, guid: 8b3fdc4e59d950e4ab7cff5004c41eb7, type: 3}
+  - {fileID: 1657975074486136393, guid: e6bae43cbdc71134e93c60ea27ed6b0e, type: 3}
+  - {fileID: 5538387507931212145, guid: c5236f34b6865444e9dbe57aca5b4510, type: 3}
+  - {fileID: 2130163484536299537, guid: 06ecde89f06265c4b80f51123cc7670b, type: 3}
+  - {fileID: 1321795659187108670, guid: e629c24fc0a28e543893307139e823bb, type: 3}
+  - {fileID: 4474633334904072824, guid: 8e53310066a62a742bd257c9e10d60ca, type: 3}
+  - {fileID: 4280977809188449690, guid: 8f32657259ce3d8479310f72d873674f, type: 3}
+  - {fileID: 6023145245446929460, guid: 0e2124edb72e0a1498e5fc5a5a31ff4f, type: 3}
   preFubsGhost:
   - {fileID: 2496509194798482247, guid: 9eb40738f596469428f341c8a251c25c, type: 3}
   - {fileID: 3333965922300697059, guid: 4e68a33a9595c8e48bf258bf5a983c20, type: 3}
+  idxsDistrict1: 0500000006000000
+  idxsDistrict2: 0000000001000000
+  idxsDistrict3: 0200000003000000
+  idxsDistrict4: 0400000007000000
   objects: []
   ghostObjects: []
   isFollowGhost: 0
@@ -1215,6 +1225,8 @@ MonoBehaviour:
   gridSize: 1
   fieldSize: 4000
   fieldSizeHalf: 2000
+  centerX: 0
+  centerY: 0
 --- !u!114 &963194232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1250,7 +1262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4e3fb89d060fc6429e089de3080c8fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roof: 500
+  roof: 150
   floor: 2
   speed: 60
 --- !u!114 &963194234
@@ -1314,6 +1326,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seed: 6662281488131788
+  minCntRoads: 1000
+  deltaCntRoads: 500
+  minLenRoads: 20
+  deltaLenRoads: 20
 --- !u!1 &1306430813
 GameObject:
   m_ObjectHideFlags: 0

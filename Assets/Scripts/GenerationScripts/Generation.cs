@@ -10,6 +10,8 @@ public class Generation : MonoBehaviour {
     private GenerationCommerces GenerationCommercesClass;
 
     public ulong seed;
+    public int minCntRoads, deltaCntRoads;
+    public int minLenRoads, deltaLenRoads;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -22,8 +24,8 @@ public class Generation : MonoBehaviour {
     private void Start() {
         seed = GenerationRoadsClass.StartGeneration(seed);
         seed = GenerationDistrictsClass.StartGeneration(seed);
-        seed = GenerationHousesClass.StartGeneration(seed);
         seed = GenerationCommercesClass.StartGeneration(seed);
+        seed = GenerationHousesClass.StartGeneration(seed);
     }
 
     public ulong phi(ulong n) {

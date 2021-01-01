@@ -6,6 +6,10 @@ using UnityEngine;
 public class Builds : MonoBehaviour {
     public GameObject[] preFubs;
     public GameObject[] preFubsGhost;
+    public int[] idxsDistrict1;
+    public int[] idxsDistrict2;
+    public int[] idxsDistrict3;
+    public int[] idxsDistrict4;
     public List <GameObject> objects;
     public List <GameObject> ghostObjects;
     public bool isFollowGhost = false;
@@ -61,5 +65,16 @@ public class Builds : MonoBehaviour {
             data.connectedRoad = ghostObjectClass.connectedRoad;
             DeleteGhost(ghostObject);
         }
+    }
+
+    public void CreateObject(Vector3 point, float rotate, int idxPreFub, int connectedRoad) {
+        objects.Add(Instantiate(preFubs[idxPreFub], point, Quaternion.Euler(0, rotate, 0)));
+        objects[objects.Count - 1].AddComponent <BuildObject> ();
+        BuildObject data = objects[objects.Count - 1].GetComponent <BuildObject> ();
+
+        data.x = point.x;
+        data.y = point.z;
+        data.idx = objects.Count - 1;
+        data.connectedRoad = connectedRoad;
     }
 }

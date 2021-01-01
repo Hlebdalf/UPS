@@ -271,7 +271,5 @@ public class Roads : MonoBehaviour {
 
         objects[objects.Count - 1].AddComponent <Rigidbody> ();
         objects[objects.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
-
-        objectClass.inProgress = false;
     }
 }

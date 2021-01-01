@@ -25,8 +25,8 @@ public class GenerationRoads : MonoBehaviour {
     private List <Block> SqrtDecomp;
     private int sqrtSize = 20;
     private ulong seed;
-    private int maxX = 0, minX = 0;
-    private int maxZ = 0, minZ = 0;
+    private float maxX = 0, minX = 0;
+    private float maxY = 0, minY = 0;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -69,7 +69,7 @@ public class GenerationRoads : MonoBehaviour {
         }
         Block ansBlock = SqrtDecomp[SqrtDecompMinI];
         (Vector3, int) ans = (ansBlock.point[ansBlock.minI], ansBlock.roadIdx[ansBlock.minI]);
-        if (ansBlock.priority[ansBlock.minI] > (long)8e8) ansBlock.priority[ansBlock.minI] = Math.Min((int)1e9, (int)(ansBlock.priority[ansBlock.minI] + 1e8));
+        if (ansBlock.priority[ansBlock.minI] > (long)5e8) ansBlock.priority[ansBlock.minI] = Math.Min((int)1e9, (int)(ansBlock.priority[ansBlock.minI] + 1e8));
         else ansBlock.priority[ansBlock.minI] = Math.Min((int)1e9, (int)(ansBlock.priority[ansBlock.minI] + 5e8));
         ansBlock.minI = (int)1e9;
         for (int i = 0; i < ansBlock.priority.Count; ++i) {
@@ -87,6 +87,7 @@ public class GenerationRoads : MonoBehaviour {
                     RoadObject data = RoadsClass.objects[i].GetComponent <RoadObject> ();
                     float mainRoadA = data.y1 - data.y2, mainRoadB = data.x2 - data.x1, mainRoadC = data.x1 * data.y2 - data.x2 * data.y1; // main road line
                     float ghostRoadA = point1.z - point2.z, ghostRoadB = point2.x - point1.x, ghostRoadC = point1.x * point2.z - point2.x * point1.z; // ghost road line
+                    if (mainRoadA * ghostRoadB - ghostRoadA * mainRoadB == 0) continue;
                     float mainRoadCrossGhostRoadX = -(mainRoadC * ghostRoadB - ghostRoadC * mainRoadB) / (mainRoadA * ghostRoadB - ghostRoadA * mainRoadB); // rounded coordinate
                     float mainRoadCrossGhostRoadY = -(mainRoadA * ghostRoadC - ghostRoadA * mainRoadC) / (mainRoadA * ghostRoadB - ghostRoadA * mainRoadB); // rounded coordinate
                     if (mainRoadCrossGhostRoadX <= Math.Max(data.x1, data.x2) + 5 && mainRoadCrossGhostRoadX >= Math.Min(data.x1, data.x2) - 5 &&
@@ -115,6 +116,7 @@ public class GenerationRoads : MonoBehaviour {
                     RoadObject data = RoadsClass.objects[i].GetComponent <RoadObject> ();
                     float mainRoadA = data.y1 - data.y2, mainRoadB = data.x2 - data.x1, mainRoadC = data.x1 * data.y2 - data.x2 * data.y1; // main road line
                     float ghostRoadA = point1.z - point2.z, ghostRoadB = point2.x - point1.x, ghostRoadC = point1.x * point2.z - point2.x * point1.z; // ghost road line
+                    if (mainRoadA * ghostRoadB - ghostRoadA * mainRoadB == 0) continue;
                     float mainRoadCrossGhostRoadX = -(mainRoadC * ghostRoadB - ghostRoadC * mainRoadB) / (mainRoadA * ghostRoadB - ghostRoadA * mainRoadB); // rounded coordinate
                     float mainRoadCrossGhostRoadY = -(mainRoadA * ghostRoadC - ghostRoadA * mainRoadC) / (mainRoadA * ghostRoadB - ghostRoadA * mainRoadB); // rounded coordinate
                     if (mainRoadCrossGhostRoadX <= Math.Max(data.x1, data.x2) + 5 && mainRoadCrossGhostRoadX >= Math.Min(data.x1, data.x2) - 5 &&
@@ -132,7 +134,7 @@ public class GenerationRoads : MonoBehaviour {
         seed = newSeed;
         RoadsClass.CreateObject("Road1", new Vector3(0, 0, 100), new Vector3 (0, 0, 110), 90);
         AddBlock((int)(seed % 1e9), new Vector3 (0, 0, 110), RoadsClass.objects.Count - 1);
-        int n = 10000 + (int)(seed % 500);
+        int n = GenerationClass.minCntRoads + (int)(seed % (ulong)GenerationClass.deltaCntRoads);
         seed = (ulong)((GenerationClass.phi(seed) * seed) % 1e9) + 1;
         for (int i = 0; i < n; ++i) {
             (Vector3 point, int roadIdx) startPoint = GetMinBlock();
@@ -140,13 +142,19 @@ public class GenerationRoads : MonoBehaviour {
             RoadObject RoadObjectClass = RoadsClass.objects[startPoint.roadIdx].GetComponent <RoadObject> ();
             float startAngle = RoadObjectClass.angle;
             float angle = startAngle + (-135 + (int)(seed % 270));
-            float len = 20 + (float)(seed % 20);
+            float len = GenerationClass.minLenRoads + (float)(seed % (ulong)GenerationClass.deltaLenRoads);
             float x = (float)Math.Cos(angle / 57.3) * len;
             float y = (float)Math.Sin(angle / 57.3) * len;
 
             Vector3 endPoint = RoadsClass.RoundCoodinate(new Vector3(startPoint.point.x + x, 0, startPoint.point.z + y));
 
             if (CheckCollision(startPoint.point, endPoint, angle, startPoint.roadIdx)) {
+                maxX = (float)Math.Max(maxX, Math.Max(startPoint.point.x, endPoint.x));
+                maxY = (float)Math.Max(maxY, Math.Max(startPoint.point.z, endPoint.z));
+                minX = (float)Math.Min(minX, Math.Min(startPoint.point.x, endPoint.x));
+                minY = (float)Math.Min(minY, Math.Min(startPoint.point.z, endPoint.z));
+                FieldClass.centerX = (int)((maxX + minX) / 2);
+                FieldClass.centerY = (int)((maxY + minY) / 2);
                 RoadsClass.CreateObject("Road1", startPoint.point, endPoint, angle, startPoint.roadIdx);
                 AddBlock((int)(seed % 1e9), endPoint, RoadsClass.objects.Count - 1);
                 seed = (ulong)((GenerationClass.phi(seed) * seed) % 1e9) + 1;
