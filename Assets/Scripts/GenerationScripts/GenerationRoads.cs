@@ -135,7 +135,7 @@ public class GenerationRoads : MonoBehaviour {
         RoadsClass.CreateObject("Road1", new Vector3(0, 0, 100), new Vector3 (0, 0, 110), 90);
         AddBlock((int)(seed % 1e9), new Vector3 (0, 0, 110), RoadsClass.objects.Count - 1);
         int n = GenerationClass.minCntRoads + (int)(seed % (ulong)GenerationClass.deltaCntRoads);
-        seed = (ulong)((GenerationClass.phi(seed) * seed) % 1e9) + 1;
+        seed = GenerationClass.funcSeed(seed);
         for (int i = 0; i < n; ++i) {
             (Vector3 point, int roadIdx) startPoint = GetMinBlock();
 
@@ -157,7 +157,7 @@ public class GenerationRoads : MonoBehaviour {
                 FieldClass.centerY = (int)((maxY + minY) / 2);
                 RoadsClass.CreateObject("Road1", startPoint.point, endPoint, angle, startPoint.roadIdx);
                 AddBlock((int)(seed % 1e9), endPoint, RoadsClass.objects.Count - 1);
-                seed = (ulong)((GenerationClass.phi(seed) * seed) % 1e9) + 1;
+                seed = GenerationClass.funcSeed(seed);
             }
         }
         return seed;

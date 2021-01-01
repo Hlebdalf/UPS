@@ -111,14 +111,14 @@ public class GenerationHouses : MonoBehaviour {
             if ((seed % 100) >= 50) typeHouse2 = BuildsClass.idxsDistrict2[1];
         }
         if (FieldClass.districts[(int)point2.x + FieldClass.fieldSizeHalf, (int)point2.y + FieldClass.fieldSizeHalf] == 2) {
-            if ((seed % 100) < 50) typeHouse2 = BuildsClass.idxsDistrict3[0];
-            if ((seed % 100) >= 50) typeHouse2 = BuildsClass.idxsDistrict3[1];
+            if ((seed % 100) < 30) typeHouse2 = BuildsClass.idxsDistrict3[0];
+            if ((seed % 100) >= 30) typeHouse2 = BuildsClass.idxsDistrict3[1];
         }
         if (FieldClass.districts[(int)point2.x + FieldClass.fieldSizeHalf, (int)point2.y + FieldClass.fieldSizeHalf] == 3) {
             if ((seed % 100) < 50) typeHouse2 = BuildsClass.idxsDistrict4[0];
             if ((seed % 100) >= 50) typeHouse2 = BuildsClass.idxsDistrict4[1];
         }
-        seed = (ulong)((GenerationClass.phi(seed) * seed) % 1e9) + 1;
+        seed = GenerationClass.funcSeed(seed);
         return (typeHouse1, typeHouse2);
     }
 

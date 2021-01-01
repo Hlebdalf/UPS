@@ -1325,7 +1325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fc9abc082258ae42a84b678f395167a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seed: 6662281488131788
+  seed: 78949672027987
   minCntRoads: 1000
   deltaCntRoads: 500
   minLenRoads: 20
