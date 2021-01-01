@@ -9,7 +9,7 @@ public class BuildGhostObject : MonoBehaviour {
     private Roads RoadsClass;
     private Field FieldClass;
     private float eps = 1e-5f;
-    private bool isFollow = true, isBusy = false, isCollision = false;
+    private bool isFollow = true, isBusy = false, isCollision = false, isConnected = false;
 
     public float x, y;
     public int idx, idxPreFub, connectedRoad = -1;
@@ -34,7 +34,7 @@ public class BuildGhostObject : MonoBehaviour {
                 transform.position = rounded.pos;
                 transform.rotation = Quaternion.Euler(0, rounded.rotate, 0);
             }
-            if (Input.GetMouseButtonDown(0) && !isCollision) {
+            if (Input.GetMouseButtonDown(0) && !isCollision && isConnected) {
                 gameObject.layer = 0;
                 BuildsClass.isFollowGhost = isFollow = false;
             }
@@ -45,6 +45,14 @@ public class BuildGhostObject : MonoBehaviour {
             }
         }
         isBusy = false;
+    }
+
+    private void OnTriggerStay(Collider other) {
+        isCollision = true;
+    }
+
+    private void OnTriggerExit(Collider other) {
+        isCollision = false;
     }
 
     private void OnMouseOver() {
@@ -117,8 +125,12 @@ public class BuildGhostObject : MonoBehaviour {
             }
         }
 
-        if (ansId == -1 && ansIdGhost == -1) return (point, 0);
-        else if (ans < ansGhost) {
+        if (ansId == -1 && ansIdGhost == -1) {
+            isConnected = false;
+            return (point, 0);
+        }
+        isConnected = true;
+        if (ans < ansGhost) {
             RoadObject dataRoad = RoadsClass.objects[ansId].GetComponent <RoadObject> ();
             float mainRoadA = dataRoad.y1 - dataRoad.y2, mainRoadB = dataRoad.x2 - dataRoad.x1, mainRoadC = dataRoad.x1 * dataRoad.y2 - dataRoad.x2 * dataRoad.y1; // main road line
             float normA = -mainRoadB, normB = mainRoadA, normC = -(normA * point.x + normB * point.z); // norm
