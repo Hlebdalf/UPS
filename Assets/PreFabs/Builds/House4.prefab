@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6050614781968449613}
   - component: {fileID: 2584885201618064399}
   - component: {fileID: 6444433619702206621}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Corner_Cube.005_CornerMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 4255566446756865242}
   - component: {fileID: 5520554341238893408}
   - component: {fileID: 3450875664345661973}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Lift_Cylinder.022_LiftMaterial.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1640450233172966059}
   - component: {fileID: 3503212521047772324}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 4624080612576761021}
   - component: {fileID: 6669748158140347227}
   - component: {fileID: 6733073137398498644}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Window_Plane.016_WindowTMPBMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +300,7 @@ GameObject:
   - component: {fileID: 5187485354416180744}
   - component: {fileID: 3714685700474053782}
   - component: {fileID: 8632299156196282237}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Decor_Cube.001_CrabMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 4910546950658360025}
   - component: {fileID: 2096303541185730818}
   - component: {fileID: 4728796600914805035}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Lift_Cylinder.022_LiftMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ GameObject:
   - component: {fileID: 867789509099744932}
   - component: {fileID: 5528472824170561621}
   - component: {fileID: 4619240226877289305}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House4_Cube.002_GridMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,7 +537,7 @@ GameObject:
   - component: {fileID: 4224068975532574883}
   - component: {fileID: 4833981433862983313}
   - component: {fileID: 2958957603643436303}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House4_Cube.002_CrabMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -616,7 +616,7 @@ GameObject:
   - component: {fileID: 3016363156493784113}
   - component: {fileID: 6014336212752176428}
   - component: {fileID: 3666413199256904468}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Window_Plane.016_WindowTMPAMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}

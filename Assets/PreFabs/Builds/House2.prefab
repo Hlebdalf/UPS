@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2038335297749710067}
   - component: {fileID: 8058212473324716796}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 6081300728412078559}
   - component: {fileID: 779002465192776668}
   - component: {fileID: 7220366846508075072}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Modules_Cube.1011_ModulesMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 8390597217467351198}
   - component: {fileID: 1096585591111118157}
   - component: {fileID: 621481372921750378}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House2_Cube_CrabMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 866476163330190649}
   - component: {fileID: 2404455969290510773}
   - component: {fileID: 1436547558428105329}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Modules_Cube.1011_BalconyMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 2074847203215254923}
   - component: {fileID: 7625949915614845118}
   - component: {fileID: 4631634015270071670}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Roof_Plane_RoofMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}

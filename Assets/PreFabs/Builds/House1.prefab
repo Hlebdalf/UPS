@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2310824736755828366}
   - component: {fileID: 2875904613599341925}
   - component: {fileID: 3084429057046450043}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Modules_Cube.016_ModulesMaterial.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 3981575195960392988}
   - component: {fileID: 7319496889565413728}
   - component: {fileID: 6168936971034570955}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Modules_Cube.016_ModulesMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6595023762966095576}
   - component: {fileID: 332114567385165543}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 247702955802650366}
   - component: {fileID: 8502332344845478856}
   - component: {fileID: 4449587490225945155}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House1_Cube.001_CrabMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}

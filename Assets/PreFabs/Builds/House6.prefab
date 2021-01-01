@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4768740058676833913}
   - component: {fileID: 8033588641219911551}
   - component: {fileID: 6162597402573401526}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House6Block_Cube_House6Material
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3842353213657608386}
   - component: {fileID: 4823995154065947112}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 80, y: 90, z: 80}
+  m_Size: {x: 65, y: 90, z: 65}
   m_Center: {x: 0, y: 45, z: 0}
 --- !u!1 &5275585214524090529
 GameObject:
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 5500386213009818615}
   - component: {fileID: 4704580601044071378}
   - component: {fileID: 4109945999885421742}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Booth_Cube.068_BoothMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 5711150801999095760}
   - component: {fileID: 4378908618622107679}
   - component: {fileID: 3650670885346252892}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Roof_Cube.058_BorderMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 8760966059674372071}
   - component: {fileID: 7829887299142503158}
   - component: {fileID: 7059475092239495859}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Roof_Cube.058_RoofMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,7 +377,7 @@ GameObject:
   - component: {fileID: 1778358020163930429}
   - component: {fileID: 7187761439157332736}
   - component: {fileID: 714929017993750896}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Roads_Cylinder.007_RoadsMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -456,7 +456,7 @@ GameObject:
   - component: {fileID: 6415829894402572938}
   - component: {fileID: 6497462691426167930}
   - component: {fileID: 1833746483201482100}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Corner_Cube.004_Crab2Material
   m_TagString: Untagged
   m_Icon: {fileID: 0}

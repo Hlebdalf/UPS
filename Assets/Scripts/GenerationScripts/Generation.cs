@@ -10,7 +10,7 @@ public class Generation : MonoBehaviour {
     private GenerationCommerces GenerationCommercesClass;
 
     public ulong seed;
-    public int minCntRoads, deltaCntRoads;
+    public int timeRoadsBuild;
     public int minLenRoads, deltaLenRoads;
 
     private void Awake() {
