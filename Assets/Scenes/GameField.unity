@@ -1396,10 +1396,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seed: 9879998966655
-  timeRoadsBuild: 1000
+  timeBuild: 6
+  maxCntRoads: 1000
   minLenRoads: 20
   deltaLenRoads: 20
   averageCntCommercesInDistrict: 8
+  timeRoadsBuildGeneration: 0
+  timeHousesBuildGeneration: 0
+  timeCommerceBuildGeneration: 0
 --- !u!114 &963194239
 MonoBehaviour:
   m_ObjectHideFlags: 0

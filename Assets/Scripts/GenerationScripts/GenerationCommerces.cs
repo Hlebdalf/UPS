@@ -154,13 +154,15 @@ public class GenerationCommerces : MonoBehaviour {
 
     public ulong StartGeneration(ulong newSeed) {
         seed = newSeed;
-        for (int i = 0; i < RoadsClass.objects.Count; ++i) {
+        DateTimeOffset startDate = DateTimeOffset.Now;
+        DateTimeOffset endDate = startDate.AddSeconds(GenerationClass.timeCommerceBuildGeneration);
+        for (int i = 0; i < RoadsClass.objects.Count && GenerationClass.CheckTime(endDate); ++i) {
             RoadObject roadObjectClass = RoadsClass.objects[i].GetComponent <RoadObject> ();
             float mainRoadA = roadObjectClass.y1 - roadObjectClass.y2, mainRoadB = roadObjectClass.x2 - roadObjectClass.x1,
                   mainRoadC = roadObjectClass.x1 * roadObjectClass.y2 - roadObjectClass.x2 * roadObjectClass.y1; // main road line
             float len = (float)Math.Sqrt(Math.Pow(roadObjectClass.x1 - roadObjectClass.x2, 2) + Math.Pow(roadObjectClass.y1 - roadObjectClass.y2, 2));
             float angleHouse = roadObjectClass.angle;
-            for (int lenIt = 1; lenIt < len; ++lenIt) {
+            for (int lenIt = 1; lenIt < len && GenerationClass.CheckTime(endDate); ++lenIt) {
                 float posOnRoadX, posOnRoadY;
                 float posOnRoadXv1 = roadObjectClass.x1 + (float)Math.Cos(Math.Atan(mainRoadA / -mainRoadB)) * lenIt;
                 float posOnRoadYv1 = roadObjectClass.y1 + (float)Math.Sin(Math.Atan(mainRoadA / -mainRoadB)) * lenIt;
