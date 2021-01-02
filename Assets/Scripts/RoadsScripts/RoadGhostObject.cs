@@ -51,8 +51,8 @@ public class RoadGhostObject : MonoBehaviour {
                 transform.position = new Vector3((x1 + x2) / 2, 0.2f, (y1 + y2) / 2);
                 transform.localScale = new Vector3(1, 1, len / 2);
 
-                MeshRenderer MeshRendererClass = gameObject.GetComponent <MeshRenderer> ();
-                MeshRendererClass.materials[0].SetTextureScale("_MainTex", new Vector2(len / 2, 1));
+                Renderer rend = gameObject.GetComponent <Renderer> ();
+                rend.material.mainTextureScale = new Vector2(len / 2, 1);
 
                 if (Input.GetMouseButtonDown(0) && !isCollision) {
                     gameObject.layer = 0;
