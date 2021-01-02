@@ -9,12 +9,12 @@ public class RadialMenuVisibility : MonoBehaviour {
     public float blur = 0;
     public bool radialMenuDisability = true;
     
-    void Start() {
+    private void Start() {
         Image ImageClass = gameObject.GetComponent <Image> ();
         MaterialClass = ImageClass.material;
     } 
 
-    void FixedUpdate() {
+    private void FixedUpdate() {
         MaterialClass.SetFloat("_Size", blur);
         gameObject.SetActive(radialMenuDisability);
     }

@@ -11,14 +11,14 @@ public class RadialMenuButtons : MonoBehaviour {
     public Sprite[] PreSprites;
     public RadialMenuManager RadialMenuManagerClass;
 
-    void Start() {   
+    private void Start() {   
         RadialMenuManagerClass = RadialMenuManagerClass.GetComponent <RadialMenuManager> ();
         ImageClass = gameObject.GetComponent <Image> ();
     }
 
-    void FixedUpdate() {   
+    private void FixedUpdate() {   
         Vector2 mousePositionVector = new Vector2(Input.mousePosition.x - Screen.width / 2, Input.mousePosition.y - Screen.height / 2);
-        angle = (int)Mathf.Round((Mathf.Atan2(mousePositionVector.y, mousePositionVector.x) / (Mathf.PI / 180)) /45) + 4;
+        angle = (int)Mathf.Round((Mathf.Atan2(mousePositionVector.y, mousePositionVector.x) / (Mathf.PI / 180)) / 45) + 4;
         if (mousePositionVector.magnitude > 200) {
             ImageClass.sprite = PreSprites[angle];
         }

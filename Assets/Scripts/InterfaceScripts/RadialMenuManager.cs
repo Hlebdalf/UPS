@@ -7,7 +7,7 @@ public class RadialMenuManager : MonoBehaviour {
 
     public int radialMenuDirection = 8;
     
-    void Start() {
+    private void Start() {
         UiVisibilityClass = gameObject.GetComponent <UIVisibilityScript> ();
     }
 

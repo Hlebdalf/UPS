@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InterfaceButtonManagement : MonoBehaviour {
-    public Interface InterfaceClass;
-    public Builds BuildsClass;
-    public Roads RoadsClass;
+    private GameObject MainCamera;
+    private Interface InterfaceClass;
+    private Builds BuildsClass;
+    private Roads RoadsClass;
 
-    void Start() {
-        InterfaceClass = InterfaceClass.GetComponent <Interface> ();
-        BuildsClass = BuildsClass.GetComponent <Builds> ();
-        RoadsClass = RoadsClass.GetComponent <Roads> ();
+    private void Start() {
+        MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        InterfaceClass = MainCamera.GetComponent <Interface> ();
+        BuildsClass = MainCamera.GetComponent <Builds> ();
+        RoadsClass = MainCamera.GetComponent <Roads> ();
     }
 
     private Vector3 GetMousePosition() {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit)) {
-            return hit.point;
-        }
+        if (Physics.Raycast(ray, out hit)) return hit.point;
         return new Vector3(0, 0, 0);
     }
 

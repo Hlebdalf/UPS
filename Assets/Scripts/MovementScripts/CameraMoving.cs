@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraMoving : MonoBehaviour {
     private Vector3 MovingVector = new Vector3(0, 0, 0);
     private bool IsMoving = false;
+
     public float XMovingMP;
     public float ZMovingMP;
     public float Sensivity1 = 300;
