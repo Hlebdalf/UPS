@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Generation : MonoBehaviour {
@@ -29,15 +30,7 @@ public class Generation : MonoBehaviour {
         seed = GenerationHousesClass.StartGeneration(seed);
     }
 
-    public ulong funcSeed(ulong n) {
-        return (ulong)((3 * n) % 1e9 + 1);
-        ulong ans = n;
-        for (ulong i = 2; i * i <= n; ++i)
-            if (n % i == 0) {
-                while (n % i == 0)
-                    n /= i;
-                ans -= ans / i;
-            }
-        if (n > 1) ans -= ans / n;
+    public ulong funcSeed(ulong _seed) {
+        return (ulong)(Math.PI * Math.Sqrt(_seed) * (_seed % 1e9 + 1));
     }
 }
