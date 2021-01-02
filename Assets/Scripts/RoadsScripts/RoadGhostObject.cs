@@ -52,7 +52,7 @@ public class RoadGhostObject : MonoBehaviour {
                 transform.localScale = new Vector3(1, 1, len / 2);
 
                 Renderer rend = gameObject.GetComponent <Renderer> ();
-                rend.material.mainTextureScale = new Vector2(len / 2, 1);
+                rend.material.mainTextureScale = new Vector2(1, len / 2);
 
                 if (Input.GetMouseButtonDown(0) && !isCollision) {
                     gameObject.layer = 0;

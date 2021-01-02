@@ -210,7 +210,7 @@ public class Roads : MonoBehaviour {
 
             objects[objects.Count - 1].transform.localScale = ghostObject.transform.localScale;
             Renderer rend = objects[objects.Count - 1].GetComponent <Renderer> ();
-            rend.material.mainTextureScale = new Vector2(ghostObjectClass.len / 2, 1);
+            rend.material.mainTextureScale = new Vector2(1, ghostObjectClass.len / 2);
 
             objects[objects.Count - 1].AddComponent <Rigidbody> ();
             objects[objects.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
@@ -225,7 +225,7 @@ public class Roads : MonoBehaviour {
         objects.Add(Instantiate(preFubs[ToIndex(name)], new Vector3((point1.x + point2.x) / 2, 0, (point1.z + point2.z) / 2), Quaternion.Euler(0, funcAngle(len, point2.x - point1.x, point1.x, point1.z, point2.x, point2.z), 0)));
         objects[objects.Count - 1].transform.localScale = new Vector3(1, 1, len / 2);
         Renderer rend = objects[objects.Count - 1].GetComponent <Renderer> ();
-        rend.material.mainTextureScale = new Vector2(len / 2, 1);
+        rend.material.mainTextureScale = new Vector2(1, len / 2);
 
         objects[objects.Count - 1].AddComponent <RoadObject> ();
         RoadObject objectClass = objects[objects.Count - 1].GetComponent <RoadObject> ();
