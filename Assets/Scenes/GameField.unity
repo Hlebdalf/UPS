@@ -1210,7 +1210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: -0.5, y: -15, z: -10}
+  m_LocalPosition: {x: -0.5, y: 15, z: -16.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 72574824}
@@ -1310,10 +1310,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   preFubs:
-  - {fileID: 7642933111962891932, guid: 46fbd16663092a24c845a5efd7b909c8, type: 3}
+  - {fileID: 2145085458450761120, guid: e16f794b86edea14892520a22daf2d90, type: 3}
   - {fileID: 4826198390076258765, guid: f9f1edf5b2d17bf499896a3fc42b8ef2, type: 3}
   preFubsGhost:
-  - {fileID: 4607556241077156454, guid: bb2c2e56269999547a54bd8c561d4980, type: 3}
+  - {fileID: 6318231870184027121, guid: a7f6d55986a9354489b805f650a328c3, type: 3}
   objects: []
   crossroads: []
   ghostObjects: []
@@ -1395,7 +1395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fc9abc082258ae42a84b678f395167a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seed: 9879998966655
+  seed: 27667816
   timeRoadsBuild: 1000
   minLenRoads: 20
   deltaLenRoads: 20

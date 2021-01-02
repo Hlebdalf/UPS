@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 27266b72b86820f42abc47bdf5a66b65
+guid: be9a83141f4d08e4a8f246c35981e2e8
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
@@ -7,7 +7,17 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: defaultMat
+      name: Cube_Cube_HumanRoadMaterialMat
+    second: {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cube_Cube_LightMaterialMat
+    second: {fileID: 2100000, guid: e48ff0640d3d4934ea7b9742fb049f5f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cube_Cube_RoadMaterialMat
     second: {fileID: 2100000, guid: f0ee44363781d524ab2c2765f1bbdb76, type: 2}
   materials:
     materialImportMode: 1
