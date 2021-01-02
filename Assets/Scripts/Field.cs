@@ -7,6 +7,7 @@ public class Field : MonoBehaviour {
     public GameObject[,] objects;
     public int[,] districts;
     public int centerX = 0, centerY = 0;
+    public float timeBuildProcess;
 
     private void Awake() {
         objects = new GameObject[fieldSize, fieldSize];

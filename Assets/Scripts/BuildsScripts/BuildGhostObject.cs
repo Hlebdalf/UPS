@@ -11,7 +11,7 @@ public class BuildGhostObject : MonoBehaviour {
     private float eps = 1e-5f;
     private bool isFollow = true, isBusy = false, isCollision = false, isConnected = false;
 
-    public float x, y;
+    public float x, y, rotate;
     public int idx, idxPreFub, connectedRoad = -1;
 
     private void Awake() {
@@ -31,6 +31,9 @@ public class BuildGhostObject : MonoBehaviour {
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
                 (Vector3 pos, float rotate) rounded = RoundCoordinateOnRoad(hit.point);
+                x = rounded.pos.x;
+                y = rounded.pos.z;
+                rotate = rounded.rotate;
                 transform.position = rounded.pos;
                 transform.rotation = Quaternion.Euler(0, rounded.rotate, 0);
             }

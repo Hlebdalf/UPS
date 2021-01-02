@@ -6,6 +6,7 @@ using UnityEngine;
 public class Builds : MonoBehaviour {
     public GameObject[] preFubs;
     public GameObject[] preFubsGhost;
+    public GameObject[] preFubsBuildProcess;
     public int[] idxsDistrict1;
     public int[] idxsDistrict2;
     public int[] idxsDistrict3;
@@ -58,17 +59,18 @@ public class Builds : MonoBehaviour {
         for (int i = 0; i < ghostObjects.Count; ++i) {
             GameObject ghostObject = ghostObjects[i];
             BuildGhostObject ghostObjectClass = ghostObject.GetComponent <BuildGhostObject> ();
-            objects.Add(Instantiate(preFubs[ghostObjectClass.idxPreFub], ghostObject.transform.position, ghostObject.transform.rotation));
-            objects[objects.Count - 1].AddComponent <BuildObject> ();
+            GameObject newObject = Instantiate(preFubsBuildProcess[ghostObjectClass.idxPreFub], ghostObject.transform.position, ghostObject.transform.rotation);
+            newObject.AddComponent <BuildProcessObject> ();
+            BuildProcessObject newObjectClass = newObject.GetComponent <BuildProcessObject> ();
 
-            BuildObject data = objects[objects.Count - 1].GetComponent <BuildObject> ();
-            data.x = ghostObjectClass.x;
-            data.y = ghostObjectClass.y;
-            data.idx = objects.Count - 1;
-            data.connectedRoad = ghostObjectClass.connectedRoad;
+            newObjectClass.x = ghostObjectClass.x;
+            newObjectClass.y = ghostObjectClass.y;
+            newObjectClass.rotate = ghostObjectClass.rotate;
+            newObjectClass.idxPreFub = ghostObjectClass.idxPreFub;
+            newObjectClass.connectedRoad = ghostObjectClass.connectedRoad;
 
-            objects[objects.Count - 1].AddComponent <Rigidbody> ();
-            objects[objects.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
+            newObject.AddComponent <Rigidbody> ();
+            newObject.GetComponent <Rigidbody> ().useGravity = false;
 
             DeleteGhost(ghostObject);
         }

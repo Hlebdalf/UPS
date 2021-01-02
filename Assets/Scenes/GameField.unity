@@ -836,7 +836,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.5
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -1260,6 +1260,16 @@ MonoBehaviour:
   - {fileID: 7782365787804073225, guid: 2427cef7f14e3e647a747dfca6fa8a32, type: 3}
   - {fileID: 7912945837251018531, guid: 5acb413c0109e044aa9ef8acd1c70605, type: 3}
   - {fileID: 2919370153109583972, guid: 650d6d4a5624cb947b7ca0914d3b3213, type: 3}
+  preFubsBuildProcess:
+  - {fileID: 4826198390076258765, guid: f9f1edf5b2d17bf499896a3fc42b8ef2, type: 3}
+  - {fileID: 4826198390076258765, guid: f9f1edf5b2d17bf499896a3fc42b8ef2, type: 3}
+  - {fileID: 4826198390076258765, guid: f9f1edf5b2d17bf499896a3fc42b8ef2, type: 3}
+  - {fileID: 4826198390076258765, guid: f9f1edf5b2d17bf499896a3fc42b8ef2, type: 3}
+  - {fileID: 4826198390076258765, guid: f9f1edf5b2d17bf499896a3fc42b8ef2, type: 3}
+  - {fileID: 4826198390076258765, guid: f9f1edf5b2d17bf499896a3fc42b8ef2, type: 3}
+  - {fileID: 4826198390076258765, guid: f9f1edf5b2d17bf499896a3fc42b8ef2, type: 3}
+  - {fileID: 4826198390076258765, guid: f9f1edf5b2d17bf499896a3fc42b8ef2, type: 3}
+  - {fileID: 4826198390076258765, guid: f9f1edf5b2d17bf499896a3fc42b8ef2, type: 3}
   idxsDistrict1: 0500000006000000
   idxsDistrict2: 0000000001000000
   idxsDistrict3: 0200000003000000
@@ -1286,6 +1296,7 @@ MonoBehaviour:
   fieldSizeHalf: 2000
   centerX: 0
   centerY: 0
+  timeBuildProcess: 10
 --- !u!114 &963194232
 MonoBehaviour:
   m_ObjectHideFlags: 0
