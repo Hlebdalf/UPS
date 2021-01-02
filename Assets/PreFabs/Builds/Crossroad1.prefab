@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4344907818337348342}
   - component: {fileID: 1484809088091198396}
   - component: {fileID: 2719791401948788520}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Crossroad1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3033667219593020291, guid: d69653d1695c75d4aa981d239f95404c, type: 3}
+  - {fileID: 2100000, guid: c89436170fafde24592fdbdd6a2e99e0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
