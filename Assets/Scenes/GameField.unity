@@ -1261,7 +1261,7 @@ MonoBehaviour:
   - {fileID: 7912945837251018531, guid: 5acb413c0109e044aa9ef8acd1c70605, type: 3}
   - {fileID: 2919370153109583972, guid: 650d6d4a5624cb947b7ca0914d3b3213, type: 3}
   preFubsBuildProcess:
-  - {fileID: 4826198390076258765, guid: f9f1edf5b2d17bf499896a3fc42b8ef2, type: 3}
+  - {fileID: 2598317238236179414, guid: 35c625b164a7e9f459b1c237a9c385ff, type: 3}
   - {fileID: 4826198390076258765, guid: f9f1edf5b2d17bf499896a3fc42b8ef2, type: 3}
   - {fileID: 4826198390076258765, guid: f9f1edf5b2d17bf499896a3fc42b8ef2, type: 3}
   - {fileID: 4826198390076258765, guid: f9f1edf5b2d17bf499896a3fc42b8ef2, type: 3}
@@ -1809,9 +1809,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b04ce300d30544fb53e1f2f6edd396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InterfaceClass: {fileID: 963194229}
-  BuildsClass: {fileID: 963194230}
-  RoadsClass: {fileID: 963194232}
 --- !u!114 &1344676612
 MonoBehaviour:
   m_ObjectHideFlags: 0
