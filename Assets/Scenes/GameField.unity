@@ -147,8 +147,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72574823}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.83, y: 23.8, z: 103.19}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 963194228}
   m_Father: {fileID: 0}
@@ -1210,7 +1210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: -0.5, y: -15, z: -10}
+  m_LocalPosition: {x: -0.5, y: 15, z: -16.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 72574824}
@@ -1261,15 +1261,15 @@ MonoBehaviour:
   - {fileID: 7912945837251018531, guid: 5acb413c0109e044aa9ef8acd1c70605, type: 3}
   - {fileID: 2919370153109583972, guid: 650d6d4a5624cb947b7ca0914d3b3213, type: 3}
   preFubsBuildProcess:
-  - {fileID: 2598317238236179414, guid: 35c625b164a7e9f459b1c237a9c385ff, type: 3}
-  - {fileID: 4826198390076258765, guid: f9f1edf5b2d17bf499896a3fc42b8ef2, type: 3}
-  - {fileID: 4826198390076258765, guid: f9f1edf5b2d17bf499896a3fc42b8ef2, type: 3}
-  - {fileID: 4826198390076258765, guid: f9f1edf5b2d17bf499896a3fc42b8ef2, type: 3}
-  - {fileID: 4826198390076258765, guid: f9f1edf5b2d17bf499896a3fc42b8ef2, type: 3}
-  - {fileID: 4826198390076258765, guid: f9f1edf5b2d17bf499896a3fc42b8ef2, type: 3}
-  - {fileID: 4826198390076258765, guid: f9f1edf5b2d17bf499896a3fc42b8ef2, type: 3}
-  - {fileID: 4826198390076258765, guid: f9f1edf5b2d17bf499896a3fc42b8ef2, type: 3}
-  - {fileID: 4826198390076258765, guid: f9f1edf5b2d17bf499896a3fc42b8ef2, type: 3}
+  - {fileID: 2096072456896203046, guid: 35c625b164a7e9f459b1c237a9c385ff, type: 3}
+  - {fileID: 2096072456896203046, guid: 35c625b164a7e9f459b1c237a9c385ff, type: 3}
+  - {fileID: 1202721475254885421, guid: 321b3498ec7b694419e6c125ba720d4e, type: 3}
+  - {fileID: 8607862975488772688, guid: bd74eef776af6904d931b7c62638af79, type: 3}
+  - {fileID: 8209607630861728732, guid: acc603d21cf7476458f90fe1bcd8cae4, type: 3}
+  - {fileID: 8209607630861728732, guid: acc603d21cf7476458f90fe1bcd8cae4, type: 3}
+  - {fileID: 5640020273517752789, guid: e0941d987a01a49408f8869647b4ec97, type: 3}
+  - {fileID: 2298710258422485982, guid: 542a0418e8d07914880b98b924f03d59, type: 3}
+  - {fileID: 2308896775589939025, guid: 150dc0eef2d6a3c48aec8188537e7bcb, type: 3}
   idxsDistrict1: 0500000006000000
   idxsDistrict2: 0000000001000000
   idxsDistrict3: 0200000003000000
@@ -1296,7 +1296,7 @@ MonoBehaviour:
   fieldSizeHalf: 2000
   centerX: 0
   centerY: 0
-  timeBuildProcess: 10
+  timeBuildProcess: 5
 --- !u!114 &963194232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1310,10 +1310,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   preFubs:
-  - {fileID: 7642933111962891932, guid: 46fbd16663092a24c845a5efd7b909c8, type: 3}
+  - {fileID: 2145085458450761120, guid: e16f794b86edea14892520a22daf2d90, type: 3}
   - {fileID: 4826198390076258765, guid: f9f1edf5b2d17bf499896a3fc42b8ef2, type: 3}
   preFubsGhost:
-  - {fileID: 4607556241077156454, guid: bb2c2e56269999547a54bd8c561d4980, type: 3}
+  - {fileID: 6318231870184027121, guid: a7f6d55986a9354489b805f650a328c3, type: 3}
   objects: []
   crossroads: []
   ghostObjects: []

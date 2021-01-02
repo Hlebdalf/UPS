@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 27266b72b86820f42abc47bdf5a66b65
+guid: 82e00a637a096194f9ba0f2eceaf0cbe
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
@@ -7,8 +7,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: defaultMat
-    second: {fileID: 2100000, guid: f0ee44363781d524ab2c2765f1bbdb76, type: 2}
+      name: BorderRef.001_Cube.008_CrabMaterial.001Mat
+    second: {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BorderRef_Cube.013_CrabMaterial.001Mat
+    second: {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Border_Cube.003_CrabMaterialMat
+    second: {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sand_Cube.001_SandMaterialMat
+    second: {fileID: 2100000, guid: 17fa16ba67feffe4395f81d1bbdf590c, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
