@@ -10,12 +10,15 @@ public class Builds : MonoBehaviour {
     public int[] idxsDistrict2;
     public int[] idxsDistrict3;
     public int[] idxsDistrict4;
+    public int[] idxsCommerces;
     public List <GameObject> objects;
+    public List <GameObject> commerces;
     public List <GameObject> ghostObjects;
     public bool isFollowGhost = false;
 
     private void Start() {
         objects = new List <GameObject> ();
+        commerces = new List <GameObject> ();
         ghostObjects = new List <GameObject> ();
     }
 
@@ -72,16 +75,35 @@ public class Builds : MonoBehaviour {
     }
 
     public void CreateObject(Vector3 point, float rotate, int idxPreFub, int connectedRoad) {
-        objects.Add(Instantiate(preFubs[idxPreFub], point, Quaternion.Euler(0, rotate, 0)));
-        objects[objects.Count - 1].AddComponent <BuildObject> ();
-        BuildObject data = objects[objects.Count - 1].GetComponent <BuildObject> ();
+        bool p = false;
+        for (int i = 0; i < idxsCommerces.Length; ++i) {
+            if (idxsCommerces[i] == idxPreFub) p = true;
+        }
+        if (p) {
+            commerces.Add(Instantiate(preFubs[idxPreFub], point, Quaternion.Euler(0, rotate, 0)));
+            commerces[commerces.Count - 1].AddComponent <BuildObject> ();
+            BuildObject data = commerces[commerces.Count - 1].GetComponent <BuildObject> ();
 
-        data.x = point.x;
-        data.y = point.z;
-        data.idx = objects.Count - 1;
-        data.connectedRoad = connectedRoad;
+            data.x = point.x;
+            data.y = point.z;
+            data.idx = commerces.Count - 1;
+            data.connectedRoad = connectedRoad;
 
-        objects[objects.Count - 1].AddComponent <Rigidbody> ();
-        objects[objects.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
+            commerces[commerces.Count - 1].AddComponent <Rigidbody> ();
+            commerces[commerces.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
+        }
+        else {
+            objects.Add(Instantiate(preFubs[idxPreFub], point, Quaternion.Euler(0, rotate, 0)));
+            objects[objects.Count - 1].AddComponent <BuildObject> ();
+            BuildObject data = objects[objects.Count - 1].GetComponent <BuildObject> ();
+
+            data.x = point.x;
+            data.y = point.z;
+            data.idx = objects.Count - 1;
+            data.connectedRoad = connectedRoad;
+
+            objects[objects.Count - 1].AddComponent <Rigidbody> ();
+            objects[objects.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
+        }
     }
 }
