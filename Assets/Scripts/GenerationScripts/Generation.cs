@@ -25,8 +25,8 @@ public class Generation : MonoBehaviour {
     }
 
     private void Start() {
-        timeRoadsBuildGeneration = timeBuild * 0.02f;
-        timeCommerceBuildGeneration = timeBuild * 0.13f;
+        timeRoadsBuildGeneration = timeBuild * 0.01f;
+        timeCommerceBuildGeneration = timeBuild * 0.14f;
         timeHousesBuildGeneration = timeBuild * 0.85f;
         seed = GenerationRoadsClass.StartGeneration(seed);
         seed = GenerationDistrictsClass.StartGeneration(seed);
