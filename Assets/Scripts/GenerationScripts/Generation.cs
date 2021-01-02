@@ -30,6 +30,7 @@ public class Generation : MonoBehaviour {
     }
 
     public ulong funcSeed(ulong n) {
+        return (ulong)((3 * n) % 1e9 + 1);
         ulong ans = n;
         for (ulong i = 2; i * i <= n; ++i)
             if (n % i == 0) {
@@ -38,6 +39,5 @@ public class Generation : MonoBehaviour {
                 ans -= ans / i;
             }
         if (n > 1) ans -= ans / n;
-        return (ulong)((3 * ans + 3) % 1e9 + 1);
     }
 }
