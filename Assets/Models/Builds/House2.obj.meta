@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 94745bbd95c158d4c9ce36a5962a766b
+guid: dbd947b2adf5f75438b35d37e43f5ac0
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
@@ -7,8 +7,78 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: defaultMat
-    second: {fileID: 2100000, guid: b9ed5bf4a00daa948a893bfd8a153ea0, type: 2}
+      name: Booth_Cube.021_CrabMaterial.002Mat
+    second: {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cube_Cube.001_MaterialMat
+    second: {fileID: 2100000, guid: c89436170fafde24592fdbdd6a2e99e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House2_Cube_CrabMaterialMat
+    second: {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House2_Cube_LightMaterialMat
+    second: {fileID: 2100000, guid: e48ff0640d3d4934ea7b9742fb049f5f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Modules_Cube.1011_BalconyMaterialMat
+    second: {fileID: 2100000, guid: c89436170fafde24592fdbdd6a2e99e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Modules_Cube.1011_ModulesMaterialMat
+    second: {fileID: 2100000, guid: 2dc763282b36b6a4db339b2cc18b3fcc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PropellerFrame_Plane.001_CrabMaterial.001Mat
+    second: {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PropellerFrame_Plane.001_LightMaterialMat
+    second: {fileID: 2100000, guid: e48ff0640d3d4934ea7b9742fb049f5f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Roof_Plane_RoofMaterialMat
+    second: {fileID: 2100000, guid: fc6d21a056317704a9df40be63107a67, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: propeller.001_Cylinder.013_TubeMaterialMat
+    second: {fileID: 2100000, guid: 77679ac5f5d12074b922359713beeaf7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: propeller.002_Cylinder.014_TubeMaterialMat
+    second: {fileID: 2100000, guid: 77679ac5f5d12074b922359713beeaf7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: propeller.003_Cylinder.015_TubeMaterialMat
+    second: {fileID: 2100000, guid: 77679ac5f5d12074b922359713beeaf7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: propeller.004_Cylinder.016_TubeMaterialMat
+    second: {fileID: 2100000, guid: 77679ac5f5d12074b922359713beeaf7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: propeller.005_Cylinder.017_TubeMaterialMat
+    second: {fileID: 2100000, guid: 77679ac5f5d12074b922359713beeaf7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: propeller_Cylinder.012_TubeMaterialMat
+    second: {fileID: 2100000, guid: 77679ac5f5d12074b922359713beeaf7, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
