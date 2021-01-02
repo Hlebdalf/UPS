@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 460999297808846191}
   - component: {fileID: 795756379902753484}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 1117256673038342482}
   - component: {fileID: 6196891863541222284}
   - component: {fileID: 1902959246644448935}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Roof_Cube.095_RoofMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 4755715603174013192}
   - component: {fileID: 3073703509828537221}
   - component: {fileID: 4833029952618733376}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Decor_Cube.021_LightMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 4105396440724241918}
   - component: {fileID: 8976378921726255635}
   - component: {fileID: 8460357152527115942}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Booth_Cube.100_Crab2Material
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 442578058092799631}
   - component: {fileID: 5584477814247655437}
   - component: {fileID: 6597230952231998567}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Roof_Cube.095_BorderMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 2708580130262168881}
   - component: {fileID: 5646588696473711841}
   - component: {fileID: 95188333221735687}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Corner_Cube.017_Crab2Material
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -457,7 +457,7 @@ GameObject:
   - component: {fileID: 3471098611037745095}
   - component: {fileID: 9136855201996885427}
   - component: {fileID: 893983745388200798}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House6Block_Cube.003_House6Material
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -536,7 +536,7 @@ GameObject:
   - component: {fileID: 1768168109891413148}
   - component: {fileID: 3845122192401982684}
   - component: {fileID: 5185610765525397708}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Decor_Cube.021_DecorMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
