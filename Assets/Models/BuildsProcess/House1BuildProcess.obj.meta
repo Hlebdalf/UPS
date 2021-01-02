@@ -1,9 +1,99 @@
 fileFormatVersion: 2
-guid: 1545ea0b351a0784482309880df02b48
+guid: 180a9f775133a104d92ac5d087a3d2fc
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Arrow_Cube.074_CraneMaterialMat
+    second: {fileID: 2100000, guid: dd46d11da1f2269469e6e37781e87afa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bailer_Cube.095_CrabMaterialMat
+    second: {fileID: 2100000, guid: dd46d11da1f2269469e6e37781e87afa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Booth_Cube.076_BoothMaterialMat
+    second: {fileID: 2100000, guid: dd46d11da1f2269469e6e37781e87afa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Booth_Cube.076_LightMaterialMat
+    second: {fileID: 2100000, guid: e48ff0640d3d4934ea7b9742fb049f5f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Border_Cube.002_CrabMaterialMat
+    second: {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Column_Cube.073_CraneMaterialMat
+    second: {fileID: 2100000, guid: dd46d11da1f2269469e6e37781e87afa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DynamicPlane_Cube.096_PlaneMaterialMat
+    second: {fileID: 2100000, guid: c89436170fafde24592fdbdd6a2e99e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Elbow_Cube.094_CraneMaterialMat
+    second: {fileID: 2100000, guid: dd46d11da1f2269469e6e37781e87afa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Main_Cylinder.009_CrabMaterialMat
+    second: {fileID: 2100000, guid: dd46d11da1f2269469e6e37781e87afa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Main_Cylinder.009_LightMaterialMat
+    second: {fileID: 2100000, guid: e48ff0640d3d4934ea7b9742fb049f5f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Main_Cylinder.009_WindowsMaterialMat
+    second: {fileID: 2100000, guid: b61344d86a8e8a2479758c121763945a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Planes_Cube.086_PlaneMaterialMat
+    second: {fileID: 2100000, guid: c89436170fafde24592fdbdd6a2e99e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Propeller_Cylinder.013_TubeMaterialMat
+    second: {fileID: 2100000, guid: 77679ac5f5d12074b922359713beeaf7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sand_Cube_SandMaterialMat
+    second: {fileID: 2100000, guid: 17fa16ba67feffe4395f81d1bbdf590c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shoulder_Cube.092_CraneMaterialMat
+    second: {fileID: 2100000, guid: dd46d11da1f2269469e6e37781e87afa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: System_Cylinder.008_SystemMaterialMat
+    second: {fileID: 2100000, guid: 4618975223b3c7945a7c71e67373d0fb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tracks_Cylinder.012_CraneMaterialMat
+    second: {fileID: 2100000, guid: dd46d11da1f2269469e6e37781e87afa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tracks_Cylinder.012_TracksMaterialMat
+    second: {fileID: 2100000, guid: fc6d21a056317704a9df40be63107a67, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
