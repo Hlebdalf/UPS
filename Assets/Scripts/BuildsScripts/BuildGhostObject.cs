@@ -41,9 +41,10 @@ public class BuildGhostObject : MonoBehaviour {
             if (Input.GetMouseButtonDown(0) && !isCollision && isConnected) {
                 gameObject.layer = 0;
                 BuildsClass.isFollowGhost = isFollow = false;
+                gameObject.AddComponent <Rigidbody> ();
+                gameObject.GetComponent <Rigidbody> ().useGravity = false;
             }
             if (Input.GetMouseButtonDown(1)) {
-                gameObject.layer = 0;
                 BuildsClass.isFollowGhost = isFollow = false;
                 BuildsClass.DeleteGhost(gameObject);
             }
@@ -69,6 +70,7 @@ public class BuildGhostObject : MonoBehaviour {
         if (!BuildsClass.isFollowGhost) {
             gameObject.layer = 2;
             BuildsClass.isFollowGhost = isFollow = isBusy = true;
+            Destroy(gameObject.GetComponent <Rigidbody> ());
         }
     }
 
