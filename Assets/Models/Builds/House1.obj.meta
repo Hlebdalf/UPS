@@ -1,9 +1,54 @@
 fileFormatVersion: 2
-guid: a66640a99f3a261408457b8398d6ea60
+guid: 4609ab814029b0942b90015c88407c41
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Booth_Cube.021_CrabMaterial.001Mat
+    second: {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Border_Cube_BorderMaterialMat
+    second: {fileID: 2100000, guid: c89436170fafde24592fdbdd6a2e99e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cube_Cube.003_BorderMaterialMat
+    second: {fileID: 2100000, guid: c89436170fafde24592fdbdd6a2e99e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Door_Plane.002_DoorMaterialMat
+    second: {fileID: 2100000, guid: 77679ac5f5d12074b922359713beeaf7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House1_Cube.001_CrabMaterialMat
+    second: {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House1_Cube.001_LightMaterialMat
+    second: {fileID: 2100000, guid: e48ff0640d3d4934ea7b9742fb049f5f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Modules_Cube.016_BalconyMaterialMat
+    second: {fileID: 2100000, guid: c89436170fafde24592fdbdd6a2e99e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Modules_Cube.016_ModulesMaterial.001Mat
+    second: {fileID: 2100000, guid: 2dc763282b36b6a4db339b2cc18b3fcc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Net_Cylinder_CrabMaterial.002Mat
+    second: {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -69,7 +114,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []
