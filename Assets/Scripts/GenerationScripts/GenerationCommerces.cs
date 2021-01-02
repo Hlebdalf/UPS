@@ -211,63 +211,63 @@ public class GenerationCommerces : MonoBehaviour {
                 cntInDistrict[FieldClass.districts[(int)minBlock.point.x + FieldClass.fieldSizeHalf, (int)minBlock.point.z + FieldClass.fieldSizeHalf]] >=
                 GenerationClass.averageCntCommercesInDistrict) continue;
             if (FieldClass.objects[(int)minBlock.point.x + FieldClass.fieldSizeHalf, (int)minBlock.point.z + FieldClass.fieldSizeHalf] == null) {
-                    float angle = (float)(minBlock.rotate / 57.3);
-                    float widthHouse = (int)BuildsClass.preFubs[minBlock.typeHouse].GetComponent <BoxCollider> ().size.x * 0.1f;
-                    float lenHouse = (int)BuildsClass.preFubs[minBlock.typeHouse].GetComponent <BoxCollider> ().size.z * 0.1f;
-                    Vector3 side1 = new Vector3(minBlock.point.x + (float)Math.Cos(angle) * (widthHouse / 2), 0, minBlock.point.z + (float)Math.Sin(angle) * (widthHouse / 2));
-                    Vector3 side2 = new Vector3(minBlock.point.x - (float)Math.Cos(angle) * (widthHouse / 2), 0, minBlock.point.z - (float)Math.Sin(angle) * (widthHouse / 2));
+                float angle = (float)(minBlock.rotate / 57.3);
+                float widthHouse = (int)BuildsClass.preFubs[minBlock.typeHouse].GetComponent <BoxCollider> ().size.x * 0.1f;
+                float lenHouse = (int)BuildsClass.preFubs[minBlock.typeHouse].GetComponent <BoxCollider> ().size.z * 0.1f;
+                Vector3 side1 = new Vector3(minBlock.point.x + (float)Math.Cos(angle) * (widthHouse / 2), 0, minBlock.point.z + (float)Math.Sin(angle) * (widthHouse / 2));
+                Vector3 side2 = new Vector3(minBlock.point.x - (float)Math.Cos(angle) * (widthHouse / 2), 0, minBlock.point.z - (float)Math.Sin(angle) * (widthHouse / 2));
 
-                    Vector3 vertex1 = new Vector3(side1.x + (float)Math.Cos(angle + Math.PI / 2) * (lenHouse / 2), 0, side1.z + (float)Math.Sin(angle + Math.PI / 2) * (lenHouse / 2));
-                    Vector3 vertex2 = new Vector3(side1.x - (float)Math.Cos(angle + Math.PI / 2) * (lenHouse / 2), 0, side1.z - (float)Math.Sin(angle + Math.PI / 2) * (lenHouse / 2));
-                    Vector3 vertex3 = new Vector3(side2.x + (float)Math.Cos(angle + Math.PI / 2) * (lenHouse / 2), 0, side2.z + (float)Math.Sin(angle + Math.PI / 2) * (lenHouse / 2));
-                    Vector3 vertex4 = new Vector3(side2.x - (float)Math.Cos(angle + Math.PI / 2) * (lenHouse / 2), 0, side2.z - (float)Math.Sin(angle + Math.PI / 2) * (lenHouse / 2));
+                Vector3 vertex1 = new Vector3(side1.x + (float)Math.Cos(angle + Math.PI / 2) * (lenHouse / 2), 0, side1.z + (float)Math.Sin(angle + Math.PI / 2) * (lenHouse / 2));
+                Vector3 vertex2 = new Vector3(side1.x - (float)Math.Cos(angle + Math.PI / 2) * (lenHouse / 2), 0, side1.z - (float)Math.Sin(angle + Math.PI / 2) * (lenHouse / 2));
+                Vector3 vertex3 = new Vector3(side2.x + (float)Math.Cos(angle + Math.PI / 2) * (lenHouse / 2), 0, side2.z + (float)Math.Sin(angle + Math.PI / 2) * (lenHouse / 2));
+                Vector3 vertex4 = new Vector3(side2.x - (float)Math.Cos(angle + Math.PI / 2) * (lenHouse / 2), 0, side2.z - (float)Math.Sin(angle + Math.PI / 2) * (lenHouse / 2));
 
-                    bool collision = false;
-                    for (int j = 0; j < RoadsClass.objects.Count; ++j) {
-                        RoadObject tmpRoadObject = RoadsClass.objects[j].GetComponent <RoadObject> ();
-                        if (CheckCross(new Vector3(tmpRoadObject.x1, 0, tmpRoadObject.y1), new Vector3(tmpRoadObject.x2, 0, tmpRoadObject.y2), vertex1, vertex2, 1) ||
-                            CheckCross(new Vector3(tmpRoadObject.x1, 0, tmpRoadObject.y1), new Vector3(tmpRoadObject.x2, 0, tmpRoadObject.y2), vertex1, vertex3, 1) ||
-                            CheckCross(new Vector3(tmpRoadObject.x1, 0, tmpRoadObject.y1), new Vector3(tmpRoadObject.x2, 0, tmpRoadObject.y2), vertex1, vertex4, 1) ||
-                            CheckCross(new Vector3(tmpRoadObject.x1, 0, tmpRoadObject.y1), new Vector3(tmpRoadObject.x2, 0, tmpRoadObject.y2), vertex2, vertex3, 1) ||
-                            CheckCross(new Vector3(tmpRoadObject.x1, 0, tmpRoadObject.y1), new Vector3(tmpRoadObject.x2, 0, tmpRoadObject.y2), vertex2, vertex4, 1) ||
-                            CheckCross(new Vector3(tmpRoadObject.x1, 0, tmpRoadObject.y1), new Vector3(tmpRoadObject.x2, 0, tmpRoadObject.y2), vertex3, vertex4, 1)) {
+                bool collision = false;
+                for (int j = 0; j < RoadsClass.objects.Count; ++j) {
+                    RoadObject tmpRoadObject = RoadsClass.objects[j].GetComponent <RoadObject> ();
+                    if (CheckCross(new Vector3(tmpRoadObject.x1, 0, tmpRoadObject.y1), new Vector3(tmpRoadObject.x2, 0, tmpRoadObject.y2), vertex1, vertex2, 1) ||
+                        CheckCross(new Vector3(tmpRoadObject.x1, 0, tmpRoadObject.y1), new Vector3(tmpRoadObject.x2, 0, tmpRoadObject.y2), vertex1, vertex3, 1) ||
+                        CheckCross(new Vector3(tmpRoadObject.x1, 0, tmpRoadObject.y1), new Vector3(tmpRoadObject.x2, 0, tmpRoadObject.y2), vertex1, vertex4, 1) ||
+                        CheckCross(new Vector3(tmpRoadObject.x1, 0, tmpRoadObject.y1), new Vector3(tmpRoadObject.x2, 0, tmpRoadObject.y2), vertex2, vertex3, 1) ||
+                        CheckCross(new Vector3(tmpRoadObject.x1, 0, tmpRoadObject.y1), new Vector3(tmpRoadObject.x2, 0, tmpRoadObject.y2), vertex2, vertex4, 1) ||
+                        CheckCross(new Vector3(tmpRoadObject.x1, 0, tmpRoadObject.y1), new Vector3(tmpRoadObject.x2, 0, tmpRoadObject.y2), vertex3, vertex4, 1)) {
+                        collision = true;
+                        break;
+                    }
+                }
+
+                for (int itX = (int)(minBlock.point.x - Math.Max(lenHouse, widthHouse)); itX <= minBlock.point.x + Math.Max(lenHouse, widthHouse); ++itX) {
+                    for (int itY = (int)(minBlock.point.z - Math.Max(lenHouse, widthHouse)); itY <= minBlock.point.z + Math.Max(lenHouse, widthHouse); ++itY) {
+                        if (itX >= FieldClass.fieldSizeHalf || itY >= FieldClass.fieldSizeHalf || itX <= -FieldClass.fieldSizeHalf || itY <= -FieldClass.fieldSizeHalf ||
+                            FieldClass.objects[itX + FieldClass.fieldSizeHalf, itY + FieldClass.fieldSizeHalf] == null ||
+                            !(FieldClass.objects[itX + FieldClass.fieldSizeHalf, itY + FieldClass.fieldSizeHalf].GetComponent <BuildObject> ())) continue;
+                        BuildObject tmpBuildObject = FieldClass.objects[itX + FieldClass.fieldSizeHalf, itY + FieldClass.fieldSizeHalf].GetComponent <BuildObject> ();
+
+                        float tmpAngle = (float)(RoadsClass.objects[tmpBuildObject.connectedRoad].GetComponent <RoadObject> ().angle / 57.3);
+                        float tmpWidthHouse = (int)tmpBuildObject.GetComponent <BoxCollider> ().size.x * 0.1f;
+                        float tmpLenHouse = (int)tmpBuildObject.GetComponent <BoxCollider> ().size.z * 0.1f;
+
+                        Vector3 tmpSide1 = new Vector3(tmpBuildObject.x + (float)Math.Cos(tmpAngle) * (tmpWidthHouse / 2), 0, tmpBuildObject.y + (float)Math.Sin(tmpAngle) * (tmpWidthHouse / 2));
+                        Vector3 tmpSide2 = new Vector3(tmpBuildObject.x - (float)Math.Cos(tmpAngle) * (tmpWidthHouse / 2), 0, tmpBuildObject.y - (float)Math.Sin(tmpAngle) * (tmpWidthHouse / 2));
+
+                        Vector3 tmpVertex1 = new Vector3(tmpSide1.x + (float)Math.Cos(tmpAngle + Math.PI / 2) * (tmpLenHouse / 2), 0, tmpSide1.z + (float)Math.Sin(tmpAngle + Math.PI / 2) * (tmpLenHouse / 2));
+                        Vector3 tmpVertex2 = new Vector3(tmpSide1.x - (float)Math.Cos(tmpAngle + Math.PI / 2) * (tmpLenHouse / 2), 0, tmpSide1.z - (float)Math.Sin(tmpAngle + Math.PI / 2) * (tmpLenHouse / 2));
+                        Vector3 tmpVertex3 = new Vector3(tmpSide2.x + (float)Math.Cos(tmpAngle + Math.PI / 2) * (tmpLenHouse / 2), 0, tmpSide2.z + (float)Math.Sin(tmpAngle + Math.PI / 2) * (tmpLenHouse / 2));
+                        Vector3 tmpVertex4 = new Vector3(tmpSide2.x - (float)Math.Cos(tmpAngle + Math.PI / 2) * (tmpLenHouse / 2), 0, tmpSide2.z - (float)Math.Sin(tmpAngle + Math.PI / 2) * (tmpLenHouse / 2));
+
+                        if (CheckCollisionBuilds(tmpVertex1, tmpVertex2, tmpVertex3, tmpVertex4, vertex1, vertex2, vertex3, vertex4, 1)) {
                             collision = true;
                             break;
                         }
                     }
-
-                    for (int itX = (int)(minBlock.point.x - Math.Max(lenHouse, widthHouse)); itX <= minBlock.point.x + Math.Max(lenHouse, widthHouse); ++itX) {
-                        for (int itY = (int)(minBlock.point.z - Math.Max(lenHouse, widthHouse)); itY <= minBlock.point.z + Math.Max(lenHouse, widthHouse); ++itY) {
-                            if (itX >= FieldClass.fieldSizeHalf || itY >= FieldClass.fieldSizeHalf || itX <= -FieldClass.fieldSizeHalf || itY <= -FieldClass.fieldSizeHalf ||
-                                FieldClass.objects[itX + FieldClass.fieldSizeHalf, itY + FieldClass.fieldSizeHalf] == null ||
-                                !(FieldClass.objects[itX + FieldClass.fieldSizeHalf, itY + FieldClass.fieldSizeHalf].GetComponent <BuildObject> ())) continue;
-                            BuildObject tmpBuildObject = FieldClass.objects[itX + FieldClass.fieldSizeHalf, itY + FieldClass.fieldSizeHalf].GetComponent <BuildObject> ();
-
-                            float tmpAngle = (float)(RoadsClass.objects[tmpBuildObject.connectedRoad].GetComponent <RoadObject> ().angle / 57.3);
-                            float tmpWidthHouse = (int)tmpBuildObject.GetComponent <BoxCollider> ().size.x * 0.1f;
-                            float tmpLenHouse = (int)tmpBuildObject.GetComponent <BoxCollider> ().size.z * 0.1f;
-
-                            Vector3 tmpSide1 = new Vector3(tmpBuildObject.x + (float)Math.Cos(tmpAngle) * (tmpWidthHouse / 2), 0, tmpBuildObject.y + (float)Math.Sin(tmpAngle) * (tmpWidthHouse / 2));
-                            Vector3 tmpSide2 = new Vector3(tmpBuildObject.x - (float)Math.Cos(tmpAngle) * (tmpWidthHouse / 2), 0, tmpBuildObject.y - (float)Math.Sin(tmpAngle) * (tmpWidthHouse / 2));
-
-                            Vector3 tmpVertex1 = new Vector3(tmpSide1.x + (float)Math.Cos(tmpAngle + Math.PI / 2) * (tmpLenHouse / 2), 0, tmpSide1.z + (float)Math.Sin(tmpAngle + Math.PI / 2) * (tmpLenHouse / 2));
-                            Vector3 tmpVertex2 = new Vector3(tmpSide1.x - (float)Math.Cos(tmpAngle + Math.PI / 2) * (tmpLenHouse / 2), 0, tmpSide1.z - (float)Math.Sin(tmpAngle + Math.PI / 2) * (tmpLenHouse / 2));
-                            Vector3 tmpVertex3 = new Vector3(tmpSide2.x + (float)Math.Cos(tmpAngle + Math.PI / 2) * (tmpLenHouse / 2), 0, tmpSide2.z + (float)Math.Sin(tmpAngle + Math.PI / 2) * (tmpLenHouse / 2));
-                            Vector3 tmpVertex4 = new Vector3(tmpSide2.x - (float)Math.Cos(tmpAngle + Math.PI / 2) * (tmpLenHouse / 2), 0, tmpSide2.z - (float)Math.Sin(tmpAngle + Math.PI / 2) * (tmpLenHouse / 2));
-
-                            if (CheckCollisionBuilds(tmpVertex1, tmpVertex2, tmpVertex3, tmpVertex4, vertex1, vertex2, vertex3, vertex4, 1)) {
-                                collision = true;
-                                break;
-                            }
-                        }
-                    }
-
-                    if (!collision) {
-                        BuildsClass.CreateObject(minBlock.point, minBlock.rotate * -1, minBlock.typeHouse, minBlock.roadIdx);
-                        ++cntInDistrict[FieldClass.districts[(int)minBlock.point.x + FieldClass.fieldSizeHalf, (int)minBlock.point.z + FieldClass.fieldSizeHalf]];
-                        FieldClass.objects[(int)minBlock.point.x + FieldClass.fieldSizeHalf, (int)minBlock.point.z + FieldClass.fieldSizeHalf] = BuildsClass.commerces[BuildsClass.commerces.Count - 1];
-                    }
                 }
+
+                if (!collision) {
+                    BuildsClass.CreateObject(minBlock.point, minBlock.rotate * -1, minBlock.typeHouse, minBlock.roadIdx);
+                    ++cntInDistrict[FieldClass.districts[(int)minBlock.point.x + FieldClass.fieldSizeHalf, (int)minBlock.point.z + FieldClass.fieldSizeHalf]];
+                    FieldClass.objects[(int)minBlock.point.x + FieldClass.fieldSizeHalf, (int)minBlock.point.z + FieldClass.fieldSizeHalf] = BuildsClass.commerces[BuildsClass.commerces.Count - 1];
+                }
+            }
         }
         return seed;
     }
