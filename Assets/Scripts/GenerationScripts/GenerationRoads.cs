@@ -139,7 +139,9 @@ public class GenerationRoads : MonoBehaviour {
         RoadsClass.CreateObject("Road1", new Vector3(0, 0, 100), new Vector3 (0, 0, 110), 90);
         AddBlock((int)(seed % 1e9), new Vector3 (0, 0, 110), RoadsClass.objects.Count - 1);
         seed = GenerationClass.funcSeed(seed);
-        for (int i = 0; i < GenerationClass.timeRoadsBuild; ++i) {
+        DateTimeOffset startDate = DateTimeOffset.Now;
+        DateTimeOffset endDate = startDate.AddSeconds(GenerationClass.timeRoadsBuildGeneration);
+        while (GenerationClass.CheckTime(endDate) && RoadsClass.objects.Count < GenerationClass.maxCntRoads) {
             (Vector3 point, int roadIdx) startPoint = GetMinBlock();
 
             RoadObject RoadObjectClass = RoadsClass.objects[startPoint.roadIdx].GetComponent <RoadObject> ();

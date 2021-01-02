@@ -1395,11 +1395,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fc9abc082258ae42a84b678f395167a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seed: 27667816
-  timeRoadsBuild: 1000
+  seed: 9879998966655
+  timeBuild: 6
+  maxCntRoads: 1000
   minLenRoads: 20
   deltaLenRoads: 20
   averageCntCommercesInDistrict: 8
+  timeRoadsBuildGeneration: 0
+  timeHousesBuildGeneration: 0
+  timeCommerceBuildGeneration: 0
 --- !u!114 &963194239
 MonoBehaviour:
   m_ObjectHideFlags: 0
