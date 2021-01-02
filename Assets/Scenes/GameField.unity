@@ -1200,6 +1200,7 @@ MonoBehaviour:
   - {fileID: 4474633334904072824, guid: 8e53310066a62a742bd257c9e10d60ca, type: 3}
   - {fileID: 4280977809188449690, guid: 8f32657259ce3d8479310f72d873674f, type: 3}
   - {fileID: 6023145245446929460, guid: 0e2124edb72e0a1498e5fc5a5a31ff4f, type: 3}
+  - {fileID: 5942425324050766252, guid: 133afff8f52c7ef40bd964c5dfb3e779, type: 3}
   preFubsGhost:
   - {fileID: 2496509194798482247, guid: 9eb40738f596469428f341c8a251c25c, type: 3}
   - {fileID: 3333965922300697059, guid: 4e68a33a9595c8e48bf258bf5a983c20, type: 3}
@@ -1207,7 +1208,9 @@ MonoBehaviour:
   idxsDistrict2: 0000000001000000
   idxsDistrict3: 0200000003000000
   idxsDistrict4: 0400000007000000
+  idxsCommerces: 08000000
   objects: []
+  commerces: []
   ghostObjects: []
   isFollowGhost: 0
 --- !u!114 &963194231
@@ -1329,6 +1332,7 @@ MonoBehaviour:
   timeRoadsBuild: 100
   minLenRoads: 20
   deltaLenRoads: 20
+  averageCntCommercesInDistrict: 5
 --- !u!1 &1306430813
 GameObject:
   m_ObjectHideFlags: 0

@@ -186,8 +186,8 @@ public class GenerationHouses : MonoBehaviour {
                         }
                     }
 
-                    for (int itX = (int)(point1.x - Math.Max(lenHouse1, widthHouse1)); itX <= point1.x + Math.Max(lenHouse1, widthHouse1); ++itX) {
-                        for (int itY = (int)(point1.z - Math.Max(lenHouse1, widthHouse1)); itY <= point1.z + Math.Max(lenHouse1, widthHouse1); ++itY) {
+                    for (int itX = (int)(point1.x - 20); itX <= point1.x + 20; ++itX) {
+                        for (int itY = (int)(point1.z - 20); itY <= point1.z + 20; ++itY) {
                             if (itX >= FieldClass.fieldSizeHalf || itY >= FieldClass.fieldSizeHalf || itX <= -FieldClass.fieldSizeHalf || itY <= -FieldClass.fieldSizeHalf ||
                                 FieldClass.objects[itX + FieldClass.fieldSizeHalf, itY + FieldClass.fieldSizeHalf] == null ||
                                 !(FieldClass.objects[itX + FieldClass.fieldSizeHalf, itY + FieldClass.fieldSizeHalf].GetComponent <BuildObject> ())) continue;
@@ -242,8 +242,8 @@ public class GenerationHouses : MonoBehaviour {
                         }
                     }
 
-                    for (int itX = (int)(point2.x - Math.Max(lenHouse2, widthHouse2)); itX <= point2.x + Math.Max(lenHouse2, widthHouse2); ++itX) {
-                        for (int itY = (int)(point2.z - Math.Max(lenHouse2, widthHouse2)); itY <= point2.z + Math.Max(lenHouse2, widthHouse2); ++itY) {
+                    for (int itX = (int)(point2.x - 20); itX <= point2.x + 20; ++itX) {
+                        for (int itY = (int)(point2.z - 20); itY <= point2.z + 20; ++itY) {
                             if (itX >= FieldClass.fieldSizeHalf || itY >= FieldClass.fieldSizeHalf || itX <= -FieldClass.fieldSizeHalf || itY <= -FieldClass.fieldSizeHalf ||
                                 FieldClass.objects[itX + FieldClass.fieldSizeHalf, itY + FieldClass.fieldSizeHalf] == null ||
                                 !(FieldClass.objects[itX + FieldClass.fieldSizeHalf, itY + FieldClass.fieldSizeHalf].GetComponent <BuildObject> ())) continue;
