@@ -59,6 +59,7 @@ public class Builds : MonoBehaviour {
         for (int i = 0; i < ghostObjects.Count; ++i) {
             GameObject ghostObject = ghostObjects[i];
             BuildGhostObject ghostObjectClass = ghostObject.GetComponent <BuildGhostObject> ();
+            if (ghostObjectClass.isFollow) continue;
             GameObject newObject = Instantiate(preFubsBuildProcess[ghostObjectClass.idxPreFub], ghostObject.transform.position, ghostObject.transform.rotation);
             newObject.AddComponent <BuildProcessObject> ();
             BuildProcessObject newObjectClass = newObject.GetComponent <BuildProcessObject> ();

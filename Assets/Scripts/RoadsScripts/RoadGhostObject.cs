@@ -8,10 +8,11 @@ public class RoadGhostObject : MonoBehaviour {
     private Roads RoadsClass;
     private Field FieldClass;
     private float eps = 1e-5f;
-    private bool isFollow = true, isBusy = false, isFirst = false, isCollision = false;
+    private bool isBusy = false, isFirst = false, isCollision = false;
 
     public float x1, y1, x2, y2, len, angle;
     public int idx, idxPreFub, connectedRoad, connectedRoad2 = -1;
+    public bool isFollow = true;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");

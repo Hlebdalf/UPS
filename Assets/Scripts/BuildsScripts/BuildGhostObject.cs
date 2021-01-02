@@ -9,10 +9,11 @@ public class BuildGhostObject : MonoBehaviour {
     private Roads RoadsClass;
     private Field FieldClass;
     private float eps = 1e-5f;
-    private bool isFollow = true, isBusy = false, isCollision = false, isConnected = false;
+    private bool isBusy = false, isCollision = false, isConnected = false;
 
     public float x, y, rotate;
     public int idx, idxPreFub, connectedRoad = -1;
+    public bool isFollow = true;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");

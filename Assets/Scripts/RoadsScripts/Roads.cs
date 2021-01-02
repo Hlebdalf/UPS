@@ -120,6 +120,7 @@ public class Roads : MonoBehaviour {
         for (int i = 0; i < ghostObjects.Count; ++i) {
             GameObject ghostObject = ghostObjects[i];
             RoadGhostObject ghostObjectClass = ghostObject.GetComponent <RoadGhostObject> ();
+            if (ghostObjectClass.isFollow) continue;
             objects.Add(Instantiate(preFubs[ghostObjectClass.idxPreFub], new Vector3(ghostObject.transform.position.x, 0, ghostObject.transform.position.z),
                         ghostObject.transform.rotation));
             objects[objects.Count - 1].AddComponent <RoadObject> ();
