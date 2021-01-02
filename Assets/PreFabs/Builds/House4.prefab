@@ -8,11 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8163519488503900139}
-  - component: {fileID: 376672052301450613}
-  - component: {fileID: 4718388752504825502}
-  m_Layer: 0
-  m_Name: Decor_Cube.001_CrabMaterial
+  - component: {fileID: 6050614781968449613}
+  - component: {fileID: 2584885201618064399}
+  - component: {fileID: 6444433619702206621}
+  m_Layer: 2
+  m_Name: Corner_Cube.005_CornerMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,11 +87,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8546436931337911646}
-  - component: {fileID: 7654069148145752760}
-  - component: {fileID: 7766366927812340919}
-  m_Layer: 0
-  m_Name: Window_Plane.016_WindowTMPBMaterial
+  - component: {fileID: 4255566446756865242}
+  - component: {fileID: 5520554341238893408}
+  - component: {fileID: 3450875664345661973}
+  m_Layer: 2
+  m_Name: Lift_Cylinder.022_LiftMaterial.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -166,9 +166,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2338229129935016776}
-  - component: {fileID: 3824447116256343972}
-  m_Layer: 0
+  - component: {fileID: 1640450233172966059}
+  - component: {fileID: 3503212521047772324}
+  m_Layer: 2
   m_Name: House4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,11 +219,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 989046890387983673}
-  - component: {fileID: 8803395043848913539}
-  - component: {fileID: 1825359627216841718}
-  m_Layer: 0
-  m_Name: Lift_Cylinder.022_LiftMaterial.001
+  - component: {fileID: 4624080612576761021}
+  - component: {fileID: 6669748158140347227}
+  - component: {fileID: 6733073137398498644}
+  m_Layer: 2
+  m_Name: Window_Plane.016_WindowTMPBMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -298,11 +298,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7300081957184039342}
-  - component: {fileID: 1542580384194084332}
-  - component: {fileID: 8059255241875077502}
-  m_Layer: 0
-  m_Name: Corner_Cube.005_CornerMaterial
+  - component: {fileID: 5187485354416180744}
+  - component: {fileID: 3714685700474053782}
+  - component: {fileID: 8632299156196282237}
+  m_Layer: 2
+  m_Name: Decor_Cube.001_CrabMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -377,90 +377,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 876490608751567168}
-  - component: {fileID: 8476552172718843762}
-  - component: {fileID: 2280887984764994796}
-  m_Layer: 0
-  m_Name: House4_Cube.002_CrabMaterial
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &876490608751567168
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4890099848087369307}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2338229129935016776}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8476552172718843762
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4890099848087369307}
-  m_Mesh: {fileID: 3009026049178896974, guid: 99e41dea65da98a4a948388c3e6b48e6, type: 3}
---- !u!23 &2280887984764994796
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4890099848087369307}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!1 &5242974077191343173
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6441683814653452661}
-  - component: {fileID: 223287342364144443}
-  - component: {fileID: 8682197738702870710}
-  m_Layer: 0
-  m_Name: House4_Cube.002_LightMaterial
+  - component: {fileID: 4910546950658360025}
+  - component: {fileID: 2096303541185730818}
+  - component: {fileID: 4728796600914805035}
+  m_Layer: 2
+  m_Name: Lift_Cylinder.022_LiftMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -535,11 +456,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2263979678549622226}
-  - component: {fileID: 7331918611056491727}
-  - component: {fileID: 312635874628504311}
-  m_Layer: 0
-  m_Name: Window_Plane.016_WindowTMPAMaterial
+  - component: {fileID: 867789509099744932}
+  - component: {fileID: 5528472824170561621}
+  - component: {fileID: 4619240226877289305}
+  m_Layer: 2
+  m_Name: House4_Cube.002_GridMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -614,11 +535,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4232260219619968839}
-  - component: {fileID: 8794992913274775990}
-  - component: {fileID: 8551725780343937722}
-  m_Layer: 0
-  m_Name: House4_Cube.002_GridMaterial
+  - component: {fileID: 4224068975532574883}
+  - component: {fileID: 4833981433862983313}
+  - component: {fileID: 2958957603643436303}
+  m_Layer: 2
+  m_Name: House4_Cube.002_CrabMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -693,11 +614,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8255880581764279098}
-  - component: {fileID: 3143674426734719201}
-  - component: {fileID: 8581341628153620680}
-  m_Layer: 0
-  m_Name: Lift_Cylinder.022_LiftMaterial
+  - component: {fileID: 3016363156493784113}
+  - component: {fileID: 6014336212752176428}
+  - component: {fileID: 3666413199256904468}
+  m_Layer: 2
+  m_Name: Window_Plane.016_WindowTMPAMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

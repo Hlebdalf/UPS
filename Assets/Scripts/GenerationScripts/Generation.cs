@@ -10,8 +10,9 @@ public class Generation : MonoBehaviour {
     private GenerationCommerces GenerationCommercesClass;
 
     public ulong seed;
-    public int minCntRoads, deltaCntRoads;
+    public int timeRoadsBuild;
     public int minLenRoads, deltaLenRoads;
+    public int averageCntCommercesInDistrict;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");

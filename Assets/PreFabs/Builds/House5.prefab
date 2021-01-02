@@ -8,10 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8744026568820301581}
-  - component: {fileID: 4895914719779053740}
-  - component: {fileID: 1688911365875432401}
-  m_Layer: 0
+  - component: {fileID: 8347328644021488194}
+  - component: {fileID: 5296064410984248803}
+  - component: {fileID: 2161333142556470942}
+  m_Layer: 2
   m_Name: House5LP_Cube.001_HallMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,11 +87,67 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3034757142442867941}
-  - component: {fileID: 1234219038433523287}
-  - component: {fileID: 4891322770998579710}
-  m_Layer: 0
-  m_Name: House5LP_Cube.001_WindowsMaterial
+  - component: {fileID: 1809363526610870660}
+  - component: {fileID: 1225689802867120807}
+  m_Layer: 2
+  m_Name: House5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1809363526610870660
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321795659187108670}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.224, y: 0, z: 0.859}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_Children:
+  - {fileID: 1685760684504348217}
+  - {fileID: 1437383976773842491}
+  - {fileID: 8074791328081158697}
+  - {fileID: 8347328644021488194}
+  - {fileID: 2347274188192377258}
+  - {fileID: 3539203904749955449}
+  - {fileID: 5562682090739080360}
+  - {fileID: 7165454950756807329}
+  - {fileID: 2127572476460059129}
+  - {fileID: 4562764935123288753}
+  - {fileID: 2858713439307224921}
+  - {fileID: 867873504154728217}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1225689802867120807
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321795659187108670}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 20, y: 18, z: 20}
+  m_Center: {x: -2.35, y: 9, z: -8.5}
+--- !u!1 &1606697293979296004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3539203904749955449}
+  - component: {fileID: 8476983018516102057}
+  - component: {fileID: 6963804599756735815}
+  m_Layer: 2
+  m_Name: Stair_Plane.006_StairMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -166,67 +222,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1410339649522824395}
-  - component: {fileID: 4282897039023075072}
-  m_Layer: 0
-  m_Name: House5
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1410339649522824395
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1790560032073756273}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
-  m_Children:
-  - {fileID: 2156002199823967094}
-  - {fileID: 1836399813717255028}
-  - {fileID: 8827553436844832614}
-  - {fileID: 8744026568820301581}
-  - {fileID: 3034757142442867941}
-  - {fileID: 4292891185934990390}
-  - {fileID: 5169062656923568615}
-  - {fileID: 7637649403501144046}
-  - {fileID: 1659586494689991862}
-  - {fileID: 3881148994220808190}
-  - {fileID: 3252335881982198294}
-  - {fileID: 470028715176829526}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &4282897039023075072
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1790560032073756273}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 25, y: 20, z: 25}
-  m_Center: {x: 0, y: 10, z: -1}
---- !u!1 &2072373087096222795
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4292891185934990390}
-  - component: {fileID: 9163389136419106534}
-  - component: {fileID: 7650148579817803784}
-  m_Layer: 0
-  m_Name: Stair_Plane.006_StairMaterial
+  - component: {fileID: 2347274188192377258}
+  - component: {fileID: 1994669501875888920}
+  - component: {fileID: 5291684343811589297}
+  m_Layer: 2
+  m_Name: House5LP_Cube.001_WindowsMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -301,11 +301,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7637649403501144046}
-  - component: {fileID: 7408561370173988893}
-  - component: {fileID: 7413706674215683281}
-  m_Layer: 0
-  m_Name: Tonnel_Cube_StairMaterial
+  - component: {fileID: 1437383976773842491}
+  - component: {fileID: 3287085554881649921}
+  - component: {fileID: 3516745781837610476}
+  m_Layer: 2
+  m_Name: Hall_Cylinder.003_HallMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -380,11 +380,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1836399813717255028}
-  - component: {fileID: 2814956611159541838}
-  - component: {fileID: 4198290937283881123}
-  m_Layer: 0
-  m_Name: Hall_Cylinder.003_HallMaterial
+  - component: {fileID: 7165454950756807329}
+  - component: {fileID: 7808909334173349202}
+  - component: {fileID: 7812733845988774302}
+  m_Layer: 2
+  m_Name: Tonnel_Cube_StairMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -459,10 +459,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3252335881982198294}
-  - component: {fileID: 8443775060998733232}
-  - component: {fileID: 4043260202235524533}
-  m_Layer: 0
+  - component: {fileID: 2858713439307224921}
+  - component: {fileID: 9196630078193477887}
+  - component: {fileID: 3644016011880718586}
+  m_Layer: 2
   m_Name: Wall2_Cube.007_WallMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -538,10 +538,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2156002199823967094}
-  - component: {fileID: 6218694902735491687}
-  - component: {fileID: 5055819119674008484}
-  m_Layer: 0
+  - component: {fileID: 1685760684504348217}
+  - component: {fileID: 6684345607639811880}
+  - component: {fileID: 5523469543626290923}
+  m_Layer: 2
   m_Name: Column_Cylinder.005_StairMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -617,10 +617,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1659586494689991862}
-  - component: {fileID: 3039648170932303896}
-  - component: {fileID: 542496871756042243}
-  m_Layer: 0
+  - component: {fileID: 2127572476460059129}
+  - component: {fileID: 2350968146490387799}
+  - component: {fileID: 939555762987009356}
+  m_Layer: 2
   m_Name: Tube2_Cube.005_Tube2Material
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -696,11 +696,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8827553436844832614}
-  - component: {fileID: 3199717300112606258}
-  - component: {fileID: 5412467827242020483}
-  m_Layer: 0
-  m_Name: Hall_Cylinder.003_WindowsMaterial
+  - component: {fileID: 4562764935123288753}
+  - component: {fileID: 927067518181503877}
+  - component: {fileID: 8405016171479303512}
+  m_Layer: 2
+  m_Name: Tube_Cylinder.006_TubeMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -775,11 +775,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 470028715176829526}
-  - component: {fileID: 7012217695130889022}
-  - component: {fileID: 2398224739531026578}
-  m_Layer: 0
-  m_Name: Wall_Cube.004_WallMaterial
+  - component: {fileID: 8074791328081158697}
+  - component: {fileID: 2803775630161138045}
+  - component: {fileID: 4724940342434544588}
+  m_Layer: 2
+  m_Name: Hall_Cylinder.003_WindowsMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -854,10 +854,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5169062656923568615}
-  - component: {fileID: 6656280097287377432}
-  - component: {fileID: 2564990886175927690}
-  m_Layer: 0
+  - component: {fileID: 5562682090739080360}
+  - component: {fileID: 6255910557444310871}
+  - component: {fileID: 2960557533643012293}
+  m_Layer: 2
   m_Name: SunPanel_Cube.019_SunPanelMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -933,11 +933,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3881148994220808190}
-  - component: {fileID: 455765179737990858}
-  - component: {fileID: 9091135250837573655}
-  m_Layer: 0
-  m_Name: Tube_Cylinder.006_TubeMaterial
+  - component: {fileID: 867873504154728217}
+  - component: {fileID: 7772870105619807857}
+  - component: {fileID: 3154378237611107805}
+  m_Layer: 2
+  m_Name: Wall_Cube.004_WallMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

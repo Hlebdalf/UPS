@@ -8,11 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5223314777013880888}
-  - component: {fileID: 8918917381722286135}
-  - component: {fileID: 6227913317876901553}
-  m_Layer: 0
-  m_Name: Roads_Cylinder.007_LightMaterial
+  - component: {fileID: 4768740058676833913}
+  - component: {fileID: 8033588641219911551}
+  - component: {fileID: 6162597402573401526}
+  m_Layer: 2
+  m_Name: House6Block_Cube_House6Material
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,11 +87,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3190770683099180765}
-  - component: {fileID: 3415384006402146349}
-  - component: {fileID: 7799312038541488419}
-  m_Layer: 0
-  m_Name: Corner_Cube.004_Crab2Material
+  - component: {fileID: 3842353213657608386}
+  - component: {fileID: 4823995154065947112}
+  m_Layer: 2
+  m_Name: House6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,38 +126,10 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299382967548659424}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!1 &1245348502568597233
+  serializedVersion: 2
+  m_Size: {x: 65, y: 90, z: 65}
+  m_Center: {x: 0, y: 45, z: 0}
+--- !u!1 &5275585214524090529
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,11 +137,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4182835978785655687}
-  - component: {fileID: 5299466259257617480}
-  - component: {fileID: 5181311759876977675}
-  m_Layer: 0
-  m_Name: Roof_Cube.058_BorderMaterial
+  - component: {fileID: 5500386213009818615}
+  - component: {fileID: 4704580601044071378}
+  - component: {fileID: 4109945999885421742}
+  m_Layer: 2
+  m_Name: Booth_Cube.068_BoothMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -245,11 +216,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 926416039201008560}
-  - component: {fileID: 1866503793480476321}
-  - component: {fileID: 1492439139978501860}
-  m_Layer: 0
-  m_Name: Roof_Cube.058_RoofMaterial
+  - component: {fileID: 5711150801999095760}
+  - component: {fileID: 4378908618622107679}
+  - component: {fileID: 3650670885346252892}
+  m_Layer: 2
+  m_Name: Roof_Cube.058_BorderMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -324,11 +295,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7594556184096089427}
-  - component: {fileID: 5604792680252949164}
-  - component: {fileID: 1833823308810413895}
-  m_Layer: 0
-  m_Name: Booth_Cube.068_Crab2Material
+  - component: {fileID: 8760966059674372071}
+  - component: {fileID: 7829887299142503158}
+  - component: {fileID: 7059475092239495859}
+  m_Layer: 2
+  m_Name: Roof_Cube.058_RoofMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -403,10 +374,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4619771482926324885}
-  - component: {fileID: 1444349925869272989}
-  m_Layer: 0
-  m_Name: House6
+  - component: {fileID: 1778358020163930429}
+  - component: {fileID: 7187761439157332736}
+  - component: {fileID: 714929017993750896}
+  m_Layer: 2
+  m_Name: Roads_Cylinder.007_RoadsMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -533,11 +505,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4336143427903773992}
-  - component: {fileID: 7258623200438578305}
-  - component: {fileID: 7475519957715545075}
-  m_Layer: 0
-  m_Name: Corner_Cube.004_LightMaterial
+  - component: {fileID: 6415829894402572938}
+  - component: {fileID: 6497462691426167930}
+  - component: {fileID: 1833746483201482100}
+  m_Layer: 2
+  m_Name: Corner_Cube.004_Crab2Material
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

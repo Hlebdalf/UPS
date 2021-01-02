@@ -8,10 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2182370217332629713}
-  - component: {fileID: 7391201006742427302}
-  m_Layer: 0
-  m_Name: House3
+  - component: {fileID: 8626444247977581060}
+  - component: {fileID: 458999670548196539}
+  - component: {fileID: 8287295248632302712}
+  m_Layer: 2
+  m_Name: House3_Cylinder.002_WindowsMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -137,11 +138,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4327900379959310183}
-  - component: {fileID: 1178970611551700844}
-  - component: {fileID: 187397931169397038}
-  m_Layer: 0
-  m_Name: Crab_Cylinder.008_LightMaterial
+  - component: {fileID: 1571750909845203950}
+  - component: {fileID: 8619812470921001793}
+  - component: {fileID: 4243032395342743036}
+  m_Layer: 2
+  m_Name: House3_Cylinder.002_CrabMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -216,11 +217,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5481219064174721268}
-  - component: {fileID: 3333069819841456219}
-  - component: {fileID: 7150748539757450982}
-  m_Layer: 0
-  m_Name: House3_Cylinder.002_CrabMaterial
+  - component: {fileID: 8057291261106688764}
+  - component: {fileID: 1052259657615490149}
+  - component: {fileID: 258990482689694171}
+  m_Layer: 2
+  m_Name: Crab_Cylinder.008_CrabMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -295,11 +296,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1715255540335225994}
-  - component: {fileID: 4412135493846249858}
-  - component: {fileID: 489379957966621899}
-  m_Layer: 0
-  m_Name: House3_Cylinder.002_LightMaterial.001
+  - component: {fileID: 5158766397798691787}
+  - component: {fileID: 2091638318304241719}
+  m_Layer: 2
+  m_Name: House3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

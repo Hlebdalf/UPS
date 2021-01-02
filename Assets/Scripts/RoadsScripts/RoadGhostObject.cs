@@ -72,6 +72,12 @@ public class RoadGhostObject : MonoBehaviour {
     }
 
     private void OnTriggerStay(Collider other) {
+        if (Input.GetMouseButtonDown(1)) {
+            gameObject.layer = 0;
+            RoadsClass.isFollowGhost = isFollow = false;
+            RoadsClass.RoadType = "";
+            RoadsClass.DeleteGhost(gameObject);
+        }
         if (other.gameObject.GetComponent <RoadObject> ()) {
             int idxCollision = RoadsClass.objects.IndexOf(other.gameObject);
             Vector2 point = RoundCoodinate(new Vector2(x1, y1));
@@ -129,7 +135,7 @@ public class RoadGhostObject : MonoBehaviour {
                 }
             }
         }
-        else if (other.gameObject.GetComponent <RoadGhostObject> ()) {
+        else if (other.gameObject.GetComponent <RoadGhostObject> () || other.gameObject.GetComponent <BuildObject> () || other.gameObject.GetComponent <BuildGhostObject> ()) {
             isCollision = true;
         }
     }

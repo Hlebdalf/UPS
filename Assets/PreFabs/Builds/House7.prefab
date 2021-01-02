@@ -8,10 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 460999297808846191}
-  - component: {fileID: 795756379902753484}
-  m_Layer: 0
-  m_Name: House7
+  - component: {fileID: 3486718511590972608}
+  - component: {fileID: 8919104865379054146}
+  - component: {fileID: 7910881697911565864}
+  m_Layer: 2
+  m_Name: Roof_Cube.095_BorderMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,11 +139,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4755715603174013192}
-  - component: {fileID: 3073703509828537221}
-  - component: {fileID: 4833029952618733376}
-  m_Layer: 0
-  m_Name: Decor_Cube.021_LightMaterial
+  - component: {fileID: 1008936762940675592}
+  - component: {fileID: 3235997303787061861}
+  - component: {fileID: 8140530353768729087}
+  m_Layer: 2
+  m_Name: House6Block.002_Cube.003_House6Material
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -217,11 +218,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4105396440724241918}
-  - component: {fileID: 8976378921726255635}
-  - component: {fileID: 8460357152527115942}
-  m_Layer: 0
-  m_Name: Booth_Cube.100_Crab2Material
+  - component: {fileID: 4163086799650611997}
+  - component: {fileID: 7185706735486267843}
+  - component: {fileID: 3183940754995279080}
+  m_Layer: 2
+  m_Name: Roof_Cube.095_RoofMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -296,11 +297,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 442578058092799631}
-  - component: {fileID: 5584477814247655437}
-  - component: {fileID: 6597230952231998567}
-  m_Layer: 0
-  m_Name: Roof_Cube.095_BorderMaterial
+  - component: {fileID: 3468552427847923488}
+  - component: {fileID: 503181967981980638}
+  m_Layer: 2
+  m_Name: House7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -336,38 +336,10 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4155443108578766254}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: c89436170fafde24592fdbdd6a2e99e0, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!1 &7633955623709896742
+  serializedVersion: 2
+  m_Size: {x: 110, y: 90, z: 30}
+  m_Center: {x: 0, y: 45, z: 0}
+--- !u!1 &5388773063701183204
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -375,11 +347,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2708580130262168881}
-  - component: {fileID: 5646588696473711841}
-  - component: {fileID: 95188333221735687}
-  m_Layer: 0
-  m_Name: Corner_Cube.017_Crab2Material
+  - component: {fileID: 3372846349306830547}
+  - component: {fileID: 223935504213548691}
+  - component: {fileID: 8192601743704279683}
+  m_Layer: 2
+  m_Name: Decor_Cube.021_DecorMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -454,11 +426,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3471098611037745095}
-  - component: {fileID: 9136855201996885427}
-  - component: {fileID: 893983745388200798}
-  m_Layer: 0
-  m_Name: House6Block_Cube.003_House6Material
+  - component: {fileID: 1428139308633378686}
+  - component: {fileID: 8654718804131401390}
+  - component: {fileID: 3969121723195397960}
+  m_Layer: 2
+  m_Name: Corner_Cube.017_Crab2Material
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -533,11 +505,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1768168109891413148}
-  - component: {fileID: 3845122192401982684}
-  - component: {fileID: 5185610765525397708}
-  m_Layer: 0
-  m_Name: Decor_Cube.021_DecorMaterial
+  - component: {fileID: 2134938554498994870}
+  - component: {fileID: 2084032809035928471}
+  - component: {fileID: 2714315659099431163}
+  m_Layer: 2
+  m_Name: Booth.004_Cube.100_BoothMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
