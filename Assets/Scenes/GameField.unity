@@ -1251,8 +1251,15 @@ MonoBehaviour:
   - {fileID: 8567898246088410813, guid: 0e2124edb72e0a1498e5fc5a5a31ff4f, type: 3}
   - {fileID: 1749075254799706076, guid: 133afff8f52c7ef40bd964c5dfb3e779, type: 3}
   preFubsGhost:
-  - {fileID: 2496509194798482247, guid: 9eb40738f596469428f341c8a251c25c, type: 3}
-  - {fileID: 3333965922300697059, guid: 4e68a33a9595c8e48bf258bf5a983c20, type: 3}
+  - {fileID: 5518190228735832059, guid: 461a2e8b91c5a5149a3781f5f3d103f6, type: 3}
+  - {fileID: 6653774008657410114, guid: 5a9a0c85b7bffb14a91c1a8f82a404e1, type: 3}
+  - {fileID: 1810722555004223846, guid: 088c8d1f623f4a44a97c6badddf1a53f, type: 3}
+  - {fileID: 7556483254270864172, guid: 225132a7949de044ca8ec980c6bfeb50, type: 3}
+  - {fileID: 8001083326229702574, guid: f5c2807168a5ac741ad6c50451e37f39, type: 3}
+  - {fileID: 4625891880181309253, guid: 943e42d97f2bde4459a20a2117725361, type: 3}
+  - {fileID: 7782365787804073225, guid: 2427cef7f14e3e647a747dfca6fa8a32, type: 3}
+  - {fileID: 7912945837251018531, guid: 5acb413c0109e044aa9ef8acd1c70605, type: 3}
+  - {fileID: 2919370153109583972, guid: 650d6d4a5624cb947b7ca0914d3b3213, type: 3}
   idxsDistrict1: 0500000006000000
   idxsDistrict2: 0000000001000000
   idxsDistrict3: 0200000003000000
@@ -1381,7 +1388,7 @@ MonoBehaviour:
   timeRoadsBuild: 1000
   minLenRoads: 20
   deltaLenRoads: 20
-  averageCntCommercesInDistrict: 5
+  averageCntCommercesInDistrict: 8
 --- !u!114 &963194239
 MonoBehaviour:
   m_ObjectHideFlags: 0
