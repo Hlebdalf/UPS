@@ -26,33 +26,116 @@ public class Cars : MonoBehaviour {
 
     private void Update() {
         if (isStarted && objects.Count < cntCars) {
-            List <GameObject> objectPath = new List <GameObject> ();
-            if ((int)UnityEngine.Random.Range(0, 1.99f) == 0) objectPath = StartFromHouse();
-            else objectPath = StartFromCommerce();
+            (List <GameObject> objectPathToStart, List <GameObject> objectPathToEnd, List <GameObject> objectPathToParking) paths;
+            paths.objectPathToStart = new List <GameObject> ();
+            paths.objectPathToEnd = new List <GameObject> ();
+            paths.objectPathToParking = new List <GameObject> ();
 
-            List <Vector3> pointsPath = new List <Vector3> ();
-            for (int j = 0; j < objectPath.Count; ++j) {
-                GameObject obj = objectPath[j];
+            if ((int)UnityEngine.Random.Range(0, 1.99f) == 0) paths = StartFromHouse();
+            else paths = StartFromCommerce();
+
+            List <Vector3> pointsPathToStart = new List <Vector3> ();
+            for (int i = 0; i < paths.objectPathToStart.Count; ++i) {
+                GameObject obj = paths.objectPathToStart[i];
                 if (obj.GetComponent <BuildObject> ()) {
                     BuildObject objClass = obj.GetComponent <BuildObject> ();
-                    pointsPath.Add(new Vector3(objClass.x, 0, objClass.y));
+                    RoadObject roadObjClass = RoadsClass.objects[objClass.connectedRoad].GetComponent <RoadObject> ();
+
+                    float mainRoadA = roadObjClass.y1 - roadObjClass.y2, mainRoadB = roadObjClass.x2 - roadObjClass.x1,
+                        mainRoadC = roadObjClass.x1 * roadObjClass.y2 - roadObjClass.x2 * roadObjClass.y1; // main road line
+                    float normA = -mainRoadB, normB = mainRoadA, normC = -(normA * objClass.x + normB * objClass.y); // norm
+                    float normCrossMainRoadX = -(mainRoadC * normB - normC * mainRoadB) / (mainRoadA * normB - normA * mainRoadB); // rounded coordinate
+                    float normCrossMainRoadY = -(mainRoadA * normC - normA * mainRoadC) / (mainRoadA * normB - normA * mainRoadB); // rounded coordinate
+
+                    if (i == 0) {
+                        pointsPathToStart.Add(new Vector3(objClass.x, 0, objClass.y));
+                        pointsPathToStart.Add(new Vector3(normCrossMainRoadX, 0, normCrossMainRoadY));
+                    }
+                    else {
+                        pointsPathToStart.Add(new Vector3(normCrossMainRoadX, 0, normCrossMainRoadY));
+                        pointsPathToStart.Add(new Vector3(objClass.x, 0, objClass.y));
+                    }
                 }
                 if (obj.GetComponent <CrossroadObject> ()) {
                     CrossroadObject objClass = obj.GetComponent <CrossroadObject> ();
-                    pointsPath.Add(new Vector3(objClass.x, 0, objClass.y));
+                    pointsPathToStart.Add(new Vector3(objClass.x, 0, objClass.y));
                 }
             }
 
-            objects.Add(Instantiate(preFubs[0], pointsPath[0], Quaternion.Euler(0, 0, 0)));
+            
+            List <Vector3> pointsPathToEnd = new List <Vector3> ();
+            for (int i = 0; i < paths.objectPathToEnd.Count; ++i) {
+                GameObject obj = paths.objectPathToEnd[i];
+                if (obj.GetComponent <BuildObject> ()) {
+                    BuildObject objClass = obj.GetComponent <BuildObject> ();
+                    RoadObject roadObjClass = RoadsClass.objects[objClass.connectedRoad].GetComponent <RoadObject> ();
+
+                    float mainRoadA = roadObjClass.y1 - roadObjClass.y2, mainRoadB = roadObjClass.x2 - roadObjClass.x1,
+                        mainRoadC = roadObjClass.x1 * roadObjClass.y2 - roadObjClass.x2 * roadObjClass.y1; // main road line
+                    float normA = -mainRoadB, normB = mainRoadA, normC = -(normA * objClass.x + normB * objClass.y); // norm
+                    float normCrossMainRoadX = -(mainRoadC * normB - normC * mainRoadB) / (mainRoadA * normB - normA * mainRoadB); // rounded coordinate
+                    float normCrossMainRoadY = -(mainRoadA * normC - normA * mainRoadC) / (mainRoadA * normB - normA * mainRoadB); // rounded coordinate
+
+                    if (i == 0) {
+                        pointsPathToEnd.Add(new Vector3(objClass.x, 0, objClass.y));
+                        pointsPathToEnd.Add(new Vector3(normCrossMainRoadX, 0, normCrossMainRoadY));
+                    }
+                    else {
+                        pointsPathToEnd.Add(new Vector3(normCrossMainRoadX, 0, normCrossMainRoadY));
+                        pointsPathToEnd.Add(new Vector3(objClass.x, 0, objClass.y));
+                    }
+                }
+                if (obj.GetComponent <CrossroadObject> ()) {
+                    CrossroadObject objClass = obj.GetComponent <CrossroadObject> ();
+                    pointsPathToEnd.Add(new Vector3(objClass.x, 0, objClass.y));
+                }
+            }
+
+            List <Vector3> pointsPathToParking = new List <Vector3> ();
+            for (int i = 0; i < paths.objectPathToParking.Count; ++i) {
+                GameObject obj = paths.objectPathToParking[i];
+                if (obj.GetComponent <BuildObject> ()) {
+                    BuildObject objClass = obj.GetComponent <BuildObject> ();
+                    RoadObject roadObjClass = RoadsClass.objects[objClass.connectedRoad].GetComponent <RoadObject> ();
+
+                    float mainRoadA = roadObjClass.y1 - roadObjClass.y2, mainRoadB = roadObjClass.x2 - roadObjClass.x1,
+                        mainRoadC = roadObjClass.x1 * roadObjClass.y2 - roadObjClass.x2 * roadObjClass.y1; // main road line
+                    float normA = -mainRoadB, normB = mainRoadA, normC = -(normA * objClass.x + normB * objClass.y); // norm
+                    float normCrossMainRoadX = -(mainRoadC * normB - normC * mainRoadB) / (mainRoadA * normB - normA * mainRoadB); // rounded coordinate
+                    float normCrossMainRoadY = -(mainRoadA * normC - normA * mainRoadC) / (mainRoadA * normB - normA * mainRoadB); // rounded coordinate
+
+                    if (i == 0) {
+                        pointsPathToParking.Add(new Vector3(objClass.x, 0, objClass.y));
+                        pointsPathToParking.Add(new Vector3(normCrossMainRoadX, 0, normCrossMainRoadY));
+                    }
+                    else {
+                        pointsPathToParking.Add(new Vector3(normCrossMainRoadX, 0, normCrossMainRoadY));
+                        pointsPathToParking.Add(new Vector3(objClass.x, 0, objClass.y));
+                    }
+                }
+                if (obj.GetComponent <CrossroadObject> ()) {
+                    CrossroadObject objClass = obj.GetComponent <CrossroadObject> ();
+                    pointsPathToParking.Add(new Vector3(objClass.x, 0, objClass.y));
+                }
+            }
+
+            objects.Add(Instantiate(preFubs[0], pointsPathToStart[0], Quaternion.Euler(0, 0, 0)));
             objects[objects.Count - 1].AddComponent <CarObject> ();
             CarObject carClass = objects[objects.Count - 1].GetComponent <CarObject> ();
-            for (int j = 0; j < pointsPath.Count; ++j) {
-                carClass.queuePoints.Enqueue(pointsPath[j]);
+
+            for (int i = 0; i < pointsPathToStart.Count; ++i) {
+                carClass.queuePointsToStart.Enqueue(pointsPathToStart[i]);
+            }
+            for (int i = 0; i < pointsPathToEnd.Count; ++i) {
+                carClass.queuePointsToEnd.Enqueue(pointsPathToEnd[i]);
+            }
+            for (int i = 0; i < pointsPathToParking.Count; ++i) {
+                carClass.queuePointsToParking.Enqueue(pointsPathToParking[i]);
             }
         }
     }
     
-    private List <int> Dijkstra(int start) {
+    private (List <int> parent, List <float> dist) Dijkstra(int start) {
         List <float> dist = new List <float> ();
         List <int> parent = new List <int> ();
         List <bool> used = new List <bool> ();
@@ -79,33 +162,141 @@ public class Cars : MonoBehaviour {
                 }
             }
         }
-        return parent;
+        return (parent, dist);
     }
 
-    private List <GameObject> StartFromHouse() {
+    private (List <GameObject> objectPathToStart, List <GameObject> objectPathToEnd, List <GameObject> objectPathToParking) StartFromHouse() {
         GameObject BuildGameObject = BuildsClass.objects[(int)UnityEngine.Random.Range(0, BuildsClass.objects.Count - 1)];
         GameObject CommerceGameObject = BuildsClass.commerces[(int)UnityEngine.Random.Range(0, BuildsClass.commerces.Count - 1)];
-        List <int> parent = Dijkstra(FieldClass.numInGraph[BuildGameObject]);
-        List <GameObject> objectPath = new List <GameObject> ();
-        for (int v = FieldClass.numInGraph[CommerceGameObject]; v != -1; v = parent[v]) {
-            objectPath.Add(FieldClass.objInGraph[v]);
+        
+        (List <int> parent, List <float> dist) graphData = Dijkstra(FieldClass.numInGraph[BuildGameObject]);
+
+        int minDistI = 0;
+        for (int i = 0; i < BuildsClass.parkings.Count; ++i) {
+            float dist = 0f;
+            for (int p = FieldClass.numInGraph[BuildsClass.parkings[i]], v = graphData.parent[p]; v != -1; p = v, v = graphData.parent[v]) {
+                for (int j = 0; j < FieldClass.graph[v].Count; ++j) {
+                    if (FieldClass.graph[v][j].v == p) {
+                        dist += FieldClass.graph[v][j].w;
+                        break;
+                    }
+                }
+                if (FieldClass.objInGraph[v] == BuildGameObject) break;
+            }
+            if (graphData.dist[FieldClass.numInGraph[BuildsClass.parkings[i]]] < dist)
+                minDistI = i;
+        }
+
+        GameObject Parking = BuildsClass.parkings[minDistI];
+        
+        List <GameObject> objectPathToStart = new List <GameObject> ();
+        for (int v = FieldClass.numInGraph[Parking]; v != -1; v = graphData.parent[v]) {
+            objectPathToStart.Add(FieldClass.objInGraph[v]);
             if (FieldClass.objInGraph[v] == BuildGameObject) break;
         }
-        objectPath.Reverse();
-        return objectPath;
-    }
 
-    private List <GameObject> StartFromCommerce() {
-        GameObject CommerceGameObject = BuildsClass.commerces[(int)UnityEngine.Random.Range(0, BuildsClass.commerces.Count - 1)];
-        GameObject BuildGameObject = BuildsClass.objects[(int)UnityEngine.Random.Range(0, BuildsClass.objects.Count - 1)];
-        List <int> parent = Dijkstra(FieldClass.numInGraph[CommerceGameObject]);
-        List <GameObject> objectPath = new List <GameObject> ();
-        for (int v = FieldClass.numInGraph[BuildGameObject]; v != -1; v = parent[v]) {
-            objectPath.Add(FieldClass.objInGraph[v]);
+        List <GameObject> objectPathToEnd = new List <GameObject> ();
+        for (int v = FieldClass.numInGraph[CommerceGameObject]; v != -1; v = graphData.parent[v]) {
+            objectPathToEnd.Add(FieldClass.objInGraph[v]);
+            if (FieldClass.objInGraph[v] == BuildGameObject) break;
+        }
+        objectPathToEnd.Reverse();
+
+        graphData = Dijkstra(FieldClass.numInGraph[CommerceGameObject]);
+
+        minDistI = 0;
+        for (int i = 0; i < BuildsClass.parkings.Count; ++i) {
+            float dist = 0f;
+            for (int p = FieldClass.numInGraph[BuildsClass.parkings[i]], v = graphData.parent[p]; v != -1; p = v, v = graphData.parent[v]) {
+                for (int j = 0; j < FieldClass.graph[v].Count; ++j) {
+                    if (FieldClass.graph[v][j].v == p) {
+                        dist += FieldClass.graph[v][j].w;
+                        break;
+                    }
+                }
+                if (FieldClass.objInGraph[v] == CommerceGameObject) break;
+            }
+            if (graphData.dist[FieldClass.numInGraph[BuildsClass.parkings[i]]] < dist)
+                minDistI = i;
+        }
+
+        Parking = BuildsClass.parkings[minDistI];
+
+        List <GameObject> objectPathToParking = new List <GameObject> ();
+        for (int v = FieldClass.numInGraph[Parking]; v != -1; v = graphData.parent[v]) {
+            objectPathToParking.Add(FieldClass.objInGraph[v]);
             if (FieldClass.objInGraph[v] == CommerceGameObject) break;
         }
-        objectPath.Reverse();
-        return objectPath;
+        objectPathToParking.Reverse();
+
+        return (objectPathToStart, objectPathToEnd, objectPathToParking);
+    }
+
+    private (List <GameObject> objectPathToStart, List <GameObject> objectPathToEnd, List <GameObject> objectPathToParking) StartFromCommerce() {
+        GameObject CommerceGameObject = BuildsClass.commerces[(int)UnityEngine.Random.Range(0, BuildsClass.commerces.Count - 1)];
+        GameObject BuildGameObject = BuildsClass.objects[(int)UnityEngine.Random.Range(0, BuildsClass.objects.Count - 1)];
+        
+        (List <int> parent, List <float> dist) graphData = Dijkstra(FieldClass.numInGraph[CommerceGameObject]);
+
+        int minDistI = 0;
+        for (int i = 0; i < BuildsClass.parkings.Count; ++i) {
+            float dist = 0f;
+            for (int p = FieldClass.numInGraph[BuildsClass.parkings[i]], v = graphData.parent[p]; v != -1; p = v, v = graphData.parent[v]) {
+                for (int j = 0; j < FieldClass.graph[v].Count; ++j) {
+                    if (FieldClass.graph[v][j].v == p) {
+                        dist += FieldClass.graph[v][j].w;
+                        break;
+                    }
+                }
+                if (FieldClass.objInGraph[v] == CommerceGameObject) break;
+            }
+            if (graphData.dist[FieldClass.numInGraph[BuildsClass.parkings[i]]] < dist)
+                minDistI = i;
+        }
+
+        GameObject Parking = BuildsClass.parkings[minDistI];
+        
+        List <GameObject> objectPathToStart = new List <GameObject> ();
+        for (int v = FieldClass.numInGraph[Parking]; v != -1; v = graphData.parent[v]) {
+            objectPathToStart.Add(FieldClass.objInGraph[v]);
+            if (FieldClass.objInGraph[v] == CommerceGameObject) break;
+        }
+
+        List <GameObject> objectPathToEnd = new List <GameObject> ();
+        for (int v = FieldClass.numInGraph[BuildGameObject]; v != -1; v = graphData.parent[v]) {
+            objectPathToEnd.Add(FieldClass.objInGraph[v]);
+            if (FieldClass.objInGraph[v] == CommerceGameObject) break;
+        }
+        objectPathToEnd.Reverse();
+
+        graphData = Dijkstra(FieldClass.numInGraph[BuildGameObject]);
+
+        minDistI = 0;
+        for (int i = 0; i < BuildsClass.parkings.Count; ++i) {
+            float dist = 0f;
+            for (int p = FieldClass.numInGraph[BuildsClass.parkings[i]], v = graphData.parent[p]; v != -1; p = v, v = graphData.parent[v]) {
+                for (int j = 0; j < FieldClass.graph[v].Count; ++j) {
+                    if (FieldClass.graph[v][j].v == p) {
+                        dist += FieldClass.graph[v][j].w;
+                        break;
+                    }
+                }
+                if (FieldClass.objInGraph[v] == BuildGameObject) break;
+            }
+            if (graphData.dist[FieldClass.numInGraph[BuildsClass.parkings[i]]] < dist)
+                minDistI = i;
+        }
+
+        Parking = BuildsClass.parkings[minDistI];
+
+        List <GameObject> objectPathToParking = new List <GameObject> ();
+        for (int v = FieldClass.numInGraph[Parking]; v != -1; v = graphData.parent[v]) {
+            objectPathToParking.Add(FieldClass.objInGraph[v]);
+            if (FieldClass.objInGraph[v] == BuildGameObject) break;
+        }
+        objectPathToParking.Reverse();
+
+        return (objectPathToStart, objectPathToEnd, objectPathToParking);
     }
 
     public void StartCars() {

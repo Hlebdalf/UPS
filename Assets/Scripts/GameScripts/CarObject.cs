@@ -8,19 +8,23 @@ public class CarObject : MonoBehaviour {
     private Cars CarsClass;
     private float rotate;
     private Vector3 vertexTo;
+    private bool stage1 = true, stage2 = false, stage3 = false;
     private bool vertexIsActive = false;
 
-    public Queue <Vector3> queuePoints;
+    public Queue <Vector3> queuePointsToStart;
+    public Queue <Vector3> queuePointsToEnd;
+    public Queue <Vector3> queuePointsToParking;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         CarsClass = MainCamera.GetComponent <Cars> ();
-        queuePoints = new Queue <Vector3> ();
+        queuePointsToStart = new Queue <Vector3> ();
+        queuePointsToEnd = new Queue <Vector3> ();
+        queuePointsToParking = new Queue <Vector3> ();
     }
 
     private void Start() {
-        // Debug.Log("Start: (" + queuePoints.Peek().x + " : " + queuePoints.Peek().z + ")");
-        transform.position = queuePoints.Dequeue();
+        transform.position = queuePointsToStart.Dequeue();
     }
 
     private void FixedUpdate() {
@@ -35,13 +39,41 @@ public class CarObject : MonoBehaviour {
             }
             else vertexIsActive = false;
         }
-        if (!vertexIsActive) {
-            if (queuePoints.Count > 0) {
-                // Debug.Log("Next: (" + queuePoints.Peek().x + " : " + queuePoints.Peek().z + ")");
-                vertexTo = queuePoints.Dequeue();
-                vertexIsActive = true;
+        if (stage1) {
+            if (!vertexIsActive) {
+                if (queuePointsToStart.Count > 0) {
+                    vertexTo = queuePointsToStart.Dequeue();
+                    vertexIsActive = true;
+                }
+                else {
+                    stage1 = false;
+                    stage2 = true;
+                }
             }
-            else CarsClass.DeleteObject(gameObject);
+        }
+        else if (stage2) {
+            if (!vertexIsActive) {
+                if (queuePointsToEnd.Count > 0) {
+                    vertexTo = queuePointsToEnd.Dequeue();
+                    vertexIsActive = true;
+                }
+                else {
+                    stage2 = false;
+                    stage3 = true;
+                }
+            }
+        }
+        else if (stage3) {
+            if (!vertexIsActive) {
+                if (queuePointsToParking.Count > 0) {
+                    vertexTo = queuePointsToParking.Dequeue();
+                    vertexIsActive = true;
+                }
+                else stage3 = false;
+            }
+        }
+        else {
+            CarsClass.DeleteObject(gameObject);
         }
     }
 }

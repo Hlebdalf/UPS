@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class GenerationCommerces : MonoBehaviour {
+public class GenerationParkings : MonoBehaviour {
     private struct Block {
         public int minI;
         public List <long> priority;
         public List <Vector3> point;
         public List <float> rotate;
         public List <int> roadIdx;
-        public List <int> typeHouse;
 
         public Block(int minI) {
             this.minI = minI;
@@ -18,7 +17,6 @@ public class GenerationCommerces : MonoBehaviour {
             this.point = new List <Vector3> ();
             this.rotate = new List <float> ();
             this.roadIdx = new List <int> ();
-            this.typeHouse = new List <int> ();
         }
     }
 
@@ -41,22 +39,21 @@ public class GenerationCommerces : MonoBehaviour {
         SqrtDecomp = new List <Block> ();
     }
 
-    private void BuildBlock(long priority, Vector3 point, float rotate, int roadIdx, int typeHouse) {
+    private void BuildBlock(long priority, Vector3 point, float rotate, int roadIdx) {
         Block newBlock = new Block(0);
         newBlock.minI = 0;
         newBlock.priority.Add(priority);
         newBlock.point.Add(point);
         newBlock.rotate.Add(rotate);
         newBlock.roadIdx.Add(roadIdx);
-        newBlock.typeHouse.Add(typeHouse);
         SqrtDecomp.Add(newBlock);
     }
 
-    private void AddBlock(long priority, Vector3 point, float rotate, int roadIdx, int typeHouse) {
-        if (SqrtDecomp.Count == 0) BuildBlock(priority, point, rotate, roadIdx, typeHouse);
+    private void AddBlock(long priority, Vector3 point, float rotate, int roadIdx) {
+        if (SqrtDecomp.Count == 0) BuildBlock(priority, point, rotate, roadIdx);
         else {
             Block tmpB = SqrtDecomp[SqrtDecomp.Count - 1];
-            if (tmpB.priority.Count >= sqrtSize) BuildBlock(priority, point, rotate, roadIdx, typeHouse);
+            if (tmpB.priority.Count >= sqrtSize) BuildBlock(priority, point, rotate, roadIdx);
             else {
                 if (priority < tmpB.priority[tmpB.minI])
                     tmpB.minI = tmpB.priority.Count;
@@ -64,25 +61,23 @@ public class GenerationCommerces : MonoBehaviour {
                 tmpB.point.Add(point);
                 tmpB.rotate.Add(rotate);
                 tmpB.roadIdx.Add(roadIdx);
-                tmpB.typeHouse.Add(typeHouse);
                 SqrtDecomp[SqrtDecomp.Count - 1] = tmpB;
             }
         }
     }
 
-    private (Vector3 point, float rotate, int roadIdx, int typeHouse) GetMinBlock() {
+    private (Vector3 point, float rotate, int roadIdx) GetMinBlock() {
         int SqrtDecompMinI = (int)1e9;
         for (int it = 0; it < SqrtDecomp.Count; ++it) {
             if (SqrtDecompMinI >= SqrtDecomp.Count || SqrtDecomp[it].priority[SqrtDecomp[it].minI] < SqrtDecomp[SqrtDecompMinI].priority[SqrtDecomp[SqrtDecompMinI].minI])
                 SqrtDecompMinI = it;
         }
         Block ansBlock = SqrtDecomp[SqrtDecompMinI];
-        (Vector3, float, int, int) ans = (ansBlock.point[ansBlock.minI], ansBlock.rotate[ansBlock.minI], ansBlock.roadIdx[ansBlock.minI], ansBlock.typeHouse[ansBlock.minI]);
+        (Vector3, float, int) ans = (ansBlock.point[ansBlock.minI], ansBlock.rotate[ansBlock.minI], ansBlock.roadIdx[ansBlock.minI]);
         ansBlock.priority.RemoveAt(ansBlock.minI);
         ansBlock.point.RemoveAt(ansBlock.minI);
         ansBlock.rotate.RemoveAt(ansBlock.minI);
         ansBlock.roadIdx.RemoveAt(ansBlock.minI);
-        ansBlock.typeHouse.RemoveAt(ansBlock.minI);
         ansBlock.minI = (int)1e9;
         for (int i = 0; i < ansBlock.priority.Count; ++i) {
             if (ansBlock.minI >= ansBlock.priority.Count || ansBlock.priority[i] < ansBlock.priority[ansBlock.minI])
@@ -154,15 +149,13 @@ public class GenerationCommerces : MonoBehaviour {
 
     public ulong StartGeneration(ulong newSeed) {
         seed = newSeed;
-        DateTimeOffset startDate = DateTimeOffset.Now;
-        DateTimeOffset endDate = startDate.AddSeconds(GenerationClass.timeCommerceBuildGeneration);
-        for (int i = 0; i < RoadsClass.objects.Count && GenerationClass.CheckTime(endDate); ++i) {
+        for (int i = 0; i < RoadsClass.objects.Count; ++i) {
             RoadObject roadObjectClass = RoadsClass.objects[i].GetComponent <RoadObject> ();
             float mainRoadA = roadObjectClass.y1 - roadObjectClass.y2, mainRoadB = roadObjectClass.x2 - roadObjectClass.x1,
                   mainRoadC = roadObjectClass.x1 * roadObjectClass.y2 - roadObjectClass.x2 * roadObjectClass.y1; // main road line
             float len = (float)Math.Sqrt(Math.Pow(roadObjectClass.x1 - roadObjectClass.x2, 2) + Math.Pow(roadObjectClass.y1 - roadObjectClass.y2, 2));
             float angleHouse = roadObjectClass.angle;
-            for (int lenIt = 1; lenIt < len && GenerationClass.CheckTime(endDate); ++lenIt) {
+            for (int lenIt = 1; lenIt < len; ++lenIt) {
                 float posOnRoadX, posOnRoadY;
                 float posOnRoadXv1 = roadObjectClass.x1 + (float)Math.Cos(Math.Atan(mainRoadA / -mainRoadB)) * lenIt;
                 float posOnRoadYv1 = roadObjectClass.y1 + (float)Math.Sin(Math.Atan(mainRoadA / -mainRoadB)) * lenIt;
@@ -180,44 +173,40 @@ public class GenerationCommerces : MonoBehaviour {
                 }
 
                 float normA = -mainRoadB, normB = mainRoadA, normC = -(normA * posOnRoadX + normB * posOnRoadY); // norm
-                int typeHouse1 = BuildsClass.idxsCommerces[(int)(seed % (ulong)BuildsClass.idxsCommerces.Length)];
-                seed = GenerationClass.funcSeed(seed);
-                int typeHouse2 = BuildsClass.idxsCommerces[(int)(seed % (ulong)BuildsClass.idxsCommerces.Length)];
-                seed = GenerationClass.funcSeed(seed);
 
-                float widthHouse1 = (int)BuildsClass.preFubs[typeHouse1].GetComponent <BoxCollider> ().size.x * 0.1f;
-                float lenHouse1 = (int)BuildsClass.preFubs[typeHouse1].GetComponent <BoxCollider> ().size.z * 0.1f;
+                float widthHouse1 = (int)BuildsClass.preFubs[BuildsClass.idxParking].GetComponent <BoxCollider> ().size.x * 0.1f;
+                float lenHouse1 = (int)BuildsClass.preFubs[BuildsClass.idxParking].GetComponent <BoxCollider> ().size.z * 0.1f;
                 float dx1 = (float)Math.Cos(Math.Atan(normA / -normB)) * (lenHouse1 / 2 + 2);
                 float dy1 = (float)Math.Sin(Math.Atan(normA / -normB)) * (lenHouse1 / 2 + 2);
                 Vector3 point1 = RoadsClass.RoundCoodinate(new Vector3(posOnRoadX + dx1, 0, posOnRoadY + dy1));
 
-                AddBlock((int)(seed % 1e9), point1, angleHouse, i, typeHouse1);
+                AddBlock((int)(seed % 1e9), point1, angleHouse, i);
                 seed = GenerationClass.funcSeed(seed);
 
-                float widthHouse2 = (int)BuildsClass.preFubs[typeHouse2].GetComponent <BoxCollider> ().size.x * 0.1f;
-                float lenHouse2 = (int)BuildsClass.preFubs[typeHouse2].GetComponent <BoxCollider> ().size.z * 0.1f;
+                float widthHouse2 = (int)BuildsClass.preFubs[BuildsClass.idxParking].GetComponent <BoxCollider> ().size.x * 0.1f;
+                float lenHouse2 = (int)BuildsClass.preFubs[BuildsClass.idxParking].GetComponent <BoxCollider> ().size.z * 0.1f;
                 float dx2 = (float)Math.Cos(Math.Atan(normA / -normB)) * (lenHouse2 / 2 + 2);
                 float dy2 = (float)Math.Sin(Math.Atan(normA / -normB)) * (lenHouse2 / 2 + 2);
                 Vector3 point2 = RoadsClass.RoundCoodinate(new Vector3(posOnRoadX - dx2, 0, posOnRoadY - dy2));
 
-                AddBlock((int)(seed % 1e9), point2, angleHouse, i, typeHouse2);
+                AddBlock((int)(seed % 1e9), point2, angleHouse, i);
                 seed = GenerationClass.funcSeed(seed);
             }
         }
 
-        while (BuildsClass.commerces.Count < GenerationClass.averageCntCommercesInDistrict * 4) {
+        while (BuildsClass.parkings.Count < GenerationClass.averageCntParkingInDistrict * 4) {
             if (SqrtDecomp.Count == 0) return seed;
-            (Vector3 point, float rotate, int roadIdx, int typeHouse) minBlock = GetMinBlock();
+            (Vector3 point, float rotate, int roadIdx) minBlock = GetMinBlock();
 
             int sum = cntInDistrict[0] + cntInDistrict[1] + cntInDistrict[2] + cntInDistrict[3];
-            if (!(SqrtDecomp.Count == 1 && SqrtDecomp[0].priority.Count <= 4 * GenerationClass.averageCntCommercesInDistrict - sum) &&
+            if (!(SqrtDecomp.Count == 1 && SqrtDecomp[0].priority.Count <= 4 * GenerationClass.averageCntParkingInDistrict - sum) &&
                 cntInDistrict[FieldClass.districts[(int)minBlock.point.x + FieldClass.fieldSizeHalf, (int)minBlock.point.z + FieldClass.fieldSizeHalf]] >=
-                GenerationClass.averageCntCommercesInDistrict) continue;
+                GenerationClass.averageCntParkingInDistrict) continue;
             
             if (FieldClass.objects[(int)minBlock.point.x + FieldClass.fieldSizeHalf, (int)minBlock.point.z + FieldClass.fieldSizeHalf] == null) {
                 float angle = (float)(minBlock.rotate / 57.3);
-                float widthHouse = (int)BuildsClass.preFubs[minBlock.typeHouse].GetComponent <BoxCollider> ().size.x * 0.1f;
-                float lenHouse = (int)BuildsClass.preFubs[minBlock.typeHouse].GetComponent <BoxCollider> ().size.z * 0.1f;
+                float widthHouse = (int)BuildsClass.preFubs[BuildsClass.idxParking].GetComponent <BoxCollider> ().size.x * 0.1f;
+                float lenHouse = (int)BuildsClass.preFubs[BuildsClass.idxParking].GetComponent <BoxCollider> ().size.z * 0.1f;
                 Vector3 side1 = new Vector3(minBlock.point.x + (float)Math.Cos(angle) * (widthHouse / 2), 0, minBlock.point.z + (float)Math.Sin(angle) * (widthHouse / 2));
                 Vector3 side2 = new Vector3(minBlock.point.x - (float)Math.Cos(angle) * (widthHouse / 2), 0, minBlock.point.z - (float)Math.Sin(angle) * (widthHouse / 2));
 
@@ -267,9 +256,9 @@ public class GenerationCommerces : MonoBehaviour {
                 }
 
                 if (!collision) {
-                    BuildsClass.CreateObject(minBlock.point, minBlock.rotate * -1, minBlock.typeHouse, minBlock.roadIdx);
+                    BuildsClass.CreateObject(minBlock.point, minBlock.rotate * -1, BuildsClass.idxParking, minBlock.roadIdx);
                     ++cntInDistrict[FieldClass.districts[(int)minBlock.point.x + FieldClass.fieldSizeHalf, (int)minBlock.point.z + FieldClass.fieldSizeHalf]];
-                    FieldClass.objects[(int)minBlock.point.x + FieldClass.fieldSizeHalf, (int)minBlock.point.z + FieldClass.fieldSizeHalf] = BuildsClass.commerces[BuildsClass.commerces.Count - 1];
+                    FieldClass.objects[(int)minBlock.point.x + FieldClass.fieldSizeHalf, (int)minBlock.point.z + FieldClass.fieldSizeHalf] = BuildsClass.parkings[BuildsClass.parkings.Count - 1];
                 }
             }
         }

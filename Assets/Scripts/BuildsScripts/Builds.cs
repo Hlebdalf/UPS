@@ -12,14 +12,17 @@ public class Builds : MonoBehaviour {
     public int[] idxsDistrict3;
     public int[] idxsDistrict4;
     public int[] idxsCommerces;
+    public int idxParking;
     public List <GameObject> objects;
     public List <GameObject> commerces;
+    public List <GameObject> parkings;
     public List <GameObject> ghostObjects;
     public bool isFollowGhost = false;
 
     private void Start() {
         objects = new List <GameObject> ();
         commerces = new List <GameObject> ();
+        parkings = new List <GameObject> ();
         ghostObjects = new List <GameObject> ();
     }
 
@@ -94,6 +97,19 @@ public class Builds : MonoBehaviour {
 
             commerces[commerces.Count - 1].AddComponent <Rigidbody> ();
             commerces[commerces.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
+        }
+        else if (idxPreFub == idxParking) {
+            parkings.Add(Instantiate(preFubs[idxPreFub], point, Quaternion.Euler(0, rotate, 0)));
+            parkings[parkings.Count - 1].AddComponent <BuildObject> ();
+            BuildObject data = parkings[parkings.Count - 1].GetComponent <BuildObject> ();
+
+            data.x = point.x;
+            data.y = point.z;
+            data.idx = parkings.Count - 1;
+            data.connectedRoad = connectedRoad;
+
+            parkings[parkings.Count - 1].AddComponent <Rigidbody> ();
+            parkings[parkings.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
         }
         else {
             objects.Add(Instantiate(preFubs[idxPreFub], point, Quaternion.Euler(0, rotate, 0)));

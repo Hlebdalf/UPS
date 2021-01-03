@@ -12,11 +12,12 @@ public class Generation : MonoBehaviour {
     private GenerationDistricts GenerationDistrictsClass;
     private GenerationHouses GenerationHousesClass;
     private GenerationCommerces GenerationCommercesClass;
+    private GenerationParkings GenerationParkingsClass;
 
     public ulong seed;
-    public int timeBuild, maxCntRoads;
+    public int timeGeneration, maxCntRoads;
     public int minLenRoads, deltaLenRoads;
-    public int averageCntCommercesInDistrict;
+    public int averageCntCommercesInDistrict, averageCntParkingInDistrict;
     public float timeRoadsBuildGeneration, timeHousesBuildGeneration, timeCommerceBuildGeneration;
 
     private void Awake() {
@@ -28,12 +29,17 @@ public class Generation : MonoBehaviour {
         GenerationDistrictsClass = MainCamera.GetComponent <GenerationDistricts> ();
         GenerationHousesClass = MainCamera.GetComponent <GenerationHouses> ();
         GenerationCommercesClass = MainCamera.GetComponent <GenerationCommerces> ();
+        GenerationParkingsClass = MainCamera.GetComponent <GenerationParkings> ();
     }
 
     private void GenerationGraph() {
         for (int i = 0; i < BuildsClass.objects.Count; ++i) {
             FieldClass.numInGraph.Add(BuildsClass.objects[i], FieldClass.numInGraph.Count);
             FieldClass.objInGraph.Add(FieldClass.objInGraph.Count, BuildsClass.objects[i]);
+        }
+        for (int i = 0; i < BuildsClass.parkings.Count; ++i) {
+            FieldClass.numInGraph.Add(BuildsClass.parkings[i], FieldClass.numInGraph.Count);
+            FieldClass.objInGraph.Add(FieldClass.objInGraph.Count, BuildsClass.parkings[i]);
         }
         for (int i = 0; i < BuildsClass.commerces.Count; ++i) {
             FieldClass.numInGraph.Add(BuildsClass.commerces[i], FieldClass.numInGraph.Count);
@@ -91,11 +97,12 @@ public class Generation : MonoBehaviour {
 
     public void StartGeneration() {
         Debug.Log("Start Generation: " + DateTimeOffset.Now);
-        timeRoadsBuildGeneration = timeBuild * 0.01f;
-        timeCommerceBuildGeneration = timeBuild * 0.14f;
-        timeHousesBuildGeneration = timeBuild * 0.85f;
+        timeRoadsBuildGeneration = timeGeneration * 0.01f;
+        timeCommerceBuildGeneration = timeGeneration * 0.14f;
+        timeHousesBuildGeneration = timeGeneration * 0.85f;
         seed = GenerationRoadsClass.StartGeneration(seed);
         seed = GenerationDistrictsClass.StartGeneration(seed);
+        seed = GenerationParkingsClass.StartGeneration(seed);
         seed = GenerationCommercesClass.StartGeneration(seed);
         seed = GenerationHousesClass.StartGeneration(seed);
         GenerationGraph();

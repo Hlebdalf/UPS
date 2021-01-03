@@ -1144,6 +1144,7 @@ GameObject:
   - component: {fileID: 963194236}
   - component: {fileID: 963194235}
   - component: {fileID: 963194234}
+  - component: {fileID: 963194242}
   - component: {fileID: 963194239}
   - component: {fileID: 963194240}
   m_Layer: 0
@@ -1252,6 +1253,7 @@ MonoBehaviour:
   - {fileID: 949728215149680597, guid: 8f32657259ce3d8479310f72d873674f, type: 3}
   - {fileID: 8567898246088410813, guid: 0e2124edb72e0a1498e5fc5a5a31ff4f, type: 3}
   - {fileID: 1749075254799706076, guid: 133afff8f52c7ef40bd964c5dfb3e779, type: 3}
+  - {fileID: 492048518019192907, guid: aabbea1b779fda5478b8bd571024298c, type: 3}
   preFubsGhost:
   - {fileID: 5518190228735832059, guid: 461a2e8b91c5a5149a3781f5f3d103f6, type: 3}
   - {fileID: 6653774008657410114, guid: 5a9a0c85b7bffb14a91c1a8f82a404e1, type: 3}
@@ -1277,8 +1279,10 @@ MonoBehaviour:
   idxsDistrict3: 0200000003000000
   idxsDistrict4: 0400000007000000
   idxsCommerces: 08000000
+  idxParking: 9
   objects: []
   commerces: []
+  parkings: []
   ghostObjects: []
   isFollowGhost: 0
 --- !u!114 &963194231
@@ -1398,11 +1402,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seed: 9879998966655
-  timeBuild: 6
-  maxCntRoads: 1000
+  timeGeneration: 100
+  maxCntRoads: 100
   minLenRoads: 20
   deltaLenRoads: 20
   averageCntCommercesInDistrict: 8
+  averageCntParkingInDistrict: 2
   timeRoadsBuildGeneration: 0
   timeHousesBuildGeneration: 0
   timeCommerceBuildGeneration: 0
@@ -1466,6 +1471,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70cd00c553099de4d8074da68d4675d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &963194242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce72d7ef8265d614894fb72ea5927c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1306430813
