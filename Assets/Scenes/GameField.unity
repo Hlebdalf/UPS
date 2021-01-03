@@ -1450,12 +1450,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   preFubs:
-  - {fileID: 8387183964844948435, guid: 7a7c3020283585e4198060573b96214f, type: 3}
+  - {fileID: 3285956960065063471, guid: 1b811a0b03cf3d9408d2116f4fa62817, type: 3}
   objects: []
   isStarted: 0
   eps: 0.5
   speed: 10
-  cntCars: 1000
+  cntCars: 10000
 --- !u!114 &963194241
 MonoBehaviour:
   m_ObjectHideFlags: 0
