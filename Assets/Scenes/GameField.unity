@@ -1454,7 +1454,7 @@ MonoBehaviour:
   objects: []
   isStarted: 0
   eps: 0.5
-  speed: 10
+  speed: 8
   cntCars: 10000
 --- !u!114 &963194241
 MonoBehaviour:
