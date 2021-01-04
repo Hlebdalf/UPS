@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7d8e2502a7b58e84199c06d682a2696b
+guid: 688a0da5b1ecd484e8b089ca2c495581
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
@@ -12,7 +12,12 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Disk_Circle.003_LightMaterialMat
+      name: Bumper_Cube.007_BumperMaterial.002Mat
+    second: {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Disk_Circle.003_LightMaterial2Mat
     second: {fileID: 2100000, guid: e48ff0640d3d4934ea7b9742fb049f5f, type: 2}
   - first:
       type: UnityEngine:Material
@@ -42,18 +47,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: ZAZ_Cube.001_CarMaterialMat
-    second: {fileID: 2100000, guid: 44e3e3b39e1663f40a12af2da3ab2f43, type: 2}
+      name: Wheels_Cube_LightMaterial2Mat
+    second: {fileID: 2100000, guid: e48ff0640d3d4934ea7b9742fb049f5f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: ZAZ_Cube.001_FramesMaterialMat
-    second: {fileID: 2100000, guid: c89436170fafde24592fdbdd6a2e99e0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: ZAZ_Cube.001_WindowMaterialMat
-    second: {fileID: 2100000, guid: b61344d86a8e8a2479758c121763945a, type: 2}
+      name: ZAZ_Cube.001_Material.001Mat
+    second: {fileID: 2100000, guid: 77679ac5f5d12074b922359713beeaf7, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

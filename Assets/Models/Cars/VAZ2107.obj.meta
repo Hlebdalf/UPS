@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7d8e2502a7b58e84199c06d682a2696b
+guid: c1d497a9ea25c754292f06417c08b0c4
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
@@ -7,53 +7,48 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Bumper_Cube.007_BumperMaterial.001Mat
+      name: Bumper_Cube.004_BumperMaterialMat
     second: {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Disk_Circle.003_LightMaterialMat
-    second: {fileID: 2100000, guid: e48ff0640d3d4934ea7b9742fb049f5f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Lamps_Circle.004_LampMaterial.001Mat
+      name: Lamp_Cube.001_OrangeLightMaterialMat
     second: {fileID: 2100000, guid: 1c7c15538538aef458cb91711ded5f7c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Lamps_Circle.004_LampMaterialMat
+      name: Lamp_Cube.001_WhiteLightMaterialMat
     second: {fileID: 2100000, guid: 1c7c15538538aef458cb91711ded5f7c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Logo_Cube.008_LightMaterial2Mat
+      name: Lamp_Cube.001_lampMaterialMat
+    second: {fileID: 2100000, guid: 1c7c15538538aef458cb91711ded5f7c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LogoPanel_Cube.002_LogoMaterialMat
     second: {fileID: 2100000, guid: e48ff0640d3d4934ea7b9742fb049f5f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Logo_Cube.008_LogoMat
-    second: {fileID: 2100000, guid: e48ff0640d3d4934ea7b9742fb049f5f, type: 2}
+      name: VAZ2107_Cube_CarMaterialMat
+    second: {fileID: 2100000, guid: 77679ac5f5d12074b922359713beeaf7, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Wheels_Cube_CrabMaterialMat
-    second: {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: ZAZ_Cube.001_CarMaterialMat
-    second: {fileID: 2100000, guid: 44e3e3b39e1663f40a12af2da3ab2f43, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: ZAZ_Cube.001_FramesMaterialMat
-    second: {fileID: 2100000, guid: c89436170fafde24592fdbdd6a2e99e0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: ZAZ_Cube.001_WindowMaterialMat
+      name: VAZ2107_Cube_WindowsMaterialMat
     second: {fileID: 2100000, guid: b61344d86a8e8a2479758c121763945a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wheels_Cube.006_CrabMaterialMat
+    second: {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wheels_Cube.006_LightMaterialMat
+    second: {fileID: 2100000, guid: e48ff0640d3d4934ea7b9742fb049f5f, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
