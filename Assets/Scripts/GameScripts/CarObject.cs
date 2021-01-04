@@ -27,6 +27,16 @@ public class CarObject : MonoBehaviour {
         transform.position = queuePointsToStart.Dequeue();
     }
 
+    IEnumerator DelayAfterStage1() {
+        yield return new WaitForSeconds(1);
+        stage2 = true;
+    }
+
+    IEnumerator DelayAfterStage2() {
+        yield return new WaitForSeconds(1);
+        stage3 = true;
+    }
+
     private void FixedUpdate() {
         if (vertexIsActive) {
             Vector3 vertexFrom = transform.position;
@@ -47,7 +57,7 @@ public class CarObject : MonoBehaviour {
                 }
                 else {
                     stage1 = false;
-                    stage2 = true;
+                    StartCoroutine(DelayAfterStage1());
                 }
             }
         }
@@ -59,7 +69,7 @@ public class CarObject : MonoBehaviour {
                 }
                 else {
                     stage2 = false;
-                    stage3 = true;
+                    StartCoroutine(DelayAfterStage2());
                 }
             }
         }
@@ -69,11 +79,11 @@ public class CarObject : MonoBehaviour {
                     vertexTo = queuePointsToParking.Dequeue();
                     vertexIsActive = true;
                 }
-                else stage3 = false;
+                else {
+                    stage3 = false;
+                    CarsClass.DeleteObject(gameObject);
+                }
             }
-        }
-        else {
-            CarsClass.DeleteObject(gameObject);
         }
     }
 }

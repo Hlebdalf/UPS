@@ -53,7 +53,6 @@ public class Cars : MonoBehaviour {
                     }
                     else {
                         pointsPathToStart.Add(new Vector3(normCrossMainRoadX, 0, normCrossMainRoadY));
-                        pointsPathToStart.Add(new Vector3(objClass.x, 0, objClass.y));
                     }
                 }
                 if (obj.GetComponent <CrossroadObject> ()) {
@@ -77,12 +76,10 @@ public class Cars : MonoBehaviour {
                     float normCrossMainRoadY = -(mainRoadA * normC - normA * mainRoadC) / (mainRoadA * normB - normA * mainRoadB); // rounded coordinate
 
                     if (i == 0) {
-                        pointsPathToEnd.Add(new Vector3(objClass.x, 0, objClass.y));
                         pointsPathToEnd.Add(new Vector3(normCrossMainRoadX, 0, normCrossMainRoadY));
                     }
                     else {
                         pointsPathToEnd.Add(new Vector3(normCrossMainRoadX, 0, normCrossMainRoadY));
-                        pointsPathToEnd.Add(new Vector3(objClass.x, 0, objClass.y));
                     }
                 }
                 if (obj.GetComponent <CrossroadObject> ()) {
@@ -105,7 +102,6 @@ public class Cars : MonoBehaviour {
                     float normCrossMainRoadY = -(mainRoadA * normC - normA * mainRoadC) / (mainRoadA * normB - normA * mainRoadB); // rounded coordinate
 
                     if (i == 0) {
-                        pointsPathToParking.Add(new Vector3(objClass.x, 0, objClass.y));
                         pointsPathToParking.Add(new Vector3(normCrossMainRoadX, 0, normCrossMainRoadY));
                     }
                     else {
