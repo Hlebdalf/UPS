@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8d2497f420bc5264aa8054a4f120d2b7
+guid: 5299e6fc4475e0d4b8e1e7a5a2c62fff
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
@@ -7,8 +7,28 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: defaultMat
-    second: {fileID: 2100000, guid: 6d7cab72480f4b6408ff9b16e7b69208, type: 2}
+      name: Cube.001_Cube.001_ColumnMaterialMat
+    second: {fileID: 2100000, guid: c89436170fafde24592fdbdd6a2e99e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plane.001_Plane.002_WindowsMat
+    second: {fileID: 2100000, guid: b61344d86a8e8a2479758c121763945a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plane.002_Plane.003_WindowsMat
+    second: {fileID: 2100000, guid: b61344d86a8e8a2479758c121763945a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plane_Plane_WindowsMat
+    second: {fileID: 2100000, guid: b61344d86a8e8a2479758c121763945a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SchoolLP_Cube_Material.002Mat
+    second: {fileID: 2100000, guid: cae81912ccf24d649a324d364ac70a33, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

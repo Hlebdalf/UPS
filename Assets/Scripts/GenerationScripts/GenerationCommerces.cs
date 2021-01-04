@@ -180,9 +180,14 @@ public class GenerationCommerces : MonoBehaviour {
                 }
 
                 float normA = -mainRoadB, normB = mainRoadA, normC = -(normA * posOnRoadX + normB * posOnRoadY); // norm
-                int typeHouse1 = BuildsClass.idxsCommerces[(int)(seed % (ulong)BuildsClass.idxsCommerces.Length)];
+                int typeHouse1, typeHouse2;
+
+                if (seed % 100 < 50) typeHouse1 = BuildsClass.idxsCommerces[0];
+                else typeHouse1 = BuildsClass.idxsCommerces[1];
                 seed = GenerationClass.funcSeed(seed);
-                int typeHouse2 = BuildsClass.idxsCommerces[(int)(seed % (ulong)BuildsClass.idxsCommerces.Length)];
+
+                if (seed % 100 < 50) typeHouse2 = BuildsClass.idxsCommerces[0];
+                else typeHouse2 = BuildsClass.idxsCommerces[1];
                 seed = GenerationClass.funcSeed(seed);
 
                 float widthHouse1 = (int)BuildsClass.preFubs[typeHouse1].GetComponent <BoxCollider> ().size.x * 0.1f;
