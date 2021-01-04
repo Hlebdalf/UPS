@@ -7,6 +7,7 @@ public class Generation : MonoBehaviour {
     private GameObject MainCamera;
     private Builds BuildsClass;
     private Roads RoadsClass;
+    private Cars CarsClass;
     private Field FieldClass;
     private GenerationRoads GenerationRoadsClass;
     private GenerationDistricts GenerationDistrictsClass;
@@ -24,6 +25,7 @@ public class Generation : MonoBehaviour {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         BuildsClass = MainCamera.GetComponent <Builds> ();
         RoadsClass = MainCamera.GetComponent <Roads> ();
+        CarsClass = MainCamera.GetComponent <Cars> ();
         FieldClass = MainCamera.GetComponent <Field> ();
         GenerationRoadsClass = MainCamera.GetComponent <GenerationRoads> ();
         GenerationDistrictsClass = MainCamera.GetComponent <GenerationDistricts> ();
@@ -33,6 +35,7 @@ public class Generation : MonoBehaviour {
     }
 
     public void GenerationGraph() {
+        CarsClass.isRegeneration = true;
         FieldClass.numInGraph = new Dictionary <GameObject, int> ();
         FieldClass.objInGraph = new Dictionary <int, GameObject> ();
 
@@ -87,6 +90,7 @@ public class Generation : MonoBehaviour {
                 }
             }
         }
+        CarsClass.isRegeneration = false;
     }
 
     public ulong funcSeed(ulong _seed) {

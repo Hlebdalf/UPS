@@ -10,9 +10,10 @@ public class Cars : MonoBehaviour {
     private Field FieldClass;
 
     public GameObject[] preFubs;
+    public GameObject CheckPreFub;
     public List <GameObject> objects;
-    public bool isStarted = false;
-    public float eps = 0.5f;
+    public bool isStarted = false, isRegeneration = false;
+    public float eps = 0.0001f;
     public float speed = 10;
     public int cntCars = 100;
 
@@ -25,7 +26,7 @@ public class Cars : MonoBehaviour {
     }
 
     private void Update() {
-        if (isStarted && objects.Count < cntCars) {
+        if (isStarted && objects.Count < cntCars && !isRegeneration) {
             (List <GameObject> objectPathToStart, List <GameObject> objectPathToEnd, List <GameObject> objectPathToParking) paths;
             paths.objectPathToStart = new List <GameObject> ();
             paths.objectPathToEnd = new List <GameObject> ();
@@ -58,6 +59,7 @@ public class Cars : MonoBehaviour {
                 if (obj.GetComponent <CrossroadObject> ()) {
                     CrossroadObject objClass = obj.GetComponent <CrossroadObject> ();
                     pointsPathToStart.Add(new Vector3(objClass.x, 0, objClass.y));
+                    pointsPathToStart.Add(new Vector3(objClass.x, 0, objClass.y));
                 }
             }
 
@@ -84,6 +86,7 @@ public class Cars : MonoBehaviour {
                 }
                 if (obj.GetComponent <CrossroadObject> ()) {
                     CrossroadObject objClass = obj.GetComponent <CrossroadObject> ();
+                    pointsPathToEnd.Add(new Vector3(objClass.x, 0, objClass.y));
                     pointsPathToEnd.Add(new Vector3(objClass.x, 0, objClass.y));
                 }
             }
@@ -112,7 +115,122 @@ public class Cars : MonoBehaviour {
                 if (obj.GetComponent <CrossroadObject> ()) {
                     CrossroadObject objClass = obj.GetComponent <CrossroadObject> ();
                     pointsPathToParking.Add(new Vector3(objClass.x, 0, objClass.y));
+                    pointsPathToParking.Add(new Vector3(objClass.x, 0, objClass.y));
                 }
+            }
+
+            for (int i = 1; i < pointsPathToStart.Count - 1; i += 2) {
+                Vector3 From = pointsPathToStart[i], To = pointsPathToStart[i + 1];
+                float mainRoadA = From.z - To.z, mainRoadB = To.x - From.x, mainRoadC = From.x * To.z - To.x * From.z; // line
+                float normFromA = -mainRoadB, normFromB = mainRoadA, normFromC = -(normFromA * From.x + normFromB * From.z); // normFrom
+                float normToA = -mainRoadB, normToB = mainRoadA, normToC = -(normToA * To.x + normToB * To.z); // normTo
+
+                float x = (float)Math.Abs(Math.Cos(Math.Atan(normFromA / -normFromB)) * (0.5f));
+                float y = (float)Math.Abs(Math.Sin(Math.Atan(normFromA / -normFromB)) * (0.5f));
+                float cs = To.x - From.x;
+                float sn = To.z - From.z;
+                if (cs >= 0 && sn >= 0) {
+                    From.x += x;
+                    From.z -= y;
+                    To.x += x;
+                    To.z -= y;
+                }
+                if (cs <= 0 && sn >= 0) {
+                    From.x += x;
+                    From.z += y;
+                    To.x += x;
+                    To.z += y;
+                }
+                if (cs <= 0 && sn <= 0) {
+                    From.x -= x;
+                    From.z += y;
+                    To.x -= x;
+                    To.z += y;
+                }
+                if (cs >= 0 && sn <= 0) {
+                    From.x -= x;
+                    From.z -= y;
+                    To.x -= x;
+                    To.z -= y;
+                }
+                pointsPathToStart[i] = From;
+                pointsPathToStart[i + 1] = To;
+            }
+
+            for (int i = 0; i < pointsPathToEnd.Count - 1; i += 2) {
+                Vector3 From = pointsPathToEnd[i], To = pointsPathToEnd[i + 1];
+                float mainRoadA = From.z - To.z, mainRoadB = To.x - From.x, mainRoadC = From.x * To.z - To.x * From.z; // line
+                float normFromA = -mainRoadB, normFromB = mainRoadA, normFromC = -(normFromA * From.x + normFromB * From.z); // normFrom
+                float normToA = -mainRoadB, normToB = mainRoadA, normToC = -(normToA * To.x + normToB * To.z); // normTo
+
+                float x = (float)Math.Abs(Math.Cos(Math.Atan(normFromA / -normFromB)) * (0.5f));
+                float y = (float)Math.Abs(Math.Sin(Math.Atan(normFromA / -normFromB)) * (0.5f));
+                float cs = To.x - From.x;
+                float sn = To.z - From.z;
+                if (cs >= 0 && sn >= 0) {
+                    From.x += x;
+                    From.z -= y;
+                    To.x += x;
+                    To.z -= y;
+                }
+                if (cs <= 0 && sn >= 0) {
+                    From.x += x;
+                    From.z += y;
+                    To.x += x;
+                    To.z += y;
+                }
+                if (cs <= 0 && sn <= 0) {
+                    From.x -= x;
+                    From.z += y;
+                    To.x -= x;
+                    To.z += y;
+                }
+                if (cs >= 0 && sn <= 0) {
+                    From.x -= x;
+                    From.z -= y;
+                    To.x -= x;
+                    To.z -= y;
+                }
+                pointsPathToEnd[i] = From;
+                pointsPathToEnd[i + 1] = To;
+            }
+
+            for (int i = 0; i < pointsPathToParking.Count - 2; i += 2) {
+                Vector3 From = pointsPathToParking[i], To = pointsPathToParking[i + 1];
+                float mainRoadA = From.z - To.z, mainRoadB = To.x - From.x, mainRoadC = From.x * To.z - To.x * From.z; // line
+                float normFromA = -mainRoadB, normFromB = mainRoadA, normFromC = -(normFromA * From.x + normFromB * From.z); // normFrom
+                float normToA = -mainRoadB, normToB = mainRoadA, normToC = -(normToA * To.x + normToB * To.z); // normTo
+
+                float x = (float)Math.Abs(Math.Cos(Math.Atan(normFromA / -normFromB)) * (0.5f));
+                float y = (float)Math.Abs(Math.Sin(Math.Atan(normFromA / -normFromB)) * (0.5f));
+                float cs = To.x - From.x;
+                float sn = To.z - From.z;
+                if (cs >= 0 && sn >= 0) {
+                    From.x += x;
+                    From.z -= y;
+                    To.x += x;
+                    To.z -= y;
+                }
+                if (cs <= 0 && sn >= 0) {
+                    From.x += x;
+                    From.z += y;
+                    To.x += x;
+                    To.z += y;
+                }
+                if (cs <= 0 && sn <= 0) {
+                    From.x -= x;
+                    From.z += y;
+                    To.x -= x;
+                    To.z += y;
+                }
+                if (cs >= 0 && sn <= 0) {
+                    From.x -= x;
+                    From.z -= y;
+                    To.x -= x;
+                    To.z -= y;
+                }
+                pointsPathToParking[i] = From;
+                pointsPathToParking[i + 1] = To;
             }
 
             objects.Add(Instantiate(preFubs[(int)UnityEngine.Random.Range(0, preFubs.Length - 0.01f)], pointsPathToStart[0], Quaternion.Euler(0, 0, 0)));

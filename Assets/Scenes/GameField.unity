@@ -1409,7 +1409,7 @@ MonoBehaviour:
   minLenRoads: 20
   deltaLenRoads: 20
   averageCntCommercesInDistrict: 8
-  averageCntParkingInDistrict: 2
+  averageCntParkingInDistrict: 3
   timeRoadsBuildGeneration: 0
   timeHousesBuildGeneration: 0
   timeCommerceBuildGeneration: 0
@@ -1461,6 +1461,8 @@ MonoBehaviour:
   - {fileID: 6537444257381803074, guid: 7ebc462f37b4e2943ac193b3154c9bd1, type: 3}
   - {fileID: 318172683419472834, guid: e0cda5f518a47d1489f3da6a75b0a65d, type: 3}
   - {fileID: 25634504061648533, guid: 1c5fbed7a48df70479b6177733696ff0, type: 3}
+  CheckPreFub: {fileID: 6020420259239268296, guid: 3f6b4d036839f6b45b28d5cca50a7d89,
+    type: 3}
   objects: []
   isStarted: 0
   eps: 0.5
