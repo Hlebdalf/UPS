@@ -132,6 +132,7 @@ public class BuildGhostObject : MonoBehaviour {
         }
 
         if (ansId == -1 && ansIdGhost == -1) {
+            connectedRoad = -1;
             isConnected = false;
             return (point, 0);
         }
@@ -156,6 +157,7 @@ public class BuildGhostObject : MonoBehaviour {
                 point.z = normCrossMainRoadY - y;
                 rotate = RoundRotateOnRoad(dataRoad.x1, dataRoad.y1, dataRoad.x2, dataRoad.y2);
             }
+            connectedRoad = ansId;
         }
         else {
             RoadGhostObject dataRoad = RoadsClass.ghostObjects[ansIdGhost].GetComponent <RoadGhostObject> ();
@@ -177,6 +179,7 @@ public class BuildGhostObject : MonoBehaviour {
                 point.z = normCrossMainRoadY - y;
                 rotate = RoundRotateOnRoad(dataRoad.x1, dataRoad.y1, dataRoad.x2, dataRoad.y2);
             }
+            connectedRoad = -1;
         }
 
         point = RoundCoordinate(point);

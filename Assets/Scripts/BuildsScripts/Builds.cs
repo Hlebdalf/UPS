@@ -4,6 +4,11 @@ using System;
 using UnityEngine;
 
 public class Builds : MonoBehaviour {
+    private GameObject MainCamera;
+    private Generation GenerationClass;
+    private Roads RoadsClass;
+    private Field FieldClass;
+
     public GameObject[] preFubs;
     public GameObject[] preFubsGhost;
     public GameObject[] preFubsBuildProcess;
@@ -17,9 +22,14 @@ public class Builds : MonoBehaviour {
     public List <GameObject> commerces;
     public List <GameObject> parkings;
     public List <GameObject> ghostObjects;
+    public bool isPressEnter = false;
     public bool isFollowGhost = false;
 
-    private void Start() {
+    private void Awake() {
+        MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        GenerationClass = MainCamera.GetComponent <Generation> ();
+        RoadsClass = MainCamera.GetComponent <Roads> ();
+        FieldClass = MainCamera.GetComponent <Field> ();
         objects = new List <GameObject> ();
         commerces = new List <GameObject> ();
         parkings = new List <GameObject> ();
@@ -27,9 +37,23 @@ public class Builds : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter)) {
-            CreateObjects();
+        if ((Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter)) && !isPressEnter) {
+            isPressEnter = true;
         }
+        if (isPressEnter && !RoadsClass.isPressEnter) {
+            if (ghostObjects.Count > 0) {
+                CreateObjects();
+            }
+            else {
+                StartCoroutine(DelayReGen());
+                isPressEnter = false;
+            }
+        }
+    }
+
+    IEnumerator DelayReGen() {
+        yield return new WaitForSeconds(FieldClass.timeBuildProcess + 1);
+        GenerationClass.GenerationGraph();
     }
 
     private int ToIndex(string name) {
@@ -80,7 +104,7 @@ public class Builds : MonoBehaviour {
         }
     }
 
-    public void CreateObject(Vector3 point, float rotate, int idxPreFub, int connectedRoad) {
+    public void CreateObject(Vector3 point, float rotate, int idxPreFub, int connectedRoad, bool isGeneration = true) {
         bool p = false;
         for (int i = 0; i < idxsCommerces.Length; ++i) {
             if (idxsCommerces[i] == idxPreFub) p = true;
@@ -93,7 +117,12 @@ public class Builds : MonoBehaviour {
             data.x = point.x;
             data.y = point.z;
             data.idx = commerces.Count - 1;
-            data.connectedRoad = connectedRoad;
+            if (connectedRoad == -1) {
+                data.connectedRoad = RoadsClass.objects.Count - 1;
+            }
+            else {
+                data.connectedRoad = connectedRoad;
+            }
 
             commerces[commerces.Count - 1].AddComponent <Rigidbody> ();
             commerces[commerces.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
@@ -106,7 +135,12 @@ public class Builds : MonoBehaviour {
             data.x = point.x;
             data.y = point.z;
             data.idx = parkings.Count - 1;
-            data.connectedRoad = connectedRoad;
+            if (connectedRoad == -1) {
+                data.connectedRoad = RoadsClass.objects.Count - 1;
+            }
+            else {
+                data.connectedRoad = connectedRoad;
+            }
 
             parkings[parkings.Count - 1].AddComponent <Rigidbody> ();
             parkings[parkings.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
@@ -119,7 +153,12 @@ public class Builds : MonoBehaviour {
             data.x = point.x;
             data.y = point.z;
             data.idx = objects.Count - 1;
-            data.connectedRoad = connectedRoad;
+            if (connectedRoad == -1) {
+                data.connectedRoad = RoadsClass.objects.Count - 1;
+            }
+            else {
+                data.connectedRoad = connectedRoad;
+            }
 
             objects[objects.Count - 1].AddComponent <Rigidbody> ();
             objects[objects.Count - 1].GetComponent <Rigidbody> ().useGravity = false;

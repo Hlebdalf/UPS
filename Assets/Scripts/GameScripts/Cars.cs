@@ -132,6 +132,7 @@ public class Cars : MonoBehaviour {
     }
     
     private (List <int> parent, List <float> dist) Dijkstra(int start) {
+        List <(int v, float w)>[] graph = FieldClass.graph;
         List <float> dist = new List <float> ();
         List <int> parent = new List <int> ();
         List <bool> used = new List <bool> ();
@@ -147,9 +148,9 @@ public class Cars : MonoBehaviour {
             (float w, int v) p = queueEdge.Min;
             queueEdge.Remove(p);
             used[p.v] = true;
-            for (int i = 0; i < FieldClass.graph[p.v].Count; ++i) {
-                int u = FieldClass.graph[p.v][i].v;
-                float w = FieldClass.graph[p.v][i].w;
+            for (int i = 0; i < graph[p.v].Count; ++i) {
+                int u = graph[p.v][i].v;
+                float w = graph[p.v][i].w;
                 if (!used[u] && dist[u] > p.w + w) {
                     queueEdge.Remove((dist[u], u));
                     dist[u] = p.w + w;

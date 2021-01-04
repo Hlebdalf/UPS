@@ -13,6 +13,7 @@ public class Roads : MonoBehaviour {
     public List <GameObject> objects;
     public List <GameObject> crossroads;
     public List <GameObject> ghostObjects;
+    public bool isPressEnter = false;
     public bool isFollowGhost = false;
     public int idxOverRoad = -1;
     public string RoadType = "";
@@ -38,8 +39,16 @@ public class Roads : MonoBehaviour {
                 }
             }
         }
-        if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter)) {
-            CreateObjects();
+        if ((Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter)) && !isPressEnter) {
+            isPressEnter = true;
+        }
+        if (isPressEnter) {
+            if (ghostObjects.Count > 0) {
+                CreateObjects();
+            }
+            else {
+                isPressEnter = false;
+            }
         }
     }
 

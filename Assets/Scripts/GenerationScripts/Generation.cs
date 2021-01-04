@@ -32,7 +32,10 @@ public class Generation : MonoBehaviour {
         GenerationParkingsClass = MainCamera.GetComponent <GenerationParkings> ();
     }
 
-    private void GenerationGraph() {
+    public void GenerationGraph() {
+        FieldClass.numInGraph = new Dictionary <GameObject, int> ();
+        FieldClass.objInGraph = new Dictionary <int, GameObject> ();
+
         for (int i = 0; i < BuildsClass.objects.Count; ++i) {
             FieldClass.numInGraph.Add(BuildsClass.objects[i], FieldClass.numInGraph.Count);
             FieldClass.objInGraph.Add(FieldClass.objInGraph.Count, BuildsClass.objects[i]);

@@ -1284,6 +1284,7 @@ MonoBehaviour:
   commerces: []
   parkings: []
   ghostObjects: []
+  isPressEnter: 0
   isFollowGhost: 0
 --- !u!114 &963194231
 MonoBehaviour:
@@ -1323,6 +1324,7 @@ MonoBehaviour:
   objects: []
   crossroads: []
   ghostObjects: []
+  isPressEnter: 0
   isFollowGhost: 0
   idxOverRoad: -1
   RoadType: 
@@ -1463,7 +1465,7 @@ MonoBehaviour:
   isStarted: 0
   eps: 0.5
   speed: 8
-  cntCars: 1000
+  cntCars: 10000
 --- !u!114 &963194241
 MonoBehaviour:
   m_ObjectHideFlags: 0
