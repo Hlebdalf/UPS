@@ -6,7 +6,6 @@ using UnityEngine;
 public class CarObject : MonoBehaviour {
     private GameObject MainCamera;
     private Cars CarsClass;
-    private float rotate;
     private Vector3 vertexTo;
     private bool stage1 = true, stage2 = false, stage3 = false;
     private bool vertexIsActive = false;

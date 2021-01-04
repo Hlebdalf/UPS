@@ -10,12 +10,11 @@ public class Cars : MonoBehaviour {
     private Field FieldClass;
 
     public GameObject[] preFubs;
-    public GameObject CheckPreFub;
     public List <GameObject> objects;
     public bool isStarted = false, isRegeneration = false;
     public float eps = 0.0001f;
     public float speed = 10;
-    public int cntCars = 100;
+    public int cntCars = 1000;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
