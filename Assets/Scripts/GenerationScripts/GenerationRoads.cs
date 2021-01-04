@@ -106,7 +106,7 @@ public class GenerationRoads : MonoBehaviour {
             CrossroadObject crossroad = FieldClass.objects[(int)point1.x + FieldClass.fieldSizeHalf, (int)point1.z + FieldClass.fieldSizeHalf].GetComponent <CrossroadObject> ();
             for (int i = 0; i < crossroad.connectedRoads.Count; ++i) {
                 RoadObject tmpRoad = RoadsClass.objects[crossroad.connectedRoads[i]].GetComponent <RoadObject> ();
-                if (Math.Abs(angle - tmpRoad.angle) < 30) return false;
+                if (Math.Abs(angle - tmpRoad.angle) < 40) return false;
             }
             for (int i = 0; i < RoadsClass.objects.Count; ++i) {
                 bool p = true;
