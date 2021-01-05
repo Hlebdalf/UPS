@@ -63,15 +63,21 @@ public class People : MonoBehaviour {
             Vector3 crossSave = pointsPath[0], toSave = pointsPath[1];
             for (int i = 0; i < pointsPath.Count - 2; ++i) {
                 Vector3 from = crossSave, cross1 = toSave, cross2 = toSave, to = pointsPath[i + 2];
-                crossSave = cross1;
+                crossSave = toSave;
                 toSave = to;
 
                 float mainRoadA1 = from.z - cross1.z, mainRoadB1 = cross1.x - from.x, mainRoadC1 = from.x * cross1.z - cross1.x * from.z; // line1
                 float mainRoadA2 = cross2.z - to.z, mainRoadB2 = to.x - cross2.x, mainRoadC2 = cross2.x * to.z - to.x * cross2.z; // line2
 
-                float normA1 = -mainRoadB1, normB1 = mainRoadA1, normC1 = -(normA1 * cross1.x + normB1 * cross1.z); // norm1
-                float x1 = (float)Math.Abs(Math.Cos(Math.Atan(normA1 / -normB1)) * (0.9f));
-                float y1 = (float)Math.Abs(Math.Sin(Math.Atan(normA1 / -normB1)) * (0.9f));
+                float x1, y1;
+                if (mainRoadA1 == 0) {
+                    x1 = 0f;
+                    y1 = 0.45f;
+                }
+                else {
+                    x1 = (float)Math.Abs(Math.Cos(Math.Atan(mainRoadB1 / mainRoadA1)) * (0.9f));
+                    y1 = (float)Math.Abs(Math.Sin(Math.Atan(mainRoadB1 / mainRoadA1)) * (0.9f));
+                }
                 float cs1 = cross1.x - from.x;
                 float sn1 = cross1.z - from.z;
                 if (cs1 >= 0 && sn1 >= 0) {
@@ -99,9 +105,15 @@ public class People : MonoBehaviour {
                     cross1.z -= y1;
                 }
 
-                float normA2 = -mainRoadB2, normB2 = mainRoadA2, normC2 = -(normA2 * cross2.x + normB2 * cross2.z); // norm2
-                float x2 = (float)Math.Abs(Math.Cos(Math.Atan(normA2 / -normB2)) * (0.9f));
-                float y2 = (float)Math.Abs(Math.Sin(Math.Atan(normA2 / -normB2)) * (0.9f));
+                float x2, y2;
+                if (mainRoadA2 == 0) {
+                    x2 = 0f;
+                    y2 = 0.45f;
+                }
+                else {
+                    x2 = (float)Math.Abs(Math.Cos(Math.Atan(mainRoadB2 / mainRoadA2)) * (0.9f));
+                    y2 = (float)Math.Abs(Math.Sin(Math.Atan(mainRoadB2 / mainRoadA2)) * (0.9f));
+                }
                 float cs2 = to.x - cross2.x;
                 float sn2 = to.z - cross2.z;
                 if (cs2 >= 0 && sn2 >= 0) {
@@ -138,10 +150,12 @@ public class People : MonoBehaviour {
                 mainRoadB2 = to.x - cross2.x;
                 mainRoadC2 = cross2.x * to.z - to.x * cross2.z;
 
-                float mainRoad1CrossmainRoad2X = -(mainRoadC1 * mainRoadB2 - mainRoadC2 * mainRoadB1) / (mainRoadA1 * mainRoadB2 - mainRoadA2 * mainRoadB1); // cross coordinate
-                float mainRoad1CrossmainRoad2Y = -(mainRoadA1 * mainRoadC2 - mainRoadA2 * mainRoadC1) / (mainRoadA1 * mainRoadB2 - mainRoadA2 * mainRoadB1); // cross coordinate
+                if (mainRoadA1 * mainRoadB2 - mainRoadA2 * mainRoadB1 != 0) {
+                    float mainRoad1CrossmainRoad2X = -(mainRoadC1 * mainRoadB2 - mainRoadC2 * mainRoadB1) / (mainRoadA1 * mainRoadB2 - mainRoadA2 * mainRoadB1); // cross coordinate
+                    float mainRoad1CrossmainRoad2Y = -(mainRoadA1 * mainRoadC2 - mainRoadA2 * mainRoadC1) / (mainRoadA1 * mainRoadB2 - mainRoadA2 * mainRoadB1); // cross coordinate
 
-                pointsPath[i + 1] = new Vector3(mainRoad1CrossmainRoad2X, 0, mainRoad1CrossmainRoad2Y);
+                    pointsPath[i + 1] = new Vector3(mainRoad1CrossmainRoad2X, 0, mainRoad1CrossmainRoad2Y);
+                }
             }
 
             objects.Add(Instantiate(preFubs[(int)UnityEngine.Random.Range(0, preFubs.Length - 0.01f)], pointsPath[0], Quaternion.Euler(0, 0, 0)));

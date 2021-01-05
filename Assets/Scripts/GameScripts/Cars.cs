@@ -11,6 +11,7 @@ public class Cars : MonoBehaviour {
 
     public GameObject[] preFubs;
     public List <GameObject> objects;
+    public GameObject Checkobject;
     public bool isStarted = false, isRegeneration = false;
     public float eps = 0.0001f;
     public float speed = 10;
@@ -124,8 +125,15 @@ public class Cars : MonoBehaviour {
                 float normFromA = -mainRoadB, normFromB = mainRoadA, normFromC = -(normFromA * From.x + normFromB * From.z); // normFrom
                 float normToA = -mainRoadB, normToB = mainRoadA, normToC = -(normToA * To.x + normToB * To.z); // normTo
 
-                float x = (float)Math.Abs(Math.Cos(Math.Atan(normFromA / -normFromB)) * (0.5f));
-                float y = (float)Math.Abs(Math.Sin(Math.Atan(normFromA / -normFromB)) * (0.5f));
+                float x, y;
+                if (normFromB == 0) {
+                    x = 0;
+                    y = 0.3f;
+                }
+                else {
+                    x = (float)Math.Abs(Math.Cos(Math.Atan(normFromA / -normFromB)) * (0.5f));
+                    y = (float)Math.Abs(Math.Sin(Math.Atan(normFromA / -normFromB)) * (0.5f));
+                }
                 float cs = To.x - From.x;
                 float sn = To.z - From.z;
                 if (cs >= 0 && sn >= 0) {
@@ -162,8 +170,15 @@ public class Cars : MonoBehaviour {
                 float normFromA = -mainRoadB, normFromB = mainRoadA, normFromC = -(normFromA * From.x + normFromB * From.z); // normFrom
                 float normToA = -mainRoadB, normToB = mainRoadA, normToC = -(normToA * To.x + normToB * To.z); // normTo
 
-                float x = (float)Math.Abs(Math.Cos(Math.Atan(normFromA / -normFromB)) * (0.5f));
-                float y = (float)Math.Abs(Math.Sin(Math.Atan(normFromA / -normFromB)) * (0.5f));
+                float x, y;
+                if (normFromB == 0) {
+                    x = 0;
+                    y = 0.3f;
+                }
+                else {
+                    x = (float)Math.Abs(Math.Cos(Math.Atan(normFromA / -normFromB)) * (0.5f));
+                    y = (float)Math.Abs(Math.Sin(Math.Atan(normFromA / -normFromB)) * (0.5f));
+                }
                 float cs = To.x - From.x;
                 float sn = To.z - From.z;
                 if (cs >= 0 && sn >= 0) {
@@ -200,8 +215,15 @@ public class Cars : MonoBehaviour {
                 float normFromA = -mainRoadB, normFromB = mainRoadA, normFromC = -(normFromA * From.x + normFromB * From.z); // normFrom
                 float normToA = -mainRoadB, normToB = mainRoadA, normToC = -(normToA * To.x + normToB * To.z); // normTo
 
-                float x = (float)Math.Abs(Math.Cos(Math.Atan(normFromA / -normFromB)) * (0.5f));
-                float y = (float)Math.Abs(Math.Sin(Math.Atan(normFromA / -normFromB)) * (0.5f));
+                float x, y;
+                if (normFromB == 0) {
+                    x = 0;
+                    y = 0.3f;
+                }
+                else {
+                    x = (float)Math.Abs(Math.Cos(Math.Atan(normFromA / -normFromB)) * (0.5f));
+                    y = (float)Math.Abs(Math.Sin(Math.Atan(normFromA / -normFromB)) * (0.5f));
+                }
                 float cs = To.x - From.x;
                 float sn = To.z - From.z;
                 if (cs >= 0 && sn >= 0) {

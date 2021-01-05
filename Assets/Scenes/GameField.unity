@@ -1466,11 +1466,13 @@ MonoBehaviour:
   - {fileID: 318172683419472834, guid: e0cda5f518a47d1489f3da6a75b0a65d, type: 3}
   - {fileID: 25634504061648533, guid: 1c5fbed7a48df70479b6177733696ff0, type: 3}
   objects: []
+  Checkobject: {fileID: 7725289329472958262, guid: 5e0a84c3bc5d2ba418e2674ee898afe7,
+    type: 3}
   isStarted: 0
   isRegeneration: 0
   eps: 0.5
   speed: 8
-  cntCars: 1000
+  cntCars: 100
 --- !u!114 &963194241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1516,7 +1518,7 @@ MonoBehaviour:
   isRegeneration: 0
   eps: 0.001
   speed: 0.5
-  cntPeople: 1000
+  cntPeople: 100
 --- !u!1 &1306430813
 GameObject:
   m_ObjectHideFlags: 0
