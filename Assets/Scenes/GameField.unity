@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1145,6 +1145,7 @@ GameObject:
   - component: {fileID: 963194235}
   - component: {fileID: 963194234}
   - component: {fileID: 963194242}
+  - component: {fileID: 963194244}
   - component: {fileID: 963194239}
   - component: {fileID: 963194240}
   - component: {fileID: 963194243}
@@ -1409,11 +1410,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seed: 7893021573409
   timeGeneration: 100
-  maxCntRoads: 1000
+  maxCntRoads: 200
   minLenRoads: 20
   deltaLenRoads: 20
-  averageCntCommercesInDistrict: 30
-  averageCntParkingInDistrict: 20
+  averageCntCommercesInDistrict: 10
+  averageCntParkingInDistrict: 2
   timeRoadsBuildGeneration: 0
   timeHousesBuildGeneration: 0
   timeCommerceBuildGeneration: 0
@@ -1527,6 +1528,19 @@ MonoBehaviour:
   eps: 0.001
   speed: 0.5
   cntPeople: 100000
+--- !u!114 &963194244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c450cfbc6ca1f409c53d79d4d54ebc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRegeneration: 0
 --- !u!1 &1306430813
 GameObject:
   m_ObjectHideFlags: 0

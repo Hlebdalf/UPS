@@ -30,11 +30,4 @@ public class Field : MonoBehaviour {
             }
         }
     }
-
-    // private void Update() {
-    //     if (Input.GetMouseButtonDown(0)) {
-    //         Text txt = PeopleClass.PassportCard.GetComponent <Text> ();
-    //         txt.text = "";
-    //     }
-    // }
 }

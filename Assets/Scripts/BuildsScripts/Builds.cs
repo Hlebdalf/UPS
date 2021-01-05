@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Builds : MonoBehaviour {
     private GameObject MainCamera;
-    private Generation GenerationClass;
     private Roads RoadsClass;
     private Field FieldClass;
+    private GenerationGraph GenerationGraphClass;
 
     public GameObject[] preFubs;
     public GameObject[] preFubsGhost;
@@ -27,9 +27,9 @@ public class Builds : MonoBehaviour {
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        GenerationClass = MainCamera.GetComponent <Generation> ();
         RoadsClass = MainCamera.GetComponent <Roads> ();
         FieldClass = MainCamera.GetComponent <Field> ();
+        GenerationGraphClass = MainCamera.GetComponent <GenerationGraph> ();
         objects = new List <GameObject> ();
         commerces = new List <GameObject> ();
         parkings = new List <GameObject> ();
@@ -53,7 +53,7 @@ public class Builds : MonoBehaviour {
 
     IEnumerator DelayReGen() {
         yield return new WaitForSeconds(FieldClass.timeBuildProcess + 1);
-        GenerationClass.GenerationGraph();
+        GenerationGraphClass.StartGeneration();
     }
 
     private int ToIndex(string name) {
