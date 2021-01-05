@@ -31,7 +31,7 @@ public class People : MonoBehaviour {
 
     private void Update() {
         if (isStarted && objects.Count < cntPeople && !GenerationGraphClass.isRegeneration) {
-            (List <GameObject> objectPath, int idxCommerceType) dataGraph;
+            (List <GameObject> objectPath, int idxCommerceType, float dist) dataGraph;
             if ((int)UnityEngine.Random.Range(0, 1.99f) == 0) dataGraph = StartFromHouse();
             else dataGraph = StartFromCommerce();
 
@@ -39,12 +39,14 @@ public class People : MonoBehaviour {
             List <Vector3> pointsPath = ObjectsToPoints(objectPath);
             pointsPath = ShiftRoadVectors(pointsPath);
             int idxCommerceType = dataGraph.idxCommerceType;
+            float dist = dataGraph.dist;
 
             objects.Add(Instantiate(preFubs[(int)UnityEngine.Random.Range(0, preFubs.Length - 0.01f)], pointsPath[0], Quaternion.Euler(0, 0, 0)));
 
             objects[objects.Count - 1].AddComponent <Passport> ();
             Passport PassportClass = objects[objects.Count - 1].GetComponent <Passport> ();
             PassportClass.idxCommerceType = idxCommerceType;
+            PassportClass.dist = dist;
 
             objects[objects.Count - 1].AddComponent <HumanObject> ();
             HumanObject HumanClass = objects[objects.Count - 1].GetComponent <HumanObject> ();
@@ -217,36 +219,52 @@ public class People : MonoBehaviour {
         return parent;
     }
 
-    private (List <GameObject>, int) StartFromHouse() {
+    private (List <GameObject>, int, float) StartFromHouse() {
         GameObject BuildGameObject = BuildsClass.objects[(int)UnityEngine.Random.Range(0, BuildsClass.objects.Count - 0.01f)];
         GameObject CommerceGameObject = BuildsClass.commerces[(int)UnityEngine.Random.Range(0, BuildsClass.commerces.Count - 0.01f)];
         
         List <int> parent = Dijkstra(FieldClass.numInGraph[BuildGameObject]);
 
         List <GameObject> objectPath = new List <GameObject> ();
-        for (int v = FieldClass.numInGraph[CommerceGameObject]; v != -1; v = parent[v]) {
+        objectPath.Add(CommerceGameObject);
+        float dist = 0f;
+        for (int prev = FieldClass.numInGraph[CommerceGameObject], v = parent[prev]; v != -1; prev = v, v = parent[v]) {
             objectPath.Add(FieldClass.objInGraph[v]);
+            for (int j = 0; j < FieldClass.graph[v].Count; ++j) {
+                if (FieldClass.graph[v][j].v == prev) {
+                    dist += FieldClass.graph[v][j].w;
+                    break;
+                }
+            }
             if (FieldClass.objInGraph[v] == BuildGameObject) break;
         }
         objectPath.Reverse();
 
-        return (objectPath, CommerceGameObject.GetComponent <BuildObject> ().idxCommerceType);
+        return (objectPath, CommerceGameObject.GetComponent <BuildObject> ().idxCommerceType, dist);
     }
 
-    private (List <GameObject>, int) StartFromCommerce() {
+    private (List <GameObject>, int, float) StartFromCommerce() {
         GameObject CommerceGameObject = BuildsClass.commerces[(int)UnityEngine.Random.Range(0, BuildsClass.commerces.Count - 0.01f)];
         GameObject BuildGameObject = BuildsClass.objects[(int)UnityEngine.Random.Range(0, BuildsClass.objects.Count - 0.01f)];
         
         List <int> parent = Dijkstra(FieldClass.numInGraph[CommerceGameObject]);
 
         List <GameObject> objectPath = new List <GameObject> ();
-        for (int v = FieldClass.numInGraph[BuildGameObject]; v != -1; v = parent[v]) {
+        objectPath.Add(BuildGameObject);
+        float dist = 0f;
+        for (int prev = FieldClass.numInGraph[BuildGameObject], v = parent[prev]; v != -1; prev = v, v = parent[v]) {
             objectPath.Add(FieldClass.objInGraph[v]);
+            for (int j = 0; j < FieldClass.graph[v].Count; ++j) {
+                if (FieldClass.graph[v][j].v == prev) {
+                    dist += FieldClass.graph[v][j].w;
+                    break;
+                }
+            }
             if (FieldClass.objInGraph[v] == CommerceGameObject) break;
         }
         objectPath.Reverse();
 
-        return (objectPath, CommerceGameObject.GetComponent <BuildObject> ().idxCommerceType);
+        return (objectPath, CommerceGameObject.GetComponent <BuildObject> ().idxCommerceType, dist);
     }
 
     public void StartPeople() {
