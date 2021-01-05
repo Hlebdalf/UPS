@@ -32,14 +32,47 @@ public class Passport : MonoBehaviour {
             age = (int)UnityEngine.Random.Range(5, 99.99f);
             if (age < 7) socialStatus = PeopleClass.socialStatusStorage[0];
             else if (age < 18) socialStatus = PeopleClass.socialStatusStorage[1];
-            else if (age < 23) socialStatus = PeopleClass.socialStatusStorage[2];
-            else if (age < 65) socialStatus = PeopleClass.socialStatusStorage[(int)UnityEngine.Random.Range(3, 4.99f)];
+            else if (age < (int)UnityEngine.Random.Range(18, 27.99f)) socialStatus = PeopleClass.socialStatusStorage[2];
+            else if (age < (int)UnityEngine.Random.Range(65, 70.99f)) socialStatus = PeopleClass.socialStatusStorage[(int)UnityEngine.Random.Range(3, 4.99f)];
             else socialStatus = PeopleClass.socialStatusStorage[5];
         }
         if (idxCommerceType == 1) {
-            age = (int)UnityEngine.Random.Range(7, 23.99f);
+            age = (int)UnityEngine.Random.Range(7, 70.99f);
             if (age <= 18) socialStatus = PeopleClass.socialStatusStorage[1];
-            else socialStatus = PeopleClass.socialStatusStorage[2];
+            else if (age < 30) {
+                age = (int)UnityEngine.Random.Range(30, 70.99f);
+                socialStatus = PeopleClass.socialStatusStorage[3];
+            }
+            else socialStatus = PeopleClass.socialStatusStorage[3];
+        }
+        if (idxCommerceType == 2) {
+            age = (int)UnityEngine.Random.Range(18, 70.99f);
+            if (age <= 23) socialStatus = PeopleClass.socialStatusStorage[2];
+            else if (age < 30) {
+                age = (int)UnityEngine.Random.Range(30, 70.99f);
+                socialStatus = PeopleClass.socialStatusStorage[3];
+            }
+            else socialStatus = PeopleClass.socialStatusStorage[3];
+        }
+        if (idxCommerceType == 3) {
+            age = (int)UnityEngine.Random.Range(23, 70.99f);
+            if (age <= (int)UnityEngine.Random.Range(25, 27.99f)) socialStatus = PeopleClass.socialStatusStorage[2];
+            else socialStatus = PeopleClass.socialStatusStorage[3];
+        }
+        if (idxCommerceType == 4) {
+            age = (int)UnityEngine.Random.Range(5, 70.99f);
+            if (age < 7) socialStatus = PeopleClass.socialStatusStorage[0];
+            else if (age < 18) socialStatus = PeopleClass.socialStatusStorage[1];
+            else if (age < 30) {
+                age = (int)UnityEngine.Random.Range(30, 70.99f);
+                socialStatus = PeopleClass.socialStatusStorage[3];
+            }
+            else socialStatus = PeopleClass.socialStatusStorage[3];
+        }
+        if (idxCommerceType == 5) {
+            age = (int)UnityEngine.Random.Range(18, 70.99f);
+            if (age < (int)UnityEngine.Random.Range(65, 70.99f)) socialStatus = PeopleClass.socialStatusStorage[3];
+            else socialStatus = PeopleClass.socialStatusStorage[5];
         }
         SetName();
         SetSurname();
