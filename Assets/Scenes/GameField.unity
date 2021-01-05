@@ -1258,6 +1258,10 @@ MonoBehaviour:
   - {fileID: 1749075254799706076, guid: 133afff8f52c7ef40bd964c5dfb3e779, type: 3}
   - {fileID: 5880379608572869776, guid: dd0608a9846ae404ab847ad8c83e15f0, type: 3}
   - {fileID: 6520072983919966358, guid: c3fe5dd0f4547424ba8d823f6b91652c, type: 3}
+  - {fileID: 1056886209506687180, guid: 39067c478871f3c45ad8a3093f16f6b9, type: 3}
+  - {fileID: 5031482100196917599, guid: 388c821af97e11d4189e758c31575817, type: 3}
+  - {fileID: 960991834170315469, guid: f0a0b0d607f490847994b6f29f738cc3, type: 3}
+  - {fileID: 7440515908657907770, guid: 2232586ad8c15294f95454cb5fb026ef, type: 3}
   preFubsGhost:
   - {fileID: 5518190228735832059, guid: 461a2e8b91c5a5149a3781f5f3d103f6, type: 3}
   - {fileID: 6653774008657410114, guid: 5a9a0c85b7bffb14a91c1a8f82a404e1, type: 3}
@@ -1270,6 +1274,10 @@ MonoBehaviour:
   - {fileID: 2919370153109583972, guid: 650d6d4a5624cb947b7ca0914d3b3213, type: 3}
   - {fileID: 4372033440164895517, guid: ec5e5dbe86a4def489925ca3319e5212, type: 3}
   - {fileID: 3089107370583585902, guid: 93421c0a136e754408e0e339c6a59a80, type: 3}
+  - {fileID: 2834172888307018206, guid: ef9b41d624d6a8143bf73deb40933b8e, type: 3}
+  - {fileID: 5545033390241161687, guid: c1a910706dd4fc245889e6cfc59dc93e, type: 3}
+  - {fileID: 1521238036435989392, guid: 4cd5c6b208f2c8a45a77ad5d76532d32, type: 3}
+  - {fileID: 7129508470377411386, guid: b3fd1c618a256e44580d3f44e6afcbbf, type: 3}
   preFubsBuildProcess:
   - {fileID: 2096072456896203046, guid: 35c625b164a7e9f459b1c237a9c385ff, type: 3}
   - {fileID: 2096072456896203046, guid: 35c625b164a7e9f459b1c237a9c385ff, type: 3}
@@ -1284,7 +1292,7 @@ MonoBehaviour:
   idxsDistrict2: 0000000001000000
   idxsDistrict3: 0200000003000000
   idxsDistrict4: 0400000007000000
-  idxsCommerces: 080000000a000000
+  idxsCommerces: 080000000a0000000b0000000c0000000d0000000e000000
   idxParking: 9
   objects: []
   commerces: []
@@ -1414,7 +1422,7 @@ MonoBehaviour:
   maxCntRoads: 200
   minLenRoads: 20
   deltaLenRoads: 20
-  averageCntCommercesInDistrict: 10
+  averageCntCommercesInDistrict: 15
   averageCntParkingInDistrict: 2
   timeRoadsBuildGeneration: 0
   timeHousesBuildGeneration: 0

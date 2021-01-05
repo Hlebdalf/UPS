@@ -182,12 +182,20 @@ public class GenerationCommerces : MonoBehaviour {
                 float normA = -mainRoadB, normB = mainRoadA, normC = -(normA * posOnRoadX + normB * posOnRoadY); // norm
                 int typeHouse1, typeHouse2;
 
-                if (seed % 100 < 50) typeHouse1 = BuildsClass.idxsCommerces[0];
-                else typeHouse1 = BuildsClass.idxsCommerces[1];
+                if (seed % 100 < 17) typeHouse1 = BuildsClass.idxsCommerces[0];
+                else if (seed % 100 < 34) typeHouse1 = BuildsClass.idxsCommerces[1];
+                else if (seed % 100 < 50) typeHouse1 = BuildsClass.idxsCommerces[2];
+                else if (seed % 100 < 67) typeHouse1 = BuildsClass.idxsCommerces[3];
+                else if (seed % 100 < 84) typeHouse1 = BuildsClass.idxsCommerces[4];
+                else typeHouse1 = BuildsClass.idxsCommerces[5];
                 seed = GenerationClass.funcSeed(seed);
 
-                if (seed % 100 < 50) typeHouse2 = BuildsClass.idxsCommerces[0];
-                else typeHouse2 = BuildsClass.idxsCommerces[1];
+                if (seed % 100 < 17) typeHouse2 = BuildsClass.idxsCommerces[0];
+                else if (seed % 100 < 34) typeHouse2 = BuildsClass.idxsCommerces[1];
+                else if (seed % 100 < 50) typeHouse2 = BuildsClass.idxsCommerces[2];
+                else if (seed % 100 < 67) typeHouse2 = BuildsClass.idxsCommerces[3];
+                else if (seed % 100 < 84) typeHouse2 = BuildsClass.idxsCommerces[4];
+                else typeHouse2 = BuildsClass.idxsCommerces[5];
                 seed = GenerationClass.funcSeed(seed);
 
                 float widthHouse1 = (int)BuildsClass.preFubs[typeHouse1].GetComponent <BoxCollider> ().size.x * 0.1f;
