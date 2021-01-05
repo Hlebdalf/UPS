@@ -52,7 +52,7 @@ public class HumanObject : MonoBehaviour {
 
     private void OnMouseDown() {
         Text txt = PeopleClass.PassportCard.GetComponent <Text> ();
-        txt.text = PassportClass.nameHuman + " " + PassportClass.surname + "\n" + PassportClass.gender + ", " + PassportClass.age + "\n" +
+        txt.text = PassportClass.nameHuman + " " + PassportClass.surnameHuman + "\n" + PassportClass.gender + ", " + PassportClass.age + "\n" +
                 "Социальный статус: " + PassportClass.socialStatus + "\n" + "Бюджет: " + PassportClass.budget;
     }
 }
