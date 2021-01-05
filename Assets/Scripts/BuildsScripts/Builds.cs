@@ -106,8 +106,12 @@ public class Builds : MonoBehaviour {
 
     public void CreateObject(Vector3 point, float rotate, int idxPreFub, int connectedRoad, bool isGeneration = true) {
         bool p = false;
+        int itCommerce = -1;
         for (int i = 0; i < idxsCommerces.Length; ++i) {
-            if (idxsCommerces[i] == idxPreFub) p = true;
+            if (idxsCommerces[i] == idxPreFub) {
+                itCommerce = i;
+                p = true;
+            }
         }
         if (p) {
             commerces.Add(Instantiate(preFubs[idxPreFub], point, Quaternion.Euler(0, rotate, 0)));
@@ -117,6 +121,7 @@ public class Builds : MonoBehaviour {
             data.x = point.x;
             data.y = point.z;
             data.idx = commerces.Count - 1;
+            data.idxCommerceType = itCommerce;
             if (connectedRoad == -1) {
                 data.connectedRoad = RoadsClass.objects.Count - 1;
             }

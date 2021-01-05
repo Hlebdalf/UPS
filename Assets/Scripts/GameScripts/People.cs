@@ -11,7 +11,9 @@ public class People : MonoBehaviour {
 
     public GameObject[] preFubs;
     public List <GameObject> objects;
+    public string[] socialStatusStorage;
     public GameObject Checkobject;
+    public GameObject PassportCard;
     public bool isStarted = false, isRegeneration = false;
     public float eps = 0.01f;
     public float speed = 1;
@@ -27,11 +29,12 @@ public class People : MonoBehaviour {
 
     private void Update() {
         if (isStarted && objects.Count < cntPeople && !isRegeneration) {
-            List <GameObject> objectPath = new List <GameObject> ();
+            (List <GameObject> objectPath, int idxCommerceType) dataGraph;
+            if ((int)UnityEngine.Random.Range(0, 1.99f) == 0) dataGraph = StartFromHouse();
+            else dataGraph = StartFromCommerce();
 
-            if ((int)UnityEngine.Random.Range(0, 1.99f) == 0) objectPath = StartFromHouse();
-            else objectPath = StartFromCommerce();
-
+            List <GameObject> objectPath = dataGraph.objectPath;
+            int idxCommerceType = dataGraph.idxCommerceType;
             List <Vector3> pointsPath = new List <Vector3> ();
             for (int i = 0; i < objectPath.Count; ++i) {
                 GameObject obj = objectPath[i];
@@ -161,6 +164,7 @@ public class People : MonoBehaviour {
             objects.Add(Instantiate(preFubs[(int)UnityEngine.Random.Range(0, preFubs.Length - 0.01f)], pointsPath[0], Quaternion.Euler(0, 0, 0)));
             objects[objects.Count - 1].AddComponent <HumanObject> ();
             HumanObject humanClass = objects[objects.Count - 1].GetComponent <HumanObject> ();
+            humanClass.idxCommerceType = idxCommerceType;
 
             for (int i = 0; i < pointsPath.Count; ++i) {
                 humanClass.queuePoints.Enqueue(pointsPath[i]);
@@ -199,7 +203,7 @@ public class People : MonoBehaviour {
         return parent;
     }
 
-    private List <GameObject> StartFromHouse() {
+    private (List <GameObject>, int) StartFromHouse() {
         GameObject BuildGameObject = BuildsClass.objects[(int)UnityEngine.Random.Range(0, BuildsClass.objects.Count - 0.01f)];
         GameObject CommerceGameObject = BuildsClass.commerces[(int)UnityEngine.Random.Range(0, BuildsClass.commerces.Count - 0.01f)];
         
@@ -212,10 +216,10 @@ public class People : MonoBehaviour {
         }
         objectPath.Reverse();
 
-        return objectPath;
+        return (objectPath, CommerceGameObject.GetComponent <BuildObject> ().idxCommerceType);
     }
 
-    private List <GameObject> StartFromCommerce() {
+    private (List <GameObject>, int) StartFromCommerce() {
         GameObject CommerceGameObject = BuildsClass.commerces[(int)UnityEngine.Random.Range(0, BuildsClass.commerces.Count - 0.01f)];
         GameObject BuildGameObject = BuildsClass.objects[(int)UnityEngine.Random.Range(0, BuildsClass.objects.Count - 0.01f)];
         
@@ -228,7 +232,7 @@ public class People : MonoBehaviour {
         }
         objectPath.Reverse();
 
-        return objectPath;
+        return (objectPath, CommerceGameObject.GetComponent <BuildObject> ().idxCommerceType);
     }
 
     public void StartPeople() {

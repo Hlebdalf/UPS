@@ -1,8 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Field : MonoBehaviour {
+    private GameObject MainCamera;
+    private People PeopleClass;
+
     public int gridSize, fieldSize, fieldSizeHalf;
     public GameObject[,] objects;
     public int[,] districts;
@@ -13,6 +17,8 @@ public class Field : MonoBehaviour {
     public float timeBuildProcess;
 
     private void Awake() {
+        MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        PeopleClass = MainCamera.GetComponent <People> ();
         objects = new GameObject[fieldSize, fieldSize];
         districts = new int[fieldSize, fieldSize];
         numInGraph = new Dictionary <GameObject, int> ();
@@ -24,4 +30,11 @@ public class Field : MonoBehaviour {
             }
         }
     }
+
+    // private void Update() {
+    //     if (Input.GetMouseButtonDown(0)) {
+    //         Text txt = PeopleClass.PassportCard.GetComponent <Text> ();
+    //         txt.text = "";
+    //     }
+    // }
 }

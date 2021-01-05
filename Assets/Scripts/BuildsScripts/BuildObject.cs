@@ -7,7 +7,7 @@ public class BuildObject : MonoBehaviour {
     private Builds BuildsClass;
 
     public float x, y;
-    public int idx, connectedRoad;
+    public int idx, connectedRoad, idxCommerceType;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
