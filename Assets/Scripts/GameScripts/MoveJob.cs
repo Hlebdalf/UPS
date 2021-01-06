@@ -3,7 +3,7 @@ using UnityEngine.Jobs;
 using Unity.Jobs;
 using Unity.Collections;
 
-public struct CarMoveJob : IJobParallelForTransform  {
+public struct MoveJob : IJobParallelForTransform  {
     public NativeArray <Vector3> moveArray;
     public NativeArray <float> angleArray;
     public int cntMissedFrames;

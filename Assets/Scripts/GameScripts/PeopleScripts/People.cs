@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.Jobs;
+using Unity.Jobs;
+using Unity.Collections;
 
 public class People : MonoBehaviour {
     private GameObject MainCamera;
@@ -9,6 +12,10 @@ public class People : MonoBehaviour {
     private Roads RoadsClass;
     private Field FieldClass;
     private GenerationGraph GenerationGraphClass;
+    private JobHandle handle;
+    private NativeArray <Vector3> moveArray;
+    private NativeArray <float> angleArray;
+    private int cntMissedFrames = 0;
 
     public GameObject[] preFubs;
     public List <GameObject> objects;
@@ -27,6 +34,11 @@ public class People : MonoBehaviour {
         FieldClass = MainCamera.GetComponent <Field> ();
         GenerationGraphClass = MainCamera.GetComponent <GenerationGraph> ();
         objects = new List <GameObject> ();
+    }
+
+    private void OnEnable() {
+        moveArray = new NativeArray <Vector3> (cntPeople, Allocator.Persistent);
+        angleArray = new NativeArray <float> (cntPeople, Allocator.Persistent);
     }
 
     private void Update() {
@@ -56,6 +68,36 @@ public class People : MonoBehaviour {
                 HumanClass.queuePoints.Enqueue(pointsPath[i]);
             }
         }
+    }
+
+    private void FixedUpdate() {
+        if (handle.IsCompleted) {
+            Transform[] transformArray = new Transform[objects.Count];
+            for (int i = 0; i < objects.Count; ++i) {
+                transformArray[i] = objects[i].transform;
+                HumanObject humanObjectClass = objects[i].GetComponent <HumanObject> ();
+                moveArray[i] = humanObjectClass.move;
+                angleArray[i] = humanObjectClass.angle;
+            }
+            TransformAccessArray transformAccessArray = new TransformAccessArray(transformArray);
+
+            MoveJob job = new MoveJob();
+            job.cntMissedFrames = cntMissedFrames;
+            job.moveArray = moveArray;
+            job.angleArray = angleArray;
+
+            handle = job.Schedule(transformAccessArray);
+            handle.Complete();
+
+            transformAccessArray.Dispose();
+            cntMissedFrames = 0;
+        }
+        else ++cntMissedFrames;
+    }
+
+    private void OnDisable() {
+        moveArray.Dispose();
+        angleArray.Dispose();
     }
 
     private List <Vector3> ShiftRoadVectors(List <Vector3> pointsPath) {

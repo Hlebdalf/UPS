@@ -83,7 +83,7 @@ public class Cars : MonoBehaviour {
             }
             TransformAccessArray transformAccessArray = new TransformAccessArray(transformArray);
 
-            CarMoveJob job = new CarMoveJob();
+            MoveJob job = new MoveJob();
             job.cntMissedFrames = cntMissedFrames;
             job.moveArray = moveArray;
             job.angleArray = angleArray;
