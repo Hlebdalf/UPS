@@ -87,4 +87,9 @@ public class CarObject : MonoBehaviour {
             }
         }
     }
+
+    public Vector3 GetMove() {
+        if (stage1 || stage2 || stage3) return move;
+        else return new Vector3(0, 0, 0);
+    }
 }

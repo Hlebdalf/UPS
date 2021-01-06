@@ -78,7 +78,7 @@ public class Cars : MonoBehaviour {
             for (int i = 0; i < objects.Count; ++i) {
                 transformArray[i] = objects[i].transform;
                 CarObject carObjectClass = objects[i].GetComponent <CarObject> ();
-                moveArray[i] = carObjectClass.move;
+                moveArray[i] = carObjectClass.GetMove();
                 angleArray[i] = carObjectClass.angle;
             }
             TransformAccessArray transformAccessArray = new TransformAccessArray(transformArray);
