@@ -52,9 +52,16 @@ public class HumanObject : MonoBehaviour {
 
     private void OnMouseDown() {
         Text txt = PeopleClass.PassportCard.GetComponent <Text> ();
-        txt.text = "Товарищ " + PassportClass.surnameHuman + " " + PassportClass.nameHuman + " " + PassportClass.fatherNameHuman + "\n" +
-                PassportClass.gender + ", " + PassportClass.age + "\n" +
-                "Социальный статус: " + PassportClass.socialStatus + "\n" + "Бюджет: " + PassportClass.budget + "\n" +
-                "Удовлетворённость: " + PassportClass.satisfaction;
+        if (PassportClass.age < 9) txt.text = "Октябрёнок ";
+        if (PassportClass.age <= 14) txt.text = "Пионер ";
+        if (PassportClass.age <= 28) txt.text = "Комсомолец ";
+        else txt.text = "Товарищ ";
+        txt.text += PassportClass.surnameHuman + " " + PassportClass.nameHuman + " " + PassportClass.fatherNameHuman + "\n";
+        txt.text += "Пол: " + PassportClass.gender + ", Возраст: " + PassportClass.age + "\n";
+        txt.text += "Социальный статус: " + PassportClass.socialStatus + "\n";
+        if (PassportClass.age >= 18) txt.text += "Социальный класс: " + PassportClass.socialСlass + "\n";
+        txt.text += "Удовлетворённость: " + PassportClass.satisfaction + "\n";
+        if (PassportClass.age >= 14) txt.text += "Преданность партии: " + PassportClass.loyalty + "\n";
+        if (PassportClass.age >= 5) txt.text += "Бюджет: " + PassportClass.budget;
     }
 }

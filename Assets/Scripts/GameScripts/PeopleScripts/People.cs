@@ -31,7 +31,7 @@ public class People : MonoBehaviour {
 
     private void Update() {
         if (isStarted && objects.Count < cntPeople && !GenerationGraphClass.isRegeneration) {
-            (List <GameObject> objectPath, int idxCommerceType, float dist) dataGraph;
+            (List <GameObject> objectPath, int idxCommerceType, int idxSocialСlass, float dist) dataGraph;
             if ((int)UnityEngine.Random.Range(0, 1.99f) == 0) dataGraph = StartFromHouse();
             else dataGraph = StartFromCommerce();
 
@@ -39,6 +39,7 @@ public class People : MonoBehaviour {
             List <Vector3> pointsPath = ObjectsToPoints(objectPath);
             pointsPath = ShiftRoadVectors(pointsPath);
             int idxCommerceType = dataGraph.idxCommerceType;
+            int idxSocialСlass = dataGraph.idxSocialСlass;
             float dist = dataGraph.dist;
 
             objects.Add(Instantiate(preFubs[(int)UnityEngine.Random.Range(0, preFubs.Length - 0.01f)], pointsPath[0], Quaternion.Euler(0, 0, 0)));
@@ -46,6 +47,7 @@ public class People : MonoBehaviour {
             objects[objects.Count - 1].AddComponent <Passport> ();
             Passport PassportClass = objects[objects.Count - 1].GetComponent <Passport> ();
             PassportClass.idxCommerceType = idxCommerceType;
+            PassportClass.idxSocialСlass = idxSocialСlass;
             PassportClass.dist = dist;
 
             objects[objects.Count - 1].AddComponent <HumanObject> ();
@@ -219,8 +221,16 @@ public class People : MonoBehaviour {
         return parent;
     }
 
-    private (List <GameObject>, int, float) StartFromHouse() {
-        GameObject BuildGameObject = BuildsClass.objects[(int)UnityEngine.Random.Range(0, BuildsClass.objects.Count - 0.01f)];
+    private (List <GameObject>, int, int, float) StartFromHouse() {
+        int buildIt = (int)UnityEngine.Random.Range(0, BuildsClass.objects.Count - 0.01f);
+        int idxPreFub = BuildsClass.objects[buildIt].GetComponent <BuildObject> ().idxPreFub;
+        int idxSocialСlass = -1;
+        if (Array.Exists(BuildsClass.idxsDistrict1, el => el == idxPreFub)) idxSocialСlass = 1;
+        if (Array.Exists(BuildsClass.idxsDistrict2, el => el == idxPreFub)) idxSocialСlass = 2;
+        if (Array.Exists(BuildsClass.idxsDistrict3, el => el == idxPreFub)) idxSocialСlass = 3;
+        if (Array.Exists(BuildsClass.idxsDistrict4, el => el == idxPreFub)) idxSocialСlass = 4;
+
+        GameObject BuildGameObject = BuildsClass.objects[buildIt];
         GameObject CommerceGameObject = BuildsClass.commerces[(int)UnityEngine.Random.Range(0, BuildsClass.commerces.Count - 0.01f)];
         
         List <int> parent = Dijkstra(FieldClass.numInGraph[BuildGameObject]);
@@ -240,12 +250,20 @@ public class People : MonoBehaviour {
         }
         objectPath.Reverse();
 
-        return (objectPath, CommerceGameObject.GetComponent <BuildObject> ().idxCommerceType, dist);
+        return (objectPath, CommerceGameObject.GetComponent <BuildObject> ().idxCommerceType, idxSocialСlass, dist);
     }
 
-    private (List <GameObject>, int, float) StartFromCommerce() {
+    private (List <GameObject>, int, int, float) StartFromCommerce() {
+        int buildIt = (int)UnityEngine.Random.Range(0, BuildsClass.objects.Count - 0.01f);
+        int idxPreFub = BuildsClass.objects[buildIt].GetComponent <BuildObject> ().idxPreFub;
+        int idxSocialСlass = -1;
+        if (Array.Exists(BuildsClass.idxsDistrict1, el => el == idxPreFub)) idxSocialСlass = 1;
+        if (Array.Exists(BuildsClass.idxsDistrict2, el => el == idxPreFub)) idxSocialСlass = 2;
+        if (Array.Exists(BuildsClass.idxsDistrict3, el => el == idxPreFub)) idxSocialСlass = 3;
+        if (Array.Exists(BuildsClass.idxsDistrict4, el => el == idxPreFub)) idxSocialСlass = 4;
+        
         GameObject CommerceGameObject = BuildsClass.commerces[(int)UnityEngine.Random.Range(0, BuildsClass.commerces.Count - 0.01f)];
-        GameObject BuildGameObject = BuildsClass.objects[(int)UnityEngine.Random.Range(0, BuildsClass.objects.Count - 0.01f)];
+        GameObject BuildGameObject = BuildsClass.objects[buildIt];
         
         List <int> parent = Dijkstra(FieldClass.numInGraph[CommerceGameObject]);
 
@@ -264,7 +282,7 @@ public class People : MonoBehaviour {
         }
         objectPath.Reverse();
 
-        return (objectPath, CommerceGameObject.GetComponent <BuildObject> ().idxCommerceType, dist);
+        return (objectPath, CommerceGameObject.GetComponent <BuildObject> ().idxCommerceType, idxSocialСlass, dist);
     }
 
     public void StartPeople() {
