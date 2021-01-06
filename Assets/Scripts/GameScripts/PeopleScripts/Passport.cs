@@ -15,37 +15,112 @@ public class Passport : MonoBehaviour {
     public string socialStatus = "Default";
     public int budget = 0;
     public int satisfaction = 0;
+    public int loyalty = 0;
+    public string socialСlass = "Default";
+    public List <string> preferences;
+    public List <string> notPreferences;
 
     public int idxCommerceType;
+    public int idxSocialСlass;
     public float dist;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         PeopleClass = MainCamera.GetComponent <People> ();
         TextLoaderClass = MainCamera.GetComponent <TextLoader> ();
+        preferences = new List <string> ();
+        notPreferences = new List <string> ();
     }
 
     private void Start() {
         if ((int)UnityEngine.Random.Range(0, 1.99f) == 0) gender = "Муж";
         else gender = "Жен";
+        
+        SetName();
+        SetSurname();
+        SetFatherName();
+        SetSocialStatusAndAge();
+        SetSocialClass();
+        SetBudget();
+        SetSatisfaction();
+        SetPreference();
+    }
+
+    private void SetPreference() {
+        string text = TextLoaderClass.LoadText("Preferences");
+        if (text != "Error") {
+            string[] allPreferences = text.Split(new char[] {'\n'}, System.StringSplitOptions.RemoveEmptyEntries);
+            List <bool> used = new List <bool> ();
+            for (int i = 0; i < allPreferences.Length; ++i) used.Add(false);
+            for (int i = 0; i < (int)UnityEngine.Random.Range(2, 5.99f); ++i) {
+                int it = (int)UnityEngine.Random.Range(0, allPreferences.Length - 0.1f);
+                while (used[it]) it = (int)UnityEngine.Random.Range(0, allPreferences.Length - 0.1f);
+                used[it] = true;
+                preferences.Add(allPreferences[it]);
+            }
+            for (int i = 0; i < (int)UnityEngine.Random.Range(1, 4.99f); ++i) {
+                int it = (int)UnityEngine.Random.Range(0, allPreferences.Length - 0.1f);
+                while (used[it]) it = (int)UnityEngine.Random.Range(0, allPreferences.Length - 0.1f);
+                used[it] = true;
+                notPreferences.Add(allPreferences[it]);
+            }
+        }
+    }
+
+    private void SetSocialClass() {
+        if (idxSocialСlass == 1) socialСlass = "Пролетариат";
+        if (idxSocialСlass == 2) socialСlass = "Бюрократы";
+        if (idxSocialСlass == 3) socialСlass = "Интеллигенция";
+        if (idxSocialСlass == 4) socialСlass = "Буржуи";
+    }
+
+    private void SetSocialStatusAndAge() {
         if (idxCommerceType == 0) {
             age = (int)UnityEngine.Random.Range(5, 99.99f);
             if (age < 7) socialStatus = PeopleClass.socialStatusStorage[0];
             else if (age < 18) socialStatus = PeopleClass.socialStatusStorage[1];
-            else if (age < 23) socialStatus = PeopleClass.socialStatusStorage[2];
-            else if (age < 65) socialStatus = PeopleClass.socialStatusStorage[(int)UnityEngine.Random.Range(3, 4.99f)];
+            else if (age < (int)UnityEngine.Random.Range(18, 27.99f)) socialStatus = PeopleClass.socialStatusStorage[2];
+            else if (age < (int)UnityEngine.Random.Range(65, 70.99f)) socialStatus = PeopleClass.socialStatusStorage[(int)UnityEngine.Random.Range(3, 4.99f)];
             else socialStatus = PeopleClass.socialStatusStorage[5];
         }
         if (idxCommerceType == 1) {
-            age = (int)UnityEngine.Random.Range(7, 23.99f);
+            age = (int)UnityEngine.Random.Range(7, 70.99f);
             if (age <= 18) socialStatus = PeopleClass.socialStatusStorage[1];
-            else socialStatus = PeopleClass.socialStatusStorage[2];
+            else if (age < 30) {
+                age = (int)UnityEngine.Random.Range(30, 70.99f);
+                socialStatus = PeopleClass.socialStatusStorage[3];
+            }
+            else socialStatus = PeopleClass.socialStatusStorage[3];
         }
-        SetName();
-        SetSurname();
-        SetFatherName();
-        SetBudget();
-        SetSatisfaction();
+        if (idxCommerceType == 2) {
+            age = (int)UnityEngine.Random.Range(18, 70.99f);
+            if (age <= 23) socialStatus = PeopleClass.socialStatusStorage[2];
+            else if (age < 30) {
+                age = (int)UnityEngine.Random.Range(30, 70.99f);
+                socialStatus = PeopleClass.socialStatusStorage[3];
+            }
+            else socialStatus = PeopleClass.socialStatusStorage[3];
+        }
+        if (idxCommerceType == 3) {
+            age = (int)UnityEngine.Random.Range(23, 70.99f);
+            if (age <= (int)UnityEngine.Random.Range(25, 27.99f)) socialStatus = PeopleClass.socialStatusStorage[2];
+            else socialStatus = PeopleClass.socialStatusStorage[3];
+        }
+        if (idxCommerceType == 4) {
+            age = (int)UnityEngine.Random.Range(5, 70.99f);
+            if (age < 7) socialStatus = PeopleClass.socialStatusStorage[0];
+            else if (age < 18) socialStatus = PeopleClass.socialStatusStorage[1];
+            else if (age < 30) {
+                age = (int)UnityEngine.Random.Range(30, 70.99f);
+                socialStatus = PeopleClass.socialStatusStorage[3];
+            }
+            else socialStatus = PeopleClass.socialStatusStorage[3];
+        }
+        if (idxCommerceType == 5) {
+            age = (int)UnityEngine.Random.Range(18, 70.99f);
+            if (age < (int)UnityEngine.Random.Range(65, 70.99f)) socialStatus = PeopleClass.socialStatusStorage[3];
+            else socialStatus = PeopleClass.socialStatusStorage[5];
+        }
     }
     
     private void SetSatisfaction() {
@@ -58,12 +133,36 @@ public class Passport : MonoBehaviour {
     }
 
     private void SetBudget() {
-        if (age < 7) budget = (int)UnityEngine.Random.Range(0, 1000);
-        else if (age < 16) budget = (int)UnityEngine.Random.Range(0, 10000);
-        else if (age < 18) budget = (int)UnityEngine.Random.Range(0, 100000);
-        else if (age < 20) budget = (int)UnityEngine.Random.Range(-1000000, 1000000);
-        else if (age < 23) budget = (int)UnityEngine.Random.Range(-10000000, 10000000);
-        else budget = (int)UnityEngine.Random.Range(-10000000, 100000000);
+        if (age < 7) {
+            if (idxSocialСlass == 1) budget = (int)UnityEngine.Random.Range(0, 10);
+            if (idxSocialСlass == 2) budget = (int)UnityEngine.Random.Range(0, 100);
+            if (idxSocialСlass == 3) budget = (int)UnityEngine.Random.Range(0, 1000);
+            if (idxSocialСlass == 4) budget = (int)UnityEngine.Random.Range(0, 10000);
+        }
+        else if (age < 16) {
+            if (idxSocialСlass == 1) budget = (int)UnityEngine.Random.Range(0, 100);
+            if (idxSocialСlass == 2) budget = (int)UnityEngine.Random.Range(0, 1000);
+            if (idxSocialСlass == 3) budget = (int)UnityEngine.Random.Range(0, 10000);
+            if (idxSocialСlass == 4) budget = (int)UnityEngine.Random.Range(0, 100000);
+        }
+        else if (age < 18) {
+            if (idxSocialСlass == 1) budget = (int)UnityEngine.Random.Range(0, 1000);
+            if (idxSocialСlass == 2) budget = (int)UnityEngine.Random.Range(0, 10000);
+            if (idxSocialСlass == 3) budget = (int)UnityEngine.Random.Range(0, 100000);
+            if (idxSocialСlass == 4) budget = (int)UnityEngine.Random.Range(0, 1000000);
+        }
+        else if (age < 23) {
+            if (idxSocialСlass == 1) budget = (int)UnityEngine.Random.Range(-1000, 10000);
+            if (idxSocialСlass == 2) budget = (int)UnityEngine.Random.Range(-10000, 100000);
+            if (idxSocialСlass == 3) budget = (int)UnityEngine.Random.Range(-100000, 1000000);
+            if (idxSocialСlass == 4) budget = (int)UnityEngine.Random.Range(-1000000, 10000000);
+        }
+        else {
+            if (idxSocialСlass == 1) budget = (int)UnityEngine.Random.Range(-10000, 100000);
+            if (idxSocialСlass == 2) budget = (int)UnityEngine.Random.Range(-100000, 1000000);
+            if (idxSocialСlass == 3) budget = (int)UnityEngine.Random.Range(-1000000, 10000000);
+            if (idxSocialСlass == 4) budget = (int)UnityEngine.Random.Range(-10000000, 100000000);
+        }
     }
 
     private void SetName() {

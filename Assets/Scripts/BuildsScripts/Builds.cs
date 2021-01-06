@@ -158,6 +158,7 @@ public class Builds : MonoBehaviour {
             data.x = point.x;
             data.y = point.z;
             data.idx = objects.Count - 1;
+            data.idxPreFub = idxPreFub;
             if (connectedRoad == -1) {
                 data.connectedRoad = RoadsClass.objects.Count - 1;
             }
