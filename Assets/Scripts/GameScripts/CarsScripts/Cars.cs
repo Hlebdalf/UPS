@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.Jobs;
+using Unity.Jobs;
+using Unity.Collections;
 
 public class Cars : MonoBehaviour {
     private GameObject MainCamera;
@@ -9,12 +12,18 @@ public class Cars : MonoBehaviour {
     private Roads RoadsClass;
     private Field FieldClass;
     private GenerationGraph GenerationGraphClass;
+    private List <(List <Vector3> pointsPathToStart, List <Vector3> pointsPathToEnd, List <Vector3> pointsPathToParking)> paths;
+    private List <int> itForQueue;
+
+    private JobHandle handle;
+    private NativeArray <Vector3> vertexTo;
+    private NativeArray <bool> vertexIsActive;
+    private int cntMissedFrames = 0;
 
     public GameObject[] preFubs;
     public List <GameObject> objects;
     public GameObject Checkobject;
     public bool isStarted = false, isRegeneration = false;
-    public float eps = 0.0001f;
     public float speed = 10;
     public int cntCars = 1000;
 
@@ -27,37 +36,81 @@ public class Cars : MonoBehaviour {
         objects = new List <GameObject> ();
     }
 
+    private void OnEnable() {
+        paths = new List <(List <Vector3> pointsPathToStart, List <Vector3> pointsPathToEnd, List <Vector3> pointsPathToParking)> ();
+        itForQueue = new List <int> ();
+        vertexTo = new NativeArray <Vector3> (cntCars, Allocator.Persistent);
+        vertexIsActive = new NativeArray <bool> (cntCars, Allocator.Persistent);
+    }
+
+    IEnumerator DelayAfterStage1() {
+        yield return new WaitForSeconds(1);
+        //stage2 = true;
+    }
+
+    IEnumerator DelayAfterStage2() {
+        yield return new WaitForSeconds(1);
+        //stage3 = true;
+    }
+
     private void Update() {
         if (isStarted && objects.Count < cntCars && !GenerationGraphClass.isRegeneration) {
-            (List <GameObject> objectPathToStart, List <GameObject> objectPathToEnd, List <GameObject> objectPathToParking) paths;
-            paths.objectPathToStart = new List <GameObject> ();
-            paths.objectPathToEnd = new List <GameObject> ();
-            paths.objectPathToParking = new List <GameObject> ();
+            (List <GameObject> objectPathToStart, List <GameObject> objectPathToEnd, List <GameObject> objectPathToParking) localPaths;
+            if ((int)UnityEngine.Random.Range(0, 1.99f) == 0) localPaths = StartFromHouse();
+            else localPaths = StartFromCommerce();
 
-            if ((int)UnityEngine.Random.Range(0, 1.99f) == 0) paths = StartFromHouse();
-            else paths = StartFromCommerce();
-
-            List <Vector3> pointsPathToStart = ObjectsToPoints(paths.objectPathToStart, "ToStart");
-            List <Vector3> pointsPathToEnd = ObjectsToPoints(paths.objectPathToEnd, "ToEnd");
-            List <Vector3> pointsPathToParking = ObjectsToPoints(paths.objectPathToParking, "ToParking");
+            List <Vector3> pointsPathToStart = ObjectsToPoints(localPaths.objectPathToStart, "ToStart");
+            List <Vector3> pointsPathToEnd = ObjectsToPoints(localPaths.objectPathToEnd, "ToEnd");
+            List <Vector3> pointsPathToParking = ObjectsToPoints(localPaths.objectPathToParking, "ToParking");
             pointsPathToStart = ShiftRoadVectors(pointsPathToStart, 1, pointsPathToStart.Count - 1);
             pointsPathToEnd = ShiftRoadVectors(pointsPathToEnd, 0, pointsPathToEnd.Count - 1);
             pointsPathToParking = ShiftRoadVectors(pointsPathToParking, 0, pointsPathToParking.Count - 2);
 
             objects.Add(Instantiate(preFubs[(int)UnityEngine.Random.Range(0, preFubs.Length - 0.01f)], pointsPathToStart[0], Quaternion.Euler(0, 0, 0)));
-            objects[objects.Count - 1].AddComponent <CarObject> ();
-            CarObject carClass = objects[objects.Count - 1].GetComponent <CarObject> ();
-
-            for (int i = 0; i < pointsPathToStart.Count; ++i) {
-                carClass.queuePointsToStart.Enqueue(pointsPathToStart[i]);
-            }
-            for (int i = 0; i < pointsPathToEnd.Count; ++i) {
-                carClass.queuePointsToEnd.Enqueue(pointsPathToEnd[i]);
-            }
-            for (int i = 0; i < pointsPathToParking.Count; ++i) {
-                carClass.queuePointsToParking.Enqueue(pointsPathToParking[i]);
-            }
+            paths.Add((pointsPathToStart, pointsPathToEnd, pointsPathToParking));
+            itForQueue.Add(0);
         }
+    }
+
+    private void FixedUpdate() {
+        if (handle.IsCompleted) {
+            Transform[] transformArray = new Transform[objects.Count];
+            for (int i = 0; i < objects.Count; ++i) {
+                transformArray[i] = objects[i].transform;
+                if (!vertexIsActive[i]) {
+                    if (itForQueue[i] < paths[i].pointsPathToStart.Count) {
+                        vertexTo[i] = paths[i].pointsPathToStart[itForQueue[i]++];
+                    }
+                    else if (itForQueue[i] < paths[i].pointsPathToStart.Count + paths[i].pointsPathToEnd.Count) {
+                        vertexTo[i] = paths[i].pointsPathToEnd[itForQueue[i]++ - paths[i].pointsPathToStart.Count];
+                    }
+                    else if (itForQueue[i] < paths[i].pointsPathToStart.Count + paths[i].pointsPathToEnd.Count + paths[i].pointsPathToParking.Count) {
+                        vertexTo[i] = paths[i].pointsPathToParking[itForQueue[i]++ - paths[i].pointsPathToStart.Count - paths[i].pointsPathToEnd.Count];
+                    }
+                    vertexIsActive[i] = true;
+                }
+            }
+            TransformAccessArray transformAccessArray = new TransformAccessArray(transformArray);
+
+            CarMoveJob job = new CarMoveJob();
+            job.vertexTo = vertexTo;
+            job.vertexIsActive = vertexIsActive;
+            job.speed = speed;
+            job.fixedDeltaTime = Time.fixedDeltaTime;
+            job.cntMissedFrames = cntMissedFrames;
+
+            handle = job.Schedule(transformAccessArray);
+            handle.Complete();
+
+            transformAccessArray.Dispose();
+            cntMissedFrames = 0;
+        }
+        else ++cntMissedFrames;
+    }
+
+    private void OnDisable() {
+        vertexTo.Dispose();
+        vertexIsActive.Dispose();
     }
 
     private List <Vector3> ShiftRoadVectors(List <Vector3> pointsPath, int start, int end) {
