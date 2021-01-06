@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d69653d1695c75d4aa981d239f95404c
+guid: bd04d3e3edf7f4d499df838418a40bd9
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Circle_Circle.001_CrossRoadMat
-    second: {fileID: 2100000, guid: 0a23d23bbb576384497f97942dd8741f, type: 2}
+      name: Border_Cube.002_CrabMaterialMat
+    second: {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sand_Cube_SandMaterialMat
+    second: {fileID: 2100000, guid: 17fa16ba67feffe4395f81d1bbdf590c, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

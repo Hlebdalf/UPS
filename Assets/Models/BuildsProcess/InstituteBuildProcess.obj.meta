@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d69653d1695c75d4aa981d239f95404c
+guid: 6d134753f78c9ff488156084357c33e9
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Circle_Circle.001_CrossRoadMat
-    second: {fileID: 2100000, guid: 0a23d23bbb576384497f97942dd8741f, type: 2}
+      name: defaultMat
+    second: {fileID: 2100000, guid: 17fa16ba67feffe4395f81d1bbdf590c, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
