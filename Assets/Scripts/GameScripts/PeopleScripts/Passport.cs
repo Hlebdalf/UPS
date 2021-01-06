@@ -17,6 +17,8 @@ public class Passport : MonoBehaviour {
     public int satisfaction = 0;
     public int loyalty = 0;
     public string socialСlass = "Default";
+    public List <string> preferences;
+    public List <string> notPreferences;
 
     public int idxCommerceType;
     public int idxSocialСlass;
@@ -26,6 +28,8 @@ public class Passport : MonoBehaviour {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         PeopleClass = MainCamera.GetComponent <People> ();
         TextLoaderClass = MainCamera.GetComponent <TextLoader> ();
+        preferences = new List <string> ();
+        notPreferences = new List <string> ();
     }
 
     private void Start() {
@@ -39,6 +43,28 @@ public class Passport : MonoBehaviour {
         SetSocialClass();
         SetBudget();
         SetSatisfaction();
+        SetPreference();
+    }
+
+    private void SetPreference() {
+        string text = TextLoaderClass.LoadText("Preferences");
+        if (text != "Error") {
+            string[] allPreferences = text.Split(new char[] {'\n'}, System.StringSplitOptions.RemoveEmptyEntries);
+            List <bool> used = new List <bool> ();
+            for (int i = 0; i < allPreferences.Length; ++i) used.Add(false);
+            for (int i = 0; i < (int)UnityEngine.Random.Range(2, 5.99f); ++i) {
+                int it = (int)UnityEngine.Random.Range(0, allPreferences.Length - 0.1f);
+                while (used[it]) it = (int)UnityEngine.Random.Range(0, allPreferences.Length - 0.1f);
+                used[it] = true;
+                preferences.Add(allPreferences[it]);
+            }
+            for (int i = 0; i < (int)UnityEngine.Random.Range(1, 4.99f); ++i) {
+                int it = (int)UnityEngine.Random.Range(0, allPreferences.Length - 0.1f);
+                while (used[it]) it = (int)UnityEngine.Random.Range(0, allPreferences.Length - 0.1f);
+                used[it] = true;
+                notPreferences.Add(allPreferences[it]);
+            }
+        }
     }
 
     private void SetSocialClass() {
