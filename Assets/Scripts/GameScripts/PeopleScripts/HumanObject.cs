@@ -65,13 +65,13 @@ public class HumanObject : MonoBehaviour {
         if (PassportClass.age >= 14) txt.text += "Преданность партии: " + PassportClass.loyalty + "\n";
         if (PassportClass.age >= 5) txt.text += "Бюджет: " + PassportClass.budget + "\n";
         txt.text += "Предпочтения: \n";
-        txt.text += "Любит: ";
+        txt.text += " • Любит: ";
         for (int i = 0; i < PassportClass.preferences.Count; ++i) {
             txt.text += PassportClass.preferences[i];
             if (i + 1 == PassportClass.preferences.Count) txt.text += ".\n";
             else txt.text += ", ";
         }
-        txt.text += "Не любит: ";
+        txt.text += " • Не любит: ";
         for (int i = 0; i < PassportClass.notPreferences.Count; ++i) {
             txt.text += PassportClass.notPreferences[i];
             if (i + 1 == PassportClass.notPreferences.Count) txt.text += ".\n";
