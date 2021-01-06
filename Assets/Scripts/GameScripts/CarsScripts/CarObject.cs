@@ -13,6 +13,8 @@ public class CarObject : MonoBehaviour {
     public Queue <Vector3> queuePointsToStart;
     public Queue <Vector3> queuePointsToEnd;
     public Queue <Vector3> queuePointsToParking;
+    public Vector3 move;
+    public float angle;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -41,9 +43,10 @@ public class CarObject : MonoBehaviour {
             Vector3 vertexFrom = transform.position;
             float dist = (float)Math.Sqrt(Math.Pow(vertexTo.x - vertexFrom.x, 2) + Math.Pow(vertexTo.z - vertexFrom.z, 2));
             if (dist > CarsClass.eps) {
-                Vector3 move = new Vector3((vertexTo.x - vertexFrom.x) / dist, 0, (vertexTo.z - vertexFrom.z) / dist);
-                transform.Find("Car").gameObject.transform.rotation = Quaternion.Euler(0, (float)Math.Atan2(vertexTo.z - vertexFrom.z, vertexTo.x - vertexFrom.x) * -57.3f + 90f, 0);
-                transform.Translate(move * CarsClass.speed * Time.fixedDeltaTime);
+                move = new Vector3((vertexTo.x - vertexFrom.x) / dist, 0, (vertexTo.z - vertexFrom.z) / dist) * CarsClass.speed * Time.fixedDeltaTime;
+                angle = (float)Math.Atan2(vertexTo.z - vertexFrom.z, vertexTo.x - vertexFrom.x) * -57.3f + 90f;
+                // transform.Find("Car").gameObject.transform.rotation = Quaternion.Euler(0, angle, 0);
+                // transform.Translate(move * CarsClass.speed * Time.fixedDeltaTime);
             }
             else vertexIsActive = false;
         }
