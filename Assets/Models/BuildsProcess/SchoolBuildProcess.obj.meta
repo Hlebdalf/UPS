@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d69653d1695c75d4aa981d239f95404c
+guid: c3bd54f539228f94ba404160aff85fe5
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
@@ -7,8 +7,48 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Circle_Circle.001_CrossRoadMat
-    second: {fileID: 2100000, guid: 0a23d23bbb576384497f97942dd8741f, type: 2}
+      name: BorderRef.002_Cube.005_CrabMaterial.002Mat
+    second: {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BorderRef.002_Cube.005_CrabMaterial.003Mat
+    second: {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BorderRef.004_Cube.008_CrabMaterial.002Mat
+    second: {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BorderRef.004_Cube.008_CrabMaterial.003Mat
+    second: {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BorderRef.006_Cube.011_CrabMaterial.002Mat
+    second: {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BorderRef.006_Cube.011_CrabMaterial.003Mat
+    second: {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BorderRef.007_Cube.012_CrabMaterial.002Mat
+    second: {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BorderRef.007_Cube.012_CrabMaterial.003Mat
+    second: {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sand.001_Cube.007_SandMaterial.001Mat
+    second: {fileID: 2100000, guid: 17fa16ba67feffe4395f81d1bbdf590c, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
