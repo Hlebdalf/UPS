@@ -34,7 +34,6 @@ public class CameraMoving : MonoBehaviour {
         //koeff = (Mathf.Sqrt(CameraTransform.position.y/stiffness + startSpeed) + StartYPosition) * speed * Time.deltaTime;
         //koeff = speed * Time.deltaTime;
         koeff = (Mathf.Pow(CameraTransform.position.y - Xshift  * stiffness1, stiffnessPow) / stiffness2 + StartYPosition) * speed * Time.deltaTime;
-        print(koeff);
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) ||
             Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)) {
             if (Input.GetKey(KeyCode.W))

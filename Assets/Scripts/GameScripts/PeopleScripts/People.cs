@@ -72,25 +72,25 @@ public class People : MonoBehaviour {
 
     private void FixedUpdate() {
         if (handle.IsCompleted) {
-            Transform[] transformArray = new Transform[objects.Count];
-            for (int i = 0; i < objects.Count; ++i) {
-                transformArray[i] = objects[i].transform;
-                HumanObject humanObjectClass = objects[i].GetComponent <HumanObject> ();
-                moveArray[i] = humanObjectClass.move;
-                angleArray[i] = humanObjectClass.angle;
-            }
-            TransformAccessArray transformAccessArray = new TransformAccessArray(transformArray);
+            // Transform[] transformArray = new Transform[objects.Count];
+            // for (int i = 0; i < objects.Count; ++i) {
+            //     transformArray[i] = objects[i].transform;
+            //     HumanObject humanObjectClass = objects[i].GetComponent <HumanObject> ();
+            //     moveArray[i] = humanObjectClass.move;
+            //     angleArray[i] = humanObjectClass.angle;
+            // }
+            // TransformAccessArray transformAccessArray = new TransformAccessArray(transformArray);
 
-            MoveJob job = new MoveJob();
-            job.cntMissedFrames = cntMissedFrames;
-            job.moveArray = moveArray;
-            job.angleArray = angleArray;
+            // MoveJob job = new MoveJob();
+            // job.cntMissedFrames = cntMissedFrames;
+            // job.moveArray = moveArray;
+            // job.angleArray = angleArray;
 
-            handle = job.Schedule(transformAccessArray);
-            handle.Complete();
+            // handle = job.Schedule(transformAccessArray);
+            // handle.Complete();
 
-            transformAccessArray.Dispose();
-            cntMissedFrames = 0;
+            // transformAccessArray.Dispose();
+            // cntMissedFrames = 0;
         }
         else ++cntMissedFrames;
     }
