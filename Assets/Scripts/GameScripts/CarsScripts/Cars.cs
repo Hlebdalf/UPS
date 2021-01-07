@@ -14,6 +14,7 @@ public class Cars : MonoBehaviour {
     private GenerationGraph GenerationGraphClass;
     private List <(List <Vector3> pointsPathToStart, List <Vector3> pointsPathToEnd, List <Vector3> pointsPathToParking)> paths;
     private List <int> itForQueue;
+    private List <int> cntFrameForDelay;
 
     private JobHandle handle;
     private NativeArray <Vector3> vertexTo;
@@ -22,7 +23,6 @@ public class Cars : MonoBehaviour {
 
     public GameObject[] preFubs;
     public List <GameObject> objects;
-    public GameObject Checkobject;
     public bool isStarted = false, isRegeneration = false;
     public float speed = 10;
     public int cntCars = 1000;
@@ -39,18 +39,12 @@ public class Cars : MonoBehaviour {
     private void OnEnable() {
         paths = new List <(List <Vector3> pointsPathToStart, List <Vector3> pointsPathToEnd, List <Vector3> pointsPathToParking)> ();
         itForQueue = new List <int> ();
+        cntFrameForDelay = new List <int> ();
         vertexTo = new NativeArray <Vector3> (cntCars, Allocator.Persistent);
         vertexIsActive = new NativeArray <bool> (cntCars, Allocator.Persistent);
-    }
-
-    IEnumerator DelayAfterStage1() {
-        yield return new WaitForSeconds(1);
-        //stage2 = true;
-    }
-
-    IEnumerator DelayAfterStage2() {
-        yield return new WaitForSeconds(1);
-        //stage3 = true;
+        for (int i = 0; i < cntCars; ++i) {
+            vertexIsActive[i] = false;
+        }
     }
 
     private void Update() {
@@ -68,7 +62,9 @@ public class Cars : MonoBehaviour {
 
             objects.Add(Instantiate(preFubs[(int)UnityEngine.Random.Range(0, preFubs.Length - 0.01f)], pointsPathToStart[0], Quaternion.Euler(0, 0, 0)));
             paths.Add((pointsPathToStart, pointsPathToEnd, pointsPathToParking));
+            vertexIsActive[objects.Count - 1] = false;
             itForQueue.Add(0);
+            cntFrameForDelay.Add(0);
         }
     }
 
@@ -80,14 +76,25 @@ public class Cars : MonoBehaviour {
                 if (!vertexIsActive[i]) {
                     if (itForQueue[i] < paths[i].pointsPathToStart.Count) {
                         vertexTo[i] = paths[i].pointsPathToStart[itForQueue[i]++];
+                        vertexIsActive[i] = true;
+                    }
+                    else if (cntFrameForDelay[i] < 100) {
+                        ++cntFrameForDelay[i];
                     }
                     else if (itForQueue[i] < paths[i].pointsPathToStart.Count + paths[i].pointsPathToEnd.Count) {
                         vertexTo[i] = paths[i].pointsPathToEnd[itForQueue[i]++ - paths[i].pointsPathToStart.Count];
+                        vertexIsActive[i] = true;
+                    }
+                    else if (cntFrameForDelay[i] < 200) {
+                        ++cntFrameForDelay[i];
                     }
                     else if (itForQueue[i] < paths[i].pointsPathToStart.Count + paths[i].pointsPathToEnd.Count + paths[i].pointsPathToParking.Count) {
                         vertexTo[i] = paths[i].pointsPathToParking[itForQueue[i]++ - paths[i].pointsPathToStart.Count - paths[i].pointsPathToEnd.Count];
+                        vertexIsActive[i] = true;
                     }
-                    vertexIsActive[i] = true;
+                    else {
+                        DeleteObject(i);
+                    }
                 }
             }
             TransformAccessArray transformAccessArray = new TransformAccessArray(transformArray);
@@ -362,8 +369,16 @@ public class Cars : MonoBehaviour {
         isStarted = true;
     }
 
-    public void DeleteObject(GameObject obj) {
-        objects.Remove(obj);
+    public void DeleteObject(int idx) {
+        GameObject obj = objects[idx];
+        objects.RemoveAt(idx);
+        paths.RemoveAt(idx);
+        itForQueue.RemoveAt(idx);
+        cntFrameForDelay.RemoveAt(idx);
+        for (int i = idx; i < vertexIsActive.Length - 1; ++i) {
+            vertexIsActive[i] = vertexIsActive[i + 1];
+            vertexTo[i] = vertexTo[i + 1];
+        }
         Destroy(obj);
     }
 }

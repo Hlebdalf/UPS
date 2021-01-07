@@ -12,15 +12,18 @@ public class People : MonoBehaviour {
     private Roads RoadsClass;
     private Field FieldClass;
     private GenerationGraph GenerationGraphClass;
+    private List <List <Vector3>> globalPointsPath;
+    private List <int> itForQueue;
+
     private JobHandle handle;
-    private NativeArray <Vector3> moveArray;
-    private NativeArray <float> angleArray;
+    private NativeArray <Vector3> vertexTo;
+    private NativeArray <bool> vertexIsActive;
+    private NativeArray <int> cntTranslate;
     private int cntMissedFrames = 0;
 
     public GameObject[] preFubs;
     public List <GameObject> objects;
     public string[] socialStatusStorage;
-    public GameObject Checkobject;
     public GameObject PassportCard;
     public bool isStarted = false, isRegeneration = false;
     public float eps = 0.01f;
@@ -37,8 +40,15 @@ public class People : MonoBehaviour {
     }
 
     private void OnEnable() {
-        moveArray = new NativeArray <Vector3> (cntPeople, Allocator.Persistent);
-        angleArray = new NativeArray <float> (cntPeople, Allocator.Persistent);
+        globalPointsPath = new List <List <Vector3>> ();
+        itForQueue = new List <int> ();
+        vertexTo = new NativeArray <Vector3> (cntPeople, Allocator.Persistent);
+        vertexIsActive = new NativeArray <bool> (cntPeople, Allocator.Persistent);
+        cntTranslate = new NativeArray <int> (cntPeople, Allocator.Persistent);
+        for (int i = 0; i < cntPeople; ++i) {
+            vertexIsActive[i] = false;
+            cntTranslate[i] = 0;
+        }
     }
 
     private void Update() {
@@ -55,49 +65,57 @@ public class People : MonoBehaviour {
             float dist = dataGraph.dist;
 
             objects.Add(Instantiate(preFubs[(int)UnityEngine.Random.Range(0, preFubs.Length - 0.01f)], pointsPath[0], Quaternion.Euler(0, 0, 0)));
+            globalPointsPath.Add(pointsPath);
+            itForQueue.Add(0);
+            vertexIsActive[objects.Count - 1] = false;
+            cntTranslate[objects.Count - 1] = 0;
 
             objects[objects.Count - 1].AddComponent <Passport> ();
             Passport PassportClass = objects[objects.Count - 1].GetComponent <Passport> ();
             PassportClass.idxCommerceType = idxCommerceType;
             PassportClass.idxSocialСlass = idxSocialСlass;
             PassportClass.dist = dist;
-
-            objects[objects.Count - 1].AddComponent <HumanObject> ();
-            HumanObject HumanClass = objects[objects.Count - 1].GetComponent <HumanObject> ();
-            for (int i = 0; i < pointsPath.Count; ++i) {
-                HumanClass.queuePoints.Enqueue(pointsPath[i]);
-            }
         }
     }
 
     private void FixedUpdate() {
         if (handle.IsCompleted) {
-            // Transform[] transformArray = new Transform[objects.Count];
-            // for (int i = 0; i < objects.Count; ++i) {
-            //     transformArray[i] = objects[i].transform;
-            //     HumanObject humanObjectClass = objects[i].GetComponent <HumanObject> ();
-            //     moveArray[i] = humanObjectClass.move;
-            //     angleArray[i] = humanObjectClass.angle;
-            // }
-            // TransformAccessArray transformAccessArray = new TransformAccessArray(transformArray);
+            Transform[] transformArray = new Transform[objects.Count];
+            for (int i = 0; i < objects.Count; ++i) {
+                transformArray[i] = objects[i].transform;
+                if (!vertexIsActive[i]) {
+                    if (itForQueue[i] < globalPointsPath[i].Count) {
+                        vertexTo[i] = globalPointsPath[i][itForQueue[i]++];
+                        vertexIsActive[i] = true;
+                    }
+                    else {
+                        DeleteObject(i);
+                    }
+                }
+            }
+            TransformAccessArray transformAccessArray = new TransformAccessArray(transformArray);
 
-            // MoveJob job = new MoveJob();
-            // job.cntMissedFrames = cntMissedFrames;
-            // job.moveArray = moveArray;
-            // job.angleArray = angleArray;
+            HumanMoveJob job = new HumanMoveJob();
+            job.vertexTo = vertexTo;
+            job.vertexIsActive = vertexIsActive;
+            job.speed = speed;
+            job.fixedDeltaTime = Time.fixedDeltaTime;
+            job.cntMissedFrames = cntMissedFrames;
+            job.cntTranslate = cntTranslate;
 
-            // handle = job.Schedule(transformAccessArray);
-            // handle.Complete();
+            handle = job.Schedule(transformAccessArray);
+            handle.Complete();
 
-            // transformAccessArray.Dispose();
-            // cntMissedFrames = 0;
+            transformAccessArray.Dispose();
+            cntMissedFrames = 0;
         }
         else ++cntMissedFrames;
     }
 
     private void OnDisable() {
-        moveArray.Dispose();
-        angleArray.Dispose();
+        vertexTo.Dispose();
+        vertexIsActive.Dispose();
+        cntTranslate.Dispose();
     }
 
     private List <Vector3> ShiftRoadVectors(List <Vector3> pointsPath) {
@@ -331,8 +349,16 @@ public class People : MonoBehaviour {
         isStarted = true;
     }
 
-    public void DeleteObject(GameObject obj) {
-        objects.Remove(obj);
+    public void DeleteObject(int idx) {
+        GameObject obj = objects[idx];
+        objects.RemoveAt(idx);
+        globalPointsPath.RemoveAt(idx);
+        itForQueue.RemoveAt(idx);
+        for (int i = idx; i < vertexIsActive.Length - 1; ++i) {
+            vertexTo[i] = vertexTo[i + 1];
+            vertexIsActive[i] = vertexIsActive[i + 1];
+            cntTranslate[i] = cntTranslate[i + 1];
+        }
         Destroy(obj);
     }
 }

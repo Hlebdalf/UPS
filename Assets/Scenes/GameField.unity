@@ -1482,8 +1482,6 @@ MonoBehaviour:
   - {fileID: 318172683419472834, guid: e0cda5f518a47d1489f3da6a75b0a65d, type: 3}
   - {fileID: 25634504061648533, guid: 1c5fbed7a48df70479b6177733696ff0, type: 3}
   objects: []
-  Checkobject: {fileID: 7725289329472958262, guid: 5e0a84c3bc5d2ba418e2674ee898afe7,
-    type: 3}
   isStarted: 0
   isRegeneration: 0
   speed: 8
@@ -1534,14 +1532,12 @@ MonoBehaviour:
   - "\u0420\u0430\u0431\u043E\u0447\u0438\u0439"
   - "\u0411\u0435\u0437\u0440\u0430\u0431\u043E\u0442\u043D\u044B\u0439"
   - "\u041F\u0435\u043D\u0441\u0438\u043E\u043D\u0435\u0440"
-  Checkobject: {fileID: 7725289329472958262, guid: 5e0a84c3bc5d2ba418e2674ee898afe7,
-    type: 3}
   PassportCard: {fileID: 1535729418}
   isStarted: 0
   isRegeneration: 0
   eps: 0.001
   speed: 0.5
-  cntPeople: 10000
+  cntPeople: 1000
 --- !u!114 &963194244
 MonoBehaviour:
   m_ObjectHideFlags: 0

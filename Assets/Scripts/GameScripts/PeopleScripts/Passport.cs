@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Passport : MonoBehaviour {
     private GameObject MainCamera;
@@ -44,6 +45,35 @@ public class Passport : MonoBehaviour {
         SetBudget();
         SetSatisfaction();
         SetPreference();
+    }
+
+    private void OnMouseDown() {
+        Text txt = PeopleClass.PassportCard.GetComponent <Text> ();
+        txt.text = "Дело №" + (PeopleClass.objects.IndexOf(gameObject) + 1) + "\n";
+        if (age < 9) txt.text += "Октябрёнок ";
+        if (age <= 14) txt.text += "Пионер ";
+        if (age <= 28) txt.text += "Комсомолец ";
+        else txt.text += "Товарищ ";
+        txt.text += surnameHuman + " " + nameHuman + " " + fatherNameHuman + "\n";
+        txt.text += "Пол: " + gender + ", Возраст: " + age + "\n";
+        txt.text += "Социальный статус: " + socialStatus + "\n";
+        if (age >= 18) txt.text += "Социальный класс: " + socialСlass + "\n";
+        txt.text += "Удовлетворённость: " + satisfaction + "\n";
+        if (age >= 14) txt.text += "Преданность партии: " + loyalty + "\n";
+        if (age >= 5) txt.text += "Бюджет: " + budget + "\n";
+        txt.text += "Предпочтения: \n";
+        txt.text += " • Любит: ";
+        for (int i = 0; i < preferences.Count; ++i) {
+            txt.text += preferences[i];
+            if (i + 1 == preferences.Count) txt.text += ".\n";
+            else txt.text += ", ";
+        }
+        txt.text += " • Не любит: ";
+        for (int i = 0; i < notPreferences.Count; ++i) {
+            txt.text += notPreferences[i];
+            if (i + 1 == notPreferences.Count) txt.text += ".\n";
+            else txt.text += ", ";
+        }
     }
 
     private void SetPreference() {
