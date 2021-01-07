@@ -4,13 +4,26 @@ using UnityEngine;
 
 public class BuildObject : MonoBehaviour {
     private GameObject MainCamera;
+    private Interface InterfaceClass;
     private Builds BuildsClass;
 
     public float x, y;
-    public int idx, connectedRoad, idxCommerceType = -1, idxPreFub = -1;
+    public int idx, connectedRoad, idxCommerceType = -1, idxPreFub = -1, cntPosters = 0;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        InterfaceClass = MainCamera.GetComponent <Interface> ();
         BuildsClass = MainCamera.GetComponent <Builds> ();
+    }
+
+    private void OnMouseDown() {
+        if (InterfaceClass.isBuildingPosters) {
+            // Добавление рандомного постера
+            ++cntPosters;
+        }
+    }
+
+    public void AddPoster(ulong seed) {
+        // Добавление постера по сиду
     }
 }

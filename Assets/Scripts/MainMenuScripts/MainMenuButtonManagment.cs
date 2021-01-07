@@ -5,32 +5,31 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MainMenuButtonManagment : MonoBehaviour {
-    public Text SeedText;
     private Animator GodAnimator;
-    private string Seed;
+    private string seed;
+
     public GameObject God;
+    public Text SeedText;
 
     private void Start() {
-        GodAnimator = God.GetComponent <Animator> ();   
+        GodAnimator = God.GetComponent <Animator> ();
     }
 
-    public void StartLoadMenu() {
-        //GodAnimator.SetFloat("Reverse", 1);
+    public void StartSettingsMenu() {
         GodAnimator.Play("LoadMenuAnimationForward");
+    }
+
+    public void BackFromSettings() {
+        GodAnimator.Play("LoadMenuAnimationBack");
     }
 
     public void StartExitMenu() {
         GodAnimator.SetFloat("Reverse", 1);
         GodAnimator.Play("ConfirmAnimationForward");
     }
+
     public void ExitGame() {
         Application.Quit();
-    }
-
-    public void BackFromLoad() {
-        //GodAnimator.SetFloat("Reverse", -1);
-        GodAnimator.Play("LoadMenuAnimationBack");
-        
     }
 
     public void CancelExit() {
@@ -43,7 +42,6 @@ public class MainMenuButtonManagment : MonoBehaviour {
     }
 
     public void SeedInput() {
-        Seed = SeedText.GetComponent<Text>().text;
-        print(Seed);
+        seed = SeedText.GetComponent <Text> ().text;
     }
 }
