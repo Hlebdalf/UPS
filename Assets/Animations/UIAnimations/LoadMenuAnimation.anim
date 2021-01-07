@@ -45,7 +45,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0.016666668
-        value: {x: -612.94275, y: -599.1036, z: 1454.352}
+        value: {x: -613.19, y: -599.67, z: 1454.24}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -54,7 +54,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.75
-        value: {x: -610.56, y: -599.1036, z: 1455.24}
+        value: {x: -614.22, y: -599.85, z: 1455.18}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -2068,7 +2068,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0.016666668
-        value: -612.94275
+        value: -613.19
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2077,7 +2077,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.75
-        value: -610.56
+        value: -614.22
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2096,7 +2096,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0.016666668
-        value: -599.1036
+        value: -599.67
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2105,7 +2105,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.75
-        value: -599.1036
+        value: -599.85
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2124,7 +2124,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0.016666668
-        value: 1454.352
+        value: 1454.24
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2133,7 +2133,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.75
-        value: 1455.24
+        value: 1455.18
         inSlope: 0
         outSlope: 0
         tangentMode: 136
