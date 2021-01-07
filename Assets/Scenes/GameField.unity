@@ -1455,8 +1455,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 2
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -1485,7 +1485,7 @@ MonoBehaviour:
   isStarted: 0
   isRegeneration: 0
   speed: 8
-  cntCars: 1000
+  cntCars: 2000
 --- !u!114 &963194241
 MonoBehaviour:
   m_ObjectHideFlags: 0
