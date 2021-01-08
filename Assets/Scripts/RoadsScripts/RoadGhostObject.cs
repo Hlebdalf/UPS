@@ -57,7 +57,7 @@ public class RoadGhostObject : MonoBehaviour {
                 Renderer rend = gameObject.GetComponent <Renderer> ();
                 rend.material.mainTextureScale = new Vector2(1, len / 2);
 
-                if (Input.GetMouseButtonDown(0) && !isCollision) {
+                if (Input.GetMouseButtonDown(0) && !isCollision && CheckAngle()) {
                     gameObject.layer = 0;
                     RoadsClass.isFollowGhost = isFollow = false;
                     RoadsClass.RoadType = "";
@@ -246,5 +246,48 @@ public class RoadGhostObject : MonoBehaviour {
             else ans = new Vector2(data.x2, data.y2);
         }
         return ans;
+    }
+
+    private bool CheckAngle() {
+        if (connectedRoad == -1) return false;
+        float angle = (float)Math.Atan2(y2 - y1, x2 - x1) * 57.3f;
+        print("angle: " + angle);
+        if (FieldClass.objects[(int)Mathf.Round(x1) + FieldClass.fieldSizeHalf, (int)Mathf.Round(y1) + FieldClass.fieldSizeHalf] != null &&
+            FieldClass.objects[(int)Mathf.Round(x1) + FieldClass.fieldSizeHalf, (int)Mathf.Round(y1) + FieldClass.fieldSizeHalf].GetComponent <CrossroadObject> ()) {
+            CrossroadObject crossroadClass = FieldClass.objects[(int)Mathf.Round(x1) + FieldClass.fieldSizeHalf, (int)Mathf.Round(y1) + FieldClass.fieldSizeHalf].GetComponent <CrossroadObject> ();
+            for (int i = 0; i < crossroadClass.connectedRoads.Count; ++i) {
+                RoadObject roadClass = RoadsClass.objects[crossroadClass.connectedRoads[i]].GetComponent <RoadObject> ();
+                float roadX1 = roadClass.x1;
+                float roadY1 = roadClass.y1;
+                float roadX2 = roadClass.x2;
+                float roadY2 = roadClass.y2;
+                if (Math.Sqrt(Math.Pow(x1 - roadX1, 2) + Math.Pow(y1 - roadY1, 2)) > Math.Sqrt(Math.Pow(x1 - roadX2, 2) + Math.Pow(y1 - roadY2, 2))) {
+                    float tmpX = roadX1, tmpY = roadY1;
+                    roadX1 = roadX2;
+                    roadY1 = roadY2;
+                    roadX2 = tmpX;
+                    roadY2 = tmpY;
+                }
+                float angleRoad = Mathf.Atan2(roadY2 - roadY1, roadX2 - roadX1) * 57.3f;
+                if (Math.Abs(angle - angleRoad) < 40) return false;
+            }
+        }
+        else {
+            RoadObject roadClass = RoadsClass.objects[connectedRoad].GetComponent <RoadObject> ();
+            float roadX1 = roadClass.x1;
+            float roadY1 = roadClass.y1;
+            float roadX2 = roadClass.x2;
+            float roadY2 = roadClass.y2;
+            if (Math.Sqrt(Math.Pow(x1 - roadX1, 2) + Math.Pow(y1 - roadY1, 2)) > Math.Sqrt(Math.Pow(x1 - roadX2, 2) + Math.Pow(y1 - roadY2, 2))) {
+                float tmpX = roadX1, tmpY = roadY1;
+                roadX1 = roadX2;
+                roadY1 = roadY2;
+                roadX2 = tmpX;
+                roadY2 = tmpY;
+            }
+            float angleRoad = Mathf.Atan2(roadY2 - roadY1, roadX2 - roadX1) * 57.3f;
+            if (Math.Abs(angle - angleRoad) < 40) return false;
+        }
+        return true;
     }
 }
