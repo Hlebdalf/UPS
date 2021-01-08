@@ -16,7 +16,7 @@ public class Roads : MonoBehaviour {
     public List <GameObject> ghostObjects;
     public bool isPressEnter = false;
     public bool isFollowGhost = false;
-    public int idxOverRoad = -1;
+    public int idxOverRoad = -1, idxOverCrossroad = -1;
     public string RoadType = "";
 
     private void Awake() {
@@ -31,12 +31,21 @@ public class Roads : MonoBehaviour {
     }
 
     private void Update() {
-        if (!isFollowGhost && RoadType != "" && idxOverRoad != -1) {
+        if (!isFollowGhost && RoadType != "") {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
-                if (Input.GetMouseButtonDown(0)) {
-                    CreateGhost(RoadType, RoundCoordinateOnTheRoad(hit.point, idxOverRoad), idxOverRoad);
+                if (Input.GetMouseButtonDown(0) && (idxOverRoad != -1 || idxOverCrossroad != -1)) {
+                    Vector3 point = new Vector3(0, 0, 0);
+                    if (idxOverCrossroad != -1) {
+                        CrossroadObject crossroadClass = crossroads[idxOverCrossroad].GetComponent <CrossroadObject> ();
+                        point.x = crossroadClass.x;
+                        point.z = crossroadClass.y;
+                        idxOverRoad = crossroadClass.connectedRoads[0];
+                    }
+                    else point = RoundCoordinateOnTheRoad(hit.point, idxOverRoad);
+                    CreateGhost(RoadType, point, idxOverRoad);
+                    idxOverRoad = -1;
                 }
             }
         }
@@ -71,18 +80,21 @@ public class Roads : MonoBehaviour {
     }
 
     public Vector3 RoundCoodinate(Vector3 point) {
-        int gridSize = 1;
-        float x = point.x, z = point.z, low, high;
+        // int gridSize = 1;
+        // float x = point.x, z = point.z, low, high;
 
-        low = (int)(x / gridSize) * gridSize;
-        high = low + gridSize;
-        if (Math.Abs(x - low) < Math.Abs(x - high)) point.x = low;
-        else point.x = high;
+        // low = (int)(x / gridSize) * gridSize;
+        // high = low + gridSize;
+        // if (Math.Abs(x - low) < Math.Abs(x - high)) point.x = low;
+        // else point.x = high;
         
-        low = (int)(z / gridSize) * gridSize;
-        high = low + gridSize;
-        if (Math.Abs(z - low) < Math.Abs(z - high)) point.z = low;
-        else point.z = high;
+        // low = (int)(z / gridSize) * gridSize;
+        // high = low + gridSize;
+        // if (Math.Abs(z - low) < Math.Abs(z - high)) point.z = low;
+        // else point.z = high;
+
+        point.x = Mathf.Round(point.x);
+        point.z = Mathf.Round(point.z);
 
         return point;
     }
@@ -252,7 +264,7 @@ public class Roads : MonoBehaviour {
                 crossroadClass.x = point1.x;
                 crossroadClass.y = point1.z;
                 crossroadClass.xr = (int)point1.x;
-                crossroadClass.yr = (int)point1.y;
+                crossroadClass.yr = (int)point1.z;
                 crossroadClass.idx = crossroads.Count - 1;
 
                 crossroadClass.connectedRoads.Add(objects.Count - 1);
