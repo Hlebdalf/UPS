@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 5549794276141712822}
   - component: {fileID: 4868672002890823379}
   - component: {fileID: 3546835572847581874}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube_Cube_RoofMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &5549794276141712822
 Transform:
@@ -90,12 +90,12 @@ GameObject:
   - component: {fileID: 1309766488596100409}
   - component: {fileID: 2417945730995402833}
   - component: {fileID: 2719200501268001025}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Borders_Cube.003_LightMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1309766488596100409
 Transform:
@@ -169,12 +169,12 @@ GameObject:
   - component: {fileID: 7274601178408504622}
   - component: {fileID: 388407009068058495}
   - component: {fileID: 3128652085943650304}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Tube_Cylinder.005_TubeMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &7274601178408504622
 Transform:
@@ -248,12 +248,12 @@ GameObject:
   - component: {fileID: 3124861809044819465}
   - component: {fileID: 8343429633272223789}
   - component: {fileID: 281779621749386610}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube_Cube_Windowsmaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3124861809044819465
 Transform:
@@ -327,12 +327,12 @@ GameObject:
   - component: {fileID: 7038089840606273529}
   - component: {fileID: 2946273128828766208}
   - component: {fileID: 3740419312164069899}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Borders_Cube.003_LightMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &7038089840606273529
 Transform:
@@ -406,12 +406,12 @@ GameObject:
   - component: {fileID: 7799583409548253851}
   - component: {fileID: 9115470699768468500}
   - component: {fileID: 4426184935620968715}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Borders_Cube.003_BorderMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &7799583409548253851
 Transform:
@@ -483,7 +483,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9208204158568213031}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Correct
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -523,12 +523,12 @@ GameObject:
   - component: {fileID: 5333961543322922129}
   - component: {fileID: 3110495940320812328}
   - component: {fileID: 1126301617732365821}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Tube_Cylinder.005_LightMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &5333961543322922129
 Transform:
@@ -602,12 +602,12 @@ GameObject:
   - component: {fileID: 280628209035263263}
   - component: {fileID: 3295580625101917970}
   - component: {fileID: 284303172058653086}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube_Cube_RoofMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &280628209035263263
 Transform:
@@ -681,12 +681,12 @@ GameObject:
   - component: {fileID: 1941997828202388058}
   - component: {fileID: 1373388797239218497}
   - component: {fileID: 2731274841630619283}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube_Cube_FabricMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1941997828202388058
 Transform:
@@ -760,12 +760,12 @@ GameObject:
   - component: {fileID: 1192004558340654090}
   - component: {fileID: 522694244208430464}
   - component: {fileID: 1634096553312196131}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube_Cube_Windowsmaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1192004558340654090
 Transform:
@@ -839,12 +839,12 @@ GameObject:
   - component: {fileID: 1992874017637297412}
   - component: {fileID: 8205704787745904830}
   - component: {fileID: 486570955405324325}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Door_Cube.007_DoorMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1992874017637297412
 Transform:
@@ -918,12 +918,12 @@ GameObject:
   - component: {fileID: 1830181696999170655}
   - component: {fileID: 527756258480767766}
   - component: {fileID: 8329309254896516820}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Tube_Cylinder.005_LightMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1830181696999170655
 Transform:
@@ -996,12 +996,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7618624381715720576}
   - component: {fileID: 8985503629830552543}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FabricGhost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &7618624381715720576
 Transform:
@@ -1043,12 +1043,12 @@ GameObject:
   - component: {fileID: 281322154163662525}
   - component: {fileID: 2905728878703968760}
   - component: {fileID: 5155984470185849491}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube_Cube_FabricMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &281322154163662525
 Transform:
@@ -1122,12 +1122,12 @@ GameObject:
   - component: {fileID: 5736909716741144100}
   - component: {fileID: 4106406989454743556}
   - component: {fileID: 640108681922106869}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Tube_Cylinder.005_TubeMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &5736909716741144100
 Transform:
@@ -1201,12 +1201,12 @@ GameObject:
   - component: {fileID: 8428356452514490737}
   - component: {fileID: 7770077469680473805}
   - component: {fileID: 2635677933218143224}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Borders_Cube.003_BorderMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &8428356452514490737
 Transform:
@@ -1280,12 +1280,12 @@ GameObject:
   - component: {fileID: 1659654545040243202}
   - component: {fileID: 1878857178804840019}
   - component: {fileID: 776496076076545853}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Door_Cube.007_DoorMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1659654545040243202
 Transform:
@@ -1357,7 +1357,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7306590097487249746}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Incorrect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

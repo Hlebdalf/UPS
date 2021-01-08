@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 4151221193705165446}
   - component: {fileID: 2791468848217130769}
   - component: {fileID: 8216019996195802307}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Plane_Plane_Windows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4151221193705165446
 Transform:
@@ -90,12 +90,12 @@ GameObject:
   - component: {fileID: 2970017090805705648}
   - component: {fileID: 3800796520162423535}
   - component: {fileID: 4217155089256737150}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube.001_Cube.001_ColumnMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2970017090805705648
 Transform:
@@ -169,12 +169,12 @@ GameObject:
   - component: {fileID: 3472847498559379534}
   - component: {fileID: 7867227037888949332}
   - component: {fileID: 7223410459675171946}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube.001_Cube.001_ColumnMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3472847498559379534
 Transform:
@@ -248,12 +248,12 @@ GameObject:
   - component: {fileID: 2884210269557056146}
   - component: {fileID: 7134956820809334554}
   - component: {fileID: 1630437756145169716}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Plane.001_Plane.002_Windows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2884210269557056146
 Transform:
@@ -325,7 +325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5858108103536754985}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Correct
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,12 +362,12 @@ GameObject:
   - component: {fileID: 3641943052971326613}
   - component: {fileID: 6656219071450166597}
   - component: {fileID: 4548978324733092948}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SchoolLP_Cube_Material.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3641943052971326613
 Transform:
@@ -440,12 +440,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2419952962821205716}
   - component: {fileID: 859897032857473405}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SchoolGhost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2419952962821205716
 Transform:
@@ -487,12 +487,12 @@ GameObject:
   - component: {fileID: 1885059204181548582}
   - component: {fileID: 7276817878897734211}
   - component: {fileID: 586177294609913598}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Plane.001_Plane.002_Windows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1885059204181548582
 Transform:
@@ -564,7 +564,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7242753085918030901}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Incorrect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -601,12 +601,12 @@ GameObject:
   - component: {fileID: 2890208652487648096}
   - component: {fileID: 7005997819092392480}
   - component: {fileID: 6941962258827571437}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SchoolLP_Cube_Material.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2890208652487648096
 Transform:
@@ -680,12 +680,12 @@ GameObject:
   - component: {fileID: 1605581369584669242}
   - component: {fileID: 553518486957235734}
   - component: {fileID: 7659337927306256502}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Plane_Plane_Windows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1605581369584669242
 Transform:
@@ -759,12 +759,12 @@ GameObject:
   - component: {fileID: 3070241552159522224}
   - component: {fileID: 5338638752331911499}
   - component: {fileID: 3363719603696265686}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Plane.002_Plane.003_Windows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3070241552159522224
 Transform:
@@ -838,12 +838,12 @@ GameObject:
   - component: {fileID: 6285434143184373131}
   - component: {fileID: 7658449061799182866}
   - component: {fileID: 8611180936940043670}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Plane.002_Plane.003_Windows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6285434143184373131
 Transform:

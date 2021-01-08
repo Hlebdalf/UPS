@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 962075998325679346}
   - component: {fileID: 6756544991808798498}
   - component: {fileID: 5011210384694961447}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Circle_Circle.001_CrossRoad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6980172651353921307}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Crossroad1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
