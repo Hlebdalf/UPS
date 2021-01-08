@@ -50,6 +50,7 @@ public class Passport : MonoBehaviour {
         SetSatisfaction();
         SetPreference();
         SetProperties();
+        SetLoyalty(); // В разработке...
     }
 
     private void OnMouseDown() {
@@ -87,6 +88,11 @@ public class Passport : MonoBehaviour {
             else txt.text += ";\n";
         }
 
+    }
+
+    private void SetLoyalty() {
+        // Зависимость от количества плакатов, удовлетворённости, числа жителей выше по статусу и т.д.
+        loyalty = (int)UnityEngine.Random.Range(0, 100.99f);
     }
 
     private void SetGender() {
