@@ -10,16 +10,21 @@ public class Roads : MonoBehaviour {
     
     public GameObject[] preFubs;
     public GameObject[] preFubsGhost;
+    public GameObject preFubCrossroad;
     public List <GameObject> objects;
     public List <GameObject> crossroads;
     public List <GameObject> ghostObjects;
+    public GameObject InterfaceObject;
+    public Interface InterfaceClass;
+    public bool isPressEnter = false;
     public bool isFollowGhost = false;
-    public int idxOverRoad = -1;
+    public int idxOverRoad = -1, idxOverCrossroad = -1;
     public string RoadType = "";
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         FieldClass = MainCamera.GetComponent <Field> ();
+        InterfaceClass = InterfaceObject.GetComponent <Interface> ();
     }
 
     private void Start() {
@@ -29,17 +34,34 @@ public class Roads : MonoBehaviour {
     }
 
     private void Update() {
-        if (!isFollowGhost && RoadType != "" && idxOverRoad != -1) {
+        if (!isFollowGhost && RoadType != "") {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
-                if (Input.GetMouseButtonDown(0)) {
-                    CreateGhost(RoadType, RoundCoordinateOnTheRoad(hit.point, idxOverRoad), idxOverRoad);
+                if (Input.GetMouseButtonDown(0) && (idxOverRoad != -1 || idxOverCrossroad != -1)) {
+                    Vector3 point = new Vector3(0, 0, 0);
+                    if (idxOverCrossroad != -1) {
+                        CrossroadObject crossroadClass = crossroads[idxOverCrossroad].GetComponent <CrossroadObject> ();
+                        point.x = crossroadClass.x;
+                        point.z = crossroadClass.y;
+                        idxOverRoad = crossroadClass.connectedRoads[0];
+                    }
+                    else point = RoundCoordinateOnTheRoad(hit.point, idxOverRoad);
+                    CreateGhost(RoadType, point, idxOverRoad);
+                    idxOverRoad = -1;
                 }
             }
         }
-        if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter)) {
-            CreateObjects();
+        if ((Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter)) && !isPressEnter && !isFollowGhost) {
+            isPressEnter = true;
+        }
+        if (isPressEnter) {
+            if (ghostObjects.Count > 0) {
+                CreateObjects();
+            }
+            else {
+                isPressEnter = false;
+            }
         }
     }
 
@@ -61,18 +83,21 @@ public class Roads : MonoBehaviour {
     }
 
     public Vector3 RoundCoodinate(Vector3 point) {
-        int gridSize = 1;
-        float x = point.x, z = point.z, low, high;
+        // int gridSize = 1;
+        // float x = point.x, z = point.z, low, high;
 
-        low = (int)(x / gridSize) * gridSize;
-        high = low + gridSize;
-        if (Math.Abs(x - low) < Math.Abs(x - high)) point.x = low;
-        else point.x = high;
+        // low = (int)(x / gridSize) * gridSize;
+        // high = low + gridSize;
+        // if (Math.Abs(x - low) < Math.Abs(x - high)) point.x = low;
+        // else point.x = high;
         
-        low = (int)(z / gridSize) * gridSize;
-        high = low + gridSize;
-        if (Math.Abs(z - low) < Math.Abs(z - high)) point.z = low;
-        else point.z = high;
+        // low = (int)(z / gridSize) * gridSize;
+        // high = low + gridSize;
+        // if (Math.Abs(z - low) < Math.Abs(z - high)) point.z = low;
+        // else point.z = high;
+
+        point.x = Mathf.Round(point.x);
+        point.z = Mathf.Round(point.z);
 
         return point;
     }
@@ -97,6 +122,7 @@ public class Roads : MonoBehaviour {
     }
 
     public void CreateGhost(string name, Vector3 point, int idxRoad) {
+        InterfaceClass.DeactivateAllMenu();
         ghostObjects.Add(Instantiate(preFubsGhost[ToIndex(name)], point, preFubsGhost[ToIndex(name)].transform.rotation));
         ghostObjects[ghostObjects.Count - 1].AddComponent <RoadGhostObject> ();
         RoadGhostObject data = ghostObjects[ghostObjects.Count - 1].GetComponent <RoadGhostObject> ();
@@ -134,8 +160,8 @@ public class Roads : MonoBehaviour {
                 float mainRoadCrossGhostRoadX = -(mainRoadC * ghostRoadB - ghostRoadC * mainRoadB) / (mainRoadA * ghostRoadB - ghostRoadA * mainRoadB); // rounded coordinate
                 float mainRoadCrossGhostRoadY = -(mainRoadA * ghostRoadC - ghostRoadA * mainRoadC) / (mainRoadA * ghostRoadB - ghostRoadA * mainRoadB); // rounded coordinate
 
-                FieldClass.objects[(int)ghostObjectClass.x1 + FieldClass.fieldSizeHalf, (int)ghostObjectClass.y1 + FieldClass.fieldSizeHalf] = Instantiate(preFubs[ToIndex("Crossroad1")],
-                    new Vector3(mainRoadCrossGhostRoadX, 0.1f, mainRoadCrossGhostRoadY), Quaternion.Euler(0, 0, 0));
+                FieldClass.objects[(int)ghostObjectClass.x1 + FieldClass.fieldSizeHalf, (int)ghostObjectClass.y1 + FieldClass.fieldSizeHalf] = Instantiate(preFubCrossroad,
+                    new Vector3(mainRoadCrossGhostRoadX, 0f, mainRoadCrossGhostRoadY), Quaternion.Euler(0, 0, 0));
                 crossroads.Add(FieldClass.objects[(int)ghostObjectClass.x1 + FieldClass.fieldSizeHalf, (int)ghostObjectClass.y1 + FieldClass.fieldSizeHalf]);
                 FieldClass.objects[(int)ghostObjectClass.x1 + FieldClass.fieldSizeHalf, (int)ghostObjectClass.y1 + FieldClass.fieldSizeHalf].AddComponent <CrossroadObject> ();
                 CrossroadObject crossroadClass = FieldClass.objects[(int)ghostObjectClass.x1 + FieldClass.fieldSizeHalf, (int)ghostObjectClass.y1 + FieldClass.fieldSizeHalf].GetComponent <CrossroadObject> ();
@@ -171,8 +197,8 @@ public class Roads : MonoBehaviour {
                     float mainRoadCrossGhostRoadX = -(mainRoadC * ghostRoadB - ghostRoadC * mainRoadB) / (mainRoadA * ghostRoadB - ghostRoadA * mainRoadB); // rounded coordinate
                     float mainRoadCrossGhostRoadY = -(mainRoadA * ghostRoadC - ghostRoadA * mainRoadC) / (mainRoadA * ghostRoadB - ghostRoadA * mainRoadB); // rounded coordinate
                 
-                    FieldClass.objects[(int)ghostObjectClass.x2 + FieldClass.fieldSizeHalf, (int)ghostObjectClass.y2 + FieldClass.fieldSizeHalf] = Instantiate(preFubs[ToIndex("Crossroad1")],
-                        new Vector3(mainRoadCrossGhostRoadX, 0.1f, mainRoadCrossGhostRoadY), Quaternion.Euler(0, 0, 0));
+                    FieldClass.objects[(int)ghostObjectClass.x2 + FieldClass.fieldSizeHalf, (int)ghostObjectClass.y2 + FieldClass.fieldSizeHalf] = Instantiate(preFubCrossroad,
+                        new Vector3(mainRoadCrossGhostRoadX, 0f, mainRoadCrossGhostRoadY), Quaternion.Euler(0, 0, 0));
                     crossroads.Add(FieldClass.objects[(int)ghostObjectClass.x2 + FieldClass.fieldSizeHalf, (int)ghostObjectClass.y2 + FieldClass.fieldSizeHalf]);
                     FieldClass.objects[(int)ghostObjectClass.x2 + FieldClass.fieldSizeHalf, (int)ghostObjectClass.y2 + FieldClass.fieldSizeHalf].AddComponent <CrossroadObject> ();
                     CrossroadObject crossroadClass = FieldClass.objects[(int)ghostObjectClass.x2 + FieldClass.fieldSizeHalf, (int)ghostObjectClass.y2 + FieldClass.fieldSizeHalf].GetComponent <CrossroadObject> ();
@@ -233,8 +259,8 @@ public class Roads : MonoBehaviour {
 
         if (connectedRoad != -1) {
             if (FieldClass.objects[(int)point1.x + FieldClass.fieldSizeHalf, (int)point1.z + FieldClass.fieldSizeHalf] == null) {
-                FieldClass.objects[(int)point1.x + FieldClass.fieldSizeHalf, (int)point1.z + FieldClass.fieldSizeHalf] = Instantiate(preFubs[ToIndex("Crossroad1")],
-                    new Vector3(point1.x, 0.1f, point1.z), Quaternion.Euler(0, 0, 0));
+                FieldClass.objects[(int)point1.x + FieldClass.fieldSizeHalf, (int)point1.z + FieldClass.fieldSizeHalf] = Instantiate(preFubCrossroad,
+                    new Vector3(point1.x, 0f, point1.z), Quaternion.Euler(0, 0, 0));
                 crossroads.Add(FieldClass.objects[(int)point1.x + FieldClass.fieldSizeHalf, (int)point1.z + FieldClass.fieldSizeHalf]);
                 FieldClass.objects[(int)point1.x + FieldClass.fieldSizeHalf, (int)point1.z + FieldClass.fieldSizeHalf].AddComponent <CrossroadObject> ();
                 CrossroadObject crossroadClass = FieldClass.objects[(int)point1.x + FieldClass.fieldSizeHalf, (int)point1.z + FieldClass.fieldSizeHalf].GetComponent <CrossroadObject> ();
@@ -242,7 +268,7 @@ public class Roads : MonoBehaviour {
                 crossroadClass.x = point1.x;
                 crossroadClass.y = point1.z;
                 crossroadClass.xr = (int)point1.x;
-                crossroadClass.yr = (int)point1.y;
+                crossroadClass.yr = (int)point1.z;
                 crossroadClass.idx = crossroads.Count - 1;
 
                 crossroadClass.connectedRoads.Add(objects.Count - 1);

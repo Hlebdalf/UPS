@@ -152,6 +152,19 @@ public class GenerationCommerces : MonoBehaviour {
         CheckCross(tmpVertex3, tmpVertex4, vertex3, vertex4, dist));
     }
 
+    private int GetTypeHouse() {
+        int ans;
+        if (seed % 100 < 14) ans = BuildsClass.idxsCommerces[0];
+        else if (seed % 100 < 28) ans = BuildsClass.idxsCommerces[1];
+        else if (seed % 100 < 42) ans = BuildsClass.idxsCommerces[2];
+        else if (seed % 100 < 56) ans = BuildsClass.idxsCommerces[3];
+        else if (seed % 100 < 70) ans = BuildsClass.idxsCommerces[4];
+        else if (seed % 100 < 84) ans = BuildsClass.idxsCommerces[5];
+        else ans = BuildsClass.idxsCommerces[6];
+        seed = GenerationClass.funcSeed(seed);
+        return ans;
+    }
+
     public ulong StartGeneration(ulong newSeed) {
         seed = newSeed;
         DateTimeOffset startDate = DateTimeOffset.Now;
@@ -180,10 +193,7 @@ public class GenerationCommerces : MonoBehaviour {
                 }
 
                 float normA = -mainRoadB, normB = mainRoadA, normC = -(normA * posOnRoadX + normB * posOnRoadY); // norm
-                int typeHouse1 = BuildsClass.idxsCommerces[(int)(seed % (ulong)BuildsClass.idxsCommerces.Length)];
-                seed = GenerationClass.funcSeed(seed);
-                int typeHouse2 = BuildsClass.idxsCommerces[(int)(seed % (ulong)BuildsClass.idxsCommerces.Length)];
-                seed = GenerationClass.funcSeed(seed);
+                int typeHouse1 = GetTypeHouse(), typeHouse2 = GetTypeHouse();
 
                 float widthHouse1 = (int)BuildsClass.preFubs[typeHouse1].GetComponent <BoxCollider> ().size.x * 0.1f;
                 float lenHouse1 = (int)BuildsClass.preFubs[typeHouse1].GetComponent <BoxCollider> ().size.z * 0.1f;
@@ -208,10 +218,12 @@ public class GenerationCommerces : MonoBehaviour {
         while (BuildsClass.commerces.Count < GenerationClass.averageCntCommercesInDistrict * 4) {
             if (SqrtDecomp.Count == 0) return seed;
             (Vector3 point, float rotate, int roadIdx, int typeHouse) minBlock = GetMinBlock();
+
             int sum = cntInDistrict[0] + cntInDistrict[1] + cntInDistrict[2] + cntInDistrict[3];
-            if ((SqrtDecomp.Count == 1 && SqrtDecomp[0].priority.Count <= 4 * GenerationClass.averageCntCommercesInDistrict - sum) &&
+            if (!(SqrtDecomp.Count == 1 && SqrtDecomp[0].priority.Count <= 4 * GenerationClass.averageCntCommercesInDistrict - sum) &&
                 cntInDistrict[FieldClass.districts[(int)minBlock.point.x + FieldClass.fieldSizeHalf, (int)minBlock.point.z + FieldClass.fieldSizeHalf]] >=
                 GenerationClass.averageCntCommercesInDistrict) continue;
+            
             if (FieldClass.objects[(int)minBlock.point.x + FieldClass.fieldSizeHalf, (int)minBlock.point.z + FieldClass.fieldSizeHalf] == null) {
                 float angle = (float)(minBlock.rotate / 57.3);
                 float widthHouse = (int)BuildsClass.preFubs[minBlock.typeHouse].GetComponent <BoxCollider> ().size.x * 0.1f;

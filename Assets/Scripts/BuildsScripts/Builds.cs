@@ -4,6 +4,11 @@ using System;
 using UnityEngine;
 
 public class Builds : MonoBehaviour {
+    private GameObject MainCamera;
+    private Roads RoadsClass;
+    private Field FieldClass;
+    private GenerationGraph GenerationGraphClass;
+
     public GameObject[] preFubs;
     public GameObject[] preFubsGhost;
     public GameObject[] preFubsBuildProcess;
@@ -12,21 +17,46 @@ public class Builds : MonoBehaviour {
     public int[] idxsDistrict3;
     public int[] idxsDistrict4;
     public int[] idxsCommerces;
+    public int idxParking;
     public List <GameObject> objects;
     public List <GameObject> commerces;
+    public List <GameObject> parkings;
     public List <GameObject> ghostObjects;
+    public GameObject InterfaceObject;
+    public Interface InterfaceClass;
+    public bool isPressEnter = false;
     public bool isFollowGhost = false;
 
-    private void Start() {
+    private void Awake() {
+        MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        RoadsClass = MainCamera.GetComponent <Roads> ();
+        FieldClass = MainCamera.GetComponent <Field> ();
+        InterfaceClass = InterfaceObject.GetComponent <Interface> ();
+        GenerationGraphClass = MainCamera.GetComponent <GenerationGraph> ();
         objects = new List <GameObject> ();
         commerces = new List <GameObject> ();
+        parkings = new List <GameObject> ();
         ghostObjects = new List <GameObject> ();
     }
 
     private void Update() {
-        if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter)) {
-            CreateObjects();
+        if ((Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter)) && !isPressEnter && !isFollowGhost) {
+            isPressEnter = true;
         }
+        if (isPressEnter && !RoadsClass.isPressEnter) {
+            if (ghostObjects.Count > 0) {
+                CreateObjects();
+            }
+            else {
+                StartCoroutine(DelayReGen());
+                isPressEnter = false;
+            }
+        }
+    }
+
+    IEnumerator DelayReGen() {
+        yield return new WaitForSeconds(FieldClass.timeBuildProcess + 1);
+        GenerationGraphClass.StartGeneration();
     }
 
     private int ToIndex(string name) {
@@ -39,6 +69,7 @@ public class Builds : MonoBehaviour {
     }
 
     public void CreateGhost(string name, Vector3 point) {
+        InterfaceClass.DeactivateAllMenu();
         ghostObjects.Add(Instantiate(preFubsGhost[ToIndex(name)], point, preFubsGhost[ToIndex(name)].transform.rotation));
         ghostObjects[ghostObjects.Count - 1].AddComponent <BuildGhostObject> ();
         isFollowGhost = true;
@@ -77,10 +108,14 @@ public class Builds : MonoBehaviour {
         }
     }
 
-    public void CreateObject(Vector3 point, float rotate, int idxPreFub, int connectedRoad) {
+    public void CreateObject(Vector3 point, float rotate, int idxPreFub, int connectedRoad, bool isGeneration = true) {
         bool p = false;
+        int itCommerce = -1;
         for (int i = 0; i < idxsCommerces.Length; ++i) {
-            if (idxsCommerces[i] == idxPreFub) p = true;
+            if (idxsCommerces[i] == idxPreFub) {
+                itCommerce = i;
+                p = true;
+            }
         }
         if (p) {
             commerces.Add(Instantiate(preFubs[idxPreFub], point, Quaternion.Euler(0, rotate, 0)));
@@ -90,10 +125,34 @@ public class Builds : MonoBehaviour {
             data.x = point.x;
             data.y = point.z;
             data.idx = commerces.Count - 1;
-            data.connectedRoad = connectedRoad;
+            data.idxCommerceType = itCommerce;
+            if (connectedRoad == -1) {
+                data.connectedRoad = RoadsClass.objects.Count - 1;
+            }
+            else {
+                data.connectedRoad = connectedRoad;
+            }
 
             commerces[commerces.Count - 1].AddComponent <Rigidbody> ();
             commerces[commerces.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
+        }
+        else if (idxPreFub == idxParking) {
+            parkings.Add(Instantiate(preFubs[idxPreFub], point, Quaternion.Euler(0, rotate, 0)));
+            parkings[parkings.Count - 1].AddComponent <BuildObject> ();
+            BuildObject data = parkings[parkings.Count - 1].GetComponent <BuildObject> ();
+
+            data.x = point.x;
+            data.y = point.z;
+            data.idx = parkings.Count - 1;
+            if (connectedRoad == -1) {
+                data.connectedRoad = RoadsClass.objects.Count - 1;
+            }
+            else {
+                data.connectedRoad = connectedRoad;
+            }
+
+            parkings[parkings.Count - 1].AddComponent <Rigidbody> ();
+            parkings[parkings.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
         }
         else {
             objects.Add(Instantiate(preFubs[idxPreFub], point, Quaternion.Euler(0, rotate, 0)));
@@ -103,7 +162,13 @@ public class Builds : MonoBehaviour {
             data.x = point.x;
             data.y = point.z;
             data.idx = objects.Count - 1;
-            data.connectedRoad = connectedRoad;
+            data.idxPreFub = idxPreFub;
+            if (connectedRoad == -1) {
+                data.connectedRoad = RoadsClass.objects.Count - 1;
+            }
+            else {
+                data.connectedRoad = connectedRoad;
+            }
 
             objects[objects.Count - 1].AddComponent <Rigidbody> ();
             objects[objects.Count - 1].GetComponent <Rigidbody> ().useGravity = false;

@@ -8,9 +8,12 @@ public class BuildGhostObject : MonoBehaviour {
     private Builds BuildsClass;
     private Roads RoadsClass;
     private Field FieldClass;
+    private GameObject correctObject;
+    private GameObject incorrectObject;
     private float eps = 1e-5f;
     private bool isBusy = false, isCollision = false, isConnected = false;
 
+    public GameObject InterfaceObject;
     public float x, y, rotate;
     public int idx, idxPreFub, connectedRoad = -1;
     public bool isFollow = true;
@@ -20,6 +23,8 @@ public class BuildGhostObject : MonoBehaviour {
         BuildsClass = MainCamera.GetComponent <Builds> ();
         RoadsClass = MainCamera.GetComponent <Roads> ();
         FieldClass = MainCamera.GetComponent <Field> ();
+        correctObject = gameObject.transform.Find("Correct").gameObject;
+        incorrectObject = gameObject.transform.Find("Incorrect").gameObject;
     }
 
     private void Start() {
@@ -38,7 +43,16 @@ public class BuildGhostObject : MonoBehaviour {
                 transform.position = rounded.pos;
                 transform.rotation = Quaternion.Euler(0, rounded.rotate, 0);
             }
+            if (isCollision || !isConnected) {
+                correctObject.SetActive(false);
+                incorrectObject.SetActive(true);
+            }
+            else {
+                correctObject.SetActive(true);
+                incorrectObject.SetActive(false);
+            }
             if (Input.GetMouseButtonDown(0) && !isCollision && isConnected) {
+                BuildsClass.InterfaceClass.ActivateMenu();
                 gameObject.layer = 0;
                 BuildsClass.isFollowGhost = isFollow = false;
                 gameObject.AddComponent <Rigidbody> ();
@@ -61,13 +75,15 @@ public class BuildGhostObject : MonoBehaviour {
     }
 
     private void OnMouseOver() {
-        if (!BuildsClass.isFollowGhost && Input.GetMouseButtonDown(1)) {
+        if (Input.GetMouseButtonDown(1) && !BuildsClass.isFollowGhost && !RoadsClass.isFollowGhost) {
+            BuildsClass.isFollowGhost = isFollow = false;
             BuildsClass.DeleteGhost(gameObject);
         }
     }
 
     private void OnMouseDown() {
         if (!BuildsClass.isFollowGhost) {
+            BuildsClass.InterfaceClass.DeactivateAllMenu();
             gameObject.layer = 2;
             BuildsClass.isFollowGhost = isFollow = isBusy = true;
             Destroy(gameObject.GetComponent <Rigidbody> ());
@@ -132,6 +148,7 @@ public class BuildGhostObject : MonoBehaviour {
         }
 
         if (ansId == -1 && ansIdGhost == -1) {
+            connectedRoad = -1;
             isConnected = false;
             return (point, 0);
         }
@@ -156,6 +173,7 @@ public class BuildGhostObject : MonoBehaviour {
                 point.z = normCrossMainRoadY - y;
                 rotate = RoundRotateOnRoad(dataRoad.x1, dataRoad.y1, dataRoad.x2, dataRoad.y2);
             }
+            connectedRoad = ansId;
         }
         else {
             RoadGhostObject dataRoad = RoadsClass.ghostObjects[ansIdGhost].GetComponent <RoadGhostObject> ();
@@ -177,6 +195,7 @@ public class BuildGhostObject : MonoBehaviour {
                 point.z = normCrossMainRoadY - y;
                 rotate = RoundRotateOnRoad(dataRoad.x1, dataRoad.y1, dataRoad.x2, dataRoad.y2);
             }
+            connectedRoad = -1;
         }
 
         point = RoundCoordinate(point);
