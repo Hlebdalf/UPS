@@ -61,7 +61,8 @@ public class BuildGhostObject : MonoBehaviour {
     }
 
     private void OnMouseOver() {
-        if (!BuildsClass.isFollowGhost && Input.GetMouseButtonDown(1)) {
+        if (Input.GetMouseButtonDown(1) && !BuildsClass.isFollowGhost && !RoadsClass.isFollowGhost) {
+            BuildsClass.isFollowGhost = isFollow = false;
             BuildsClass.DeleteGhost(gameObject);
         }
     }

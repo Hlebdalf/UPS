@@ -6,6 +6,7 @@ using UnityEngine;
 public class RoadGhostObject : MonoBehaviour {
     private GameObject MainCamera;
     private Roads RoadsClass;
+    private Builds BuildsClass;
     private Field FieldClass;
     private float eps = 1e-5f;
     private bool isBusy = false, isFirst = false, isCollision = false;
@@ -17,6 +18,7 @@ public class RoadGhostObject : MonoBehaviour {
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         RoadsClass = MainCamera.GetComponent <Roads> ();
+        BuildsClass = MainCamera.GetComponent <Builds> ();
         FieldClass = MainCamera.GetComponent <Field> ();
     }
 
@@ -140,7 +142,7 @@ public class RoadGhostObject : MonoBehaviour {
     }
 
     private void OnMouseOver() {
-        if (Input.GetMouseButtonDown(1)) {
+        if (Input.GetMouseButtonDown(1) && !BuildsClass.isFollowGhost && !RoadsClass.isFollowGhost && BuildsClass.ghostObjects.Count == 0) {
             RoadsClass.isFollowGhost = isFollow = false;
             RoadsClass.RoadType = "";
             RoadsClass.DeleteGhost(gameObject);
@@ -148,7 +150,7 @@ public class RoadGhostObject : MonoBehaviour {
     }
 
     private void OnMouseDown() {
-        if (!RoadsClass.isFollowGhost && RoadsClass.RoadType == "") {
+        if (!RoadsClass.isFollowGhost && RoadsClass.RoadType == "" && BuildsClass.ghostObjects.Count == 0) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
