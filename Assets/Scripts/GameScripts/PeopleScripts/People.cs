@@ -12,8 +12,10 @@ public class People : MonoBehaviour {
     private Roads RoadsClass;
     private Field FieldClass;
     private GenerationGraph GenerationGraphClass;
+    private Animator PassportCardPanelAnimator;
     private List <List <Vector3>> globalPointsPath;
     private List <int> itForQueue;
+    private bool passportIsOpened = false;
 
     private JobHandle handle;
     private NativeArray <Vector3> vertexTo;
@@ -24,6 +26,7 @@ public class People : MonoBehaviour {
     public GameObject[] preFubs;
     public List <GameObject> objects;
     public string[] socialStatusStorage;
+    public GameObject PassportCardPanel;
     public GameObject PassportCard;
     public bool isStarted = false, isRegeneration = false;
     public float eps = 0.01f;
@@ -36,6 +39,7 @@ public class People : MonoBehaviour {
         RoadsClass = MainCamera.GetComponent <Roads> ();
         FieldClass = MainCamera.GetComponent <Field> ();
         GenerationGraphClass = MainCamera.GetComponent <GenerationGraph> ();
+        PassportCardPanelAnimator = PassportCardPanel.GetComponent <Animator> ();
         objects = new List <GameObject> ();
     }
 
@@ -360,5 +364,9 @@ public class People : MonoBehaviour {
             cntTranslate[i] = cntTranslate[i + 1];
         }
         Destroy(obj);
+    }
+
+    public void OpenPassport() {
+        if (!passportIsOpened) PassportCardPanelAnimator.Play("Forward");
     }
 }

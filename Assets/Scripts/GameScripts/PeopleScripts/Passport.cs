@@ -51,6 +51,7 @@ public class Passport : MonoBehaviour {
     }
 
     private void OnMouseDown() {
+        PeopleClass.OpenPassport();
         Text txt = PeopleClass.PassportCard.GetComponent <Text> ();
         txt.text = "Дело №" + (PeopleClass.objects.IndexOf(gameObject) + 1) + "\n";
         if (age < 9) txt.text += "Октябрёнок ";
