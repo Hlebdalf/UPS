@@ -2231,7 +2231,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   preFubs:
-  - {fileID: 8922654871689751478, guid: c2e4f4ef1d7d4ff47a23131040f9ea45, type: 3}
+  - {fileID: 8922654871689751478, guid: bef86fc5334944648ab08534814a0435, type: 3}
+  - {fileID: 8922654871689751478, guid: 6895fdbec3c68eb4b9f7a8e31a71afde, type: 3}
+  - {fileID: 8922654871689751478, guid: 47ec6897f85c9634ebb655cc33d972a1, type: 3}
+  - {fileID: 8922654871689751478, guid: c88953a33b81e8142878a5fd6f059d8a, type: 3}
+  - {fileID: 8922654871689751478, guid: 9c654bdd3edbb73478eb6dc462e49e33, type: 3}
+  - {fileID: 8922654871689751478, guid: 0fd7185b0331f764e8044c62c54782ef, type: 3}
+  - {fileID: 8922654871689751478, guid: 51a907d1c8b03bb4d93610d55a274b4e, type: 3}
+  - {fileID: 8922654871689751478, guid: 64ea732ac797cf24288c18fc190c046e, type: 3}
   objects: []
   socialStatusStorage:
   - "\u0420\u0435\u0431\u0451\u043D\u043E\u043A"
