@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5239880576355614390}
   - component: {fileID: 5054130073422728659}
   - component: {fileID: 3786396762819125682}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube_Cube_RoofMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 3381819179933136137}
   - component: {fileID: 8537363548007949101}
   - component: {fileID: 457690340281390706}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube_Cube_Windowsmaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 7214571480944092409}
   - component: {fileID: 3265211085733982976}
   - component: {fileID: 3916931463479925003}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Borders_Cube.003_LightMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 5743521232608958353}
   - component: {fileID: 3357904602418947624}
   - component: {fileID: 725768627448174333}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Tube_Cylinder.005_LightMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -326,7 +326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7784988042326102656}
   - component: {fileID: 8719518718268342495}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Fabric
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 456106972787643837}
   - component: {fileID: 3305684900781751032}
   - component: {fileID: 4773432343238199699}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube_Cube_FabricMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ GameObject:
   - component: {fileID: 1349770239943180546}
   - component: {fileID: 2278844795140152659}
   - component: {fileID: 1113995438728383549}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Door_Cube.007_DoorMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,7 +537,7 @@ GameObject:
   - component: {fileID: 8161813815281193585}
   - component: {fileID: 7955542396171414989}
   - component: {fileID: 2387137598574616824}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Borders_Cube.003_BorderMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -616,7 +616,7 @@ GameObject:
   - component: {fileID: 5345358378574988580}
   - component: {fileID: 4418027404470575876}
   - component: {fileID: 959548841417584373}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Tube_Cylinder.005_TubeMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
