@@ -4,20 +4,24 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class RadialMenu : MonoBehaviour {
+    private Interface InterfaceClass;
     private Image ImageClass;
     private int buttonNum = -1;
 
     public Sprite[] PreSprites;
     public GameObject RadialPanel;
     public GameObject RadialImage;
+    public GameObject InterfaceObject;
 
-    private void Start() {   
+    private void Awake() {
+        InterfaceClass = InterfaceObject.GetComponent <Interface> ();
         ImageClass = RadialImage.GetComponent <Image> ();
     }
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Space)) {
             RadialPanel.SetActive(true);
+            InterfaceClass.DeactivateAllMenu();
             RadialPanel.GetComponent <Animator> ().SetBool("isOpened", true);
             RadialImage.GetComponent <Animator> ().SetBool("isOpened", true);
         }
@@ -49,16 +53,16 @@ public class RadialMenu : MonoBehaviour {
                 // print("1");
                 break;
             case 2:
-                // print("2");
+                InterfaceClass.ActivateMenu("Other");
                 break;
             case 3:
-                // print("3");
+                InterfaceClass.ActivateMenu("Roads");
                 break;
             case 4:
-                // print("4");
+                InterfaceClass.ActivateMenu("Commerces");
                 break;
             case 5:
-                // print("5");
+                InterfaceClass.ActivateMenu("Builds");
                 break;
             case 6:
                 // print("6");
@@ -67,7 +71,7 @@ public class RadialMenu : MonoBehaviour {
                 // print("7");
                 break;
             case 8:
-                // print("8");
+                InterfaceClass.DeactivateAllMenu();
                 break;
         }
     }

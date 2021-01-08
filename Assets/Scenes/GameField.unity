@@ -2882,9 +2882,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PreFubButton: {fileID: 8068880203141385849, guid: 0dc7e325288ebd0458de921d7d110a07,
     type: 3}
-  InterfaceBuilds: {fileID: 617142116}
-  InterfaceCommerces: {fileID: 661738905}
-  InterfaceRoads: {fileID: 1825205667}
+  InterfaceBuilds: {fileID: 1475420342}
+  InterfaceCommerces: {fileID: 833403270}
+  InterfaceRoads: {fileID: 332194191}
+  InterfaceOther: {fileID: 55664837}
+  InterfaceBuildsContent: {fileID: 617142116}
+  InterfaceCommercesContent: {fileID: 661738905}
+  InterfaceRoadsContent: {fileID: 1825205667}
   buildNames:
   - "\u0414\u043E\u043C1"
   - "\u0414\u043E\u043C2"
@@ -2928,6 +2932,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c72ceb837d7162341a36fb4ab48b0847, type: 3}
   RadialPanel: {fileID: 817154474}
   RadialImage: {fileID: 1316715165}
+  InterfaceObject: {fileID: 1344676605}
 --- !u!1 &1400502195
 GameObject:
   m_ObjectHideFlags: 0
