@@ -16,6 +16,7 @@ public class People : MonoBehaviour {
     private List <List <Vector3>> globalPointsPath;
     private List <int> itForQueue;
     private bool passportIsOpened = false;
+    private int cntPeople = 10000;
 
     private JobHandle handle;
     private NativeArray <Vector3> vertexTo;
@@ -31,7 +32,6 @@ public class People : MonoBehaviour {
     public bool isStarted = false, isRegeneration = false;
     public float eps = 0.01f;
     public float speed = 1;
-    public int cntPeople = 10000;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -40,6 +40,7 @@ public class People : MonoBehaviour {
         FieldClass = MainCamera.GetComponent <Field> ();
         GenerationGraphClass = MainCamera.GetComponent <GenerationGraph> ();
         PassportCardPanelAnimator = PassportCardPanel.GetComponent <Animator> ();
+        cntPeople = MainMenuButtonManagment.cntPeople;
         objects = new List <GameObject> ();
     }
 

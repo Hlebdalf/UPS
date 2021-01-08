@@ -15,6 +15,7 @@ public class Cars : MonoBehaviour {
     private List <(List <Vector3> pointsPathToStart, List <Vector3> pointsPathToEnd, List <Vector3> pointsPathToParking)> paths;
     private List <int> itForQueue;
     private List <int> cntFrameForDelay;
+    private int cntCars = 1000;
 
     private JobHandle handle;
     private NativeArray <Vector3> vertexTo;
@@ -25,7 +26,6 @@ public class Cars : MonoBehaviour {
     public List <GameObject> objects;
     public bool isStarted = false, isRegeneration = false;
     public float speed = 10;
-    public int cntCars = 1000;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -33,6 +33,7 @@ public class Cars : MonoBehaviour {
         RoadsClass = MainCamera.GetComponent <Roads> ();
         FieldClass = MainCamera.GetComponent <Field> ();
         GenerationGraphClass = MainCamera.GetComponent <GenerationGraph> ();
+        cntCars = MainMenuButtonManagment.cntCars;
         objects = new List <GameObject> ();
     }
 

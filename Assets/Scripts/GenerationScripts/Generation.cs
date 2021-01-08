@@ -15,8 +15,8 @@ public class Generation : MonoBehaviour {
     private GenerationCommerces GenerationCommercesClass;
     private GenerationParkings GenerationParkingsClass;
     private GenerationGraph GenerationGraphClass;
+    private ulong seed;
 
-    public ulong seed;
     public int timeGeneration, maxCntRoads;
     public int minLenRoads, deltaLenRoads;
     public int averageCntCommercesInDistrict, averageCntParkingInDistrict;
@@ -46,6 +46,11 @@ public class Generation : MonoBehaviour {
 
     public void StartGeneration() {
         Debug.Log("Start Generation: " + DateTimeOffset.Now);
+        seed = (ulong)MainMenuButtonManagment.seed;
+        maxCntRoads = MainMenuButtonManagment.cntRoad;
+        averageCntCommercesInDistrict = MainMenuButtonManagment.cntCommerce;
+        averageCntParkingInDistrict = MainMenuButtonManagment.cntParking;
+        
         timeRoadsBuildGeneration = timeGeneration * 0.01f;
         timeCommerceBuildGeneration = timeGeneration * 0.14f;
         timeHousesBuildGeneration = timeGeneration * 0.85f;
