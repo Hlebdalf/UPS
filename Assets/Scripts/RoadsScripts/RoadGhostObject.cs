@@ -8,6 +8,8 @@ public class RoadGhostObject : MonoBehaviour {
     private Roads RoadsClass;
     private Builds BuildsClass;
     private Field FieldClass;
+    private GameObject correctObject;
+    private GameObject incorrectObject;
     private float eps = 1e-5f;
     public bool isBusy = false, isFirst = false, isCollision = false;
 
@@ -21,6 +23,8 @@ public class RoadGhostObject : MonoBehaviour {
         RoadsClass = MainCamera.GetComponent <Roads> ();
         BuildsClass = MainCamera.GetComponent <Builds> ();
         FieldClass = MainCamera.GetComponent <Field> ();
+        correctObject = gameObject.transform.Find("Correct").gameObject;
+        incorrectObject = gameObject.transform.Find("Incorrect").gameObject;
     }
 
     private void Update() {
@@ -57,6 +61,15 @@ public class RoadGhostObject : MonoBehaviour {
 
                 Renderer rend = gameObject.GetComponent <Renderer> ();
                 rend.material.mainTextureScale = new Vector2(1, len / 2);
+
+                if (isCollision || !CheckAngle()) {
+                    correctObject.SetActive(false);
+                    incorrectObject.SetActive(true);
+                }
+                else {
+                    correctObject.SetActive(true);
+                    incorrectObject.SetActive(false);
+                }
 
                 if (Input.GetMouseButtonDown(0) && !isCollision && CheckAngle()) {
                     RoadsClass.InterfaceClass.ActivateMenu();
