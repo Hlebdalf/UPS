@@ -14,6 +14,7 @@ public class Interface : MonoBehaviour {
     private Animator InterfaceCommercesAnimator;
     private Animator InterfaceRoadsAnimator;
     private Animator InterfaceOtherAnimator;
+    private string lastMenu = "";
 
     public GameObject PreFubButton;
     public GameObject InterfaceBuilds;
@@ -100,22 +101,26 @@ public class Interface : MonoBehaviour {
         if (interfaceBuildsIsOpened) {
             InterfaceBuildsAnimator.Play("Back");
             interfaceBuildsIsOpened = false;
+            lastMenu = "Builds";
         }
         if (InterfaceCommercesIsOpened) {
             InterfaceCommercesAnimator.Play("Back");
             InterfaceCommercesIsOpened = false;
+            lastMenu = "Commerces";
         }
         if (InterfaceRoadsIsOpened) {
             InterfaceRoadsAnimator.Play("Back");
             InterfaceRoadsIsOpened = false;
+            lastMenu = "Roads";
         }
         if (InterfaceOtherIsOpened) {
             InterfaceOtherAnimator.Play("Back");
             InterfaceOtherIsOpened = false;
+            lastMenu = "Other";
         }
     }
 
-    public void ActivateMenu(string type) {
+    public void ActivateMenu(string type = "Last") {
         DeactivateAllMenu();
         switch (type) {
             case "Builds":
@@ -141,6 +146,9 @@ public class Interface : MonoBehaviour {
                     InterfaceOtherAnimator.Play("Forward");
                     InterfaceOtherIsOpened = true;
                 }
+                break;
+            case "Last":
+                ActivateMenu(lastMenu);
                 break;
         }
     }

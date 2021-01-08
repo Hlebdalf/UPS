@@ -22,6 +22,8 @@ public class Builds : MonoBehaviour {
     public List <GameObject> commerces;
     public List <GameObject> parkings;
     public List <GameObject> ghostObjects;
+    public GameObject InterfaceObject;
+    public Interface InterfaceClass;
     public bool isPressEnter = false;
     public bool isFollowGhost = false;
 
@@ -29,6 +31,7 @@ public class Builds : MonoBehaviour {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         RoadsClass = MainCamera.GetComponent <Roads> ();
         FieldClass = MainCamera.GetComponent <Field> ();
+        InterfaceClass = InterfaceObject.GetComponent <Interface> ();
         GenerationGraphClass = MainCamera.GetComponent <GenerationGraph> ();
         objects = new List <GameObject> ();
         commerces = new List <GameObject> ();
@@ -37,7 +40,7 @@ public class Builds : MonoBehaviour {
     }
 
     private void Update() {
-        if ((Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter)) && !isPressEnter) {
+        if ((Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter)) && !isPressEnter && !isFollowGhost) {
             isPressEnter = true;
         }
         if (isPressEnter && !RoadsClass.isPressEnter) {
@@ -66,6 +69,7 @@ public class Builds : MonoBehaviour {
     }
 
     public void CreateGhost(string name, Vector3 point) {
+        InterfaceClass.DeactivateAllMenu();
         ghostObjects.Add(Instantiate(preFubsGhost[ToIndex(name)], point, preFubsGhost[ToIndex(name)].transform.rotation));
         ghostObjects[ghostObjects.Count - 1].AddComponent <BuildGhostObject> ();
         isFollowGhost = true;

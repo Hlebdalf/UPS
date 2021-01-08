@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class RadialMenu : MonoBehaviour {
+    private GameObject MainCamera;
+    private People PeopleClass;
+    private Builds BuildsClass;
+    private Roads RoadsClass;
     private Interface InterfaceClass;
     private Image ImageClass;
     private int buttonNum = -1;
@@ -14,12 +18,17 @@ public class RadialMenu : MonoBehaviour {
     public GameObject InterfaceObject;
 
     private void Awake() {
+        MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        PeopleClass = MainCamera.GetComponent <People> ();
+        BuildsClass = MainCamera.GetComponent <Builds> ();
+        RoadsClass = MainCamera.GetComponent <Roads> ();
         InterfaceClass = InterfaceObject.GetComponent <Interface> ();
         ImageClass = RadialImage.GetComponent <Image> ();
     }
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space) && !RoadsClass.isFollowGhost && !BuildsClass.isFollowGhost) {
+            PeopleClass.ClosePassport();
             RadialPanel.SetActive(true);
             InterfaceClass.DeactivateAllMenu();
             RadialPanel.GetComponent <Animator> ().SetBool("isOpened", true);

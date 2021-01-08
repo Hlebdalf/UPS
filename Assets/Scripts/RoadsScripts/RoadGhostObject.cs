@@ -11,6 +11,7 @@ public class RoadGhostObject : MonoBehaviour {
     private float eps = 1e-5f;
     public bool isBusy = false, isFirst = false, isCollision = false;
 
+    public GameObject InterfaceObject;
     public float x1, y1, x2, y2, len, angle;
     public int idx, idxPreFub, connectedRoad, connectedRoad2 = -1;
     public bool isFollow = true;
@@ -58,6 +59,7 @@ public class RoadGhostObject : MonoBehaviour {
                 rend.material.mainTextureScale = new Vector2(1, len / 2);
 
                 if (Input.GetMouseButtonDown(0) && !isCollision && CheckAngle()) {
+                    RoadsClass.InterfaceClass.ActivateMenu();
                     gameObject.layer = 0;
                     RoadsClass.isFollowGhost = isFollow = false;
                     RoadsClass.RoadType = "";
@@ -151,6 +153,7 @@ public class RoadGhostObject : MonoBehaviour {
 
     private void OnMouseDown() {
         if (!RoadsClass.isFollowGhost && RoadsClass.RoadType == "" && BuildsClass.ghostObjects.Count == 0) {
+            RoadsClass.InterfaceClass.DeactivateAllMenu();
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {

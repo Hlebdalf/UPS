@@ -14,6 +14,8 @@ public class Roads : MonoBehaviour {
     public List <GameObject> objects;
     public List <GameObject> crossroads;
     public List <GameObject> ghostObjects;
+    public GameObject InterfaceObject;
+    public Interface InterfaceClass;
     public bool isPressEnter = false;
     public bool isFollowGhost = false;
     public int idxOverRoad = -1, idxOverCrossroad = -1;
@@ -22,6 +24,7 @@ public class Roads : MonoBehaviour {
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         FieldClass = MainCamera.GetComponent <Field> ();
+        InterfaceClass = InterfaceObject.GetComponent <Interface> ();
     }
 
     private void Start() {
@@ -49,7 +52,7 @@ public class Roads : MonoBehaviour {
                 }
             }
         }
-        if ((Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter)) && !isPressEnter) {
+        if ((Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter)) && !isPressEnter && !isFollowGhost) {
             isPressEnter = true;
         }
         if (isPressEnter) {
@@ -119,6 +122,7 @@ public class Roads : MonoBehaviour {
     }
 
     public void CreateGhost(string name, Vector3 point, int idxRoad) {
+        InterfaceClass.DeactivateAllMenu();
         ghostObjects.Add(Instantiate(preFubsGhost[ToIndex(name)], point, preFubsGhost[ToIndex(name)].transform.rotation));
         ghostObjects[ghostObjects.Count - 1].AddComponent <RoadGhostObject> ();
         RoadGhostObject data = ghostObjects[ghostObjects.Count - 1].GetComponent <RoadGhostObject> ();

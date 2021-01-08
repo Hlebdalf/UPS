@@ -367,6 +367,29 @@ public class People : MonoBehaviour {
     }
 
     public void OpenPassport() {
-        if (!passportIsOpened) PassportCardPanelAnimator.Play("Forward");
+        if (!passportIsOpened) {
+            PassportCardPanelAnimator.Play("Forward");
+            passportIsOpened = true;
+        }
+    }
+
+    public void ClosePassport() {
+        if (passportIsOpened) {
+            PassportCardPanelAnimator.Play("Back");
+            passportIsOpened = false;
+        }
+    }
+
+    public void SwitchPassport() {
+        if (!Input.GetKeyDown(KeyCode.Space) && !Input.GetKeyDown(KeyCode.Return) && !Input.GetKeyDown(KeyCode.KeypadEnter)) {
+            if (!passportIsOpened) {
+                PassportCardPanelAnimator.Play("Forward");
+                passportIsOpened = true;
+            }
+            else {
+                PassportCardPanelAnimator.Play("Back");
+                passportIsOpened = false;
+            }
+        }
     }
 }

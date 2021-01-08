@@ -11,6 +11,7 @@ public class BuildGhostObject : MonoBehaviour {
     private float eps = 1e-5f;
     private bool isBusy = false, isCollision = false, isConnected = false;
 
+    public GameObject InterfaceObject;
     public float x, y, rotate;
     public int idx, idxPreFub, connectedRoad = -1;
     public bool isFollow = true;
@@ -39,6 +40,7 @@ public class BuildGhostObject : MonoBehaviour {
                 transform.rotation = Quaternion.Euler(0, rounded.rotate, 0);
             }
             if (Input.GetMouseButtonDown(0) && !isCollision && isConnected) {
+                BuildsClass.InterfaceClass.ActivateMenu();
                 gameObject.layer = 0;
                 BuildsClass.isFollowGhost = isFollow = false;
                 gameObject.AddComponent <Rigidbody> ();
@@ -69,6 +71,7 @@ public class BuildGhostObject : MonoBehaviour {
 
     private void OnMouseDown() {
         if (!BuildsClass.isFollowGhost) {
+            BuildsClass.InterfaceClass.DeactivateAllMenu();
             gameObject.layer = 2;
             BuildsClass.isFollowGhost = isFollow = isBusy = true;
             Destroy(gameObject.GetComponent <Rigidbody> ());
