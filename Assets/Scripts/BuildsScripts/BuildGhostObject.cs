@@ -8,6 +8,8 @@ public class BuildGhostObject : MonoBehaviour {
     private Builds BuildsClass;
     private Roads RoadsClass;
     private Field FieldClass;
+    private GameObject correctObject;
+    private GameObject incorrectObject;
     private float eps = 1e-5f;
     private bool isBusy = false, isCollision = false, isConnected = false;
 
@@ -21,6 +23,8 @@ public class BuildGhostObject : MonoBehaviour {
         BuildsClass = MainCamera.GetComponent <Builds> ();
         RoadsClass = MainCamera.GetComponent <Roads> ();
         FieldClass = MainCamera.GetComponent <Field> ();
+        correctObject = gameObject.transform.Find("Correct").gameObject;
+        incorrectObject = gameObject.transform.Find("Incorrect").gameObject;
     }
 
     private void Start() {
@@ -38,6 +42,14 @@ public class BuildGhostObject : MonoBehaviour {
                 rotate = rounded.rotate;
                 transform.position = rounded.pos;
                 transform.rotation = Quaternion.Euler(0, rounded.rotate, 0);
+            }
+            if (isCollision || !isConnected) {
+                correctObject.SetActive(false);
+                incorrectObject.SetActive(true);
+            }
+            else {
+                correctObject.SetActive(true);
+                incorrectObject.SetActive(false);
             }
             if (Input.GetMouseButtonDown(0) && !isCollision && isConnected) {
                 BuildsClass.InterfaceClass.ActivateMenu();
