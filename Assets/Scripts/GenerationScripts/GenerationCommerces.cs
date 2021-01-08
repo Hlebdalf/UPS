@@ -154,12 +154,13 @@ public class GenerationCommerces : MonoBehaviour {
 
     private int GetTypeHouse() {
         int ans;
-        if (seed % 100 < 17) ans = BuildsClass.idxsCommerces[0];
-        else if (seed % 100 < 34) ans = BuildsClass.idxsCommerces[1];
-        else if (seed % 100 < 50) ans = BuildsClass.idxsCommerces[2];
-        else if (seed % 100 < 67) ans = BuildsClass.idxsCommerces[3];
-        else if (seed % 100 < 84) ans = BuildsClass.idxsCommerces[4];
-        else ans = BuildsClass.idxsCommerces[5];
+        if (seed % 100 < 14) ans = BuildsClass.idxsCommerces[0];
+        else if (seed % 100 < 28) ans = BuildsClass.idxsCommerces[1];
+        else if (seed % 100 < 42) ans = BuildsClass.idxsCommerces[2];
+        else if (seed % 100 < 56) ans = BuildsClass.idxsCommerces[3];
+        else if (seed % 100 < 70) ans = BuildsClass.idxsCommerces[4];
+        else if (seed % 100 < 84) ans = BuildsClass.idxsCommerces[5];
+        else ans = BuildsClass.idxsCommerces[6];
         seed = GenerationClass.funcSeed(seed);
         return ans;
     }

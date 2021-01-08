@@ -17,10 +17,7 @@ public class BuildObject : MonoBehaviour {
     }
 
     private void OnMouseDown() {
-        if (InterfaceClass.isBuildingPosters) {
-            // Добавление рандомного постера
-            ++cntPosters;
-        }
+        // Добавление рандомного постера
     }
 
     public void AddPoster(ulong seed) {

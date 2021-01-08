@@ -54,8 +54,8 @@ public class Passport : MonoBehaviour {
         Text txt = PeopleClass.PassportCard.GetComponent <Text> ();
         txt.text = "Дело №" + (PeopleClass.objects.IndexOf(gameObject) + 1) + "\n";
         if (age < 9) txt.text += "Октябрёнок ";
-        if (age <= 14) txt.text += "Пионер ";
-        if (age <= 28) txt.text += "Комсомолец ";
+        else if (age <= 14) txt.text += "Пионер ";
+        else if (age <= 28) txt.text += "Комсомолец ";
         else txt.text += "Товарищ ";
         txt.text += surnameHuman + " " + nameHuman + " " + fatherNameHuman + "\n";
         txt.text += "Пол: " + gender + ", Возраст: " + age + "\n";
