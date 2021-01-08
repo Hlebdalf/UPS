@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2231,7 +2231,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   preFubs:
-  - {fileID: 8922654871689751478, guid: c2e4f4ef1d7d4ff47a23131040f9ea45, type: 3}
+  - {fileID: 8922654871689751478, guid: bef86fc5334944648ab08534814a0435, type: 3}
+  - {fileID: 8922654871689751478, guid: 6895fdbec3c68eb4b9f7a8e31a71afde, type: 3}
+  - {fileID: 8922654871689751478, guid: 47ec6897f85c9634ebb655cc33d972a1, type: 3}
+  - {fileID: 8922654871689751478, guid: c88953a33b81e8142878a5fd6f059d8a, type: 3}
+  - {fileID: 8922654871689751478, guid: 9c654bdd3edbb73478eb6dc462e49e33, type: 3}
+  - {fileID: 8922654871689751478, guid: 0fd7185b0331f764e8044c62c54782ef, type: 3}
+  - {fileID: 8922654871689751478, guid: 51a907d1c8b03bb4d93610d55a274b4e, type: 3}
+  - {fileID: 8922654871689751478, guid: 64ea732ac797cf24288c18fc190c046e, type: 3}
   objects: []
   socialStatusStorage:
   - "\u0420\u0435\u0431\u0451\u043D\u043E\u043A"
@@ -2245,7 +2252,7 @@ MonoBehaviour:
   isRegeneration: 0
   eps: 0.001
   speed: 0.5
-  cntPeople: 0
+  cntPeople: 1000
 --- !u!114 &963194244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2618,7 +2625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1306117977
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2634,10 +2641,10 @@ RectTransform:
   m_Father: {fileID: 1344676609}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 325, y: -420}
-  m_SizeDelta: {x: 600, y: 800}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -328.2, y: -442.6}
+  m_SizeDelta: {x: 627.68286, y: 857.2114}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1306117978
 MonoBehaviour:
@@ -2652,14 +2659,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 8aa7dfc07687e53469914a1301a3782b, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3231,8 +3238,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 4.600006}
+  m_SizeDelta: {x: 0, y: -415.24335}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1535729420
 MonoBehaviour:
@@ -3247,20 +3254,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.20754719, g: 0.19286224, b: 0.19286224, a: 1}
+  m_Color: {r: 0.47058827, g: 0.23137257, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_Font: {fileID: 12800000, guid: bf33f3ac37755154fbf7b173e6838e1c, type: 3}
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
