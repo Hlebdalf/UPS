@@ -80,18 +80,21 @@ public class Roads : MonoBehaviour {
     }
 
     public Vector3 RoundCoodinate(Vector3 point) {
-        int gridSize = 1;
-        float x = point.x, z = point.z, low, high;
+        // int gridSize = 1;
+        // float x = point.x, z = point.z, low, high;
 
-        low = (int)(x / gridSize) * gridSize;
-        high = low + gridSize;
-        if (Math.Abs(x - low) < Math.Abs(x - high)) point.x = low;
-        else point.x = high;
+        // low = (int)(x / gridSize) * gridSize;
+        // high = low + gridSize;
+        // if (Math.Abs(x - low) < Math.Abs(x - high)) point.x = low;
+        // else point.x = high;
         
-        low = (int)(z / gridSize) * gridSize;
-        high = low + gridSize;
-        if (Math.Abs(z - low) < Math.Abs(z - high)) point.z = low;
-        else point.z = high;
+        // low = (int)(z / gridSize) * gridSize;
+        // high = low + gridSize;
+        // if (Math.Abs(z - low) < Math.Abs(z - high)) point.z = low;
+        // else point.z = high;
+
+        point.x = Mathf.Round(point.x);
+        point.z = Mathf.Round(point.z);
 
         return point;
     }
