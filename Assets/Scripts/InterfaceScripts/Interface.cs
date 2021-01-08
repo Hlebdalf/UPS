@@ -92,9 +92,9 @@ public class Interface : MonoBehaviour {
     }
 
     public void CreateInterface() {
-        CreateInterfaceBuilds();
-        CreateInterfaceCommerces();
-        CreateInterfaceRoads();
+        //CreateInterfaceBuilds();
+        //CreateInterfaceCommerces();
+        //CreateInterfaceRoads();
     }
 
     public void DeactivateAllMenu() {
