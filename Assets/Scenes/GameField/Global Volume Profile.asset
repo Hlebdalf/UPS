@@ -36,6 +36,36 @@ MonoBehaviour:
   rounded:
     m_OverrideState: 0
     m_Value: 0
+--- !u!114 &-2267232118576154695
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf1aba9553839d41ae37dd52e9ebcce, type: 3}
+  m_Name: MotionBlur
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  mode:
+    m_OverrideState: 0
+    m_Value: 0
+  quality:
+    m_OverrideState: 0
+    m_Value: 0
+  intensity:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  clamp:
+    m_OverrideState: 0
+    m_Value: 0.05
+    min: 0
+    max: 0.2
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51,6 +81,31 @@ MonoBehaviour:
   components:
   - {fileID: -3835585270536963257}
   - {fileID: 8920689017577156930}
+  - {fileID: 8454297538781936330}
+--- !u!114 &8454297538781936330
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 221518ef91623a7438a71fef23660601, type: 3}
+  m_Name: WhiteBalance
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  temperature:
+    m_OverrideState: 1
+    m_Value: 30.7
+    min: -100
+    max: 100
+  tint:
+    m_OverrideState: 1
+    m_Value: 44.2
+    min: -100
+    max: 100
 --- !u!114 &8920689017577156930
 MonoBehaviour:
   m_ObjectHideFlags: 3
