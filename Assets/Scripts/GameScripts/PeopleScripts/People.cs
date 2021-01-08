@@ -67,8 +67,13 @@ public class People : MonoBehaviour {
             int idxCommerceType = dataGraph.idxCommerceType;
             int idxSocialСlass = dataGraph.idxSocialСlass;
             float dist = dataGraph.dist;
+            
+            int idxPreFub = 0;
+            if (idxCommerceType == 0) idxPreFub = (int)UnityEngine.Random.Range(0, preFubs.Length - 0.01f);
+            else if (idxCommerceType == 1 || idxCommerceType == 4 || idxCommerceType == 6) idxPreFub = (int)UnityEngine.Random.Range(0, preFubs.Length - 2.01f);
+            else idxPreFub = (int)UnityEngine.Random.Range(3, preFubs.Length - 2.01f);
 
-            objects.Add(Instantiate(preFubs[(int)UnityEngine.Random.Range(0, preFubs.Length - 0.01f)], pointsPath[0], Quaternion.Euler(0, 0, 0)));
+            objects.Add(Instantiate(preFubs[idxPreFub], pointsPath[0], Quaternion.Euler(0, 0, 0)));
             globalPointsPath.Add(pointsPath);
             itForQueue.Add(0);
             vertexIsActive[objects.Count - 1] = false;
@@ -76,6 +81,7 @@ public class People : MonoBehaviour {
 
             objects[objects.Count - 1].AddComponent <Passport> ();
             Passport PassportClass = objects[objects.Count - 1].GetComponent <Passport> ();
+            PassportClass.idxPreFub = idxPreFub;
             PassportClass.idxCommerceType = idxCommerceType;
             PassportClass.idxSocialСlass = idxSocialСlass;
             PassportClass.dist = dist;
