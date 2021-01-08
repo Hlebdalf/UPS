@@ -74,7 +74,7 @@ public class RadialMenu : MonoBehaviour {
                 InterfaceClass.ActivateMenu("Builds");
                 break;
             case 6:
-                gameObject.GetComponent<InfoScript>().SetActivity();
+                InterfaceClass.SetActivityInfo();
                 break;
             case 7:
                 // print("7");

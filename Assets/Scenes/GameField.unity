@@ -1629,7 +1629,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 430986395}
+      - m_Target: {fileID: 1344676610}
         m_MethodName: ExitToMainMenu
         m_Mode: 1
         m_Arguments:
@@ -2171,8 +2171,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1344676611}
-        m_MethodName: SetDisability
+      - m_Target: {fileID: 1344676610}
+        m_MethodName: SetDisabilityInfo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4908,7 +4908,6 @@ GameObject:
   - component: {fileID: 1344676606}
   - component: {fileID: 1344676612}
   - component: {fileID: 1344676610}
-  - component: {fileID: 1344676611}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5024,6 +5023,7 @@ MonoBehaviour:
   InterfaceBuildsContent: {fileID: 617142116}
   InterfaceCommercesContent: {fileID: 661738905}
   InterfaceRoadsContent: {fileID: 1825205667}
+  PanelClass: {fileID: 1977111673}
   buildNames:
   - "\u0414\u043E\u043C1"
   - "\u0414\u043E\u043C2"
@@ -5043,19 +5043,6 @@ MonoBehaviour:
   - "\u0414\u0435\u0442\u0441\u043A\u0438\u0439 \u0441\u0430\u0434"
   roadNames:
   - "\u0414\u0432\u0443\u0445\u043F\u043E\u043B\u043E\u0441\u043D\u0430\u044F \u0434\u043E\u0440\u043E\u0433\u0430"
---- !u!114 &1344676611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1344676605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aacfe626ce197974d8464788735e7304, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PanelClass: {fileID: 1977111673}
 --- !u!114 &1344676612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6835,7 +6822,6 @@ GameObject:
   - component: {fileID: 1977111674}
   - component: {fileID: 1977111676}
   - component: {fileID: 1977111675}
-  - component: {fileID: 1977111677}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -6900,18 +6886,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1977111673}
   m_CullTransparentMesh: 0
---- !u!114 &1977111677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1977111673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d64cf92439801f4ea1077202c87d68c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2032338942
 PrefabInstance:
   m_ObjectHideFlags: 0

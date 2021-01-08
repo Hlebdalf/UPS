@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Interface : MonoBehaviour {
     private GameObject MainCamera;
@@ -14,6 +16,8 @@ public class Interface : MonoBehaviour {
     private Animator InterfaceCommercesAnimator;
     private Animator InterfaceRoadsAnimator;
     private Animator InterfaceOtherAnimator;
+    private bool isActivityInfo = true;
+    private bool isBusy = false;
     private string lastMenu = "";
 
     public GameObject PreFubButton;
@@ -24,6 +28,7 @@ public class Interface : MonoBehaviour {
     public GameObject InterfaceBuildsContent;
     public GameObject InterfaceCommercesContent;
     public GameObject InterfaceRoadsContent;
+    public GameObject PanelClass;
     public string[] buildNames;
     public string[] commerceNames;
     public string[] roadNames;
@@ -36,6 +41,15 @@ public class Interface : MonoBehaviour {
         InterfaceCommercesAnimator = InterfaceCommerces.GetComponent <Animator> ();
         InterfaceRoadsAnimator = InterfaceRoads.GetComponent <Animator> ();
         InterfaceOtherAnimator = InterfaceOther.GetComponent <Animator> ();
+    }
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.F1) && !isBusy) {
+            if (isActivityInfo) SetDisabilityInfo();
+            else SetActivityInfo();
+            isBusy = true;
+        }
+        else isBusy = false;
     }
 
     private void CreateInterfaceBuilds() {
@@ -151,5 +165,19 @@ public class Interface : MonoBehaviour {
                 ActivateMenu(lastMenu);
                 break;
         }
+    }
+
+    public void SetActivityInfo() {
+        PanelClass.SetActive(true);
+        isActivityInfo = true;
+    }
+
+    public void SetDisabilityInfo() {
+        PanelClass.SetActive(false);
+        isActivityInfo = false;
+    }
+
+    public void ExitToMainMenu() {
+        SceneManager.LoadScene("MainMenu");
     }
 }
