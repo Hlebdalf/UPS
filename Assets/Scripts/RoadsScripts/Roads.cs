@@ -10,6 +10,7 @@ public class Roads : MonoBehaviour {
     
     public GameObject[] preFubs;
     public GameObject[] preFubsGhost;
+    public GameObject preFubCrossroad;
     public List <GameObject> objects;
     public List <GameObject> crossroads;
     public List <GameObject> ghostObjects;
@@ -143,7 +144,7 @@ public class Roads : MonoBehaviour {
                 float mainRoadCrossGhostRoadX = -(mainRoadC * ghostRoadB - ghostRoadC * mainRoadB) / (mainRoadA * ghostRoadB - ghostRoadA * mainRoadB); // rounded coordinate
                 float mainRoadCrossGhostRoadY = -(mainRoadA * ghostRoadC - ghostRoadA * mainRoadC) / (mainRoadA * ghostRoadB - ghostRoadA * mainRoadB); // rounded coordinate
 
-                FieldClass.objects[(int)ghostObjectClass.x1 + FieldClass.fieldSizeHalf, (int)ghostObjectClass.y1 + FieldClass.fieldSizeHalf] = Instantiate(preFubs[ToIndex("Crossroad1")],
+                FieldClass.objects[(int)ghostObjectClass.x1 + FieldClass.fieldSizeHalf, (int)ghostObjectClass.y1 + FieldClass.fieldSizeHalf] = Instantiate(preFubCrossroad,
                     new Vector3(mainRoadCrossGhostRoadX, 0f, mainRoadCrossGhostRoadY), Quaternion.Euler(0, 0, 0));
                 crossroads.Add(FieldClass.objects[(int)ghostObjectClass.x1 + FieldClass.fieldSizeHalf, (int)ghostObjectClass.y1 + FieldClass.fieldSizeHalf]);
                 FieldClass.objects[(int)ghostObjectClass.x1 + FieldClass.fieldSizeHalf, (int)ghostObjectClass.y1 + FieldClass.fieldSizeHalf].AddComponent <CrossroadObject> ();
@@ -180,7 +181,7 @@ public class Roads : MonoBehaviour {
                     float mainRoadCrossGhostRoadX = -(mainRoadC * ghostRoadB - ghostRoadC * mainRoadB) / (mainRoadA * ghostRoadB - ghostRoadA * mainRoadB); // rounded coordinate
                     float mainRoadCrossGhostRoadY = -(mainRoadA * ghostRoadC - ghostRoadA * mainRoadC) / (mainRoadA * ghostRoadB - ghostRoadA * mainRoadB); // rounded coordinate
                 
-                    FieldClass.objects[(int)ghostObjectClass.x2 + FieldClass.fieldSizeHalf, (int)ghostObjectClass.y2 + FieldClass.fieldSizeHalf] = Instantiate(preFubs[ToIndex("Crossroad1")],
+                    FieldClass.objects[(int)ghostObjectClass.x2 + FieldClass.fieldSizeHalf, (int)ghostObjectClass.y2 + FieldClass.fieldSizeHalf] = Instantiate(preFubCrossroad,
                         new Vector3(mainRoadCrossGhostRoadX, 0f, mainRoadCrossGhostRoadY), Quaternion.Euler(0, 0, 0));
                     crossroads.Add(FieldClass.objects[(int)ghostObjectClass.x2 + FieldClass.fieldSizeHalf, (int)ghostObjectClass.y2 + FieldClass.fieldSizeHalf]);
                     FieldClass.objects[(int)ghostObjectClass.x2 + FieldClass.fieldSizeHalf, (int)ghostObjectClass.y2 + FieldClass.fieldSizeHalf].AddComponent <CrossroadObject> ();
@@ -242,7 +243,7 @@ public class Roads : MonoBehaviour {
 
         if (connectedRoad != -1) {
             if (FieldClass.objects[(int)point1.x + FieldClass.fieldSizeHalf, (int)point1.z + FieldClass.fieldSizeHalf] == null) {
-                FieldClass.objects[(int)point1.x + FieldClass.fieldSizeHalf, (int)point1.z + FieldClass.fieldSizeHalf] = Instantiate(preFubs[ToIndex("Crossroad1")],
+                FieldClass.objects[(int)point1.x + FieldClass.fieldSizeHalf, (int)point1.z + FieldClass.fieldSizeHalf] = Instantiate(preFubCrossroad,
                     new Vector3(point1.x, 0f, point1.z), Quaternion.Euler(0, 0, 0));
                 crossroads.Add(FieldClass.objects[(int)point1.x + FieldClass.fieldSizeHalf, (int)point1.z + FieldClass.fieldSizeHalf]);
                 FieldClass.objects[(int)point1.x + FieldClass.fieldSizeHalf, (int)point1.z + FieldClass.fieldSizeHalf].AddComponent <CrossroadObject> ();
