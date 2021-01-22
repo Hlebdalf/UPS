@@ -144,6 +144,10 @@ public class People : MonoBehaviour {
                 x1 = 0f;
                 y1 = 0.45f;
             }
+            else if (mainRoadB1 == 0) {
+                x1 = 0.45f;
+                y1 = 0;
+            }
             else {
                 x1 = (float)Math.Abs(Math.Cos(Math.Atan(mainRoadB1 / mainRoadA1)) * (0.9f));
                 y1 = (float)Math.Abs(Math.Sin(Math.Atan(mainRoadB1 / mainRoadA1)) * (0.9f));
@@ -179,6 +183,10 @@ public class People : MonoBehaviour {
             if (mainRoadA2 == 0) {
                 x2 = 0f;
                 y2 = 0.45f;
+            }
+            else if (mainRoadB2 == 0) {
+                x2 = 0.45f;
+                y2 = 0;
             }
             else {
                 x2 = (float)Math.Abs(Math.Cos(Math.Atan(mainRoadB2 / mainRoadA2)) * (0.9f));

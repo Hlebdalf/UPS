@@ -133,6 +133,10 @@ public class Cars : MonoBehaviour {
                 x = 0;
                 y = 0.3f;
             }
+            else if (normFromA == 0) {
+                x = 0.3f;
+                y = 0;
+            }
             else {
                 x = (float)Math.Abs(Math.Cos(Math.Atan(normFromA / -normFromB)) * (0.5f));
                 y = (float)Math.Abs(Math.Sin(Math.Atan(normFromA / -normFromB)) * (0.5f));
