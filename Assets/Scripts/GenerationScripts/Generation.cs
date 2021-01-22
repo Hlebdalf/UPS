@@ -46,7 +46,7 @@ public class Generation : MonoBehaviour {
 
     public void StartGeneration() {
         Debug.Log("Start Generation: " + DateTimeOffset.Now);
-        if (MainMenuButtonManagment.seed == -1 && MainMenuButtonManagment.seed == 0)
+        if (MainMenuButtonManagment.seed == -1 || MainMenuButtonManagment.seed == 0)
             seed = (ulong)UnityEngine.Random.Range(0f, 1e9f);
         else seed = (ulong)MainMenuButtonManagment.seed;
         maxCntRoads = MainMenuButtonManagment.cntRoad;

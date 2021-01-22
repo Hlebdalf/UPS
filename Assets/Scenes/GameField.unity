@@ -4296,7 +4296,7 @@ PrefabInstance:
     - target: {fileID: 7039345004529980392, guid: 0dc7e325288ebd0458de921d7d110a07,
         type: 3}
       propertyPath: m_Text
-      value: "\u0411\u0443\u0440\u0436\u0443\u0439 \u0410"
+      value: "\u0411\u0443\u0440\u0436\u0443\u0439 \u0411"
       objectReference: {fileID: 0}
     - target: {fileID: 7039345004529980392, guid: 0dc7e325288ebd0458de921d7d110a07,
         type: 3}
@@ -5788,7 +5788,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: "\u041F\u0440\u043E\u043B\u0435\u0442\u0430\u0440\u0438\u0430\u0442
-        \u0410"
+        \u0411"
       objectReference: {fileID: 0}
     - target: {fileID: 7039345004529980392, guid: 0dc7e325288ebd0458de921d7d110a07,
         type: 3}
