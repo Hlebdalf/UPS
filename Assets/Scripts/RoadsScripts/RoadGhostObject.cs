@@ -79,6 +79,7 @@ public class RoadGhostObject : MonoBehaviour {
                 }
 
                 if (Input.GetMouseButtonDown(1)) {
+                    RoadsClass.InterfaceClass.ActivateMenu();
                     RoadsClass.isFollowGhost = isFollow = false;
                     RoadsClass.RoadType = "";
                     RoadsClass.DeleteGhost(gameObject);

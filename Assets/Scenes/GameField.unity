@@ -776,7 +776,7 @@ MonoBehaviour:
   Sensivity1: 1.5
   Sensivity2: 1.5
   startSpeed: 10
-  speed: 1
+  speed: 1.5
 --- !u!114 &72574826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3174,7 +3174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roof: 150
   floor: 2
-  speed: 1
+  speed: 1.2
 --- !u!114 &963194234
 MonoBehaviour:
   m_ObjectHideFlags: 0
