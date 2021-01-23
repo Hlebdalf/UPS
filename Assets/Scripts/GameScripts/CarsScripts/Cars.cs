@@ -131,15 +131,25 @@ public class Cars : MonoBehaviour {
             float x, y;
             if (normFromB == 0) {
                 x = 0;
-                y = 0.3f;
+                y = 0.2f;
             }
             else if (normFromA == 0) {
-                x = 0.3f;
+                x = 0.2f;
                 y = 0;
             }
             else {
-                x = (float)Math.Abs(Math.Cos(Math.Atan(normFromA / -normFromB)) * (0.5f));
-                y = (float)Math.Abs(Math.Sin(Math.Atan(normFromA / -normFromB)) * (0.5f));
+                x = (float)Math.Abs(Math.Cos(Math.Atan(normFromA / -normFromB)) * (0.4f));
+                y = (float)Math.Abs(Math.Sin(Math.Atan(normFromA / -normFromB)) * (0.4f));
+            }
+            float dx = (float)Math.Cos(Math.Atan2(To.z - From.z, To.x - From.x)) * 1f;
+            float dz = (float)Math.Sin(Math.Atan2(To.z - From.z, To.x - From.x)) * 1f;
+            if (i > start) {
+                From.x += dx;
+                From.z += dz;
+            }
+            if (i + 1 < end) {
+                To.x -= dx;
+                To.z -= dz;
             }
             float cs = To.x - From.x;
             float sn = To.z - From.z;
