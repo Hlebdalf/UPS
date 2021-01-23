@@ -59,6 +59,7 @@ public class BuildGhostObject : MonoBehaviour {
                 gameObject.GetComponent <Rigidbody> ().useGravity = false;
             }
             if (Input.GetMouseButtonDown(1)) {
+                BuildsClass.InterfaceClass.ActivateMenu();
                 BuildsClass.isFollowGhost = isFollow = false;
                 BuildsClass.DeleteGhost(gameObject);
             }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TextLoader : MonoBehaviour {
     private void Start() {
-        Debug.Log("Streaming Assets Path: " + Application.streamingAssetsPath);
+        // Debug.Log("Streaming Assets Path: " + Application.streamingAssetsPath);
     }
 
     public string LoadText(string fileName) {

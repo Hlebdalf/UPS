@@ -9,7 +9,7 @@ public class CameraScrolling : MonoBehaviour {
     
     private void FixedUpdate() {
         float koeff = speed * (Mathf.Pow(transform.position.y - 230 * 0.1f, 2) / 100 + 17) * speed * Time.deltaTime;
-        if ((Input.mouseScrollDelta.y > 0 && transform.position.y > floor) ||
+        if ((Input.mouseScrollDelta.y > 0 && transform.position.y - Input.mouseScrollDelta.y * speed > floor) ||
             (Input.mouseScrollDelta.y < 0 && transform.position.y < roof)) {
             transform.Translate(0, 0, Input.mouseScrollDelta.y * speed);
         }
