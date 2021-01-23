@@ -141,11 +141,13 @@ public class Cars : MonoBehaviour {
                 x = (float)Math.Abs(Math.Cos(Math.Atan(normFromA / -normFromB)) * (0.4f));
                 y = (float)Math.Abs(Math.Sin(Math.Atan(normFromA / -normFromB)) * (0.4f));
             }
-            if ((start < 1 && end > pointsPath.Count - 2) || (i > start && i + 1 < end)) {
-                float dx = (float)Math.Cos(Math.Atan2(To.z - From.z, To.x - From.x)) * 1f;
-                float dz = (float)Math.Sin(Math.Atan2(To.z - From.z, To.x - From.x)) * 1f;
+            float dx = (float)Math.Cos(Math.Atan2(To.z - From.z, To.x - From.x)) * 1f;
+            float dz = (float)Math.Sin(Math.Atan2(To.z - From.z, To.x - From.x)) * 1f;
+            if (i > start) {
                 From.x += dx;
                 From.z += dz;
+            }
+            if (i + 1 < end) {
                 To.x -= dx;
                 To.z -= dz;
             }
