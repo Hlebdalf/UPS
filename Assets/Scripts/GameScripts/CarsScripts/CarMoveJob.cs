@@ -23,7 +23,10 @@ public struct CarMoveJob : IJobParallelForTransform  {
                 Vector3 move = new Vector3((vertexTo[idx].x - vertexFrom.x) / (float)dist, 0, (vertexTo[idx].z - vertexFrom.z) / (float)dist) * speed * fixedDeltaTime;
                 move.x *= (cntMissedFrames + 1) * (cntWaitingFrames[idx] + 1);
                 move.z *= (cntMissedFrames + 1) * (cntWaitingFrames[idx] + 1);
-                if (move.magnitude >= dist) transform.position = vertexTo[idx];
+                if (move.magnitude >= dist) {
+                    transform.position = vertexTo[idx];
+                    vertexIsActive[idx] = false;
+                }
                 else transform.position = new Vector3(transform.position.x + move.x, 0, transform.position.z + move.z);
                 transform.rotation = Quaternion.Euler(0, (float)Math.Atan2(vertexTo[idx].z - vertexFrom.z, vertexTo[idx].x - vertexFrom.x) * -57.3f + 90f, 0);
             }
