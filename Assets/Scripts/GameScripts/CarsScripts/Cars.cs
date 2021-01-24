@@ -20,10 +20,13 @@ public class Cars : MonoBehaviour {
     private JobHandle handle;
     private NativeArray <Vector3> vertexTo;
     private NativeArray <bool> vertexIsActive;
+    public NativeArray <bool> onVisibleInCamera;
+    private NativeArray <int> cntWaitingFrames;
     private int cntMissedFrames = 0;
 
     public GameObject[] preFubs;
     public List <GameObject> objects;
+    public List <Car> objectClasses;
     public bool isStarted = false, isRegeneration = false;
     public float speed = 10;
 
@@ -35,6 +38,7 @@ public class Cars : MonoBehaviour {
         GenerationGraphClass = MainCamera.GetComponent <GenerationGraph> ();
         cntCars = MainMenuButtonManagment.cntCars;
         objects = new List <GameObject> ();
+        objectClasses = new List <Car> ();
     }
 
     private void OnEnable() {
@@ -43,8 +47,12 @@ public class Cars : MonoBehaviour {
         cntFrameForDelay = new List <int> ();
         vertexTo = new NativeArray <Vector3> (cntCars, Allocator.Persistent);
         vertexIsActive = new NativeArray <bool> (cntCars, Allocator.Persistent);
+        onVisibleInCamera = new NativeArray <bool> (cntCars, Allocator.Persistent);
+        cntWaitingFrames = new NativeArray <int> (cntCars, Allocator.Persistent);
         for (int i = 0; i < cntCars; ++i) {
             vertexIsActive[i] = false;
+            onVisibleInCamera[i] = false;
+            cntWaitingFrames[i] = 0;
         }
     }
 
@@ -62,8 +70,12 @@ public class Cars : MonoBehaviour {
             pointsPathToParking = ShiftRoadVectors(pointsPathToParking, 0, pointsPathToParking.Count - 2);
 
             objects.Add(Instantiate(preFubs[(int)UnityEngine.Random.Range(0, preFubs.Length - 0.01f)], pointsPathToStart[0], Quaternion.Euler(0, 0, 0)));
+            objects[objects.Count - 1].AddComponent <Car> ();
+            objectClasses.Add(objects[objects.Count - 1].GetComponent <Car> ());
             paths.Add((pointsPathToStart, pointsPathToEnd, pointsPathToParking));
             vertexIsActive[objects.Count - 1] = false;
+            onVisibleInCamera[objects.Count - 1] = false;
+            cntWaitingFrames[objects.Count - 1] = 0;
             itForQueue.Add(0);
             cntFrameForDelay.Add(0);
         }
@@ -74,6 +86,8 @@ public class Cars : MonoBehaviour {
             Transform[] transformArray = new Transform[objects.Count];
             for (int i = 0; i < objects.Count; ++i) {
                 transformArray[i] = objects[i].transform;
+                onVisibleInCamera[i] = objectClasses[i].onVisibleInCamera;
+                // onVisibleInCamera[i] = GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(Camera.main), objects[i].transform.gameObject.GetComponent <Collider> ().bounds);
                 if (!vertexIsActive[i]) {
                     if (itForQueue[i] < paths[i].pointsPathToStart.Count) {
                         vertexTo[i] = paths[i].pointsPathToStart[itForQueue[i]++];
@@ -103,7 +117,10 @@ public class Cars : MonoBehaviour {
             CarMoveJob job = new CarMoveJob();
             job.vertexTo = vertexTo;
             job.vertexIsActive = vertexIsActive;
+            job.onVisibleInCamera = onVisibleInCamera;
+            job.cntWaitingFrames = cntWaitingFrames;
             job.speed = speed;
+            job.cameraPos = MainCamera.transform.position;
             job.fixedDeltaTime = Time.fixedDeltaTime;
             job.cntMissedFrames = cntMissedFrames;
 
@@ -119,6 +136,8 @@ public class Cars : MonoBehaviour {
     private void OnDisable() {
         vertexTo.Dispose();
         vertexIsActive.Dispose();
+        onVisibleInCamera.Dispose();
+        cntWaitingFrames.Dispose();
     }
 
     private List <Vector3> ShiftRoadVectors(List <Vector3> pointsPath, int start, int end) {
@@ -387,12 +406,15 @@ public class Cars : MonoBehaviour {
     public void DeleteObject(int idx) {
         GameObject obj = objects[idx];
         objects.RemoveAt(idx);
+        objectClasses.RemoveAt(idx);
         paths.RemoveAt(idx);
         itForQueue.RemoveAt(idx);
         cntFrameForDelay.RemoveAt(idx);
         for (int i = idx; i < vertexIsActive.Length - 1; ++i) {
             vertexIsActive[i] = vertexIsActive[i + 1];
+            onVisibleInCamera[i] = onVisibleInCamera[i + 1];
             vertexTo[i] = vertexTo[i + 1];
+            cntWaitingFrames[i] = cntWaitingFrames[i + 1];
         }
         Destroy(obj);
     }

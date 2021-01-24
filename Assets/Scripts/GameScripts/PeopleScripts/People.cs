@@ -21,6 +21,7 @@ public class People : MonoBehaviour {
     private JobHandle handle;
     private NativeArray <Vector3> vertexTo;
     private NativeArray <bool> vertexIsActive;
+    private NativeArray <int> cntWaitingFrames;
     private NativeArray <int> cntTranslate;
     private int cntMissedFrames = 0;
 
@@ -49,9 +50,11 @@ public class People : MonoBehaviour {
         itForQueue = new List <int> ();
         vertexTo = new NativeArray <Vector3> (cntPeople, Allocator.Persistent);
         vertexIsActive = new NativeArray <bool> (cntPeople, Allocator.Persistent);
+        cntWaitingFrames = new NativeArray <int> (cntPeople, Allocator.Persistent);
         cntTranslate = new NativeArray <int> (cntPeople, Allocator.Persistent);
         for (int i = 0; i < cntPeople; ++i) {
             vertexIsActive[i] = false;
+            cntWaitingFrames[i] = 0;
             cntTranslate[i] = 0;
         }
     }
@@ -78,6 +81,7 @@ public class People : MonoBehaviour {
             globalPointsPath.Add(pointsPath);
             itForQueue.Add(0);
             vertexIsActive[objects.Count - 1] = false;
+            cntWaitingFrames[objects.Count - 1] = 0;
             cntTranslate[objects.Count - 1] = 0;
 
             objects[objects.Count - 1].AddComponent <Passport> ();
@@ -109,7 +113,9 @@ public class People : MonoBehaviour {
             HumanMoveJob job = new HumanMoveJob();
             job.vertexTo = vertexTo;
             job.vertexIsActive = vertexIsActive;
+            job.cntWaitingFrames = cntWaitingFrames;
             job.speed = speed;
+            job.cameraPos = MainCamera.transform.position;
             job.fixedDeltaTime = Time.fixedDeltaTime;
             job.cntMissedFrames = cntMissedFrames;
             job.cntTranslate = cntTranslate;
@@ -126,6 +132,7 @@ public class People : MonoBehaviour {
     private void OnDisable() {
         vertexTo.Dispose();
         vertexIsActive.Dispose();
+        cntWaitingFrames.Dispose();
         cntTranslate.Dispose();
     }
 
@@ -376,6 +383,7 @@ public class People : MonoBehaviour {
         for (int i = idx; i < vertexIsActive.Length - 1; ++i) {
             vertexTo[i] = vertexTo[i + 1];
             vertexIsActive[i] = vertexIsActive[i + 1];
+            cntWaitingFrames[i] = cntWaitingFrames[i + 1];
             cntTranslate[i] = cntTranslate[i + 1];
         }
         Destroy(obj);
