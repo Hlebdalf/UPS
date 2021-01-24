@@ -85,38 +85,38 @@ public class GenerationHouses : MonoBehaviour {
 
         Vector2 point1 = RoadsClass.RoundCoodinate(new Vector2(posOnRoad.x + dx, posOnRoad.y + dy));
         if (FieldClass.districts[(int)point1.x + FieldClass.fieldSizeHalf, (int)point1.y + FieldClass.fieldSizeHalf] == 0) {
-            if ((seed % 100) < 50) typeHouse1 = BuildsClass.idxsDistrict1[0];
-            if ((seed % 100) >= 50) typeHouse1 = BuildsClass.idxsDistrict1[1];
+            if ((seed % 200) < 50) typeHouse1 = BuildsClass.idxsDistrict1[0];
+            if ((seed % 200) >= 50) typeHouse1 = BuildsClass.idxsDistrict1[1];
         }
         if (FieldClass.districts[(int)point1.x + FieldClass.fieldSizeHalf, (int)point1.y + FieldClass.fieldSizeHalf] == 1) {
-            if ((seed % 100) < 50) typeHouse1 = BuildsClass.idxsDistrict2[0];
-            if ((seed % 100) >= 50) typeHouse1 = BuildsClass.idxsDistrict2[1];
+            if ((seed % 200) < 50) typeHouse1 = BuildsClass.idxsDistrict2[0];
+            if ((seed % 200) >= 50) typeHouse1 = BuildsClass.idxsDistrict2[1];
         }
         if (FieldClass.districts[(int)point1.x + FieldClass.fieldSizeHalf, (int)point1.y + FieldClass.fieldSizeHalf] == 2) {
-            if ((seed % 100) < 50) typeHouse1 = BuildsClass.idxsDistrict3[0];
-            if ((seed % 100) >= 50) typeHouse1 = BuildsClass.idxsDistrict3[1];
+            if ((seed % 200) < 50) typeHouse1 = BuildsClass.idxsDistrict3[0];
+            if ((seed % 200) >= 50) typeHouse1 = BuildsClass.idxsDistrict3[1];
         }
         if (FieldClass.districts[(int)point1.x + FieldClass.fieldSizeHalf, (int)point1.y + FieldClass.fieldSizeHalf] == 3) {
-            if ((seed % 100) < 50) typeHouse1 = BuildsClass.idxsDistrict4[0];
-            if ((seed % 100) >= 50) typeHouse1 = BuildsClass.idxsDistrict4[1];
+            if ((seed % 200) < 50) typeHouse1 = BuildsClass.idxsDistrict4[0];
+            if ((seed % 200) >= 50) typeHouse1 = BuildsClass.idxsDistrict4[1];
         }
 
         Vector2 point2 = RoadsClass.RoundCoodinate(new Vector2(posOnRoad.x - dx, posOnRoad.y - dy));
         if (FieldClass.districts[(int)point2.x + FieldClass.fieldSizeHalf, (int)point2.y + FieldClass.fieldSizeHalf] == 0) {
-            if ((seed % 100) < 50) typeHouse2 = BuildsClass.idxsDistrict1[0];
-            if ((seed % 100) >= 50) typeHouse2 = BuildsClass.idxsDistrict1[1];
+            if ((seed % 200) < 50) typeHouse2 = BuildsClass.idxsDistrict1[0];
+            if ((seed % 200) >= 50) typeHouse2 = BuildsClass.idxsDistrict1[1];
         }
         if (FieldClass.districts[(int)point2.x + FieldClass.fieldSizeHalf, (int)point2.y + FieldClass.fieldSizeHalf] == 1) {
-            if ((seed % 100) < 50) typeHouse2 = BuildsClass.idxsDistrict2[0];
-            if ((seed % 100) >= 50) typeHouse2 = BuildsClass.idxsDistrict2[1];
+            if ((seed % 200) < 50) typeHouse2 = BuildsClass.idxsDistrict2[0];
+            if ((seed % 200) >= 50) typeHouse2 = BuildsClass.idxsDistrict2[1];
         }
         if (FieldClass.districts[(int)point2.x + FieldClass.fieldSizeHalf, (int)point2.y + FieldClass.fieldSizeHalf] == 2) {
-            if ((seed % 100) < 30) typeHouse2 = BuildsClass.idxsDistrict3[0];
-            if ((seed % 100) >= 30) typeHouse2 = BuildsClass.idxsDistrict3[1];
+            if ((seed % 200) < 30) typeHouse2 = BuildsClass.idxsDistrict3[0];
+            if ((seed % 200) >= 30) typeHouse2 = BuildsClass.idxsDistrict3[1];
         }
         if (FieldClass.districts[(int)point2.x + FieldClass.fieldSizeHalf, (int)point2.y + FieldClass.fieldSizeHalf] == 3) {
-            if ((seed % 100) < 50) typeHouse2 = BuildsClass.idxsDistrict4[0];
-            if ((seed % 100) >= 50) typeHouse2 = BuildsClass.idxsDistrict4[1];
+            if ((seed % 200) < 50) typeHouse2 = BuildsClass.idxsDistrict4[0];
+            if ((seed % 200) >= 50) typeHouse2 = BuildsClass.idxsDistrict4[1];
         }
         seed = GenerationClass.funcSeed(seed);
         return (typeHouse1, typeHouse2);
@@ -188,8 +188,8 @@ public class GenerationHouses : MonoBehaviour {
                         }
                     }
 
-                    for (int itX = (int)(point1.x - 10); itX <= point1.x + 10; ++itX) {
-                        for (int itY = (int)(point1.z - 10); itY <= point1.z + 10; ++itY) {
+                    for (int itX = (int)(point1.x - 20); itX <= point1.x + 20; ++itX) {
+                        for (int itY = (int)(point1.z - 20); itY <= point1.z + 20; ++itY) {
                             if (itX >= FieldClass.fieldSizeHalf || itY >= FieldClass.fieldSizeHalf || itX <= -FieldClass.fieldSizeHalf || itY <= -FieldClass.fieldSizeHalf ||
                                 FieldClass.objects[itX + FieldClass.fieldSizeHalf, itY + FieldClass.fieldSizeHalf] == null ||
                                 !(FieldClass.objects[itX + FieldClass.fieldSizeHalf, itY + FieldClass.fieldSizeHalf].GetComponent<BuildObject>())) continue;
@@ -244,8 +244,8 @@ public class GenerationHouses : MonoBehaviour {
                         }
                     }
 
-                    for (int itX = (int)(point2.x - 10); itX <= point2.x + 10; ++itX) {
-                        for (int itY = (int)(point2.z - 10); itY <= point2.z + 10; ++itY) {
+                    for (int itX = (int)(point2.x - 20); itX <= point2.x + 20; ++itX) {
+                        for (int itY = (int)(point2.z - 20); itY <= point2.z + 20; ++itY) {
                             if (itX >= FieldClass.fieldSizeHalf || itY >= FieldClass.fieldSizeHalf || itX <= -FieldClass.fieldSizeHalf || itY <= -FieldClass.fieldSizeHalf ||
                                 FieldClass.objects[itX + FieldClass.fieldSizeHalf, itY + FieldClass.fieldSizeHalf] == null ||
                                 !(FieldClass.objects[itX + FieldClass.fieldSizeHalf, itY + FieldClass.fieldSizeHalf].GetComponent<BuildObject>())) continue;
