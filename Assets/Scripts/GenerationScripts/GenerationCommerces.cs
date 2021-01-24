@@ -250,8 +250,8 @@ public class GenerationCommerces : MonoBehaviour {
                     }
                 }
 
-                for (int itX = (int)(minBlock.point.x - Math.Max(lenHouse, widthHouse)); itX <= minBlock.point.x + Math.Max(lenHouse, widthHouse); ++itX) {
-                    for (int itY = (int)(minBlock.point.z - Math.Max(lenHouse, widthHouse)); itY <= minBlock.point.z + Math.Max(lenHouse, widthHouse); ++itY) {
+                for (int itX = (int)(minBlock.point.x - 2 * Math.Max(lenHouse, widthHouse)); itX <= minBlock.point.x + 2 * Math.Max(lenHouse, widthHouse); ++itX) {
+                    for (int itY = (int)(minBlock.point.z - 2 * Math.Max(lenHouse, widthHouse)); itY <= minBlock.point.z + 2 * Math.Max(lenHouse, widthHouse); ++itY) {
                         if (itX >= FieldClass.fieldSizeHalf || itY >= FieldClass.fieldSizeHalf || itX <= -FieldClass.fieldSizeHalf || itY <= -FieldClass.fieldSizeHalf ||
                             FieldClass.objects[itX + FieldClass.fieldSizeHalf, itY + FieldClass.fieldSizeHalf] == null ||
                             !(FieldClass.objects[itX + FieldClass.fieldSizeHalf, itY + FieldClass.fieldSizeHalf].GetComponent <BuildObject> ())) continue;
