@@ -257,6 +257,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BodyLP
       objectReference: {fileID: 0}
+    - target: {fileID: 6958328272403343435, guid: f53f93403f60d1141a3d88dcdfa63e32,
+        type: 3}
+      propertyPath: m_Name
+      value: BodyLP
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f53f93403f60d1141a3d88dcdfa63e32, type: 3}
 --- !u!4 &2818982786884758098 stripped
