@@ -255,16 +255,6 @@ PrefabInstance:
     - target: {fileID: 6662200409896701103, guid: f53f93403f60d1141a3d88dcdfa63e32,
         type: 3}
       propertyPath: m_Name
-      value: GrandMaleLP
-      objectReference: {fileID: 0}
-    - target: {fileID: 6958328272403343435, guid: f53f93403f60d1141a3d88dcdfa63e32,
-        type: 3}
-      propertyPath: m_Name
-      value: BodyLP
-      objectReference: {fileID: 0}
-    - target: {fileID: 6958328272403343435, guid: f53f93403f60d1141a3d88dcdfa63e32,
-        type: 3}
-      propertyPath: m_Name
       value: BodyLP
       objectReference: {fileID: 0}
     m_RemovedComponents: []
