@@ -143,11 +143,15 @@ public class People : MonoBehaviour {
                         break;
                 }
             }
-            rendererLP.materials[hairLP] = rendererHP.materials[hairHP] = HairMaterials[(int)UnityEngine.Random.Range(0, HairMaterials.Length - 0.01f)];
-            rendererLP.materials[jacketLP] = rendererHP.materials[jacketHP] = CoatMaterials[(int)UnityEngine.Random.Range(0, CoatMaterials.Length - 0.01f)];
-            rendererLP.materials[pantsLP] = rendererHP.materials[pantsHP] = JeansMaterials[(int)UnityEngine.Random.Range(0, JeansMaterials.Length - 0.01f)];
-            rendererLP.materials[bootsLP] = rendererHP.materials[bootsHP] = BootsMaterials[(int)UnityEngine.Random.Range(0, BootsMaterials.Length - 0.01f)];
-            rendererLP.materials[skinLP] = rendererHP.materials[skinHP] = SkinMaterials[(int)UnityEngine.Random.Range(0, SkinMaterials.Length - 0.01f)];
+            Material[] newLPMat = new Material[rendererLP.materials.Length];
+            Material[] newHPMat = new Material[rendererLP.materials.Length];
+            newLPMat[hairLP] = newHPMat[hairHP] = HairMaterials[(int)UnityEngine.Random.Range(0, HairMaterials.Length - 0.01f)];
+            newLPMat[jacketLP] = newHPMat[jacketHP] = CoatMaterials[(int)UnityEngine.Random.Range(0, CoatMaterials.Length - 0.01f)];
+            newLPMat[pantsLP] = newHPMat[pantsHP] = JeansMaterials[(int)UnityEngine.Random.Range(0, JeansMaterials.Length - 0.01f)];
+            newLPMat[bootsLP] = newHPMat[bootsHP] = BootsMaterials[(int)UnityEngine.Random.Range(0, BootsMaterials.Length - 0.01f)];
+            newLPMat[skinLP] = newHPMat[skinHP] = SkinMaterials[(int)UnityEngine.Random.Range(0, SkinMaterials.Length - 0.01f)];
+            rendererHP.materials = newHPMat;
+            rendererLP.materials = newLPMat;
         }
     }
 

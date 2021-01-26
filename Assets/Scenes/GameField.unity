@@ -3346,14 +3346,43 @@ MonoBehaviour:
   - {fileID: 8922654871689751478, guid: 9c654bdd3edbb73478eb6dc462e49e33, type: 3}
   HairMaterials:
   - {fileID: 2100000, guid: 959e650baa4eae94390ccd9beba5d486, type: 2}
+  - {fileID: 2100000, guid: b5e48fc0ca185524096563827127fec8, type: 2}
+  - {fileID: 2100000, guid: e2638c9175be54f4a8b40e1ec3488b3d, type: 2}
+  - {fileID: 2100000, guid: ff925d92c34f3064cb89c27996d38ad4, type: 2}
+  - {fileID: 2100000, guid: a0e30a4844ec7ef45be0e1b92b8c2cd3, type: 2}
+  - {fileID: 2100000, guid: 4a967898c2fdaff46a591fb189d43747, type: 2}
+  - {fileID: 2100000, guid: 5883bb720f77a7f48a8af57352343536, type: 2}
+  - {fileID: 2100000, guid: c58558b58a5bc894e8cd76e84985b30c, type: 2}
   CoatMaterials:
   - {fileID: 2100000, guid: 0e2edd804691c2041937d9884dae13dd, type: 2}
+  - {fileID: 2100000, guid: ef355ea089fa30e4f8d623b8211a9bfe, type: 2}
+  - {fileID: 2100000, guid: 91f8b22bebd06b04b8630fcd70d2bdef, type: 2}
+  - {fileID: 2100000, guid: b01b8b5b870102d439e6d38d2e93dee5, type: 2}
+  - {fileID: 2100000, guid: 799e0c39e5b936b4190e4228625dd40f, type: 2}
+  - {fileID: 2100000, guid: aaa5187f1132b404ea44916cf4aea9f1, type: 2}
+  - {fileID: 2100000, guid: b994c1d42ab041548b01eca29e75d911, type: 2}
+  - {fileID: 2100000, guid: e2fd719726f5ae041b047c789685f566, type: 2}
+  - {fileID: 2100000, guid: 274445d48aba3e64d85c4b9282ad754e, type: 2}
   JeansMaterials:
   - {fileID: 2100000, guid: 35bc450c2c0bbe24ea3dd5bf7e6e5ac2, type: 2}
+  - {fileID: 2100000, guid: 7d551025dc84ca6478a41758b0833856, type: 2}
+  - {fileID: 2100000, guid: 2cd23c708c9979846bc2dcd0307ee5fe, type: 2}
+  - {fileID: 2100000, guid: 062ba81d069bd52458ecd1ffe64260d6, type: 2}
   BootsMaterials:
   - {fileID: 2100000, guid: c6c6f320a1af19b4f906ba5ce21b79c3, type: 2}
+  - {fileID: 2100000, guid: f4a4b2d449bdff349b511e706d359638, type: 2}
+  - {fileID: 2100000, guid: 4d1d9e1f86de8fa488a3710c22424ac8, type: 2}
+  - {fileID: 2100000, guid: b8a1a12354987054abbb411a339d8958, type: 2}
+  - {fileID: 2100000, guid: ce6c85520b0d1f94fbea55697a43b954, type: 2}
+  - {fileID: 2100000, guid: cc5eafbe82c71dd45af98c5d97c1923a, type: 2}
+  - {fileID: 2100000, guid: 87e4d0629fe103a4d8b56e20c19a986f, type: 2}
+  - {fileID: 2100000, guid: 604df4055cfd4814b9b3d45fb3147eb9, type: 2}
+  - {fileID: 2100000, guid: 44ce0dbf0cfb44a45b7d848a5a31e722, type: 2}
   SkinMaterials:
   - {fileID: 2100000, guid: d664fddad1699d448a0fc699fb9b6969, type: 2}
+  - {fileID: 2100000, guid: dd1de37385be9fa49b5ebba9d11c5b34, type: 2}
+  - {fileID: 2100000, guid: f832635e0b9384e409d5294fc2f5e0d2, type: 2}
+  - {fileID: 2100000, guid: 6c4d75111f80a0641addd2a6b42a16e5, type: 2}
   objects: []
   socialStatusStorage:
   - "\u0420\u0435\u0431\u0451\u043D\u043E\u043A"
