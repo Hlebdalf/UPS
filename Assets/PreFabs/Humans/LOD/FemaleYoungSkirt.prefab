@@ -277,11 +277,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BodyLP
       objectReference: {fileID: 0}
-    - target: {fileID: 3636631718359633183, guid: 9d302e93863b7b54b8e4049d6a8bcf86,
-        type: 3}
-      propertyPath: m_Materials.Array.data[3]
-      value: 
-      objectReference: {fileID: 2100000, guid: 35bc450c2c0bbe24ea3dd5bf7e6e5ac2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d302e93863b7b54b8e4049d6a8bcf86, type: 3}
 --- !u!4 &8994837178057223545 stripped
