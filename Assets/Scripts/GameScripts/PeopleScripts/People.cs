@@ -26,6 +26,11 @@ public class People : MonoBehaviour {
     private int cntMissedFrames = 0;
 
     public GameObject[] preFubs;
+    public Material[] HairMaterials;
+    public Material[] CoatMaterials;
+    public Material[] JeansMaterials;
+    public Material[] BootsMaterials;
+    public Material[] SkinMaterials;
     public List <GameObject> objects;
     public string[] socialStatusStorage;
     public GameObject PassportCardPanel;
@@ -90,6 +95,59 @@ public class People : MonoBehaviour {
             PassportClass.idxCommerceType = idxCommerceType;
             PassportClass.idxSocialСlass = idxSocialСlass;
             PassportClass.dist = dist;
+            
+            GameObject objHP = objects[objects.Count - 1].transform.Find("Human").Find(preFubs[idxPreFub].name + "HP").Find("BodyHP").gameObject;
+            GameObject objLP = objects[objects.Count - 1].transform.Find("Human").Find(preFubs[idxPreFub].name + "LP").Find("BodyLP").gameObject;
+            SkinnedMeshRenderer rendererHP = objHP.GetComponent <SkinnedMeshRenderer> ();
+            SkinnedMeshRenderer rendererLP = objLP.GetComponent <SkinnedMeshRenderer> ();
+            Material[] listMatHP = rendererHP.materials;
+            Material[] listMatLP = rendererLP.materials;
+
+            int hairHP = -1, jacketHP = -1, pantsHP = -1, bootsHP = -1, skinHP = -1;
+            for (int i = 0; i < listMatHP.Length; ++i) {
+                switch (listMatHP[i].name) {
+                    case "HairMaterial (Instance)":
+                        hairHP = i;
+                        break;
+                    case "CoatMaterial (Instance)":
+                        jacketHP = i;
+                        break;
+                    case "JeansMaterial (Instance)":
+                        pantsHP = i;
+                        break;
+                    case "BootsMaterial (Instance)":
+                        bootsHP = i;
+                        break;
+                    case "SkinMaterial (Instance)":
+                        skinHP = i;
+                        break;
+                }
+            }
+            int hairLP = -1, jacketLP = -1, pantsLP = -1, bootsLP = -1, skinLP = -1;
+            for (int i = 0; i < listMatLP.Length; ++i) {
+                switch (listMatLP[i].name) {
+                    case "HairMaterial (Instance)":
+                        hairLP = i;
+                        break;
+                    case "CoatMaterial (Instance)":
+                        jacketLP = i;
+                        break;
+                    case "JeansMaterial (Instance)":
+                        pantsLP = i;
+                        break;
+                    case "BootsMaterial (Instance)":
+                        bootsLP = i;
+                        break;
+                    case "SkinMaterial (Instance)":
+                        skinLP = i;
+                        break;
+                }
+            }
+            rendererLP.materials[hairLP] = rendererHP.materials[hairHP] = HairMaterials[(int)UnityEngine.Random.Range(0, HairMaterials.Length - 0.01f)];
+            rendererLP.materials[jacketLP] = rendererHP.materials[jacketHP] = CoatMaterials[(int)UnityEngine.Random.Range(0, CoatMaterials.Length - 0.01f)];
+            rendererLP.materials[pantsLP] = rendererHP.materials[pantsHP] = JeansMaterials[(int)UnityEngine.Random.Range(0, JeansMaterials.Length - 0.01f)];
+            rendererLP.materials[bootsLP] = rendererHP.materials[bootsHP] = BootsMaterials[(int)UnityEngine.Random.Range(0, BootsMaterials.Length - 0.01f)];
+            rendererLP.materials[skinLP] = rendererHP.materials[skinHP] = SkinMaterials[(int)UnityEngine.Random.Range(0, SkinMaterials.Length - 0.01f)];
         }
     }
 
