@@ -21,10 +21,16 @@ public class People : MonoBehaviour {
     private JobHandle handle;
     private NativeArray <Vector3> vertexTo;
     private NativeArray <bool> vertexIsActive;
+    private NativeArray <int> cntWaitingFrames;
     private NativeArray <int> cntTranslate;
     private int cntMissedFrames = 0;
 
     public GameObject[] preFubs;
+    public Material[] HairMaterials;
+    public Material[] CoatMaterials;
+    public Material[] JeansMaterials;
+    public Material[] BootsMaterials;
+    public Material[] SkinMaterials;
     public List <GameObject> objects;
     public string[] socialStatusStorage;
     public GameObject PassportCardPanel;
@@ -49,9 +55,11 @@ public class People : MonoBehaviour {
         itForQueue = new List <int> ();
         vertexTo = new NativeArray <Vector3> (cntPeople, Allocator.Persistent);
         vertexIsActive = new NativeArray <bool> (cntPeople, Allocator.Persistent);
+        cntWaitingFrames = new NativeArray <int> (cntPeople, Allocator.Persistent);
         cntTranslate = new NativeArray <int> (cntPeople, Allocator.Persistent);
         for (int i = 0; i < cntPeople; ++i) {
             vertexIsActive[i] = false;
+            cntWaitingFrames[i] = 0;
             cntTranslate[i] = 0;
         }
     }
@@ -78,6 +86,7 @@ public class People : MonoBehaviour {
             globalPointsPath.Add(pointsPath);
             itForQueue.Add(0);
             vertexIsActive[objects.Count - 1] = false;
+            cntWaitingFrames[objects.Count - 1] = 0;
             cntTranslate[objects.Count - 1] = 0;
 
             objects[objects.Count - 1].AddComponent <Passport> ();
@@ -86,6 +95,63 @@ public class People : MonoBehaviour {
             PassportClass.idxCommerceType = idxCommerceType;
             PassportClass.idxSocialСlass = idxSocialСlass;
             PassportClass.dist = dist;
+            
+            GameObject objHP = objects[objects.Count - 1].transform.Find("Human").Find(preFubs[idxPreFub].name + "HP").Find("BodyHP").gameObject;
+            GameObject objLP = objects[objects.Count - 1].transform.Find("Human").Find(preFubs[idxPreFub].name + "LP").Find("BodyLP").gameObject;
+            SkinnedMeshRenderer rendererHP = objHP.GetComponent <SkinnedMeshRenderer> ();
+            SkinnedMeshRenderer rendererLP = objLP.GetComponent <SkinnedMeshRenderer> ();
+            Material[] listMatHP = rendererHP.materials;
+            Material[] listMatLP = rendererLP.materials;
+
+            int hairHP = -1, jacketHP = -1, pantsHP = -1, bootsHP = -1, skinHP = -1;
+            for (int i = 0; i < listMatHP.Length; ++i) {
+                switch (listMatHP[i].name) {
+                    case "HairMaterial (Instance)":
+                        hairHP = i;
+                        break;
+                    case "CoatMaterial (Instance)":
+                        jacketHP = i;
+                        break;
+                    case "JeansMaterial (Instance)":
+                        pantsHP = i;
+                        break;
+                    case "BootsMaterial (Instance)":
+                        bootsHP = i;
+                        break;
+                    case "SkinMaterial (Instance)":
+                        skinHP = i;
+                        break;
+                }
+            }
+            int hairLP = -1, jacketLP = -1, pantsLP = -1, bootsLP = -1, skinLP = -1;
+            for (int i = 0; i < listMatLP.Length; ++i) {
+                switch (listMatLP[i].name) {
+                    case "HairMaterial (Instance)":
+                        hairLP = i;
+                        break;
+                    case "CoatMaterial (Instance)":
+                        jacketLP = i;
+                        break;
+                    case "JeansMaterial (Instance)":
+                        pantsLP = i;
+                        break;
+                    case "BootsMaterial (Instance)":
+                        bootsLP = i;
+                        break;
+                    case "SkinMaterial (Instance)":
+                        skinLP = i;
+                        break;
+                }
+            }
+            Material[] newLPMat = new Material[rendererLP.materials.Length];
+            Material[] newHPMat = new Material[rendererLP.materials.Length];
+            newLPMat[hairLP] = newHPMat[hairHP] = HairMaterials[(int)UnityEngine.Random.Range(0, HairMaterials.Length - 0.01f)];
+            newLPMat[jacketLP] = newHPMat[jacketHP] = CoatMaterials[(int)UnityEngine.Random.Range(0, CoatMaterials.Length - 0.01f)];
+            newLPMat[pantsLP] = newHPMat[pantsHP] = JeansMaterials[(int)UnityEngine.Random.Range(0, JeansMaterials.Length - 0.01f)];
+            newLPMat[bootsLP] = newHPMat[bootsHP] = BootsMaterials[(int)UnityEngine.Random.Range(0, BootsMaterials.Length - 0.01f)];
+            newLPMat[skinLP] = newHPMat[skinHP] = SkinMaterials[(int)UnityEngine.Random.Range(0, SkinMaterials.Length - 0.01f)];
+            rendererHP.materials = newHPMat;
+            rendererLP.materials = newLPMat;
         }
     }
 
@@ -109,7 +175,9 @@ public class People : MonoBehaviour {
             HumanMoveJob job = new HumanMoveJob();
             job.vertexTo = vertexTo;
             job.vertexIsActive = vertexIsActive;
+            job.cntWaitingFrames = cntWaitingFrames;
             job.speed = speed;
+            job.cameraPos = MainCamera.transform.position;
             job.fixedDeltaTime = Time.fixedDeltaTime;
             job.cntMissedFrames = cntMissedFrames;
             job.cntTranslate = cntTranslate;
@@ -126,6 +194,7 @@ public class People : MonoBehaviour {
     private void OnDisable() {
         vertexTo.Dispose();
         vertexIsActive.Dispose();
+        cntWaitingFrames.Dispose();
         cntTranslate.Dispose();
     }
 
@@ -376,6 +445,7 @@ public class People : MonoBehaviour {
         for (int i = idx; i < vertexIsActive.Length - 1; ++i) {
             vertexTo[i] = vertexTo[i + 1];
             vertexIsActive[i] = vertexIsActive[i + 1];
+            cntWaitingFrames[i] = cntWaitingFrames[i + 1];
             cntTranslate[i] = cntTranslate[i + 1];
         }
         Destroy(obj);
