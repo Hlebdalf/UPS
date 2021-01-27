@@ -102,8 +102,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 3, z: 2}
-  m_Center: {x: 0, y: 2, z: 0}
+  m_Size: {x: 1, y: 2.2, z: 1}
+  m_Center: {x: 0, y: 1.1, z: 0}
 --- !u!1001 &1477035309150498088
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -256,11 +256,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GrandMaleLP
-      objectReference: {fileID: 0}
-    - target: {fileID: 6958328272403343435, guid: f53f93403f60d1141a3d88dcdfa63e32,
-        type: 3}
-      propertyPath: m_Name
-      value: BodyLP
       objectReference: {fileID: 0}
     - target: {fileID: 6958328272403343435, guid: f53f93403f60d1141a3d88dcdfa63e32,
         type: 3}

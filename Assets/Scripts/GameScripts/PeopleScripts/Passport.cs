@@ -88,7 +88,8 @@ public class Passport : MonoBehaviour {
 
         for (int x = posX - radius; x < posX + radius; ++x) {
             for (int z = posZ - radius; z < posZ + radius; ++z) {
-                if (x >= 0 && z < FieldClass.fieldSize) cntPosters += FieldClass.objects[x, z].GetComponent <BuildObject> ().cntPosters;
+                if (x >= 0 && z < FieldClass.fieldSize && FieldClass.objects[x, z].GetComponent <BuildObject> ())
+                    cntPosters += FieldClass.objects[x, z].GetComponent <BuildObject> ().cntPosters;
             }
         }
         reasonsLoyalty.Add("Кол-во плакатов: " + cntPosters);
