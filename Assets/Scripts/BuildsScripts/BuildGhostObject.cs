@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BuildGhostObject : MonoBehaviour {
     private GameObject MainCamera;
+    private GameObject CameraCollider;
     private Builds BuildsClass;
     private Roads RoadsClass;
     private Field FieldClass;
@@ -20,6 +21,7 @@ public class BuildGhostObject : MonoBehaviour {
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        CameraCollider = MainCamera.transform.Find("CameraCollider").gameObject;
         BuildsClass = MainCamera.GetComponent <Builds> ();
         RoadsClass = MainCamera.GetComponent <Roads> ();
         FieldClass = MainCamera.GetComponent <Field> ();
@@ -68,11 +70,13 @@ public class BuildGhostObject : MonoBehaviour {
     }
 
     private void OnTriggerStay(Collider other) {
-        isCollision = true;
+        if (other.gameObject != CameraCollider)
+            isCollision = true;
     }
 
     private void OnTriggerExit(Collider other) {
-        isCollision = false;
+        if (other.gameObject != CameraCollider)
+            isCollision = false;
     }
 
     private void OnMouseOver() {
