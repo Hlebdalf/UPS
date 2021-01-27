@@ -16,7 +16,6 @@ public class Passport : MonoBehaviour {
     public string socialStatus = "Default";
     public int budget = 0;
     public int satisfaction = 0;
-    public int loyalty = 0;
     public string socialСlass = "Default";
     public List <string> preferences;
     public List <string> notPreferences;
@@ -50,49 +49,41 @@ public class Passport : MonoBehaviour {
         SetSatisfaction();
         SetPreference();
         SetProperties();
-        SetLoyalty(); // В разработке...
     }
 
     private void OnMouseDown() {
         PeopleClass.OpenPassport();
-        Text txt = PeopleClass.PassportCard.GetComponent <Text> ();
-        txt.text = "Дело №" + (PeopleClass.objects.IndexOf(gameObject) + 1) + "\n";
-        if (age < 9) txt.text += "Октябрёнок ";
-        else if (age <= 14) txt.text += "Пионер ";
-        else if (age <= 28) txt.text += "Комсомолец ";
-        else txt.text += "Товарищ ";
-        txt.text += surnameHuman + " " + nameHuman + " " + fatherNameHuman + "\n";
-        txt.text += "Пол: " + gender + ", Возраст: " + age + "\n";
-        txt.text += "Социальный статус: " + socialStatus + "\n";
-        if (age >= 18) txt.text += "Социальный класс: " + socialСlass + "\n";
-        txt.text += "Удовлетворённость: " + satisfaction + "\n";
-        if (age >= 14) txt.text += "Преданность партии: " + loyalty + "\n";
-        if (age >= 5) txt.text += "Бюджет: " + budget + "\n";
-        txt.text += "Предпочтения:\n";
-        txt.text += " • Любит: ";
-        for (int i = 0; i < preferences.Count; ++i) {
-            txt.text += preferences[i];
-            if (i + 1 == preferences.Count) txt.text += ".\n";
-            else txt.text += "; ";
-        }
-        txt.text += " • Не любит: ";
-        for (int i = 0; i < notPreferences.Count; ++i) {
-            txt.text += notPreferences[i];
-            if (i + 1 == notPreferences.Count) txt.text += ".\n";
-            else txt.text += "; ";
-        }
-        txt.text += "Особенности:\n";
-        for (int i = 0; i < properties.Count; ++i) {
-            txt.text += " • " + properties[i];
-            if (i + 1 == properties.Count) txt.text += ".";
-            else txt.text += ";\n";
-        }
-
+        WriteSpec();
     }
 
-    private void SetLoyalty() {
+    private (int, List <string>) GetLoyalty() {
         // Зависимость от количества плакатов, удовлетворённости, числа жителей выше по статусу и т.д.
-        loyalty = (int)UnityEngine.Random.Range(0, 100.99f);
+        List <string> reasonsLoyalty = new List <string> ();
+        double loyalty = 0, envy = 0;
+
+        if (satisfaction < 75) reasonsLoyalty.Add("Удовлетворённость: " + (int)satisfaction + " < 75 пунктов");
+
+        if (idxSocialСlass == 1) { // Пролетариат
+            double ratioWith3 = PeopleClass.cntPeople1 / PeopleClass.cntPeople3; // От 2 до 0.5
+            double ratioWith4 = PeopleClass.cntPeople1 / PeopleClass.cntPeople4; // От 5 до 2
+            double envy1 = 0, envy2 = 0;
+            if (ratioWith3 < 2 && ratioWith3 >= 0.5) envy1 = (0.67 / ratioWith3 - 0.335) * 100;
+            else if (ratioWith3 < 0.5) envy1 = 100;
+            if (ratioWith4 < 5 && ratioWith4 >= 2) envy2 = (3.36 / ratioWith4 - 0.672) * 100;
+            else if (ratioWith4 < 2) envy2 = 100;
+            envy = (envy1 + envy2) / 2;
+            if (envy1 > 25) reasonsLoyalty.Add("Зависть интеллигенции: " + (int)envy1 + " > 25 пунктов");
+            if (envy2 > 25) reasonsLoyalty.Add("Зависть буржуям: " + (int)envy2 + " > 25 пунктов");
+        }
+        if (idxSocialСlass == 2) { // Бюрократия
+            double ratioWith4 = PeopleClass.cntPeople2 / PeopleClass.cntPeople4; // От 2 до 0.5
+            if (ratioWith4 < 2 && ratioWith4 >= 0.5) envy = (0.67 / ratioWith4 - 0.335) * 100;
+            else if (ratioWith4 < 0.5) envy = 100;
+            if (envy > 25) reasonsLoyalty.Add("Зависть буржуям: " + (int)envy + " > 25 пунктов");
+        }
+
+        loyalty = (3 * satisfaction + (101 - envy)) / 4;
+        return ((int)loyalty, reasonsLoyalty);
     }
 
     private void SetGender() {
@@ -277,6 +268,44 @@ public class Passport : MonoBehaviour {
         if (text != "Error") {
             string[] fatherNames = text.Split(new char[] {' '}, System.StringSplitOptions.RemoveEmptyEntries);
             fatherNameHuman = fatherNames[(int)UnityEngine.Random.Range(0, fatherNames.Length - 0.01f)];
+        }
+    }
+
+    public void WriteSpec() {
+        Text txt = PeopleClass.PassportCard.GetComponent <Text> ();
+        txt.text = "Дело №" + (PeopleClass.objects.IndexOf(gameObject) + 1) + "\n";
+        if (age < 9) txt.text += "Октябрёнок ";
+        else if (age <= 14) txt.text += "Пионер ";
+        else if (age <= 28) txt.text += "Комсомолец ";
+        else txt.text += "Товарищ ";
+        txt.text += surnameHuman + " " + nameHuman + " " + fatherNameHuman + "\n";
+        txt.text += "Пол: " + gender + ", Возраст: " + age + "\n";
+        txt.text += "Социальный статус: " + socialStatus + "\n";
+        if (age >= 18) txt.text += "Социальный класс: " + socialСlass + "\n";
+        txt.text += "Удовлетворённость: " + satisfaction + "\n";
+        if (age >= 18) {
+            (int loyalty, List <string> reasonsLoyalty) loyaltyData = GetLoyalty();
+            txt.text += "Преданность партии: " + loyaltyData.loyalty + "\n";
+        }
+        if (age >= 5) txt.text += "Бюджет: " + budget + "\n";
+        txt.text += "Предпочтения:\n";
+        txt.text += " • Любит: ";
+        for (int i = 0; i < preferences.Count; ++i) {
+            txt.text += preferences[i];
+            if (i + 1 == preferences.Count) txt.text += ".\n";
+            else txt.text += "; ";
+        }
+        txt.text += " • Не любит: ";
+        for (int i = 0; i < notPreferences.Count; ++i) {
+            txt.text += notPreferences[i];
+            if (i + 1 == notPreferences.Count) txt.text += ".\n";
+            else txt.text += "; ";
+        }
+        txt.text += "Особенности:\n";
+        for (int i = 0; i < properties.Count; ++i) {
+            txt.text += " • " + properties[i];
+            if (i + 1 == properties.Count) txt.text += ".";
+            else txt.text += ";\n";
         }
     }
 }

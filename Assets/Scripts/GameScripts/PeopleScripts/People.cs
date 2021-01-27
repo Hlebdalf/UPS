@@ -32,9 +32,13 @@ public class People : MonoBehaviour {
     public Material[] BootsMaterials;
     public Material[] SkinMaterials;
     public List <GameObject> objects;
-    public string[] socialStatusStorage;
     public GameObject PassportCardPanel;
     public GameObject PassportCard;
+    public string[] socialStatusStorage;
+    public int cntPeople1 = 0; // Пролетариат
+    public int cntPeople2 = 0; // Бюрократия
+    public int cntPeople3 = 0; // Интеллигенция
+    public int cntPeople4 = 0; // Буржуи
     public bool isStarted = false, isRegeneration = false;
     public float eps = 0.01f;
     public float speed = 1;
@@ -88,6 +92,11 @@ public class People : MonoBehaviour {
             vertexIsActive[objects.Count - 1] = false;
             cntWaitingFrames[objects.Count - 1] = 0;
             cntTranslate[objects.Count - 1] = 0;
+
+            if (idxSocialСlass == 1) ++cntPeople1;
+            if (idxSocialСlass == 2) ++cntPeople2;
+            if (idxSocialСlass == 3) ++cntPeople3;
+            if (idxSocialСlass == 4) ++cntPeople4;
 
             objects[objects.Count - 1].AddComponent <Passport> ();
             Passport PassportClass = objects[objects.Count - 1].GetComponent <Passport> ();
@@ -439,6 +448,13 @@ public class People : MonoBehaviour {
 
     public void DeleteObject(int idx) {
         GameObject obj = objects[idx];
+        Passport objClass = objects[idx].GetComponent <Passport> ();
+        
+        if (objClass.idxSocialСlass == 1) --cntPeople1;
+        if (objClass.idxSocialСlass == 2) --cntPeople2;
+        if (objClass.idxSocialСlass == 3) --cntPeople3;
+        if (objClass.idxSocialСlass == 4) --cntPeople4;
+
         objects.RemoveAt(idx);
         globalPointsPath.RemoveAt(idx);
         itForQueue.RemoveAt(idx);
