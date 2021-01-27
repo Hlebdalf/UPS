@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Passport : MonoBehaviour {
     private GameObject MainCamera;
     private People PeopleClass;
+    private Field FieldClass;
     private TextLoader TextLoaderClass;
 
     public string nameHuman = "Default";
@@ -29,6 +30,7 @@ public class Passport : MonoBehaviour {
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         PeopleClass = MainCamera.GetComponent <People> ();
+        FieldClass = MainCamera.GetComponent <Field> ();
         TextLoaderClass = MainCamera.GetComponent <TextLoader> ();
         preferences = new List <string> ();
         notPreferences = new List <string> ();
@@ -60,6 +62,8 @@ public class Passport : MonoBehaviour {
         // Зависимость от количества плакатов, удовлетворённости, числа жителей выше по статусу и т.д.
         List <string> reasonsLoyalty = new List <string> ();
         double loyalty = 0, envy = 0;
+        int posX = (int)gameObject.transform.position.x, posZ = (int)gameObject.transform.position.z;
+        int radius = 20, cntPosters = 0;
 
         if (satisfaction < 75) reasonsLoyalty.Add("Удовлетворённость: " + (int)satisfaction + " < 75 пунктов");
 
@@ -81,6 +85,13 @@ public class Passport : MonoBehaviour {
             else if (ratioWith4 < 0.5) envy = 100;
             if (envy > 25) reasonsLoyalty.Add("Зависть буржуям: " + (int)envy + " > 25 пунктов");
         }
+
+        for (int x = posX - radius; x < posX + radius; ++x) {
+            for (int z = posZ - radius; z < posZ + radius; ++z) {
+                if (x >= 0 && z < FieldClass.fieldSize) cntPosters += FieldClass.objects[x, z].GetComponent <BuildObject> ().cntPosters;
+            }
+        }
+        reasonsLoyalty.Add("Кол-во плакатов: " + cntPosters);
 
         loyalty = (3 * satisfaction + (101 - envy)) / 4;
         return ((int)loyalty, reasonsLoyalty);
@@ -280,15 +291,18 @@ public class Passport : MonoBehaviour {
         else txt.text += "Товарищ ";
         txt.text += surnameHuman + " " + nameHuman + " " + fatherNameHuman + "\n";
         txt.text += "Пол: " + gender + ", Возраст: " + age + "\n";
-        txt.text += "Социальный статус: " + socialStatus + "\n";
+        if (age >= 5) txt.text += "Бюджет: " + budget + "\n";
+        txt.text += "\nСоциальный статус: " + socialStatus + "\n";
         if (age >= 18) txt.text += "Социальный класс: " + socialСlass + "\n";
         txt.text += "Удовлетворённость: " + satisfaction + "\n";
         if (age >= 18) {
             (int loyalty, List <string> reasonsLoyalty) loyaltyData = GetLoyalty();
             txt.text += "Преданность партии: " + loyaltyData.loyalty + "\n";
+            for (int i = 0; i < loyaltyData.reasonsLoyalty.Count; ++i) {
+                txt.text += " • " + loyaltyData.reasonsLoyalty[i] + "\n";
+            }
         }
-        if (age >= 5) txt.text += "Бюджет: " + budget + "\n";
-        txt.text += "Предпочтения:\n";
+        txt.text += "\nПредпочтения:\n";
         txt.text += " • Любит: ";
         for (int i = 0; i < preferences.Count; ++i) {
             txt.text += preferences[i];
@@ -301,11 +315,11 @@ public class Passport : MonoBehaviour {
             if (i + 1 == notPreferences.Count) txt.text += ".\n";
             else txt.text += "; ";
         }
-        txt.text += "Особенности:\n";
+        txt.text += "Особенности: ";
         for (int i = 0; i < properties.Count; ++i) {
-            txt.text += " • " + properties[i];
+            txt.text += properties[i];
             if (i + 1 == properties.Count) txt.text += ".";
-            else txt.text += ";\n";
+            else txt.text += "; ";
         }
     }
 }
