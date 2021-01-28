@@ -68,8 +68,11 @@ public class Passport : MonoBehaviour {
         if (satisfaction < 75) reasonsLoyalty.Add("Удовлетворённость: " + (int)satisfaction + " < 75 пунктов");
 
         if (idxSocialСlass == 1) { // Пролетариат
-            double ratioWith3 = PeopleClass.cntPeople1 / PeopleClass.cntPeople3; // От 2 до 0.5
-            double ratioWith4 = PeopleClass.cntPeople1 / PeopleClass.cntPeople4; // От 5 до 2
+            double ratioWith3, ratioWith4;
+            if (PeopleClass.cntPeople3 == 0) ratioWith3 = 0;
+            else ratioWith3 = PeopleClass.cntPeople1 / PeopleClass.cntPeople3; // От 2 до 0.5
+            if (PeopleClass.cntPeople4 == 0) ratioWith4 = 0;
+            else ratioWith4 = PeopleClass.cntPeople1 / PeopleClass.cntPeople4; // От 5 до 2
             double envy1 = 0, envy2 = 0;
             if (ratioWith3 < 2 && ratioWith3 >= 0.5) envy1 = (0.67 / ratioWith3 - 0.335) * 100;
             else if (ratioWith3 < 0.5) envy1 = 100;
@@ -80,7 +83,9 @@ public class Passport : MonoBehaviour {
             if (envy2 > 25) reasonsLoyalty.Add("Зависть буржуям: " + (int)envy2 + " > 25 пунктов");
         }
         if (idxSocialСlass == 2) { // Бюрократия
-            double ratioWith4 = PeopleClass.cntPeople2 / PeopleClass.cntPeople4; // От 2 до 0.5
+            double ratioWith4;
+            if (PeopleClass.cntPeople4 == 0) ratioWith4 = 0;
+            else ratioWith4 = PeopleClass.cntPeople2 / PeopleClass.cntPeople4; // От 2 до 0.5
             if (ratioWith4 < 2 && ratioWith4 >= 0.5) envy = (0.67 / ratioWith4 - 0.335) * 100;
             else if (ratioWith4 < 0.5) envy = 100;
             if (envy > 25) reasonsLoyalty.Add("Зависть буржуям: " + (int)envy + " > 25 пунктов");
@@ -88,8 +93,12 @@ public class Passport : MonoBehaviour {
 
         for (int x = posX - radius; x < posX + radius; ++x) {
             for (int z = posZ - radius; z < posZ + radius; ++z) {
-                if (x >= 0 && z < FieldClass.fieldSize && FieldClass.objects[x, z].GetComponent <BuildObject> ())
-                    cntPosters += FieldClass.objects[x, z].GetComponent <BuildObject> ().cntPosters;
+                if (x + FieldClass.fieldSizeHalf >= 0 &&
+                    z + FieldClass.fieldSizeHalf < FieldClass.fieldSize &&
+                    FieldClass.objects[x + FieldClass.fieldSizeHalf, z + FieldClass.fieldSizeHalf] != null &&
+                    FieldClass.objects[x + FieldClass.fieldSizeHalf, z + FieldClass.fieldSizeHalf].GetComponent <BuildObject> ()) {
+                    cntPosters += FieldClass.objects[x + FieldClass.fieldSizeHalf, z + FieldClass.fieldSizeHalf].GetComponent <BuildObject> ().cntPosters;
+                }
             }
         }
         reasonsLoyalty.Add("Кол-во плакатов: " + cntPosters);
