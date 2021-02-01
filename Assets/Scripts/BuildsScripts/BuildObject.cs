@@ -8,6 +8,7 @@ public class BuildObject : MonoBehaviour {
     private Builds BuildsClass;
     private List <GameObject> posterObjects;
     private List <int> idxNotActive;
+    private GameObject HouseMenu = null;
 
     public float x, y;
     public int idx, connectedRoad, idxCommerceType = -1, idxPreFub = -1;
@@ -23,7 +24,6 @@ public class BuildObject : MonoBehaviour {
 
     private void Start() {
         foreach (Transform child in gameObject.transform) {
-            print(child.gameObject.name);
             if (child.gameObject.name == "PosterPlane") {
                 posterObjects.Add(child.gameObject);
                 idxNotActive.Add(idxNotActive.Count);
@@ -31,12 +31,22 @@ public class BuildObject : MonoBehaviour {
         }
     }
 
-    private void OnMouseDown() {
-        if (Input.GetMouseButtonDown(1)) {
-            BuildsClass.HouseMenuClass.DeactivateMenu();
-            BuildsClass.HouseMenuClass.ActivateMenu(gameObject.GetComponent <BuildObject> ());
+    private void OnMouseOver() {
+        if (Input.GetMouseButtonDown(1)) CreateMenu();
+    }
+
+    private void CreateMenu() {
+        if (HouseMenu == null) {
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(new Vector3(x, gameObject.GetComponent <BoxCollider> ().size.y * 0.1f, y));
+            HouseMenu = Instantiate(BuildsClass.PreFubHouseMenu, screenPos, Quaternion.Euler(0, 0, 0));
+            HouseMenu.transform.SetParent(BuildsClass.InterfaceObject.transform);
+            HouseMenu.GetComponent <HouseMenu> ().ActivateMenu(gameObject);
         }
-        if (Input.GetMouseButtonDown(0)) AddPoster();
+    }
+
+    public void DestroyMenu() {
+        Destroy(HouseMenu);
+        HouseMenu = null;
     }
 
     public void AddPoster() {
