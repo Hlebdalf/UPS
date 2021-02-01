@@ -146,12 +146,12 @@ public class Cars : MonoBehaviour {
 
             float sideX, sideZ;
             if ((int)UnityEngine.Random.Range(0f, 2f) == 0) {
-                sideX = (float)Math.Cos(Math.Atan2(To.x - From.x, To.z - From.z)) * (0.23f);
-                sideZ = -(float)Math.Sin(Math.Atan2(To.x - From.x, To.z - From.z)) * (0.23f);
+                sideX = (float)Math.Cos(Math.Atan2(To.x - From.x, To.z - From.z)) * (0.22f);
+                sideZ = -(float)Math.Sin(Math.Atan2(To.x - From.x, To.z - From.z)) * (0.22f);
             }
             else {
-                sideX = (float)Math.Cos(Math.Atan2(To.x - From.x, To.z - From.z)) * (0.57f);
-                sideZ = -(float)Math.Sin(Math.Atan2(To.x - From.x, To.z - From.z)) * (0.57f);
+                sideX = (float)Math.Cos(Math.Atan2(To.x - From.x, To.z - From.z)) * (0.58f);
+                sideZ = -(float)Math.Sin(Math.Atan2(To.x - From.x, To.z - From.z)) * (0.58f);
             }
             float lessDX = (float)Math.Cos(Math.Atan2(To.z - From.z, To.x - From.x)) * 1f;
             float lessDZ = (float)Math.Sin(Math.Atan2(To.z - From.z, To.x - From.x)) * 1f;
