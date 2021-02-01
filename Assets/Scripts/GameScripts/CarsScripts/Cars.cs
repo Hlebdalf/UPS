@@ -144,8 +144,15 @@ public class Cars : MonoBehaviour {
         for (int i = start; i < end; i += 2) {
             Vector3 From = pointsPath[i], To = pointsPath[i + 1];
 
-            float sideX = (float)Math.Cos(Math.Atan2(To.x - From.x, To.z - From.z)) * (0.4f);
-            float sideZ = -(float)Math.Sin(Math.Atan2(To.x - From.x, To.z - From.z)) * (0.4f);
+            float sideX, sideZ;
+            if ((int)UnityEngine.Random.Range(0f, 2f) == 0) {
+                sideX = (float)Math.Cos(Math.Atan2(To.x - From.x, To.z - From.z)) * (0.23f);
+                sideZ = -(float)Math.Sin(Math.Atan2(To.x - From.x, To.z - From.z)) * (0.23f);
+            }
+            else {
+                sideX = (float)Math.Cos(Math.Atan2(To.x - From.x, To.z - From.z)) * (0.57f);
+                sideZ = -(float)Math.Sin(Math.Atan2(To.x - From.x, To.z - From.z)) * (0.57f);
+            }
             float lessDX = (float)Math.Cos(Math.Atan2(To.z - From.z, To.x - From.x)) * 1f;
             float lessDZ = (float)Math.Sin(Math.Atan2(To.z - From.z, To.x - From.x)) * 1f;
 
