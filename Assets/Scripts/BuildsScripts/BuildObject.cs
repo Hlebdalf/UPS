@@ -13,6 +13,7 @@ public class BuildObject : MonoBehaviour {
     public float x, y;
     public int idx, connectedRoad, idxCommerceType = -1, idxPreFub = -1;
     public int maxCntPeople = 0, cntPosters = 0, maxCntPosters = 0;
+    public bool isGenBuild = false;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -29,13 +30,18 @@ public class BuildObject : MonoBehaviour {
                 idxNotActive.Add(idxNotActive.Count);
             }
         }
+        maxCntPosters = posterObjects.Count;
+        if (isGenBuild) {
+            int defaultCntPosters = (int)UnityEngine.Random.Range(0f, maxCntPosters + 0.99f);
+            for (int i = 0; i < defaultCntPosters; ++i) AddPoster();
+        }
     }
 
     private void OnMouseOver() {
         if (Input.GetMouseButtonDown(1)) CreateMenu();
     }
 
-    private void CreateMenu() {
+    public void CreateMenu() {
         if (HouseMenu == null) {
             Vector3 screenPos = Camera.main.WorldToScreenPoint(new Vector3(x, gameObject.GetComponent <BoxCollider> ().size.y * gameObject.transform.localScale.x, y));
             HouseMenu = Instantiate(BuildsClass.PreFubHouseMenu, screenPos, Quaternion.Euler(0, 0, 0));
@@ -54,5 +60,6 @@ public class BuildObject : MonoBehaviour {
         int idx = (int)UnityEngine.Random.Range(0f, idxNotActive.Count - 0.01f);
         posterObjects[idxNotActive[idx]].SetActive(true);
         idxNotActive.RemoveAt(idx);
+        ++cntPosters;
     }
 }

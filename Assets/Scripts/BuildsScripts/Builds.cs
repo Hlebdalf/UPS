@@ -133,6 +133,7 @@ public class Builds : MonoBehaviour {
             else {
                 data.connectedRoad = connectedRoad;
             }
+            data.isGenBuild = true;
 
             commerces[commerces.Count - 1].AddComponent <Rigidbody> ();
             commerces[commerces.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
@@ -151,6 +152,7 @@ public class Builds : MonoBehaviour {
             else {
                 data.connectedRoad = connectedRoad;
             }
+            data.isGenBuild = true;
 
             parkings[parkings.Count - 1].AddComponent <Rigidbody> ();
             parkings[parkings.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
@@ -170,6 +172,7 @@ public class Builds : MonoBehaviour {
             else {
                 data.connectedRoad = connectedRoad;
             }
+            data.isGenBuild = true;
 
             objects[objects.Count - 1].AddComponent <Rigidbody> ();
             objects[objects.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
