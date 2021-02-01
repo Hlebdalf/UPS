@@ -8,7 +8,7 @@ public class HouseMenu : MonoBehaviour {
 
     private void Update() {
         if (BuildObjectClass) {
-            Vector3 newPos = new Vector3(BuildObjectClass.x, BuildObjectObject.GetComponent <BoxCollider> ().size.y * 0.1f, BuildObjectClass.y);
+            Vector3 newPos = new Vector3(BuildObjectClass.x, BuildObjectObject.GetComponent <BoxCollider> ().size.y * BuildObjectObject.transform.localScale.x, BuildObjectClass.y);
             gameObject.transform.position = Camera.main.WorldToScreenPoint(newPos);
         }
     }

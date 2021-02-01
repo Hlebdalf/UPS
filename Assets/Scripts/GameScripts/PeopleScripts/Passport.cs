@@ -127,8 +127,8 @@ public class Passport : MonoBehaviour {
             List <bool> used = new List <bool> ();
             for (int i = 0; i < allProperties.Length; ++i) used.Add(false);
             for (int i = 0; i < (int)UnityEngine.Random.Range(1, 5.99f); ++i) {
-                int it = (int)UnityEngine.Random.Range(0, allProperties.Length - 0.1f);
-                while (used[it]) it = (int)UnityEngine.Random.Range(0, allProperties.Length - 0.1f);
+                int it = (int)UnityEngine.Random.Range(0, allProperties.Length - 0.01f);
+                while (used[it]) it = (int)UnityEngine.Random.Range(0, allProperties.Length - 0.01f);
                 used[it] = true;
                 properties.Add(allProperties[it]);
             }
@@ -142,14 +142,14 @@ public class Passport : MonoBehaviour {
             List <bool> used = new List <bool> ();
             for (int i = 0; i < allPreferences.Length; ++i) used.Add(false);
             for (int i = 0; i < (int)UnityEngine.Random.Range(2, 5.99f); ++i) {
-                int it = (int)UnityEngine.Random.Range(0, allPreferences.Length - 0.1f);
-                while (used[it]) it = (int)UnityEngine.Random.Range(0, allPreferences.Length - 0.1f);
+                int it = (int)UnityEngine.Random.Range(0, allPreferences.Length - 0.01f);
+                while (used[it]) it = (int)UnityEngine.Random.Range(0, allPreferences.Length - 0.01f);
                 used[it] = true;
                 preferences.Add(allPreferences[it]);
             }
             for (int i = 0; i < (int)UnityEngine.Random.Range(1, 4.99f); ++i) {
-                int it = (int)UnityEngine.Random.Range(0, allPreferences.Length - 0.1f);
-                while (used[it]) it = (int)UnityEngine.Random.Range(0, allPreferences.Length - 0.1f);
+                int it = (int)UnityEngine.Random.Range(0, allPreferences.Length - 0.01f);
+                while (used[it]) it = (int)UnityEngine.Random.Range(0, allPreferences.Length - 0.01f);
                 used[it] = true;
                 notPreferences.Add(allPreferences[it]);
             }

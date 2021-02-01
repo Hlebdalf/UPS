@@ -152,14 +152,14 @@ public class GenerationHouses : MonoBehaviour {
                 float normA = -mainRoadB, normB = mainRoadA, normC = -(normA * posOnRoadX + normB * posOnRoadY); // norm
                 (int typeHouse1, int typeHouse2) typesHouse = GetHouseType(new Vector2(posOnRoadX, posOnRoadY), normA, normB, normC);
 
-                float widthHouse1 = (int)BuildsClass.preFubs[typesHouse.typeHouse1].GetComponent<BoxCollider>().size.x * 0.1f;
-                float lenHouse1 = (int)BuildsClass.preFubs[typesHouse.typeHouse1].GetComponent<BoxCollider>().size.z * 0.1f;
+                float widthHouse1 = (int)BuildsClass.preFubs[typesHouse.typeHouse1].GetComponent<BoxCollider>().size.x * BuildsClass.preFubs[typesHouse.typeHouse1].transform.localScale.x;
+                float lenHouse1 = (int)BuildsClass.preFubs[typesHouse.typeHouse1].GetComponent<BoxCollider>().size.z * BuildsClass.preFubs[typesHouse.typeHouse1].transform.localScale.x;
                 float dx1 = (float)Math.Cos(Math.Atan(normA / -normB)) * (lenHouse1 / 2 + 2);
                 float dy1 = (float)Math.Sin(Math.Atan(normA / -normB)) * (lenHouse1 / 2 + 2);
                 Vector3 point1 = RoadsClass.RoundCoodinate(new Vector3(posOnRoadX + dx1, 0, posOnRoadY + dy1));
 
-                float widthHouse2 = (int)BuildsClass.preFubs[typesHouse.typeHouse2].GetComponent<BoxCollider>().size.x * 0.1f;
-                float lenHouse2 = (int)BuildsClass.preFubs[typesHouse.typeHouse2].GetComponent<BoxCollider>().size.z * 0.1f;
+                float widthHouse2 = (int)BuildsClass.preFubs[typesHouse.typeHouse2].GetComponent<BoxCollider>().size.x * BuildsClass.preFubs[typesHouse.typeHouse2].transform.localScale.x;
+                float lenHouse2 = (int)BuildsClass.preFubs[typesHouse.typeHouse2].GetComponent<BoxCollider>().size.z * BuildsClass.preFubs[typesHouse.typeHouse2].transform.localScale.x;
                 float dx2 = (float)Math.Cos(Math.Atan(normA / -normB)) * (lenHouse2 / 2 + 2);
                 float dy2 = (float)Math.Sin(Math.Atan(normA / -normB)) * (lenHouse2 / 2 + 2);
                 Vector3 point2 = RoadsClass.RoundCoodinate(new Vector3(posOnRoadX - dx2, 0, posOnRoadY - dy2));
@@ -196,8 +196,8 @@ public class GenerationHouses : MonoBehaviour {
                             BuildObject tmpBuildObject = FieldClass.objects[itX + FieldClass.fieldSizeHalf, itY + FieldClass.fieldSizeHalf].GetComponent<BuildObject>();
 
                             float tmpAngle = (float)(RoadsClass.objects[tmpBuildObject.connectedRoad].GetComponent<RoadObject>().angle / 57.3);
-                            float tmpWidthHouse = (int)tmpBuildObject.GetComponent<BoxCollider>().size.x * 0.1f;
-                            float tmpLenHouse = (int)tmpBuildObject.GetComponent<BoxCollider>().size.z * 0.1f;
+                            float tmpWidthHouse = (int)tmpBuildObject.GetComponent<BoxCollider>().size.x * tmpBuildObject.transform.localScale.x;
+                            float tmpLenHouse = (int)tmpBuildObject.GetComponent<BoxCollider>().size.z * tmpBuildObject.transform.localScale.x;
 
                             Vector3 tmpSide1 = new Vector3(tmpBuildObject.x + (float)Math.Cos(tmpAngle) * (tmpWidthHouse / 2), 0, tmpBuildObject.y + (float)Math.Sin(tmpAngle) * (tmpWidthHouse / 2));
                             Vector3 tmpSide2 = new Vector3(tmpBuildObject.x - (float)Math.Cos(tmpAngle) * (tmpWidthHouse / 2), 0, tmpBuildObject.y - (float)Math.Sin(tmpAngle) * (tmpWidthHouse / 2));
@@ -252,8 +252,8 @@ public class GenerationHouses : MonoBehaviour {
                             BuildObject tmpBuildObject = FieldClass.objects[itX + FieldClass.fieldSizeHalf, itY + FieldClass.fieldSizeHalf].GetComponent<BuildObject>();
 
                             float tmpAngle = (float)(RoadsClass.objects[tmpBuildObject.connectedRoad].GetComponent<RoadObject>().angle / 57.3);
-                            float tmpWidthHouse = (int)tmpBuildObject.GetComponent<BoxCollider>().size.x * 0.1f;
-                            float tmpLenHouse = (int)tmpBuildObject.GetComponent<BoxCollider>().size.z * 0.1f;
+                            float tmpWidthHouse = (int)tmpBuildObject.GetComponent<BoxCollider>().size.x * tmpBuildObject.transform.localScale.x;
+                            float tmpLenHouse = (int)tmpBuildObject.GetComponent<BoxCollider>().size.z * tmpBuildObject.transform.localScale.x;
 
                             Vector3 tmpSide1 = new Vector3(tmpBuildObject.x + (float)Math.Cos(tmpAngle) * (tmpWidthHouse / 2), 0, tmpBuildObject.y + (float)Math.Sin(tmpAngle) * (tmpWidthHouse / 2));
                             Vector3 tmpSide2 = new Vector3(tmpBuildObject.x - (float)Math.Cos(tmpAngle) * (tmpWidthHouse / 2), 0, tmpBuildObject.y - (float)Math.Sin(tmpAngle) * (tmpWidthHouse / 2));

@@ -37,7 +37,7 @@ public class BuildObject : MonoBehaviour {
 
     private void CreateMenu() {
         if (HouseMenu == null) {
-            Vector3 screenPos = Camera.main.WorldToScreenPoint(new Vector3(x, gameObject.GetComponent <BoxCollider> ().size.y * 0.1f, y));
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(new Vector3(x, gameObject.GetComponent <BoxCollider> ().size.y * gameObject.transform.localScale.x, y));
             HouseMenu = Instantiate(BuildsClass.PreFubHouseMenu, screenPos, Quaternion.Euler(0, 0, 0));
             HouseMenu.transform.SetParent(BuildsClass.InterfaceObject.transform);
             HouseMenu.GetComponent <HouseMenu> ().ActivateMenu(gameObject);

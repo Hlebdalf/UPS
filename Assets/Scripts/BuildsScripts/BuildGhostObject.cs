@@ -96,8 +96,8 @@ public class BuildGhostObject : MonoBehaviour {
     }
 
     private (Vector3 pos, float rotate) RoundCoordinateOnRoad(Vector3 point) {
-        float width = (int)gameObject.GetComponent <BoxCollider> ().size.x * 0.1f + 2;
-        float len = (int)gameObject.GetComponent <BoxCollider> ().size.z * 0.1f + 2;
+        float width = (int)gameObject.GetComponent <BoxCollider> ().size.x * gameObject.transform.localScale.x + 2;
+        float len = (int)gameObject.GetComponent <BoxCollider> ().size.z * gameObject.transform.localScale.x + 2;
         int ansId = -1, ansIdGhost = -1;
         float ans = (int)1e9, ansGhost = (int)1e9;
         float rotate = 0;
