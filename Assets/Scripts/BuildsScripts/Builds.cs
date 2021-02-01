@@ -24,6 +24,7 @@ public class Builds : MonoBehaviour {
     public List <GameObject> ghostObjects;
     public GameObject InterfaceObject;
     public Interface InterfaceClass;
+    public HouseMenu HouseMenuClass;
     public bool isPressEnter = false;
     public bool isFollowGhost = false;
 

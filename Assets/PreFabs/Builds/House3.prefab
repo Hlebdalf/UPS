@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2182370217332629713}
   - component: {fileID: 7391201006742427302}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: House3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 546552001005418601}
   - component: {fileID: 2275739763663065046}
   - component: {fileID: 3062660302889346690}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cube_Cube_LightMaterialStar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 4327900379959310183}
   - component: {fileID: 1178970611551700844}
   - component: {fileID: 187397931169397038}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Crab_Cylinder.008_LightMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 5481219064174721268}
   - component: {fileID: 3333069819841456219}
   - component: {fileID: 7150748539757450982}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: House3_Cylinder.002_CrabMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 1715255540335225994}
   - component: {fileID: 4412135493846249858}
   - component: {fileID: 489379957966621899}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: House3_Cylinder.002_LightMaterial.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,7 +377,7 @@ GameObject:
   - component: {fileID: 3344346877312731422}
   - component: {fileID: 6881633640955527073}
   - component: {fileID: 3088532063779888994}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: House3_Cylinder.002_WindowsMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -456,7 +456,7 @@ GameObject:
   - component: {fileID: 3895603940290216422}
   - component: {fileID: 6288335731612381055}
   - component: {fileID: 6505123014180260545}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Crab_Cylinder.008_CrabMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7780966587623125902}
   - component: {fileID: 7282273518939678746}
   - component: {fileID: 3350708869144907823}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Doors_Cube.399_DoorMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 4970611220866578836}
   - component: {fileID: 1243992533565968867}
   - component: {fileID: 3362142835751373313}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cube_Cube_GartenMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4487922156760217056}
   - component: {fileID: 8320551909431972108}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Kindergarten
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6477062133640211210}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 5089244195862633840}
   - component: {fileID: 3118545024880405350}
   - component: {fileID: 7448398482542423603}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cube_Cube_Windows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 5642488042089655285}
   - component: {fileID: 3535779896421024402}
   - component: {fileID: 8258651464854686948}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cube.001_Cube.002_LightMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 7573304989332288316}
   - component: {fileID: 3917766594591892224}
   - component: {fileID: 5955059182741855900}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Tube.012_Cube.015_TubeMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -487,7 +487,7 @@ GameObject:
   - component: {fileID: 6452245028996393059}
   - component: {fileID: 6458668986599737481}
   - component: {fileID: 2643771112237291945}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cube.001_Cube.002_BorderMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}

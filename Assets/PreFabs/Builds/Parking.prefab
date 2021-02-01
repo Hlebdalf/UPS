@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7403007434824035332}
   - component: {fileID: 5733442575627014026}
   - component: {fileID: 3227079938149073195}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Logo_Cube.008_LightMaterial2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 159424004515098942}
   - component: {fileID: 4641236953219411001}
   - component: {fileID: 9215607678751578030}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Park_Plane.032_ParkMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 7297630839399644165}
   - component: {fileID: 6179744919527053254}
   - component: {fileID: 877145959682133724}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Border_Cube.586_LightMaterial2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 6151546411726601037}
   - component: {fileID: 5990071076954748564}
   - component: {fileID: 8425894785458784215}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Door_Cube.009_LightMaterial2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 7920655770729078614}
   - component: {fileID: 6986114606740496531}
   - component: {fileID: 6039555777039799471}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Door_Cube.009_DoorMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 6565292065349691396}
   - component: {fileID: 7299615511200153124}
   - component: {fileID: 1376731547970105387}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Stair_Cube_StairMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -484,7 +484,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6543904761679177258}
   - component: {fileID: 5963381920108139014}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Parking
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -547,7 +547,7 @@ GameObject:
   - component: {fileID: 7478660927577443987}
   - component: {fileID: 5578611255745292238}
   - component: {fileID: 8659310523237945065}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Stair_Cube_LightMaterial2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -626,7 +626,7 @@ GameObject:
   - component: {fileID: 8920311539272019101}
   - component: {fileID: 2434122250313171878}
   - component: {fileID: 5257728735794645370}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Logo_Cube.008_Logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -705,7 +705,7 @@ GameObject:
   - component: {fileID: 3871232529904306286}
   - component: {fileID: 4439563907060507817}
   - component: {fileID: 286366803544743332}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Park_Plane.032_RoofMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -784,7 +784,7 @@ GameObject:
   - component: {fileID: 5802479369892003470}
   - component: {fileID: 6419774851503383542}
   - component: {fileID: 421019648062465318}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Border_Cube.586_BorderMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -862,7 +862,12 @@ PrefabInstance:
     - target: {fileID: 5570160097999951363, guid: 53e048f22c589a146a48fbb1d7aa6b13,
         type: 3}
       propertyPath: m_Name
-      value: PosterPlane (2)
+      value: PosterPlane
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570160097999951363, guid: 53e048f22c589a146a48fbb1d7aa6b13,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570160097999951367, guid: 53e048f22c589a146a48fbb1d7aa6b13,
         type: 3}
@@ -954,6 +959,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PosterPlane
       objectReference: {fileID: 0}
+    - target: {fileID: 5570160097999951363, guid: 53e048f22c589a146a48fbb1d7aa6b13,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570160097999951367, guid: 53e048f22c589a146a48fbb1d7aa6b13,
         type: 3}
       propertyPath: m_RootOrder
@@ -1042,7 +1052,12 @@ PrefabInstance:
     - target: {fileID: 5570160097999951363, guid: 53e048f22c589a146a48fbb1d7aa6b13,
         type: 3}
       propertyPath: m_Name
-      value: PosterPlane (4)
+      value: PosterPlane
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570160097999951363, guid: 53e048f22c589a146a48fbb1d7aa6b13,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570160097999951367, guid: 53e048f22c589a146a48fbb1d7aa6b13,
         type: 3}
@@ -1132,7 +1147,12 @@ PrefabInstance:
     - target: {fileID: 5570160097999951363, guid: 53e048f22c589a146a48fbb1d7aa6b13,
         type: 3}
       propertyPath: m_Name
-      value: PosterPlane (1)
+      value: PosterPlane
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570160097999951363, guid: 53e048f22c589a146a48fbb1d7aa6b13,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570160097999951367, guid: 53e048f22c589a146a48fbb1d7aa6b13,
         type: 3}
@@ -1222,7 +1242,12 @@ PrefabInstance:
     - target: {fileID: 5570160097999951363, guid: 53e048f22c589a146a48fbb1d7aa6b13,
         type: 3}
       propertyPath: m_Name
-      value: PosterPlane (6)
+      value: PosterPlane
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570160097999951363, guid: 53e048f22c589a146a48fbb1d7aa6b13,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570160097999951367, guid: 53e048f22c589a146a48fbb1d7aa6b13,
         type: 3}
@@ -1312,7 +1337,12 @@ PrefabInstance:
     - target: {fileID: 5570160097999951363, guid: 53e048f22c589a146a48fbb1d7aa6b13,
         type: 3}
       propertyPath: m_Name
-      value: PosterPlane (7)
+      value: PosterPlane
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570160097999951363, guid: 53e048f22c589a146a48fbb1d7aa6b13,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570160097999951367, guid: 53e048f22c589a146a48fbb1d7aa6b13,
         type: 3}
@@ -1402,7 +1432,12 @@ PrefabInstance:
     - target: {fileID: 5570160097999951363, guid: 53e048f22c589a146a48fbb1d7aa6b13,
         type: 3}
       propertyPath: m_Name
-      value: PosterPlane (3)
+      value: PosterPlane
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570160097999951363, guid: 53e048f22c589a146a48fbb1d7aa6b13,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570160097999951367, guid: 53e048f22c589a146a48fbb1d7aa6b13,
         type: 3}
@@ -1492,7 +1527,12 @@ PrefabInstance:
     - target: {fileID: 5570160097999951363, guid: 53e048f22c589a146a48fbb1d7aa6b13,
         type: 3}
       propertyPath: m_Name
-      value: PosterPlane (5)
+      value: PosterPlane
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570160097999951363, guid: 53e048f22c589a146a48fbb1d7aa6b13,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570160097999951367, guid: 53e048f22c589a146a48fbb1d7aa6b13,
         type: 3}

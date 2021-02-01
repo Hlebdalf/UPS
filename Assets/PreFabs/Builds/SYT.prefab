@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 440772598519138423}
   - component: {fileID: 2760163288254071}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: SYT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 4190650992535988712}
   - component: {fileID: 1813652286350932060}
   - component: {fileID: 6331374850904850031}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cube.005_Cube.407_DoorMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 4982365355450303284}
   - component: {fileID: 6399228157213155386}
   - component: {fileID: 7968231265433237911}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: SYTLP_Cube.001_SYTMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 6437192685349517818}
   - component: {fileID: 4677683613365483504}
   - component: {fileID: 3553935256942946736}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cube_Cube.408_BorderMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 5532306425762307000}
   - component: {fileID: 8158514074398868902}
   - component: {fileID: 4225353998000127595}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cube.003_Cube.399_DoorMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,7 +377,7 @@ GameObject:
   - component: {fileID: 1698144500303393470}
   - component: {fileID: 4659841171008093367}
   - component: {fileID: 7464707592118943303}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Text_Text_Material.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -456,7 +456,7 @@ GameObject:
   - component: {fileID: 6292959904586748320}
   - component: {fileID: 322423458536795712}
   - component: {fileID: 1860456162750728118}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Column_Cube.403_ColumnMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
