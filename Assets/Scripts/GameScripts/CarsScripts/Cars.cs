@@ -235,7 +235,17 @@ public class Cars : MonoBehaviour {
         GameObject BuildGameObject = BuildsClass.objects[(int)UnityEngine.Random.Range(0, BuildsClass.objects.Count - 0.01f)];
         GameObject CommerceGameObject = BuildsClass.commerces[(int)UnityEngine.Random.Range(0, BuildsClass.commerces.Count - 0.01f)];
         
+        if (GenerationGraphClass.isRegeneration) {
+            while (GenerationGraphClass.isRegeneration) {}
+            return StartFromHouse();
+        }
+        
         (List <int> parent, List <float> dist) graphData = Dijkstra(FieldClass.numInGraph[BuildGameObject]);
+        
+        if (GenerationGraphClass.isRegeneration) {
+            while (GenerationGraphClass.isRegeneration) {}
+            return StartFromHouse();
+        }
 
         int minDistI = 0;
         for (int i = 0; i < BuildsClass.parkings.Count; ++i) {
@@ -252,6 +262,11 @@ public class Cars : MonoBehaviour {
             if (graphData.dist[FieldClass.numInGraph[BuildsClass.parkings[i]]] < dist)
                 minDistI = i;
         }
+        
+        if (GenerationGraphClass.isRegeneration) {
+            while (GenerationGraphClass.isRegeneration) {}
+            return StartFromHouse();
+        }
 
         GameObject Parking = BuildsClass.parkings[minDistI];
         
@@ -260,6 +275,11 @@ public class Cars : MonoBehaviour {
             objectPathToStart.Add(FieldClass.objInGraph[v]);
             if (FieldClass.objInGraph[v] == BuildGameObject) break;
         }
+        
+        if (GenerationGraphClass.isRegeneration) {
+            while (GenerationGraphClass.isRegeneration) {}
+            return StartFromHouse();
+        }
 
         List <GameObject> objectPathToEnd = new List <GameObject> ();
         for (int v = FieldClass.numInGraph[CommerceGameObject]; v != -1; v = graphData.parent[v]) {
@@ -267,8 +287,18 @@ public class Cars : MonoBehaviour {
             if (FieldClass.objInGraph[v] == BuildGameObject) break;
         }
         objectPathToEnd.Reverse();
+        
+        if (GenerationGraphClass.isRegeneration) {
+            while (GenerationGraphClass.isRegeneration) {}
+            return StartFromHouse();
+        }
 
         graphData = Dijkstra(FieldClass.numInGraph[CommerceGameObject]);
+        
+        if (GenerationGraphClass.isRegeneration) {
+            while (GenerationGraphClass.isRegeneration) {}
+            return StartFromHouse();
+        }
 
         minDistI = 0;
         for (int i = 0; i < BuildsClass.parkings.Count; ++i) {
@@ -284,6 +314,11 @@ public class Cars : MonoBehaviour {
             }
             if (graphData.dist[FieldClass.numInGraph[BuildsClass.parkings[i]]] < dist)
                 minDistI = i;
+        }
+        
+        if (GenerationGraphClass.isRegeneration) {
+            while (GenerationGraphClass.isRegeneration) {}
+            return StartFromHouse();
         }
 
         Parking = BuildsClass.parkings[minDistI];
@@ -302,7 +337,17 @@ public class Cars : MonoBehaviour {
         GameObject CommerceGameObject = BuildsClass.commerces[(int)UnityEngine.Random.Range(0, BuildsClass.commerces.Count - 0.01f)];
         GameObject BuildGameObject = BuildsClass.objects[(int)UnityEngine.Random.Range(0, BuildsClass.objects.Count - 0.01f)];
         
+        if (GenerationGraphClass.isRegeneration) {
+            while (GenerationGraphClass.isRegeneration) {}
+            return StartFromCommerce();
+        }
+
         (List <int> parent, List <float> dist) graphData = Dijkstra(FieldClass.numInGraph[CommerceGameObject]);
+
+        if (GenerationGraphClass.isRegeneration) {
+            while (GenerationGraphClass.isRegeneration) {}
+            return StartFromCommerce();
+        }
 
         int minDistI = 0;
         for (int i = 0; i < BuildsClass.parkings.Count; ++i) {
@@ -320,12 +365,22 @@ public class Cars : MonoBehaviour {
                 minDistI = i;
         }
 
+        if (GenerationGraphClass.isRegeneration) {
+            while (GenerationGraphClass.isRegeneration) {}
+            return StartFromCommerce();
+        }
+
         GameObject Parking = BuildsClass.parkings[minDistI];
         
         List <GameObject> objectPathToStart = new List <GameObject> ();
         for (int v = FieldClass.numInGraph[Parking]; v != -1; v = graphData.parent[v]) {
             objectPathToStart.Add(FieldClass.objInGraph[v]);
             if (FieldClass.objInGraph[v] == CommerceGameObject) break;
+        }
+        
+        if (GenerationGraphClass.isRegeneration) {
+            while (GenerationGraphClass.isRegeneration) {}
+            return StartFromCommerce();
         }
 
         List <GameObject> objectPathToEnd = new List <GameObject> ();
@@ -334,8 +389,18 @@ public class Cars : MonoBehaviour {
             if (FieldClass.objInGraph[v] == CommerceGameObject) break;
         }
         objectPathToEnd.Reverse();
+        
+        if (GenerationGraphClass.isRegeneration) {
+            while (GenerationGraphClass.isRegeneration) {}
+            return StartFromCommerce();
+        }
 
         graphData = Dijkstra(FieldClass.numInGraph[BuildGameObject]);
+        
+        if (GenerationGraphClass.isRegeneration) {
+            while (GenerationGraphClass.isRegeneration) {}
+            return StartFromCommerce();
+        }
 
         minDistI = 0;
         for (int i = 0; i < BuildsClass.parkings.Count; ++i) {
@@ -351,6 +416,11 @@ public class Cars : MonoBehaviour {
             }
             if (graphData.dist[FieldClass.numInGraph[BuildsClass.parkings[i]]] < dist)
                 minDistI = i;
+        }
+        
+        if (GenerationGraphClass.isRegeneration) {
+            while (GenerationGraphClass.isRegeneration) {}
+            return StartFromCommerce();
         }
 
         Parking = BuildsClass.parkings[minDistI];

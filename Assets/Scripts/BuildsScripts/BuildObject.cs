@@ -8,7 +8,8 @@ public class BuildObject : MonoBehaviour {
     private Builds BuildsClass;
 
     public float x, y;
-    public int idx, connectedRoad, idxCommerceType = -1, idxPreFub = -1, cntPosters = 0;
+    public int idx, connectedRoad, idxCommerceType = -1, idxPreFub = -1;
+    public int maxCntPeople = 0, cntPosters = 0, maxCntPosters = 0;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -17,10 +18,12 @@ public class BuildObject : MonoBehaviour {
     }
 
     private void OnMouseDown() {
-        // Добавление рандомного постера
+        if (Input.GetMouseButtonDown(1)) {
+
+        }
     }
 
-    public void AddPoster(ulong seed) {
+    public void AddPoster() {
         // Добавление постера по сиду
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -63,9 +64,9 @@ public class Passport : MonoBehaviour {
         List <string> reasonsLoyalty = new List <string> ();
         double loyalty = 0, envy = 0;
         int posX = (int)gameObject.transform.position.x, posZ = (int)gameObject.transform.position.z;
-        int radius = 20, cntPosters = 0;
+        int radius = 20, cntPosters = 0, cntPostersMax = 0;
 
-        if (satisfaction < 75) reasonsLoyalty.Add("Удовлетворённость: " + (int)satisfaction + " < 75 пунктов");
+        if (satisfaction < 60) reasonsLoyalty.Add("Удовлетворённость: " + (int)satisfaction + " < 60%");
 
         if (idxSocialСlass == 1) { // Пролетариат
             double ratioWith3, ratioWith4;
@@ -79,8 +80,8 @@ public class Passport : MonoBehaviour {
             if (ratioWith4 < 5 && ratioWith4 >= 2) envy2 = (3.36 / ratioWith4 - 0.672) * 100;
             else if (ratioWith4 < 2) envy2 = 100;
             envy = (envy1 + envy2) / 2;
-            if (envy1 > 25) reasonsLoyalty.Add("Зависть интеллигенции: " + (int)envy1 + " > 25 пунктов");
-            if (envy2 > 25) reasonsLoyalty.Add("Зависть буржуям: " + (int)envy2 + " > 25 пунктов");
+            if (envy1 > 40) reasonsLoyalty.Add("Зависть интеллигенции: " + (int)envy1 + " > 40 пунктов");
+            if (envy2 > 40) reasonsLoyalty.Add("Зависть буржуям: " + (int)envy2 + " > 40 пунктов");
         }
         if (idxSocialСlass == 2) { // Бюрократия
             double ratioWith4;
@@ -88,7 +89,7 @@ public class Passport : MonoBehaviour {
             else ratioWith4 = PeopleClass.cntPeople2 / PeopleClass.cntPeople4; // От 2 до 0.5
             if (ratioWith4 < 2 && ratioWith4 >= 0.5) envy = (0.67 / ratioWith4 - 0.335) * 100;
             else if (ratioWith4 < 0.5) envy = 100;
-            if (envy > 25) reasonsLoyalty.Add("Зависть буржуям: " + (int)envy + " > 25 пунктов");
+            if (envy > 40) reasonsLoyalty.Add("Зависть буржуям: " + (int)envy + " > 40 пунктов");
         }
 
         for (int x = posX - radius; x < posX + radius; ++x) {
@@ -98,12 +99,13 @@ public class Passport : MonoBehaviour {
                     FieldClass.objects[x + FieldClass.fieldSizeHalf, z + FieldClass.fieldSizeHalf] != null &&
                     FieldClass.objects[x + FieldClass.fieldSizeHalf, z + FieldClass.fieldSizeHalf].GetComponent <BuildObject> ()) {
                     cntPosters += FieldClass.objects[x + FieldClass.fieldSizeHalf, z + FieldClass.fieldSizeHalf].GetComponent <BuildObject> ().cntPosters;
+                    cntPostersMax += FieldClass.objects[x + FieldClass.fieldSizeHalf, z + FieldClass.fieldSizeHalf].GetComponent <BuildObject> ().cntPosters;
                 }
             }
         }
-        reasonsLoyalty.Add("Кол-во плакатов: " + cntPosters);
+        if (cntPosters / Math.Max(cntPostersMax, 1) * 100 < 50) reasonsLoyalty.Add("Кол-во плакатов в данной области: " + cntPosters + " < 50% от макс. кол-ва");
 
-        loyalty = (3 * satisfaction + (101 - envy)) / 4;
+        loyalty = (2 * satisfaction + (101 - envy) + 3 * (cntPosters / Math.Max(cntPostersMax, 1) * 100)) / 6;
         return ((int)loyalty, reasonsLoyalty);
     }
 
@@ -301,13 +303,13 @@ public class Passport : MonoBehaviour {
         else txt.text += "Товарищ ";
         txt.text += surnameHuman + " " + nameHuman + " " + fatherNameHuman + "\n";
         txt.text += "Пол: " + gender + ", Возраст: " + age + "\n";
-        if (age >= 5) txt.text += "Бюджет: " + budget + "\n";
+        if (age >= 5) txt.text += "Бюджет: " + budget + " руб.\n";
         txt.text += "\nСоциальный статус: " + socialStatus + "\n";
         if (age >= 18) txt.text += "Социальный класс: " + socialСlass + "\n";
-        txt.text += "Удовлетворённость: " + satisfaction + "\n";
+        txt.text += "Удовлетворённость: " + satisfaction + "%\n";
         if (age >= 18) {
             (int loyalty, List <string> reasonsLoyalty) loyaltyData = GetLoyalty();
-            txt.text += "Преданность партии: " + loyaltyData.loyalty + "\n";
+            txt.text += "Преданность партии: " + loyaltyData.loyalty + "%\n";
             for (int i = 0; i < loyaltyData.reasonsLoyalty.Count; ++i) {
                 txt.text += " • " + loyaltyData.reasonsLoyalty[i] + "\n";
             }

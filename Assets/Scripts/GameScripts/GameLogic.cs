@@ -22,7 +22,6 @@ public class GameLogic : MonoBehaviour {
 
     private void Start() {
         GenerationClass.StartGeneration();
-        InterfaceClass.CreateInterface();
         CarsClass.StartCars();
         PeopleClass.StartPeople();
     }
