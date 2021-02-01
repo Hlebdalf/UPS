@@ -143,59 +143,25 @@ public class Cars : MonoBehaviour {
     private List <Vector3> ShiftRoadVectors(List <Vector3> pointsPath, int start, int end) {
         for (int i = start; i < end; i += 2) {
             Vector3 From = pointsPath[i], To = pointsPath[i + 1];
-            float mainRoadA = From.z - To.z, mainRoadB = To.x - From.x, mainRoadC = From.x * To.z - To.x * From.z; // line
-            float normFromA = -mainRoadB, normFromB = mainRoadA, normFromC = -(normFromA * From.x + normFromB * From.z); // normFrom
-            float normToA = -mainRoadB, normToB = mainRoadA, normToC = -(normToA * To.x + normToB * To.z); // normTo
 
-            float x, y;
-            if (normFromB == 0) {
-                x = 0;
-                y = 0.2f;
-            }
-            else if (normFromA == 0) {
-                x = 0.2f;
-                y = 0;
-            }
-            else {
-                x = (float)Math.Abs(Math.Cos(Math.Atan(normFromA / -normFromB)) * (0.4f));
-                y = (float)Math.Abs(Math.Sin(Math.Atan(normFromA / -normFromB)) * (0.4f));
-            }
-            float dx = (float)Math.Cos(Math.Atan2(To.z - From.z, To.x - From.x)) * 1f;
-            float dz = (float)Math.Sin(Math.Atan2(To.z - From.z, To.x - From.x)) * 1f;
+            float sideX = (float)Math.Cos(Math.Atan2(To.x - From.x, To.z - From.z)) * (0.4f);
+            float sideZ = -(float)Math.Sin(Math.Atan2(To.x - From.x, To.z - From.z)) * (0.4f);
+            float lessDX = (float)Math.Cos(Math.Atan2(To.z - From.z, To.x - From.x)) * 1f;
+            float lessDZ = (float)Math.Sin(Math.Atan2(To.z - From.z, To.x - From.x)) * 1f;
+
             if (i > start) {
-                From.x += dx;
-                From.z += dz;
+                From.x += lessDX;
+                From.z += lessDZ;
             }
             if (i + 1 < end) {
-                To.x -= dx;
-                To.z -= dz;
+                To.x -= lessDX;
+                To.z -= lessDZ;
             }
-            float cs = To.x - From.x;
-            float sn = To.z - From.z;
-            if (cs >= 0 && sn >= 0) {
-                From.x += x;
-                From.z -= y;
-                To.x += x;
-                To.z -= y;
-            }
-            if (cs <= 0 && sn >= 0) {
-                From.x += x;
-                From.z += y;
-                To.x += x;
-                To.z += y;
-            }
-            if (cs <= 0 && sn <= 0) {
-                From.x -= x;
-                From.z += y;
-                To.x -= x;
-                To.z += y;
-            }
-            if (cs >= 0 && sn <= 0) {
-                From.x -= x;
-                From.z -= y;
-                To.x -= x;
-                To.z -= y;
-            }
+            From.x += sideX;
+            From.z += sideZ;
+            To.x += sideX;
+            To.z += sideZ;
+            
             pointsPath[i] = From;
             pointsPath[i + 1] = To;
         }
