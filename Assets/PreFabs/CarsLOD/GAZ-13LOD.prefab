@@ -1,0 +1,251 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &25634504061648533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 797351395167970351}
+  - component: {fileID: 464240128429456667}
+  - component: {fileID: 5810736202823918301}
+  - component: {fileID: 356139489015536103}
+  m_Layer: 0
+  m_Name: GAZ-13LOD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &797351395167970351
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25634504061648533}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4212921264665154407}
+  - {fileID: 8550855973204990802}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &464240128429456667
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25634504061648533}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 0.4, z: 1.2}
+  m_Center: {x: 0, y: 0.2, z: 0}
+--- !u!114 &5810736202823918301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25634504061648533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6281aa32e27f77d479d2d63e5d567ccc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onVisibleInCamera: 0
+--- !u!205 &356139489015536103
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25634504061648533}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0.1041335, z: -0.015538514}
+  m_Size: 0.765151
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.04852192
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2559690475557572281}
+  - screenRelativeHeight: 0.0012931958
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 8023210329865979532}
+  - screenRelativeHeight: 0
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
+--- !u!1001 &790168022086748879
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 797351395167970351}
+    m_Modifications:
+    - target: {fileID: 210451934009459366, guid: 68f70e458593b5c4d95bcea4ed7f6512,
+        type: 3}
+      propertyPath: m_Name
+      value: GAZ-13LP
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961463510134657437, guid: 68f70e458593b5c4d95bcea4ed7f6512,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961463510134657437, guid: 68f70e458593b5c4d95bcea4ed7f6512,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961463510134657437, guid: 68f70e458593b5c4d95bcea4ed7f6512,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961463510134657437, guid: 68f70e458593b5c4d95bcea4ed7f6512,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961463510134657437, guid: 68f70e458593b5c4d95bcea4ed7f6512,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961463510134657437, guid: 68f70e458593b5c4d95bcea4ed7f6512,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961463510134657437, guid: 68f70e458593b5c4d95bcea4ed7f6512,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961463510134657437, guid: 68f70e458593b5c4d95bcea4ed7f6512,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961463510134657437, guid: 68f70e458593b5c4d95bcea4ed7f6512,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961463510134657437, guid: 68f70e458593b5c4d95bcea4ed7f6512,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961463510134657437, guid: 68f70e458593b5c4d95bcea4ed7f6512,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 68f70e458593b5c4d95bcea4ed7f6512, type: 3}
+--- !u!4 &8550855973204990802 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8961463510134657437, guid: 68f70e458593b5c4d95bcea4ed7f6512,
+    type: 3}
+  m_PrefabInstance: {fileID: 790168022086748879}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8023210329865979532 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7327100306199841859, guid: 68f70e458593b5c4d95bcea4ed7f6512,
+    type: 3}
+  m_PrefabInstance: {fileID: 790168022086748879}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1008930845639578926
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 797351395167970351}
+    m_Modifications:
+    - target: {fileID: 3780557291389339209, guid: df165dd09fe41f74882bf02eeb4f19fc,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3780557291389339209, guid: df165dd09fe41f74882bf02eeb4f19fc,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3780557291389339209, guid: df165dd09fe41f74882bf02eeb4f19fc,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3780557291389339209, guid: df165dd09fe41f74882bf02eeb4f19fc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3780557291389339209, guid: df165dd09fe41f74882bf02eeb4f19fc,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3780557291389339209, guid: df165dd09fe41f74882bf02eeb4f19fc,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3780557291389339209, guid: df165dd09fe41f74882bf02eeb4f19fc,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3780557291389339209, guid: df165dd09fe41f74882bf02eeb4f19fc,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3780557291389339209, guid: df165dd09fe41f74882bf02eeb4f19fc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3780557291389339209, guid: df165dd09fe41f74882bf02eeb4f19fc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3780557291389339209, guid: df165dd09fe41f74882bf02eeb4f19fc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5386608266880505202, guid: df165dd09fe41f74882bf02eeb4f19fc,
+        type: 3}
+      propertyPath: m_Name
+      value: GAZ-13HP
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: df165dd09fe41f74882bf02eeb4f19fc, type: 3}
+--- !u!4 &4212921264665154407 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3780557291389339209, guid: df165dd09fe41f74882bf02eeb4f19fc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1008930845639578926}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2559690475557572281 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3280214471817517975, guid: df165dd09fe41f74882bf02eeb4f19fc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1008930845639578926}
+  m_PrefabAsset: {fileID: 0}
