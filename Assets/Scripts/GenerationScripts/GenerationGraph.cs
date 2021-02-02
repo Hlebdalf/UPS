@@ -11,6 +11,7 @@ public class GenerationGraph : MonoBehaviour {
     private Field FieldClass;
 
     public bool isRegeneration = false;
+    public bool isOver = false;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -19,7 +20,7 @@ public class GenerationGraph : MonoBehaviour {
         FieldClass = MainCamera.GetComponent <Field> ();
     }
 
-    public void StartGeneration() {
+    IEnumerator AsyncGen() {
         isRegeneration = true;
         FieldClass.numInGraph = new Dictionary <GameObject, int> ();
         FieldClass.objInGraph = new Dictionary <int, GameObject> ();
@@ -45,6 +46,7 @@ public class GenerationGraph : MonoBehaviour {
         for (int i = 0; i < FieldClass.numInGraph.Count; ++i) {
             FieldClass.graph[i] = new List <(int v, float w)> ();
         }
+        yield return null;
         
         foreach (KeyValuePair <GameObject, int> keyValue in FieldClass.numInGraph) {
             if (keyValue.Key.GetComponent <BuildObject> ()) {
@@ -74,7 +76,14 @@ public class GenerationGraph : MonoBehaviour {
                     }
                 }
             }
+            yield return null;
         }
+        yield return null;
+        isOver = true;
         isRegeneration = false;
+    }
+
+    public void StartGeneration() {
+        StartCoroutine(AsyncGen());
     }
 }

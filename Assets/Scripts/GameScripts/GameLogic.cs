@@ -20,9 +20,16 @@ public class GameLogic : MonoBehaviour {
         PeopleClass = MainCamera.GetComponent <People> ();
     }
 
-    private void Start() {
+    IEnumerator AsyncStartLogic() {
         GenerationClass.StartGeneration();
+        while (!GenerationClass.isOver) {
+            yield return null;
+        }
         CarsClass.StartCars();
         PeopleClass.StartPeople();
+    }
+
+    private void Start() {
+        StartCoroutine(AsyncStartLogic());
     }
 }

@@ -17,10 +17,13 @@ public class Generation : MonoBehaviour {
     private GenerationGraph GenerationGraphClass;
     private ulong seed;
 
+    public GameObject loadPanelObj;
+    public GameObject loadCircleObj;
     public int timeGeneration, maxCntRoads;
     public int minLenRoads, deltaLenRoads;
     public int averageCntCommercesInDistrict, averageCntParkingInDistrict;
     public float timeRoadsBuildGeneration, timeHousesBuildGeneration, timeCommerceBuildGeneration;
+    public bool isOver = false;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -33,6 +36,10 @@ public class Generation : MonoBehaviour {
         GenerationCommercesClass = MainCamera.GetComponent <GenerationCommerces> ();
         GenerationParkingsClass = MainCamera.GetComponent <GenerationParkings> ();
         GenerationGraphClass = MainCamera.GetComponent <GenerationGraph> ();
+    }
+
+    private void Start() {
+        loadCircleObj = loadPanelObj.transform.Find("LoadCircle").gameObject;
     }
 
     public void FuncSeed() {
@@ -52,7 +59,7 @@ public class Generation : MonoBehaviour {
         else return true;
     }
 
-    public void StartGeneration() {
+    IEnumerator StartGen() {
         Debug.Log("Start Generation: " + DateTimeOffset.Now);
         if (MainMenuButtonManagment.seed == -1 || MainMenuButtonManagment.seed == 0)
             seed = (ulong)UnityEngine.Random.Range(0f, 1e9f);
@@ -65,13 +72,78 @@ public class Generation : MonoBehaviour {
         timeCommerceBuildGeneration = timeGeneration * 0.14f;
         timeHousesBuildGeneration = timeGeneration * 0.85f;
 
-        GenerationRoadsClass.StartGeneration();
-        GenerationDistrictsClass.StartGeneration();
-        GenerationParkingsClass.StartGeneration();
-        GenerationCommercesClass.StartGeneration();
-        GenerationHousesClass.StartGeneration();
-        GenerationGraphClass.StartGeneration();
+        yield return null;
+        StartCoroutine(StartRoadsGen());
+    }
 
+    IEnumerator StartRoadsGen() {
+        GenerationRoadsClass.StartGeneration();
+        print("Прокладываем дороги...");
+        while (!GenerationRoadsClass.isOver) {
+            loadCircleObj.transform.Rotate(0, 0, 2);
+            yield return null;
+        }
+        StartCoroutine(StartDistrictsGen());
+    }
+
+    IEnumerator StartDistrictsGen() {
+        GenerationDistrictsClass.StartGeneration();
+        print("Делим город на кварталы...");
+        while (!GenerationDistrictsClass.isOver) {
+            loadCircleObj.transform.Rotate(0, 0, 2);
+            yield return null;
+        }
+        StartCoroutine(StartParkingsGen());
+    }
+
+    IEnumerator StartParkingsGen() {
+        GenerationParkingsClass.StartGeneration();
+        print("Строим парковки...");
+        while (!GenerationParkingsClass.isOver) {
+            loadCircleObj.transform.Rotate(0, 0, 2);
+            yield return null;
+        }
+        StartCoroutine(StartCommercesGen());
+    }
+
+    IEnumerator StartCommercesGen() {
+        GenerationCommercesClass.StartGeneration();
+        print("Строим коммерцию...");
+        while (!GenerationCommercesClass.isOver) {
+            loadCircleObj.transform.Rotate(0, 0, 2);
+            yield return null;
+        }
+        StartCoroutine(StartHousesGen());
+    }
+
+    IEnumerator StartHousesGen() {
+        GenerationHousesClass.StartGeneration();
+        print("Строим дома...");
+        while (!GenerationHousesClass.isOver) {
+            loadCircleObj.transform.Rotate(0, 0, 2);
+            yield return null;
+        }
+        StartCoroutine(StartGraphGen());
+    }
+
+    IEnumerator StartGraphGen() {
+        GenerationGraphClass.StartGeneration();
+        print("Чертим план города...");
+        while (!GenerationGraphClass.isOver) {
+            loadCircleObj.transform.Rotate(0, 0, 2);
+            yield return null;
+        }
+        StartCoroutine(EndGen());
+    }
+
+    IEnumerator EndGen() {
+        yield return null;
+        loadPanelObj.SetActive(false);
         Debug.Log("End Generation: " + DateTimeOffset.Now);
+        isOver = true;
+    }
+
+    public void StartGeneration() {
+        StartCoroutine(StartGen());
     }
 }

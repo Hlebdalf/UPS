@@ -3190,6 +3190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a2bef60c80ca74a8415ebd3678409a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOver: 0
 --- !u!114 &963194235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3202,6 +3203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9b7ad553f502c458d1850b4b0fe277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOver: 0
 --- !u!114 &963194236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3214,6 +3216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509e06b289a89ae4889bffcbf37ad525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOver: 0
 --- !u!114 &963194237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3226,6 +3229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f67f64bae619ad429bcb5e8b835640c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOver: 0
 --- !u!114 &963194238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3240,7 +3244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadPanelObj: {fileID: 2099872563}
   loadCircleObj: {fileID: 0}
-  timeGeneration: 100
+  timeGeneration: 10000
   maxCntRoads: 200
   minLenRoads: 20
   deltaLenRoads: 20
@@ -3249,6 +3253,7 @@ MonoBehaviour:
   timeRoadsBuildGeneration: 0
   timeHousesBuildGeneration: 0
   timeCommerceBuildGeneration: 0
+  isOver: 0
 --- !u!114 &963194239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3327,6 +3332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce72d7ef8265d614894fb72ea5927c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOver: 0
 --- !u!114 &963194243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3418,6 +3424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRegeneration: 0
+  isOver: 0
 --- !u!114 &963194245
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -31,6 +31,8 @@ public class GenerationCommerces : MonoBehaviour {
     private int[] cntInDistrict = {0, 0, 0, 0};
     private int sqrtSize = 20;
 
+    public bool isOver = false;
+
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         RoadsClass = MainCamera.GetComponent <Roads> ();
@@ -164,7 +166,7 @@ public class GenerationCommerces : MonoBehaviour {
         return ans;
     }
 
-    public void StartGeneration() {
+    IEnumerator AsyncGen() {
         DateTimeOffset startDate = DateTimeOffset.Now;
         DateTimeOffset endDate = startDate.AddSeconds(GenerationClass.timeCommerceBuildGeneration);
         for (int i = 0; i < RoadsClass.objects.Count && GenerationClass.CheckTime(endDate); ++i) {
@@ -211,10 +213,11 @@ public class GenerationCommerces : MonoBehaviour {
                 AddBlock((int)(GenerationClass.GetSeed() % 1e9), point2, angleHouse, i, typeHouse2);
                 GenerationClass.FuncSeed();
             }
+            yield return null;
         }
 
         while (BuildsClass.commerces.Count < GenerationClass.averageCntCommercesInDistrict * 4) {
-            if (SqrtDecomp.Count == 0) return;
+            if (SqrtDecomp.Count == 0) break;
             (Vector3 point, float rotate, int roadIdx, int typeHouse) minBlock = GetMinBlock();
 
             int sum = cntInDistrict[0] + cntInDistrict[1] + cntInDistrict[2] + cntInDistrict[3];
@@ -278,8 +281,15 @@ public class GenerationCommerces : MonoBehaviour {
                     BuildsClass.CreateObject(minBlock.point, minBlock.rotate * -1, minBlock.typeHouse, minBlock.roadIdx);
                     ++cntInDistrict[FieldClass.districts[(int)minBlock.point.x + FieldClass.fieldSizeHalf, (int)minBlock.point.z + FieldClass.fieldSizeHalf]];
                     FieldClass.objects[(int)minBlock.point.x + FieldClass.fieldSizeHalf, (int)minBlock.point.z + FieldClass.fieldSizeHalf] = BuildsClass.commerces[BuildsClass.commerces.Count - 1];
+                    yield return null;
                 }
             }
         }
+        yield return null;
+        isOver = true;
+    }
+
+    public void StartGeneration() {
+        StartCoroutine(AsyncGen());
     }
 }

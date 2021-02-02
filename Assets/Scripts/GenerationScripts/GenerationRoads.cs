@@ -27,6 +27,8 @@ public class GenerationRoads : MonoBehaviour {
     private float maxX = 0, minX = 0;
     private float maxY = 0, minY = 0;
 
+    public bool isOver = false;
+
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         RoadsClass = MainCamera.GetComponent <Roads> ();
@@ -133,12 +135,13 @@ public class GenerationRoads : MonoBehaviour {
         return true;
     }
 
-    public void StartGeneration() {
+    IEnumerator AsyncGen() {
         RoadsClass.CreateObject("Road1", new Vector3(0, 0, 100), new Vector3 (0, 0, 110), 90);
         AddBlock((int)(GenerationClass.GetSeed() % 1e9), new Vector3 (0, 0, 110), RoadsClass.objects.Count - 1);
         GenerationClass.FuncSeed();
         DateTimeOffset startDate = DateTimeOffset.Now;
         DateTimeOffset endDate = startDate.AddSeconds(GenerationClass.timeRoadsBuildGeneration);
+        yield return null;
         while (GenerationClass.CheckTime(endDate) && RoadsClass.objects.Count < GenerationClass.maxCntRoads) {
             (Vector3 point, int roadIdx) startPoint = GetMinBlock();
 
@@ -162,6 +165,13 @@ public class GenerationRoads : MonoBehaviour {
                 AddBlock((int)(GenerationClass.GetSeed() % 1e9), endPoint, RoadsClass.objects.Count - 1);
                 GenerationClass.FuncSeed();
             }
+            yield return null;
         }
+        yield return null;
+        isOver = true;
+    }
+
+    public void StartGeneration() {
+        StartCoroutine(AsyncGen());
     }
 }

@@ -29,6 +29,8 @@ public class GenerationParkings : MonoBehaviour {
     private int[] cntInDistrict = {0, 0, 0, 0};
     private int sqrtSize = 20;
 
+    public bool isOver = false;
+
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         RoadsClass = MainCamera.GetComponent <Roads> ();
@@ -146,7 +148,7 @@ public class GenerationParkings : MonoBehaviour {
         CheckCross(tmpVertex3, tmpVertex4, vertex3, vertex4, dist));
     }
 
-    public void StartGeneration() {
+    IEnumerator AsyncGen() {
         for (int i = 0; i < RoadsClass.objects.Count; ++i) {
             RoadObject roadObjectClass = RoadsClass.objects[i].GetComponent <RoadObject> ();
             float mainRoadA = roadObjectClass.y1 - roadObjectClass.y2, mainRoadB = roadObjectClass.x2 - roadObjectClass.x1,
@@ -190,10 +192,11 @@ public class GenerationParkings : MonoBehaviour {
                 AddBlock((int)(GenerationClass.GetSeed() % 1e9), point2, angleHouse, i);
                 GenerationClass.FuncSeed();
             }
+            yield return null;
         }
 
         while (BuildsClass.parkings.Count < GenerationClass.averageCntParkingInDistrict * 4) {
-            if (SqrtDecomp.Count == 0) return;
+            if (SqrtDecomp.Count == 0) break;
             (Vector3 point, float rotate, int roadIdx) minBlock = GetMinBlock();
 
             int sum = cntInDistrict[0] + cntInDistrict[1] + cntInDistrict[2] + cntInDistrict[3];
@@ -259,6 +262,13 @@ public class GenerationParkings : MonoBehaviour {
                     FieldClass.objects[(int)minBlock.point.x + FieldClass.fieldSizeHalf, (int)minBlock.point.z + FieldClass.fieldSizeHalf] = BuildsClass.parkings[BuildsClass.parkings.Count - 1];
                 }
             }
+            yield return null;
         }
+        yield return null;
+        isOver = true;
+    }
+
+    public void StartGeneration() {
+        StartCoroutine(AsyncGen());
     }
 }

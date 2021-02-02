@@ -10,6 +10,8 @@ public class GenerationHouses : MonoBehaviour {
     private Builds BuildsClass;
     private Field FieldClass;
 
+    public bool isOver = false;
+
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         RoadsClass = MainCamera.GetComponent<Roads>();
@@ -121,7 +123,7 @@ public class GenerationHouses : MonoBehaviour {
         return (typeHouse1, typeHouse2);
     }
 
-    public void StartGeneration() {
+    IEnumerator AsyncGen() {
         DateTimeOffset startDate = DateTimeOffset.Now;
         DateTimeOffset endDate = startDate.AddSeconds(GenerationClass.timeHousesBuildGeneration);
         for (int i = 0; i < RoadsClass.objects.Count && GenerationClass.CheckTime(endDate); ++i) {
@@ -274,6 +276,13 @@ public class GenerationHouses : MonoBehaviour {
                     }
                 }
             }
+            yield return null;
         }
+        yield return null;
+        isOver = true;
+    }
+
+    public void StartGeneration() {
+        StartCoroutine(AsyncGen());
     }
 }

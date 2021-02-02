@@ -11,6 +11,8 @@ public class GenerationDistricts : MonoBehaviour {
     private int centerX, centerY;
     private bool[] used = {false, false, false, false, false, false, false, false};
 
+    public bool isOver = false;
+
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         RoadsClass = MainCamera.GetComponent <Roads> ();
@@ -55,7 +57,7 @@ public class GenerationDistricts : MonoBehaviour {
         return point;
     }
 
-    public void StartGeneration() {
+    IEnumerator AsyncGen() {
         seed = GenerationClass.GetSeed();
         centerX = FieldClass.centerX;
         centerY = FieldClass.centerY;
@@ -81,6 +83,7 @@ public class GenerationDistricts : MonoBehaviour {
         fillPoints.Enqueue(tmpP);
         FieldClass.districts[(int)tmpP.x + FieldClass.fieldSizeHalf, (int)tmpP.y + FieldClass.fieldSizeHalf] = 3;
         
+        yield return null;
         while (fillPoints.Count > 0) {
             Vector2 point = fillPoints.Dequeue();
             if (point.x + 1 < FieldClass.fieldSizeHalf && FieldClass.districts[(int)point.x + 1 + FieldClass.fieldSizeHalf, (int)point.y + FieldClass.fieldSizeHalf] == -1) {
@@ -116,5 +119,11 @@ public class GenerationDistricts : MonoBehaviour {
                 fillPoints.Enqueue(new Vector2(point.x - 1, point.y - 1));
             }
         }
+        yield return null;
+        isOver = true;
+    }
+
+    public void StartGeneration() {
+        StartCoroutine(AsyncGen());
     }
 }
