@@ -70,97 +70,105 @@ public class People : MonoBehaviour {
 
     private void Update() {
         if (isStarted && objects.Count < cntPeople && !GenerationGraphClass.isRegeneration) {
-            (List <GameObject> objectPath, int idxCommerceType, int idxSocialСlass, float dist) dataGraph;
-            if ((int)UnityEngine.Random.Range(0, 1.99f) == 0) dataGraph = StartFromHouse();
-            else dataGraph = StartFromCommerce();
-
-            List <GameObject> objectPath = dataGraph.objectPath;
-            List <Vector3> pointsPath = ObjectsToPoints(objectPath);
-            pointsPath = ShiftRoadVectors(pointsPath);
-            int idxCommerceType = dataGraph.idxCommerceType;
-            int idxSocialСlass = dataGraph.idxSocialСlass;
-            float dist = dataGraph.dist;
-            
-            int idxPreFub = 0;
-            if (idxCommerceType == 0) idxPreFub = (int)UnityEngine.Random.Range(0, preFubs.Length - 0.01f);
-            else if (idxCommerceType == 1 || idxCommerceType == 4 || idxCommerceType == 6) idxPreFub = (int)UnityEngine.Random.Range(0, preFubs.Length - 2.01f);
-            else idxPreFub = (int)UnityEngine.Random.Range(3, preFubs.Length - 2.01f);
-
-            objects.Add(Instantiate(preFubs[idxPreFub], pointsPath[0], Quaternion.Euler(0, 0, 0)));
-            globalPointsPath.Add(pointsPath);
-            itForQueue.Add(0);
-            vertexIsActive[objects.Count - 1] = false;
-            cntWaitingFrames[objects.Count - 1] = 0;
-            cntTranslate[objects.Count - 1] = 0;
-
-            if (idxSocialСlass == 1) ++cntPeople1;
-            if (idxSocialСlass == 2) ++cntPeople2;
-            if (idxSocialСlass == 3) ++cntPeople3;
-            if (idxSocialСlass == 4) ++cntPeople4;
-
-            objects[objects.Count - 1].AddComponent <Passport> ();
-            Passport PassportClass = objects[objects.Count - 1].GetComponent <Passport> ();
-            PassportClass.idxPreFub = idxPreFub;
-            PassportClass.idxCommerceType = idxCommerceType;
-            PassportClass.idxSocialСlass = idxSocialСlass;
-            PassportClass.dist = dist;
-            
-            GameObject objHP = objects[objects.Count - 1].transform.Find("Human").Find(preFubs[idxPreFub].name + "HP").Find("BodyHP").gameObject;
-            GameObject objLP = objects[objects.Count - 1].transform.Find("Human").Find(preFubs[idxPreFub].name + "LP").Find("BodyLP").gameObject;
-            SkinnedMeshRenderer rendererHP = objHP.GetComponent <SkinnedMeshRenderer> ();
-            SkinnedMeshRenderer rendererLP = objLP.GetComponent <SkinnedMeshRenderer> ();
-            Material[] listMatHP = rendererHP.materials;
-            Material[] listMatLP = rendererLP.materials;
-
-            int hairHP = -1, jacketHP = -1, pantsHP = -1, bootsHP = -1, skinHP = -1;
-            for (int i = 0; i < listMatHP.Length; ++i) {
-                switch (listMatHP[i].name) {
-                    case "HairMaterial (Instance)":
-                        hairHP = i;
-                        break;
-                    case "CoatMaterial (Instance)":
-                        jacketHP = i;
-                        break;
-                    case "JeansMaterial (Instance)":
-                        pantsHP = i;
-                        break;
-                    case "BootsMaterial (Instance)":
-                        bootsHP = i;
-                        break;
-                    case "SkinMaterial (Instance)":
-                        skinHP = i;
-                        break;
-                }
+            if (BuildsClass.objects.Count <= 0) {
+                Debug.Log("There is not houses");
             }
-            int hairLP = -1, jacketLP = -1, pantsLP = -1, bootsLP = -1, skinLP = -1;
-            for (int i = 0; i < listMatLP.Length; ++i) {
-                switch (listMatLP[i].name) {
-                    case "HairMaterial (Instance)":
-                        hairLP = i;
-                        break;
-                    case "CoatMaterial (Instance)":
-                        jacketLP = i;
-                        break;
-                    case "JeansMaterial (Instance)":
-                        pantsLP = i;
-                        break;
-                    case "BootsMaterial (Instance)":
-                        bootsLP = i;
-                        break;
-                    case "SkinMaterial (Instance)":
-                        skinLP = i;
-                        break;
-                }
+            else if (BuildsClass.commerces.Count <= 0) {
+                Debug.Log("There is not commerce");
             }
-            Material[] newLPMat = new Material[rendererLP.materials.Length];
-            Material[] newHPMat = new Material[rendererLP.materials.Length];
-            newLPMat[hairLP] = newHPMat[hairHP] = HairMaterials[(int)UnityEngine.Random.Range(0, HairMaterials.Length - 0.01f)];
-            newLPMat[jacketLP] = newHPMat[jacketHP] = CoatMaterials[(int)UnityEngine.Random.Range(0, CoatMaterials.Length - 0.01f)];
-            newLPMat[pantsLP] = newHPMat[pantsHP] = JeansMaterials[(int)UnityEngine.Random.Range(0, JeansMaterials.Length - 0.01f)];
-            newLPMat[bootsLP] = newHPMat[bootsHP] = BootsMaterials[(int)UnityEngine.Random.Range(0, BootsMaterials.Length - 0.01f)];
-            newLPMat[skinLP] = newHPMat[skinHP] = SkinMaterials[(int)UnityEngine.Random.Range(0, SkinMaterials.Length - 0.01f)];
-            rendererHP.materials = newHPMat;
-            rendererLP.materials = newLPMat;
+            else {
+                (List <GameObject> objectPath, int idxCommerceType, int idxSocialСlass, float dist) dataGraph;
+                if ((int)UnityEngine.Random.Range(0, 1.99f) == 0) dataGraph = StartFromHouse();
+                else dataGraph = StartFromCommerce();
+
+                List <GameObject> objectPath = dataGraph.objectPath;
+                List <Vector3> pointsPath = ObjectsToPoints(objectPath);
+                pointsPath = ShiftRoadVectors(pointsPath);
+                int idxCommerceType = dataGraph.idxCommerceType;
+                int idxSocialСlass = dataGraph.idxSocialСlass;
+                float dist = dataGraph.dist;
+                
+                int idxPreFub = 0;
+                if (idxCommerceType == 0) idxPreFub = (int)UnityEngine.Random.Range(0, preFubs.Length - 0.01f);
+                else if (idxCommerceType == 1 || idxCommerceType == 4 || idxCommerceType == 6) idxPreFub = (int)UnityEngine.Random.Range(0, preFubs.Length - 2.01f);
+                else idxPreFub = (int)UnityEngine.Random.Range(3, preFubs.Length - 2.01f);
+
+                objects.Add(Instantiate(preFubs[idxPreFub], pointsPath[0], Quaternion.Euler(0, 0, 0)));
+                globalPointsPath.Add(pointsPath);
+                itForQueue.Add(0);
+                vertexIsActive[objects.Count - 1] = false;
+                cntWaitingFrames[objects.Count - 1] = 0;
+                cntTranslate[objects.Count - 1] = 0;
+
+                if (idxSocialСlass == 1) ++cntPeople1;
+                if (idxSocialСlass == 2) ++cntPeople2;
+                if (idxSocialСlass == 3) ++cntPeople3;
+                if (idxSocialСlass == 4) ++cntPeople4;
+
+                objects[objects.Count - 1].AddComponent <Passport> ();
+                Passport PassportClass = objects[objects.Count - 1].GetComponent <Passport> ();
+                PassportClass.idxPreFub = idxPreFub;
+                PassportClass.idxCommerceType = idxCommerceType;
+                PassportClass.idxSocialСlass = idxSocialСlass;
+                PassportClass.dist = dist;
+                
+                GameObject objHP = objects[objects.Count - 1].transform.Find("Human").Find(preFubs[idxPreFub].name + "HP").Find("BodyHP").gameObject;
+                GameObject objLP = objects[objects.Count - 1].transform.Find("Human").Find(preFubs[idxPreFub].name + "LP").Find("BodyLP").gameObject;
+                SkinnedMeshRenderer rendererHP = objHP.GetComponent <SkinnedMeshRenderer> ();
+                SkinnedMeshRenderer rendererLP = objLP.GetComponent <SkinnedMeshRenderer> ();
+                Material[] listMatHP = rendererHP.materials;
+                Material[] listMatLP = rendererLP.materials;
+
+                int hairHP = -1, jacketHP = -1, pantsHP = -1, bootsHP = -1, skinHP = -1;
+                for (int i = 0; i < listMatHP.Length; ++i) {
+                    switch (listMatHP[i].name) {
+                        case "HairMaterial (Instance)":
+                            hairHP = i;
+                            break;
+                        case "CoatMaterial (Instance)":
+                            jacketHP = i;
+                            break;
+                        case "JeansMaterial (Instance)":
+                            pantsHP = i;
+                            break;
+                        case "BootsMaterial (Instance)":
+                            bootsHP = i;
+                            break;
+                        case "SkinMaterial (Instance)":
+                            skinHP = i;
+                            break;
+                    }
+                }
+                int hairLP = -1, jacketLP = -1, pantsLP = -1, bootsLP = -1, skinLP = -1;
+                for (int i = 0; i < listMatLP.Length; ++i) {
+                    switch (listMatLP[i].name) {
+                        case "HairMaterial (Instance)":
+                            hairLP = i;
+                            break;
+                        case "CoatMaterial (Instance)":
+                            jacketLP = i;
+                            break;
+                        case "JeansMaterial (Instance)":
+                            pantsLP = i;
+                            break;
+                        case "BootsMaterial (Instance)":
+                            bootsLP = i;
+                            break;
+                        case "SkinMaterial (Instance)":
+                            skinLP = i;
+                            break;
+                    }
+                }
+                Material[] newLPMat = new Material[rendererLP.materials.Length];
+                Material[] newHPMat = new Material[rendererLP.materials.Length];
+                newLPMat[hairLP] = newHPMat[hairHP] = HairMaterials[(int)UnityEngine.Random.Range(0, HairMaterials.Length - 0.01f)];
+                newLPMat[jacketLP] = newHPMat[jacketHP] = CoatMaterials[(int)UnityEngine.Random.Range(0, CoatMaterials.Length - 0.01f)];
+                newLPMat[pantsLP] = newHPMat[pantsHP] = JeansMaterials[(int)UnityEngine.Random.Range(0, JeansMaterials.Length - 0.01f)];
+                newLPMat[bootsLP] = newHPMat[bootsHP] = BootsMaterials[(int)UnityEngine.Random.Range(0, BootsMaterials.Length - 0.01f)];
+                newLPMat[skinLP] = newHPMat[skinHP] = SkinMaterials[(int)UnityEngine.Random.Range(0, SkinMaterials.Length - 0.01f)];
+                rendererHP.materials = newHPMat;
+                rendererLP.materials = newLPMat;
+            }
         }
     }
 

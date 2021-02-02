@@ -58,26 +58,34 @@ public class Cars : MonoBehaviour {
 
     private void Update() {
         if (isStarted && objects.Count < cntCars && !GenerationGraphClass.isRegeneration) {
-            (List <GameObject> objectPathToStart, List <GameObject> objectPathToEnd, List <GameObject> objectPathToParking) localPaths;
-            if ((int)UnityEngine.Random.Range(0, 1.99f) == 0) localPaths = StartFromHouse();
-            else localPaths = StartFromCommerce();
+            if (BuildsClass.objects.Count <= 0) {
+                Debug.Log("There is not houses");
+            }
+            else if (BuildsClass.commerces.Count <= 0) {
+                Debug.Log("There is not commerce");
+            }
+            else {
+                (List <GameObject> objectPathToStart, List <GameObject> objectPathToEnd, List <GameObject> objectPathToParking) localPaths;
+                if ((int)UnityEngine.Random.Range(0, 1.99f) == 0) localPaths = StartFromHouse();
+                else localPaths = StartFromCommerce();
 
-            List <Vector3> pointsPathToStart = ObjectsToPoints(localPaths.objectPathToStart, "ToStart");
-            List <Vector3> pointsPathToEnd = ObjectsToPoints(localPaths.objectPathToEnd, "ToEnd");
-            List <Vector3> pointsPathToParking = ObjectsToPoints(localPaths.objectPathToParking, "ToParking");
-            pointsPathToStart = ShiftRoadVectors(pointsPathToStart, 1, pointsPathToStart.Count - 1);
-            pointsPathToEnd = ShiftRoadVectors(pointsPathToEnd, 0, pointsPathToEnd.Count - 1);
-            pointsPathToParking = ShiftRoadVectors(pointsPathToParking, 0, pointsPathToParking.Count - 2);
+                List <Vector3> pointsPathToStart = ObjectsToPoints(localPaths.objectPathToStart, "ToStart");
+                List <Vector3> pointsPathToEnd = ObjectsToPoints(localPaths.objectPathToEnd, "ToEnd");
+                List <Vector3> pointsPathToParking = ObjectsToPoints(localPaths.objectPathToParking, "ToParking");
+                pointsPathToStart = ShiftRoadVectors(pointsPathToStart, 1, pointsPathToStart.Count - 1);
+                pointsPathToEnd = ShiftRoadVectors(pointsPathToEnd, 0, pointsPathToEnd.Count - 1);
+                pointsPathToParking = ShiftRoadVectors(pointsPathToParking, 0, pointsPathToParking.Count - 2);
 
-            objects.Add(Instantiate(preFubs[(int)UnityEngine.Random.Range(0, preFubs.Length - 0.01f)], pointsPathToStart[0], Quaternion.Euler(0, 0, 0)));
-            objects[objects.Count - 1].AddComponent <Car> ();
-            objectClasses.Add(objects[objects.Count - 1].GetComponent <Car> ());
-            paths.Add((pointsPathToStart, pointsPathToEnd, pointsPathToParking));
-            vertexIsActive[objects.Count - 1] = false;
-            onVisibleInCamera[objects.Count - 1] = false;
-            cntWaitingFrames[objects.Count - 1] = 0;
-            itForQueue.Add(0);
-            cntFrameForDelay.Add(0);
+                objects.Add(Instantiate(preFubs[(int)UnityEngine.Random.Range(0, preFubs.Length - 0.01f)], pointsPathToStart[0], Quaternion.Euler(0, 0, 0)));
+                objects[objects.Count - 1].AddComponent <Car> ();
+                objectClasses.Add(objects[objects.Count - 1].GetComponent <Car> ());
+                paths.Add((pointsPathToStart, pointsPathToEnd, pointsPathToParking));
+                vertexIsActive[objects.Count - 1] = false;
+                onVisibleInCamera[objects.Count - 1] = false;
+                cntWaitingFrames[objects.Count - 1] = 0;
+                itForQueue.Add(0);
+                cntFrameForDelay.Add(0);
+            }
         }
     }
 
