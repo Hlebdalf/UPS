@@ -142,6 +142,7 @@ public class GenerationRoads : MonoBehaviour {
         DateTimeOffset startDate = DateTimeOffset.Now;
         DateTimeOffset endDate = startDate.AddSeconds(GenerationClass.timeRoadsBuildGeneration);
         yield return null;
+        int cntMissedFrames = 0;
         while (GenerationClass.CheckTime(endDate) && RoadsClass.objects.Count < GenerationClass.maxCntRoads) {
             (Vector3 point, int roadIdx) startPoint = GetMinBlock();
 
@@ -165,7 +166,11 @@ public class GenerationRoads : MonoBehaviour {
                 AddBlock((int)(GenerationClass.GetSeed() % 1e9), endPoint, RoadsClass.objects.Count - 1);
                 GenerationClass.FuncSeed();
             }
-            yield return null;
+            if (cntMissedFrames > 10000) {
+                cntMissedFrames = 0;
+                yield return null;
+            }
+            else ++cntMissedFrames;
         }
         yield return null;
         isOver = true;

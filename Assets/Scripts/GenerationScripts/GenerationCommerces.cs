@@ -169,6 +169,7 @@ public class GenerationCommerces : MonoBehaviour {
     IEnumerator AsyncGen() {
         DateTimeOffset startDate = DateTimeOffset.Now;
         DateTimeOffset endDate = startDate.AddSeconds(GenerationClass.timeCommerceBuildGeneration);
+        int cntMissedFrames = 0;
         for (int i = 0; i < RoadsClass.objects.Count && GenerationClass.CheckTime(endDate); ++i) {
             RoadObject roadObjectClass = RoadsClass.objects[i].GetComponent <RoadObject> ();
             float mainRoadA = roadObjectClass.y1 - roadObjectClass.y2, mainRoadB = roadObjectClass.x2 - roadObjectClass.x1,
@@ -213,9 +214,14 @@ public class GenerationCommerces : MonoBehaviour {
                 AddBlock((int)(GenerationClass.GetSeed() % 1e9), point2, angleHouse, i, typeHouse2);
                 GenerationClass.FuncSeed();
             }
-            yield return null;
+            if (cntMissedFrames > 10) {
+                cntMissedFrames = 0;
+                yield return null;
+            }
+            else ++cntMissedFrames;
         }
 
+        cntMissedFrames = 0;
         while (BuildsClass.commerces.Count < GenerationClass.averageCntCommercesInDistrict * 4) {
             if (SqrtDecomp.Count == 0) break;
             (Vector3 point, float rotate, int roadIdx, int typeHouse) minBlock = GetMinBlock();
@@ -281,9 +287,13 @@ public class GenerationCommerces : MonoBehaviour {
                     BuildsClass.CreateObject(minBlock.point, minBlock.rotate * -1, minBlock.typeHouse, minBlock.roadIdx);
                     ++cntInDistrict[FieldClass.districts[(int)minBlock.point.x + FieldClass.fieldSizeHalf, (int)minBlock.point.z + FieldClass.fieldSizeHalf]];
                     FieldClass.objects[(int)minBlock.point.x + FieldClass.fieldSizeHalf, (int)minBlock.point.z + FieldClass.fieldSizeHalf] = BuildsClass.commerces[BuildsClass.commerces.Count - 1];
-                    yield return null;
                 }
             }
+            if (cntMissedFrames > 10) {
+                cntMissedFrames = 0;
+                yield return null;
+            }
+            else ++cntMissedFrames;
         }
         yield return null;
         isOver = true;

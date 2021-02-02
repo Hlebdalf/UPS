@@ -149,6 +149,7 @@ public class GenerationParkings : MonoBehaviour {
     }
 
     IEnumerator AsyncGen() {
+        int cntMissedFrames = 0;
         for (int i = 0; i < RoadsClass.objects.Count; ++i) {
             RoadObject roadObjectClass = RoadsClass.objects[i].GetComponent <RoadObject> ();
             float mainRoadA = roadObjectClass.y1 - roadObjectClass.y2, mainRoadB = roadObjectClass.x2 - roadObjectClass.x1,
@@ -192,9 +193,14 @@ public class GenerationParkings : MonoBehaviour {
                 AddBlock((int)(GenerationClass.GetSeed() % 1e9), point2, angleHouse, i);
                 GenerationClass.FuncSeed();
             }
-            yield return null;
+            if (cntMissedFrames > 10000) {
+                cntMissedFrames = 0;
+                yield return null;
+            }
+            else ++cntMissedFrames;
         }
 
+        cntMissedFrames = 0;
         while (BuildsClass.parkings.Count < GenerationClass.averageCntParkingInDistrict * 4) {
             if (SqrtDecomp.Count == 0) break;
             (Vector3 point, float rotate, int roadIdx) minBlock = GetMinBlock();
@@ -262,7 +268,11 @@ public class GenerationParkings : MonoBehaviour {
                     FieldClass.objects[(int)minBlock.point.x + FieldClass.fieldSizeHalf, (int)minBlock.point.z + FieldClass.fieldSizeHalf] = BuildsClass.parkings[BuildsClass.parkings.Count - 1];
                 }
             }
-            yield return null;
+            if (cntMissedFrames > 10000) {
+                cntMissedFrames = 0;
+                yield return null;
+            }
+            else ++cntMissedFrames;
         }
         yield return null;
         isOver = true;

@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 5PosterMaterial
+  m_Name: PosterMaterial
   m_Shader: {fileID: -6465566751694194690, guid: b4445a11a5d463d418e4b7b7f44857b9,
     type: 3}
   m_ShaderKeywords: 
@@ -70,6 +70,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_1815D0FA: 1
     - Vector1_6DC2C68C: 0.1
     - _AlphaClip: 0
     - _Blend: 0

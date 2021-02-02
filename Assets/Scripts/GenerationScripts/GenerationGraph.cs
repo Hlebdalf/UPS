@@ -76,7 +76,6 @@ public class GenerationGraph : MonoBehaviour {
                     }
                 }
             }
-            yield return null;
         }
         yield return null;
         isOver = true;

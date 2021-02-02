@@ -125,6 +125,7 @@ public class GenerationHouses : MonoBehaviour {
 
     IEnumerator AsyncGen() {
         DateTimeOffset startDate = DateTimeOffset.Now;
+        int cntMissedFrames = 0;
         DateTimeOffset endDate = startDate.AddSeconds(GenerationClass.timeHousesBuildGeneration);
         for (int i = 0; i < RoadsClass.objects.Count && GenerationClass.CheckTime(endDate); ++i) {
             RoadObject roadObjectClass = RoadsClass.objects[i].GetComponent<RoadObject>();
@@ -276,7 +277,11 @@ public class GenerationHouses : MonoBehaviour {
                     }
                 }
             }
-            yield return null;
+            if (cntMissedFrames > 10) {
+                cntMissedFrames = 0;
+                yield return null;
+            }
+            else ++cntMissedFrames;
         }
         yield return null;
         isOver = true;

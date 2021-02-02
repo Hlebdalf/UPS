@@ -84,6 +84,7 @@ public class GenerationDistricts : MonoBehaviour {
         FieldClass.districts[(int)tmpP.x + FieldClass.fieldSizeHalf, (int)tmpP.y + FieldClass.fieldSizeHalf] = 3;
         
         yield return null;
+        int cntMissedFrames = 0;
         while (fillPoints.Count > 0) {
             Vector2 point = fillPoints.Dequeue();
             if (point.x + 1 < FieldClass.fieldSizeHalf && FieldClass.districts[(int)point.x + 1 + FieldClass.fieldSizeHalf, (int)point.y + FieldClass.fieldSizeHalf] == -1) {
@@ -118,6 +119,11 @@ public class GenerationDistricts : MonoBehaviour {
                 FieldClass.districts[(int)point.x - 1 + FieldClass.fieldSizeHalf, (int)point.y - 1 + FieldClass.fieldSizeHalf] = FieldClass.districts[(int)point.x + FieldClass.fieldSizeHalf, (int)point.y + FieldClass.fieldSizeHalf];
                 fillPoints.Enqueue(new Vector2(point.x - 1, point.y - 1));
             }
+            if (cntMissedFrames > 500000) {
+                cntMissedFrames = 0;
+                yield return null;
+            }
+            else ++cntMissedFrames;
         }
         yield return null;
         isOver = true;

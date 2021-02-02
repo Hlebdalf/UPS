@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Generation : MonoBehaviour {
     private GameObject MainCamera;
@@ -19,6 +20,7 @@ public class Generation : MonoBehaviour {
 
     public GameObject loadPanelObj;
     public GameObject loadCircleObj;
+    public Text loadText;
     public int timeGeneration, maxCntRoads;
     public int minLenRoads, deltaLenRoads;
     public int averageCntCommercesInDistrict, averageCntParkingInDistrict;
@@ -40,6 +42,7 @@ public class Generation : MonoBehaviour {
 
     private void Start() {
         loadCircleObj = loadPanelObj.transform.Find("LoadCircle").gameObject;
+        loadText = loadPanelObj.transform.Find("LoadText").gameObject.GetComponent <Text> ();
     }
 
     public void FuncSeed() {
@@ -78,7 +81,7 @@ public class Generation : MonoBehaviour {
 
     IEnumerator StartRoadsGen() {
         GenerationRoadsClass.StartGeneration();
-        print("Прокладываем дороги...");
+        loadText.text = "Прокладываем дороги...";
         while (!GenerationRoadsClass.isOver) {
             loadCircleObj.transform.Rotate(0, 0, 2);
             yield return null;
@@ -88,7 +91,7 @@ public class Generation : MonoBehaviour {
 
     IEnumerator StartDistrictsGen() {
         GenerationDistrictsClass.StartGeneration();
-        print("Делим город на кварталы...");
+        loadText.text = "Делим город на кварталы...";
         while (!GenerationDistrictsClass.isOver) {
             loadCircleObj.transform.Rotate(0, 0, 2);
             yield return null;
@@ -98,7 +101,7 @@ public class Generation : MonoBehaviour {
 
     IEnumerator StartParkingsGen() {
         GenerationParkingsClass.StartGeneration();
-        print("Строим парковки...");
+        loadText.text = "Строим парковки...";
         while (!GenerationParkingsClass.isOver) {
             loadCircleObj.transform.Rotate(0, 0, 2);
             yield return null;
@@ -108,7 +111,7 @@ public class Generation : MonoBehaviour {
 
     IEnumerator StartCommercesGen() {
         GenerationCommercesClass.StartGeneration();
-        print("Строим коммерцию...");
+        loadText.text = "Строим коммерцию...";
         while (!GenerationCommercesClass.isOver) {
             loadCircleObj.transform.Rotate(0, 0, 2);
             yield return null;
@@ -118,7 +121,7 @@ public class Generation : MonoBehaviour {
 
     IEnumerator StartHousesGen() {
         GenerationHousesClass.StartGeneration();
-        print("Строим дома...");
+        loadText.text = "Строим дома...";
         while (!GenerationHousesClass.isOver) {
             loadCircleObj.transform.Rotate(0, 0, 2);
             yield return null;
@@ -128,7 +131,7 @@ public class Generation : MonoBehaviour {
 
     IEnumerator StartGraphGen() {
         GenerationGraphClass.StartGeneration();
-        print("Чертим план города...");
+        loadText.text = "Чертим план города...";
         while (!GenerationGraphClass.isOver) {
             loadCircleObj.transform.Rotate(0, 0, 2);
             yield return null;
