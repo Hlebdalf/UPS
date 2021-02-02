@@ -3119,6 +3119,32 @@ MonoBehaviour:
   idxsDistrict4: 0400000007000000
   idxsCommerces: 080000000a0000000b0000000c0000000d0000000e0000000f000000
   idxParking: 9
+  posterTextures:
+  - {fileID: 2800000, guid: 43eb0eaeb3b901b41944c2657c7d1b39, type: 3}
+  - {fileID: 2800000, guid: 606abf927646c784aa445f3c48247572, type: 3}
+  - {fileID: 2800000, guid: fce53ae1fafebea47ba3996edf82b2ea, type: 3}
+  - {fileID: 2800000, guid: 54cdc9dd1152e37469a30cfe07325e2b, type: 3}
+  - {fileID: 2800000, guid: 57a4c2702fb51b045bf192fffd5e8808, type: 3}
+  - {fileID: 2800000, guid: 66ac78e31d9e7594185817bf9ba305ed, type: 3}
+  - {fileID: 2800000, guid: 68909e7548a34a0418cc2edc280dcd50, type: 3}
+  - {fileID: 2800000, guid: fcb33eb4386382d46b3306428b776176, type: 3}
+  - {fileID: 2800000, guid: 0863ee1682f944b4f9a141bc99fa8943, type: 3}
+  - {fileID: 2800000, guid: a81bcb34761b95d43a7be60f259311d9, type: 3}
+  - {fileID: 2800000, guid: 969780d3663210e40a1be618d966a0cb, type: 3}
+  - {fileID: 2800000, guid: 37fc977fd63bc2a46b89f33d57ef3f13, type: 3}
+  - {fileID: 2800000, guid: 636c8f8c79adc8449abf002d48cd4f92, type: 3}
+  - {fileID: 2800000, guid: 7a3892f9280b16c40944a6ae1fa1152c, type: 3}
+  - {fileID: 2800000, guid: 200cf2aeb500a324dbfe6f7337ba5966, type: 3}
+  - {fileID: 2800000, guid: a583e68f549ea154b85ca807c1ef043a, type: 3}
+  - {fileID: 2800000, guid: dab8bd0f519ff8c46a2e7f79129e8794, type: 3}
+  - {fileID: 2800000, guid: ac679266959edbe4ca4c23cf43fdb809, type: 3}
+  - {fileID: 2800000, guid: acde7949148c40c458efdebf6a8c6784, type: 3}
+  - {fileID: 2800000, guid: 47b006ab17339f144bdfc83c39ca1af1, type: 3}
+  - {fileID: 2800000, guid: 5f0d756cd26f8d641b7c4c7342890493, type: 3}
+  - {fileID: 2800000, guid: 28e483826b04a584baec6e20a26ac6ab, type: 3}
+  - {fileID: 2800000, guid: 4d94331e3454ba141ba490d31650b8f6, type: 3}
+  - {fileID: 2800000, guid: 372314a53778a4f45a9aae186e5ab616, type: 3}
+  - {fileID: 2800000, guid: 34aaedd5c8ea7474cb7e81317828f41a, type: 3}
   objects: []
   commerces: []
   parkings: []

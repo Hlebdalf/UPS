@@ -18,6 +18,7 @@ public class Builds : MonoBehaviour {
     public int[] idxsDistrict4;
     public int[] idxsCommerces;
     public int idxParking;
+    public Texture[] posterTextures;
     public List <GameObject> objects;
     public List <GameObject> commerces;
     public List <GameObject> parkings;
