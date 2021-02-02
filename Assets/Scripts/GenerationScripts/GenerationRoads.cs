@@ -145,17 +145,27 @@ public class GenerationRoads : MonoBehaviour {
         int cntMissedFrames = 0;
         while (GenerationClass.CheckTime(endDate) && RoadsClass.objects.Count < GenerationClass.maxCntRoads) {
             (Vector3 point, int roadIdx) startPoint = GetMinBlock();
-
             RoadObject RoadObjectClass = RoadsClass.objects[startPoint.roadIdx].GetComponent <RoadObject> ();
             float startAngle = RoadObjectClass.angle;
             float angle = startAngle + (-135 + (int)(GenerationClass.GetSeed() % 270));
             float len = GenerationClass.minLenRoads + (float)(GenerationClass.GetSeed() % (ulong)GenerationClass.deltaLenRoads);
             float x = (float)Math.Cos(angle / 57.3) * len;
             float y = (float)Math.Sin(angle / 57.3) * len;
-
             Vector3 endPoint = RoadsClass.RoundCoodinate(new Vector3(startPoint.point.x + x, 0, startPoint.point.z + y));
+            GenerationClass.FuncSeed();
+            
+            bool isCollision = !CheckCollision(startPoint.point, endPoint, angle, startPoint.roadIdx);
+            for (int i = 0; i < 10 && isCollision; ++i) {
+                angle = startAngle + (-135 + (int)(GenerationClass.GetSeed() % 270));
+                len = GenerationClass.minLenRoads + (float)(GenerationClass.GetSeed() % (ulong)GenerationClass.deltaLenRoads);
+                x = (float)Math.Cos(angle / 57.3) * len;
+                y = (float)Math.Sin(angle / 57.3) * len;
+                endPoint = RoadsClass.RoundCoodinate(new Vector3(startPoint.point.x + x, 0, startPoint.point.z + y));
+                GenerationClass.FuncSeed();
 
-            if (CheckCollision(startPoint.point, endPoint, angle, startPoint.roadIdx)) {
+                isCollision = !CheckCollision(startPoint.point, endPoint, angle, startPoint.roadIdx);
+            }
+            if (!isCollision) {
                 maxX = (float)Math.Max(maxX, Math.Max(startPoint.point.x, endPoint.x));
                 maxY = (float)Math.Max(maxY, Math.Max(startPoint.point.z, endPoint.z));
                 minX = (float)Math.Min(minX, Math.Min(startPoint.point.x, endPoint.x));
@@ -166,7 +176,7 @@ public class GenerationRoads : MonoBehaviour {
                 AddBlock((int)(GenerationClass.GetSeed() % 1e9), endPoint, RoadsClass.objects.Count - 1);
                 GenerationClass.FuncSeed();
             }
-            if (cntMissedFrames > 10000) {
+            if (cntMissedFrames > 100) {
                 cntMissedFrames = 0;
                 yield return null;
             }
