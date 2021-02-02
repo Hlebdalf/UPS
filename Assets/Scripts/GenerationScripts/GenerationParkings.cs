@@ -28,7 +28,6 @@ public class GenerationParkings : MonoBehaviour {
     private List <Block> SqrtDecomp;
     private int[] cntInDistrict = {0, 0, 0, 0};
     private int sqrtSize = 20;
-    private ulong seed;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -147,8 +146,7 @@ public class GenerationParkings : MonoBehaviour {
         CheckCross(tmpVertex3, tmpVertex4, vertex3, vertex4, dist));
     }
 
-    public ulong StartGeneration(ulong newSeed) {
-        seed = newSeed;
+    public void StartGeneration() {
         for (int i = 0; i < RoadsClass.objects.Count; ++i) {
             RoadObject roadObjectClass = RoadsClass.objects[i].GetComponent <RoadObject> ();
             float mainRoadA = roadObjectClass.y1 - roadObjectClass.y2, mainRoadB = roadObjectClass.x2 - roadObjectClass.x1,
@@ -180,8 +178,8 @@ public class GenerationParkings : MonoBehaviour {
                 float dy1 = (float)Math.Sin(Math.Atan(normA / -normB)) * (lenHouse1 / 2 + 2);
                 Vector3 point1 = RoadsClass.RoundCoodinate(new Vector3(posOnRoadX + dx1, 0, posOnRoadY + dy1));
 
-                AddBlock((int)(seed % 1e9), point1, angleHouse, i);
-                seed = GenerationClass.funcSeed(seed);
+                AddBlock((int)(GenerationClass.GetSeed() % 1e9), point1, angleHouse, i);
+                GenerationClass.FuncSeed();
 
                 float widthHouse2 = (int)BuildsClass.preFubs[BuildsClass.idxParking].GetComponent <BoxCollider> ().size.x * BuildsClass.preFubs[BuildsClass.idxParking].transform.localScale.x;
                 float lenHouse2 = (int)BuildsClass.preFubs[BuildsClass.idxParking].GetComponent <BoxCollider> ().size.z * BuildsClass.preFubs[BuildsClass.idxParking].transform.localScale.x;
@@ -189,13 +187,13 @@ public class GenerationParkings : MonoBehaviour {
                 float dy2 = (float)Math.Sin(Math.Atan(normA / -normB)) * (lenHouse2 / 2 + 2);
                 Vector3 point2 = RoadsClass.RoundCoodinate(new Vector3(posOnRoadX - dx2, 0, posOnRoadY - dy2));
 
-                AddBlock((int)(seed % 1e9), point2, angleHouse, i);
-                seed = GenerationClass.funcSeed(seed);
+                AddBlock((int)(GenerationClass.GetSeed() % 1e9), point2, angleHouse, i);
+                GenerationClass.FuncSeed();
             }
         }
 
         while (BuildsClass.parkings.Count < GenerationClass.averageCntParkingInDistrict * 4) {
-            if (SqrtDecomp.Count == 0) return seed;
+            if (SqrtDecomp.Count == 0) return;
             (Vector3 point, float rotate, int roadIdx) minBlock = GetMinBlock();
 
             int sum = cntInDistrict[0] + cntInDistrict[1] + cntInDistrict[2] + cntInDistrict[3];
@@ -262,6 +260,5 @@ public class GenerationParkings : MonoBehaviour {
                 }
             }
         }
-        return seed;
     }
 }

@@ -35,8 +35,16 @@ public class Generation : MonoBehaviour {
         GenerationGraphClass = MainCamera.GetComponent <GenerationGraph> ();
     }
 
-    public ulong funcSeed(ulong _seed) {
+    public void FuncSeed() {
+        seed = (ulong)(Math.PI * Math.Sqrt(seed) * (seed % 1e9 + 1));
+    }
+
+    public ulong FuncSeed(ulong _seed) {
         return (ulong)(Math.PI * Math.Sqrt(_seed) * (_seed % 1e9 + 1));
+    }
+
+    public ulong GetSeed() {
+        return seed;
     }
 
     public bool CheckTime(DateTimeOffset endTime) {
@@ -56,12 +64,14 @@ public class Generation : MonoBehaviour {
         timeRoadsBuildGeneration = timeGeneration * 0.01f;
         timeCommerceBuildGeneration = timeGeneration * 0.14f;
         timeHousesBuildGeneration = timeGeneration * 0.85f;
-        seed = GenerationRoadsClass.StartGeneration(seed);
-        seed = GenerationDistrictsClass.StartGeneration(seed);
-        seed = GenerationParkingsClass.StartGeneration(seed);
-        seed = GenerationCommercesClass.StartGeneration(seed);
-        seed = GenerationHousesClass.StartGeneration(seed);
+
+        GenerationRoadsClass.StartGeneration();
+        GenerationDistrictsClass.StartGeneration();
+        GenerationParkingsClass.StartGeneration();
+        GenerationCommercesClass.StartGeneration();
+        GenerationHousesClass.StartGeneration();
         GenerationGraphClass.StartGeneration();
+
         Debug.Log("End Generation: " + DateTimeOffset.Now);
     }
 }

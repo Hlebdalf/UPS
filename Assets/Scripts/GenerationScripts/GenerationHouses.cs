@@ -9,7 +9,6 @@ public class GenerationHouses : MonoBehaviour {
     private Roads RoadsClass;
     private Builds BuildsClass;
     private Field FieldClass;
-    private ulong seed;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -85,45 +84,44 @@ public class GenerationHouses : MonoBehaviour {
 
         Vector2 point1 = RoadsClass.RoundCoodinate(new Vector2(posOnRoad.x + dx, posOnRoad.y + dy));
         if (FieldClass.districts[(int)point1.x + FieldClass.fieldSizeHalf, (int)point1.y + FieldClass.fieldSizeHalf] == 0) {
-            if ((seed % 200) < 50) typeHouse1 = BuildsClass.idxsDistrict1[0];
-            if ((seed % 200) >= 50) typeHouse1 = BuildsClass.idxsDistrict1[1];
+            if ((GenerationClass.GetSeed() % 200) < 50) typeHouse1 = BuildsClass.idxsDistrict1[0];
+            if ((GenerationClass.GetSeed() % 200) >= 50) typeHouse1 = BuildsClass.idxsDistrict1[1];
         }
         if (FieldClass.districts[(int)point1.x + FieldClass.fieldSizeHalf, (int)point1.y + FieldClass.fieldSizeHalf] == 1) {
-            if ((seed % 200) < 50) typeHouse1 = BuildsClass.idxsDistrict2[0];
-            if ((seed % 200) >= 50) typeHouse1 = BuildsClass.idxsDistrict2[1];
+            if ((GenerationClass.GetSeed() % 200) < 50) typeHouse1 = BuildsClass.idxsDistrict2[0];
+            if ((GenerationClass.GetSeed() % 200) >= 50) typeHouse1 = BuildsClass.idxsDistrict2[1];
         }
         if (FieldClass.districts[(int)point1.x + FieldClass.fieldSizeHalf, (int)point1.y + FieldClass.fieldSizeHalf] == 2) {
-            if ((seed % 200) < 50) typeHouse1 = BuildsClass.idxsDistrict3[0];
-            if ((seed % 200) >= 50) typeHouse1 = BuildsClass.idxsDistrict3[1];
+            if ((GenerationClass.GetSeed() % 200) < 50) typeHouse1 = BuildsClass.idxsDistrict3[0];
+            if ((GenerationClass.GetSeed() % 200) >= 50) typeHouse1 = BuildsClass.idxsDistrict3[1];
         }
         if (FieldClass.districts[(int)point1.x + FieldClass.fieldSizeHalf, (int)point1.y + FieldClass.fieldSizeHalf] == 3) {
-            if ((seed % 200) < 50) typeHouse1 = BuildsClass.idxsDistrict4[0];
-            if ((seed % 200) >= 50) typeHouse1 = BuildsClass.idxsDistrict4[1];
+            if ((GenerationClass.GetSeed() % 200) < 50) typeHouse1 = BuildsClass.idxsDistrict4[0];
+            if ((GenerationClass.GetSeed() % 200) >= 50) typeHouse1 = BuildsClass.idxsDistrict4[1];
         }
 
         Vector2 point2 = RoadsClass.RoundCoodinate(new Vector2(posOnRoad.x - dx, posOnRoad.y - dy));
         if (FieldClass.districts[(int)point2.x + FieldClass.fieldSizeHalf, (int)point2.y + FieldClass.fieldSizeHalf] == 0) {
-            if ((seed % 200) < 50) typeHouse2 = BuildsClass.idxsDistrict1[0];
-            if ((seed % 200) >= 50) typeHouse2 = BuildsClass.idxsDistrict1[1];
+            if ((GenerationClass.GetSeed() % 200) < 50) typeHouse2 = BuildsClass.idxsDistrict1[0];
+            if ((GenerationClass.GetSeed() % 200) >= 50) typeHouse2 = BuildsClass.idxsDistrict1[1];
         }
         if (FieldClass.districts[(int)point2.x + FieldClass.fieldSizeHalf, (int)point2.y + FieldClass.fieldSizeHalf] == 1) {
-            if ((seed % 200) < 50) typeHouse2 = BuildsClass.idxsDistrict2[0];
-            if ((seed % 200) >= 50) typeHouse2 = BuildsClass.idxsDistrict2[1];
+            if ((GenerationClass.GetSeed() % 200) < 50) typeHouse2 = BuildsClass.idxsDistrict2[0];
+            if ((GenerationClass.GetSeed() % 200) >= 50) typeHouse2 = BuildsClass.idxsDistrict2[1];
         }
         if (FieldClass.districts[(int)point2.x + FieldClass.fieldSizeHalf, (int)point2.y + FieldClass.fieldSizeHalf] == 2) {
-            if ((seed % 200) < 30) typeHouse2 = BuildsClass.idxsDistrict3[0];
-            if ((seed % 200) >= 30) typeHouse2 = BuildsClass.idxsDistrict3[1];
+            if ((GenerationClass.GetSeed() % 200) < 30) typeHouse2 = BuildsClass.idxsDistrict3[0];
+            if ((GenerationClass.GetSeed() % 200) >= 30) typeHouse2 = BuildsClass.idxsDistrict3[1];
         }
         if (FieldClass.districts[(int)point2.x + FieldClass.fieldSizeHalf, (int)point2.y + FieldClass.fieldSizeHalf] == 3) {
-            if ((seed % 200) < 50) typeHouse2 = BuildsClass.idxsDistrict4[0];
-            if ((seed % 200) >= 50) typeHouse2 = BuildsClass.idxsDistrict4[1];
+            if ((GenerationClass.GetSeed() % 200) < 50) typeHouse2 = BuildsClass.idxsDistrict4[0];
+            if ((GenerationClass.GetSeed() % 200) >= 50) typeHouse2 = BuildsClass.idxsDistrict4[1];
         }
-        seed = GenerationClass.funcSeed(seed);
+        GenerationClass.FuncSeed();
         return (typeHouse1, typeHouse2);
     }
 
-    public ulong StartGeneration(ulong newSeed) {
-        seed = newSeed;
+    public void StartGeneration() {
         DateTimeOffset startDate = DateTimeOffset.Now;
         DateTimeOffset endDate = startDate.AddSeconds(GenerationClass.timeHousesBuildGeneration);
         for (int i = 0; i < RoadsClass.objects.Count && GenerationClass.CheckTime(endDate); ++i) {
@@ -277,6 +275,5 @@ public class GenerationHouses : MonoBehaviour {
                 }
             }
         }
-        return seed;
     }
 }

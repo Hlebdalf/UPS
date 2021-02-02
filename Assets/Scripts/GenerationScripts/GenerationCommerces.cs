@@ -30,7 +30,6 @@ public class GenerationCommerces : MonoBehaviour {
     private List <Block> SqrtDecomp;
     private int[] cntInDistrict = {0, 0, 0, 0};
     private int sqrtSize = 20;
-    private ulong seed;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -154,19 +153,18 @@ public class GenerationCommerces : MonoBehaviour {
 
     private int GetTypeHouse() {
         int ans;
-        if (seed % 100 < 14) ans = BuildsClass.idxsCommerces[0];
-        else if (seed % 100 < 28) ans = BuildsClass.idxsCommerces[1];
-        else if (seed % 100 < 42) ans = BuildsClass.idxsCommerces[2];
-        else if (seed % 100 < 56) ans = BuildsClass.idxsCommerces[3];
-        else if (seed % 100 < 70) ans = BuildsClass.idxsCommerces[4];
-        else if (seed % 100 < 84) ans = BuildsClass.idxsCommerces[5];
+        if (GenerationClass.GetSeed() % 100 < 14) ans = BuildsClass.idxsCommerces[0];
+        else if (GenerationClass.GetSeed() % 100 < 28) ans = BuildsClass.idxsCommerces[1];
+        else if (GenerationClass.GetSeed() % 100 < 42) ans = BuildsClass.idxsCommerces[2];
+        else if (GenerationClass.GetSeed() % 100 < 56) ans = BuildsClass.idxsCommerces[3];
+        else if (GenerationClass.GetSeed() % 100 < 70) ans = BuildsClass.idxsCommerces[4];
+        else if (GenerationClass.GetSeed() % 100 < 84) ans = BuildsClass.idxsCommerces[5];
         else ans = BuildsClass.idxsCommerces[6];
-        seed = GenerationClass.funcSeed(seed);
+        GenerationClass.FuncSeed();
         return ans;
     }
 
-    public ulong StartGeneration(ulong newSeed) {
-        seed = newSeed;
+    public void StartGeneration() {
         DateTimeOffset startDate = DateTimeOffset.Now;
         DateTimeOffset endDate = startDate.AddSeconds(GenerationClass.timeCommerceBuildGeneration);
         for (int i = 0; i < RoadsClass.objects.Count && GenerationClass.CheckTime(endDate); ++i) {
@@ -201,8 +199,8 @@ public class GenerationCommerces : MonoBehaviour {
                 float dy1 = (float)Math.Sin(Math.Atan(normA / -normB)) * (lenHouse1 / 2 + 2);
                 Vector3 point1 = RoadsClass.RoundCoodinate(new Vector3(posOnRoadX + dx1, 0, posOnRoadY + dy1));
 
-                AddBlock((int)(seed % 1e9), point1, angleHouse, i, typeHouse1);
-                seed = GenerationClass.funcSeed(seed);
+                AddBlock((int)(GenerationClass.GetSeed() % 1e9), point1, angleHouse, i, typeHouse1);
+                GenerationClass.FuncSeed();
 
                 float widthHouse2 = (int)BuildsClass.preFubs[typeHouse2].GetComponent <BoxCollider> ().size.x * BuildsClass.preFubs[typeHouse2].transform.localScale.x;
                 float lenHouse2 = (int)BuildsClass.preFubs[typeHouse2].GetComponent <BoxCollider> ().size.z * BuildsClass.preFubs[typeHouse2].transform.localScale.x;
@@ -210,13 +208,13 @@ public class GenerationCommerces : MonoBehaviour {
                 float dy2 = (float)Math.Sin(Math.Atan(normA / -normB)) * (lenHouse2 / 2 + 2);
                 Vector3 point2 = RoadsClass.RoundCoodinate(new Vector3(posOnRoadX - dx2, 0, posOnRoadY - dy2));
 
-                AddBlock((int)(seed % 1e9), point2, angleHouse, i, typeHouse2);
-                seed = GenerationClass.funcSeed(seed);
+                AddBlock((int)(GenerationClass.GetSeed() % 1e9), point2, angleHouse, i, typeHouse2);
+                GenerationClass.FuncSeed();
             }
         }
 
         while (BuildsClass.commerces.Count < GenerationClass.averageCntCommercesInDistrict * 4) {
-            if (SqrtDecomp.Count == 0) return seed;
+            if (SqrtDecomp.Count == 0) return;
             (Vector3 point, float rotate, int roadIdx, int typeHouse) minBlock = GetMinBlock();
 
             int sum = cntInDistrict[0] + cntInDistrict[1] + cntInDistrict[2] + cntInDistrict[3];
@@ -283,6 +281,5 @@ public class GenerationCommerces : MonoBehaviour {
                 }
             }
         }
-        return seed;
     }
 }

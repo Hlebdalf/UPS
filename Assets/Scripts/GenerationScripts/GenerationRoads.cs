@@ -24,7 +24,6 @@ public class GenerationRoads : MonoBehaviour {
     private Field FieldClass;
     private List <Block> SqrtDecomp;
     private int sqrtSize = 20;
-    private ulong seed;
     private float maxX = 0, minX = 0;
     private float maxY = 0, minY = 0;
 
@@ -134,11 +133,10 @@ public class GenerationRoads : MonoBehaviour {
         return true;
     }
 
-    public ulong StartGeneration(ulong newSeed) {
-        seed = newSeed;
+    public void StartGeneration() {
         RoadsClass.CreateObject("Road1", new Vector3(0, 0, 100), new Vector3 (0, 0, 110), 90);
-        AddBlock((int)(seed % 1e9), new Vector3 (0, 0, 110), RoadsClass.objects.Count - 1);
-        seed = GenerationClass.funcSeed(seed);
+        AddBlock((int)(GenerationClass.GetSeed() % 1e9), new Vector3 (0, 0, 110), RoadsClass.objects.Count - 1);
+        GenerationClass.FuncSeed();
         DateTimeOffset startDate = DateTimeOffset.Now;
         DateTimeOffset endDate = startDate.AddSeconds(GenerationClass.timeRoadsBuildGeneration);
         while (GenerationClass.CheckTime(endDate) && RoadsClass.objects.Count < GenerationClass.maxCntRoads) {
@@ -146,8 +144,8 @@ public class GenerationRoads : MonoBehaviour {
 
             RoadObject RoadObjectClass = RoadsClass.objects[startPoint.roadIdx].GetComponent <RoadObject> ();
             float startAngle = RoadObjectClass.angle;
-            float angle = startAngle + (-135 + (int)(seed % 270));
-            float len = GenerationClass.minLenRoads + (float)(seed % (ulong)GenerationClass.deltaLenRoads);
+            float angle = startAngle + (-135 + (int)(GenerationClass.GetSeed() % 270));
+            float len = GenerationClass.minLenRoads + (float)(GenerationClass.GetSeed() % (ulong)GenerationClass.deltaLenRoads);
             float x = (float)Math.Cos(angle / 57.3) * len;
             float y = (float)Math.Sin(angle / 57.3) * len;
 
@@ -161,10 +159,9 @@ public class GenerationRoads : MonoBehaviour {
                 FieldClass.centerX = (int)((maxX + minX) / 2);
                 FieldClass.centerY = (int)((maxY + minY) / 2);
                 RoadsClass.CreateObject("Road1", startPoint.point, endPoint, angle, startPoint.roadIdx);
-                AddBlock((int)(seed % 1e9), endPoint, RoadsClass.objects.Count - 1);
-                seed = GenerationClass.funcSeed(seed);
+                AddBlock((int)(GenerationClass.GetSeed() % 1e9), endPoint, RoadsClass.objects.Count - 1);
+                GenerationClass.FuncSeed();
             }
         }
-        return seed;
     }
 }

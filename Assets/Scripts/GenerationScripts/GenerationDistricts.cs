@@ -21,7 +21,7 @@ public class GenerationDistricts : MonoBehaviour {
     private Vector2 GetStartPos(Vector2 point, int cnt) {
         cnt = (int)(cnt % 8);
         while (used[cnt]) {
-            cnt = (int)(GenerationClass.funcSeed((ulong)cnt) % 8);
+            cnt = (int)(GenerationClass.FuncSeed((ulong)cnt) % 8);
         }
         used[cnt] = true;
         if (cnt == 0) {
@@ -55,29 +55,29 @@ public class GenerationDistricts : MonoBehaviour {
         return point;
     }
 
-    public ulong StartGeneration(ulong newSeed) {
-        seed = newSeed;
+    public void StartGeneration() {
+        seed = GenerationClass.GetSeed();
         centerX = FieldClass.centerX;
         centerY = FieldClass.centerY;
 
         Queue <Vector2> fillPoints = new Queue <Vector2> ();
         Vector2 tmpP = GetStartPos(new Vector2(centerX, centerY), (int)(seed % 1e9));
-        seed = (ulong)((GenerationClass.funcSeed(seed) * seed) % 1e9) + 1;
+        seed = (ulong)((GenerationClass.FuncSeed(seed) * seed) % 1e9) + 1;
         fillPoints.Enqueue(tmpP);
         FieldClass.districts[(int)tmpP.x + FieldClass.fieldSizeHalf, (int)tmpP.y + FieldClass.fieldSizeHalf] = 0;
 
         tmpP = GetStartPos(new Vector2(centerX, centerY), (int)(seed % 1e9));
-        seed = (ulong)((GenerationClass.funcSeed(seed) * seed) % 1e9) + 1;
+        seed = (ulong)((GenerationClass.FuncSeed(seed) * seed) % 1e9) + 1;
         fillPoints.Enqueue(tmpP);
         FieldClass.districts[(int)tmpP.x + FieldClass.fieldSizeHalf, (int)tmpP.y + FieldClass.fieldSizeHalf] = 1;
 
         tmpP = GetStartPos(new Vector2(centerX, centerY), (int)(seed % 1e9));
-        seed = (ulong)((GenerationClass.funcSeed(seed) * seed) % 1e9) + 1;
+        seed = (ulong)((GenerationClass.FuncSeed(seed) * seed) % 1e9) + 1;
         fillPoints.Enqueue(tmpP);
         FieldClass.districts[(int)tmpP.x + FieldClass.fieldSizeHalf, (int)tmpP.y + FieldClass.fieldSizeHalf] = 2;
         
         tmpP = GetStartPos(new Vector2(centerX, centerY), (int)(seed % 1e9));
-        seed = (ulong)((GenerationClass.funcSeed(seed) * seed) % 1e9) + 1;
+        seed = (ulong)((GenerationClass.FuncSeed(seed) * seed) % 1e9) + 1;
         fillPoints.Enqueue(tmpP);
         FieldClass.districts[(int)tmpP.x + FieldClass.fieldSizeHalf, (int)tmpP.y + FieldClass.fieldSizeHalf] = 3;
         
@@ -116,6 +116,5 @@ public class GenerationDistricts : MonoBehaviour {
                 fillPoints.Enqueue(new Vector2(point.x - 1, point.y - 1));
             }
         }
-        return seed;
     }
 }
