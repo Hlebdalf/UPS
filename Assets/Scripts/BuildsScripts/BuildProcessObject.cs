@@ -22,7 +22,7 @@ public class BuildProcessObject : MonoBehaviour {
 
     IEnumerator Delay_COR() {
         yield return new WaitForSeconds(FieldClass.timeBuildProcess);
-        BuildsClass.CreateObject(new Vector3(x, 0, y), rotate, idxPreFub, connectedRoad);
+        BuildsClass.CreateObject(new Vector3(x, 0, y), rotate, idxPreFub, connectedRoad, false);
         Destroy(gameObject);
     }
 }

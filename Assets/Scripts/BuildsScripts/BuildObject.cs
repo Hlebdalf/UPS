@@ -9,12 +9,14 @@ public class BuildObject : MonoBehaviour {
     private List <GameObject> posterObjects;
     private List <int> idxNotActive;
     private GameObject HouseMenu = null;
+    private GameObject normObject;
+    private GameObject deleteObject;
 
     public float x, y;
     public int idx, connectedRoad, idxCommerceType = -1, idxPreFub = -1;
     public int maxCntPeople = 0, cntPosters = 0, maxCntPosters = 0;
     public int startMenuSizeW = 200, startMenuSizeH = 100;
-    public bool isGenBuild = false;
+    public bool isGenBuild = false, isDeleting = false;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -22,10 +24,13 @@ public class BuildObject : MonoBehaviour {
         BuildsClass = MainCamera.GetComponent <Builds> ();
         posterObjects = new List <GameObject> ();
         idxNotActive = new List <int> ();
+        normObject = gameObject.transform.Find("Build").gameObject;
+        deleteObject = gameObject.transform.Find("DeletingBuild").gameObject;
     }
 
     private void Start() {
-        foreach (Transform child in gameObject.transform) {
+        Transform parent = gameObject.transform.Find("Build");
+        foreach (Transform child in parent) {
             if (child.gameObject.name == "PosterPlane") {
                 posterObjects.Add(child.gameObject);
                 idxNotActive.Add(idxNotActive.Count);
@@ -39,6 +44,19 @@ public class BuildObject : MonoBehaviour {
     }
 
     private void OnMouseOver() {
+        if (Input.GetMouseButtonDown(0) && BuildsClass.isDeleting) {
+            if (isDeleting) {
+                BuildsClass.deleteObjects.Remove(gameObject);
+                normObject.SetActive(true);
+                deleteObject.SetActive(false);
+            }
+            else {
+                BuildsClass.deleteObjects.Add(gameObject);
+                normObject.SetActive(false);
+                deleteObject.SetActive(true);
+            }
+            isDeleting = !isDeleting;
+        }
         if (Input.GetMouseButtonDown(1)) CreateMenu();
     }
 

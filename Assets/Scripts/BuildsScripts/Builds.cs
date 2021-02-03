@@ -23,11 +23,13 @@ public class Builds : MonoBehaviour {
     public List <GameObject> commerces;
     public List <GameObject> parkings;
     public List <GameObject> ghostObjects;
+    public List <GameObject> deleteObjects;
     public GameObject InterfaceObject;
     public Interface InterfaceClass;
     public GameObject PreFubHouseMenu;
     public bool isPressEnter = false;
     public bool isFollowGhost = false;
+    public bool isDeleting = false;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -39,6 +41,7 @@ public class Builds : MonoBehaviour {
         commerces = new List <GameObject> ();
         parkings = new List <GameObject> ();
         ghostObjects = new List <GameObject> ();
+        deleteObjects = new List <GameObject> ();
     }
 
     private void Update() {
@@ -46,19 +49,28 @@ public class Builds : MonoBehaviour {
             isPressEnter = true;
         }
         if (isPressEnter && !RoadsClass.isPressEnter) {
-            if (ghostObjects.Count > 0) {
-                CreateObjects();
+            if (isDeleting) {
+                if (deleteObjects.Count > 0) DeleteObjects();
+                else {
+                    StartCoroutine(DelayReGen(false));
+                    isPressEnter = false;
+                }
             }
             else {
-                StartCoroutine(DelayReGen());
-                isPressEnter = false;
+                if (ghostObjects.Count > 0) CreateObjects();
+                else {
+                    StartCoroutine(DelayReGen());
+                    isPressEnter = false;
+                }
             }
         }
     }
 
-    IEnumerator DelayReGen() {
-        yield return new WaitForSeconds(FieldClass.timeBuildProcess + 1);
+    IEnumerator DelayReGen(bool building = true) {
+        if (building) yield return new WaitForSeconds(FieldClass.timeBuildProcess + 1);
+        else yield return new WaitForSeconds(1);
         GenerationGraphClass.StartGeneration();
+        yield return null;
     }
 
     private int ToIndex(string name) {
@@ -134,7 +146,7 @@ public class Builds : MonoBehaviour {
             else {
                 data.connectedRoad = connectedRoad;
             }
-            data.isGenBuild = true;
+            if (isGeneration) data.isGenBuild = true;
 
             commerces[commerces.Count - 1].AddComponent <Rigidbody> ();
             commerces[commerces.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
@@ -153,7 +165,7 @@ public class Builds : MonoBehaviour {
             else {
                 data.connectedRoad = connectedRoad;
             }
-            data.isGenBuild = true;
+            if (isGeneration) data.isGenBuild = true;
 
             parkings[parkings.Count - 1].AddComponent <Rigidbody> ();
             parkings[parkings.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
@@ -173,10 +185,19 @@ public class Builds : MonoBehaviour {
             else {
                 data.connectedRoad = connectedRoad;
             }
-            data.isGenBuild = true;
+            if (isGeneration) data.isGenBuild = true;
 
             objects[objects.Count - 1].AddComponent <Rigidbody> ();
             objects[objects.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
+        }
+    }
+
+    public void DeleteObjects() {
+        for (int i = 0; i < deleteObjects.Count; ++i) {
+            GameObject obj = deleteObjects[i];
+            objects.Remove(obj);
+            deleteObjects.RemoveAt(i);
+            Destroy(obj);
         }
     }
 }
