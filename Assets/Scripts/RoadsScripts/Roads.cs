@@ -11,6 +11,7 @@ public class Roads : MonoBehaviour {
     public GameObject[] preFubs;
     public GameObject[] preFubsGhost;
     public GameObject preFubCrossroad;
+    public GameObject preFubLightObject;
     public List <GameObject> objects;
     public List <GameObject> crossroads;
     public List <GameObject> ghostObjects;
@@ -298,5 +299,16 @@ public class Roads : MonoBehaviour {
 
         objects[objects.Count - 1].AddComponent <Rigidbody> ();
         objects[objects.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
+
+        float angleRad = Mathf.Atan2(point2.z - point1.z, point2.x - point1.x);
+        float angleRadNorm = Mathf.Atan2(point2.x - point1.x, point2.z - point1.z);
+        for (float d = 2; d < len - 2; d += 2) {
+            float dx = Mathf.Cos(angleRad) * d;
+            float dz = Mathf.Sin(angleRad) * d;
+            float sideX = Mathf.Cos(angleRadNorm) * (1f);
+            float sideZ = -Mathf.Sin(angleRadNorm) * (1f);
+            Instantiate(preFubLightObject, new Vector3(point1.x + dx + sideX, 0, point1.z + dz + sideZ), Quaternion.Euler(0, 0, 0));
+            Instantiate(preFubLightObject, new Vector3(point1.x + dx - sideX, 0, point1.z + dz - sideZ), Quaternion.Euler(0, 0, 0));
+        }
     }
 }
