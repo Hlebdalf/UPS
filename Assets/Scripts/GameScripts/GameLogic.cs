@@ -11,6 +11,8 @@ public class GameLogic : MonoBehaviour {
     private People PeopleClass;
 
     public GameObject InterfaceObject;
+    public GameObject LightObject;
+    public float gameSpeed = 1f;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -18,6 +20,10 @@ public class GameLogic : MonoBehaviour {
         InterfaceClass = InterfaceObject.GetComponent <Interface> ();
         CarsClass = MainCamera.GetComponent <Cars> ();
         PeopleClass = MainCamera.GetComponent <People> ();
+    }
+
+    private void FixedUpdate() {
+        LightObject.transform.Rotate(gameSpeed * Time.deltaTime, 0, 0);
     }
 
     IEnumerator AsyncStartLogic() {
