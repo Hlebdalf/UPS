@@ -195,7 +195,10 @@ public class Builds : MonoBehaviour {
     public void DeleteObjects() {
         for (int i = 0; i < deleteObjects.Count; ++i) {
             GameObject obj = deleteObjects[i];
-            objects.Remove(obj);
+            BuildObject objClass = obj.GetComponent <BuildObject> ();
+            if (objClass.idxPreFub == -1 && objClass.idxCommerceType == -1) parkings.Remove(obj);
+            else if (objClass.idxPreFub == -1) commerces.Remove(obj);
+            else objects.Remove(obj);
             deleteObjects.RemoveAt(i);
             Destroy(obj);
         }
