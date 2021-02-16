@@ -72,6 +72,7 @@ public class Interface : MonoBehaviour {
             InterfaceOtherIsOpened = false;
             lastMenu = "Other";
         }
+        EconomyPanelActivity = !EconomyPanelActivity;
     }
 
     public void ActivateMenu(string type = "Last") {
