@@ -3,7 +3,27 @@ guid: 70037479bfc8b274287f7f636fa9ed84
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cube.003_Cube.003_LampUpMaterialMat
+    second: {fileID: 2100000, guid: 361124e0654739e4b859c9ddd1af0326, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cube.003_Cube.003_LightMaterialMat
+    second: {fileID: 2100000, guid: e48ff0640d3d4934ea7b9742fb049f5f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cube_Cube_PostMaterialMat
+    second: {fileID: 2100000, guid: c89436170fafde24592fdbdd6a2e99e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cube_Cube_TranformatorMaterialMat
+    second: {fileID: 2100000, guid: a1b7114787a2eed42908e9a1a056fbb3, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

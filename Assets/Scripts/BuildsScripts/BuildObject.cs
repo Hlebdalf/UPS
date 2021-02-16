@@ -74,15 +74,20 @@ public class BuildObject : MonoBehaviour {
         HouseMenu = null;
     }
 
-    public void AddPoster() {
+    public void AddPoster()
+    {
         if (idxNotActive.Count <= 0) return;
         int idx = (int)UnityEngine.Random.Range(0f, idxNotActive.Count - 0.01f);
         posterObjects[idxNotActive[idx]].SetActive(true);
-        Material posterMat = posterObjects[idxNotActive[idx]].GetComponent <MeshRenderer> ().material;
-        posterMat.SetTexture("HologramAlbedo", BuildsClass.posterTextures[(int)UnityEngine.Random.Range(0f, BuildsClass.posterTextures.Length - 0.01f)]);
-        posterMat.SetFloat("RandomFlash", UnityEngine.Random.Range(0.5f, 2f));
-        posterObjects[idxNotActive[idx]].GetComponent <MeshRenderer> ().material = posterMat;
+        Material posterMatHD = posterObjects[idxNotActive[idx]].GetComponent<Transform>().transform.Find("PosterPlaneHD").GetComponent<MeshRenderer>().material;
+        Material posterMatSQ = posterObjects[idxNotActive[idx]].GetComponent<Transform>().transform.Find("PosterPlaneSQ").GetComponent<MeshRenderer>().material;
+        Texture HologramBasemap = BuildsClass.posterTextures[(int)UnityEngine.Random.Range(0f, BuildsClass.posterTextures.Length - 0.01f)];
+        posterMatHD.SetTexture("HologramAlbedo", HologramBasemap);
+        posterMatSQ.SetTexture("HologramAlbedo", HologramBasemap);
+        posterMatHD.SetFloat("RandomFlash", UnityEngine.Random.Range(0.5f, 2f));
         idxNotActive.RemoveAt(idx);
         ++cntPosters;
     }
+
+
 }
