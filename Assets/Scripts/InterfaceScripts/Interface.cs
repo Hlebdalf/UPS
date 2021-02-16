@@ -12,6 +12,7 @@ public class Interface : MonoBehaviour {
     private bool InterfaceCommercesIsOpened = false;
     private bool InterfaceRoadsIsOpened = false;
     private bool InterfaceOtherIsOpened = false;
+    private bool EconomyPanelActivity = false;
     private Animator InterfaceBuildsAnimator;
     private Animator InterfaceCommercesAnimator;
     private Animator InterfaceRoadsAnimator;
@@ -29,6 +30,7 @@ public class Interface : MonoBehaviour {
     public GameObject InterfaceCommercesContent;
     public GameObject InterfaceRoadsContent;
     public GameObject PanelClass;
+    public GameObject EconomyPanelObject;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -113,6 +115,11 @@ public class Interface : MonoBehaviour {
     public void SetDisabilityInfo() {
         PanelClass.SetActive(false);
         isActivityInfo = false;
+    }
+    public void SetEconomyPanelActivity()
+    {
+        EconomyPanelActivity = !EconomyPanelActivity;
+        EconomyPanelObject.SetActive(EconomyPanelActivity);
     }
 
     public void ExitToMainMenu() {

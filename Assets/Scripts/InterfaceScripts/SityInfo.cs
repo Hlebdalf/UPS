@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SityInfoScript : MonoBehaviour
+public class SityInfo : MonoBehaviour
 {
     public GameObject NameObject;
     public GameObject LevelObject;
@@ -30,7 +30,6 @@ public class SityInfoScript : MonoBehaviour
     private Text populationIncrement;
     private Text scienceIncrement;
     private Text productionIncrement;
-    public float A = 1; public float B = 1; public float C = 1; public float D = 1;
 
 
     void Start()
@@ -45,13 +44,7 @@ public class SityInfoScript : MonoBehaviour
         populationIncrement = PopulationIncrementObject.GetComponent<Text>();
         scienceIncrement = ScienceIncrementObject.GetComponent<Text>();
         productionIncrement = ProductionIncrementObject.GetComponent<Text>();
-        //SetGDP(A, B, C, D);
     }
-    private void Update()
-    {
-        SetGDP(A, B, C, D);
-    }
-
 
     public void SetName(string Name)
     {
