@@ -10,10 +10,11 @@ public class GameLogic : MonoBehaviour {
     private Economy EconomyClass;
     private Cars CarsClass;
     private People PeopleClass;
+    private bool isChangeOfDay = false;
 
     public GameObject InterfaceObject;
     public GameObject LightObject;
-    public float gameSpeed = 1f;
+    public float gameSpeed = 1f, preAngleLight = 45;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -25,7 +26,18 @@ public class GameLogic : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+        if ((int)(LightObject.transform.eulerAngles.x) == 45 && preAngleLight <= LightObject.transform.eulerAngles.x && !isChangeOfDay) {
+            StartCoroutine(ChangeOfDay());
+            EconomyClass.NewDay();
+        }
         LightObject.transform.Rotate(gameSpeed * Time.deltaTime, 0, 0);
+        preAngleLight = LightObject.transform.eulerAngles.x;
+    }
+
+    IEnumerator ChangeOfDay() {
+        isChangeOfDay = true;
+        yield return new WaitForSeconds(10f);
+        isChangeOfDay = false;
     }
 
     IEnumerator AsyncStartLogic() {

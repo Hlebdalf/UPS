@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,14 +15,14 @@ public class Economy : MonoBehaviour {
     private string cityName = "";
     private int level = 0;
     private int cntPeople = 0;
-    private long money = 0;
+    private long money = 0, optMoney = 0;
+    private bool isStarted = false;
     // private float deltaTime = 0.1f;
 
     public GameObject fastStats;
 
     private void Awake() {
         BuildsClass = Camera.main.GetComponent <Builds> ();
-
         CityName = fastStats.transform.Find("CityName").gameObject.GetComponent <InputField> ();
         Level = fastStats.transform.Find("Level").gameObject.GetComponent <Text> ();
         CntPeople = fastStats.transform.Find("CntPeople").gameObject.GetComponent <Text> ();
@@ -49,13 +50,57 @@ public class Economy : MonoBehaviour {
     }
     
     private void Start() {
+        money = (long)UnityEngine.Random.Range(0f, 1000000000000f);
         LevelUp();
         SetCntPeople(cntPeople);
         SetMoney(money);
     }
 
+    private void WriteMoney(bool deleteOptMoney = true) {
+        Money.text = money + " ₽";
+        if (deleteOptMoney) optMoney = 0;
+        if (optMoney > 0) Money.text += "\n+ " + Math.Abs(optMoney) + " ₽";
+        if (optMoney < 0) Money.text += "\n- " + Math.Abs(optMoney) + " ₽";
+    }
+
     public void StartEconomy() {
+        isStarted = true;
         StartCoroutine(AsyncStartEconomy());
+    }
+
+    IEnumerator PayTax() {
+        long tax = 0;
+        for (int houseIt = 0; houseIt < BuildsClass.objects.Count; ++houseIt) {
+            House houseClass = BuildsClass.objects[houseIt].GetComponent <House> ();
+            tax += houseClass.GetTaxRate();
+            tax -= houseClass.GetServiceCost();
+        }
+        yield return null;
+        for (int commerceIt = 0; commerceIt < BuildsClass.commerces.Count; ++commerceIt) {
+            GameObject commerceObj = BuildsClass.commerces[commerceIt];
+            if (commerceObj.GetComponent <Factory> ()) {
+                Factory factoryClass = commerceObj.GetComponent <Factory> ();
+                tax -= factoryClass.GetServiceCost();
+            }
+            else if (commerceObj.GetComponent <Science> ()) {
+                Science scienceClass = commerceObj.GetComponent <Science> ();
+                tax -= scienceClass.GetServiceCost();
+            }
+            else if (commerceObj.GetComponent <Shop> ()) {
+                Shop shopClass = commerceObj.GetComponent <Shop> ();
+                tax += shopClass.GetTaxRate();
+            }
+        }
+        optMoney = tax;
+        WriteMoney(false);
+        yield return new WaitForSeconds(5f);
+        AddMoney();
+    }
+
+    public void NewDay() {
+        if (isStarted) {
+            StartCoroutine(PayTax());
+        }
     }
 
     public int GetLevel() { return level; }
@@ -72,8 +117,13 @@ public class Economy : MonoBehaviour {
         CntPeople.text = cntPeople + "";
     }
 
+    public void AddMoney() {
+        money += optMoney;
+        WriteMoney();
+    }
+
     public void SetMoney(long _money) {
         money = _money;
-        Money.text = _money + " ₽";
+        WriteMoney(false);
     }
 }
