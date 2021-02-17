@@ -16,6 +16,8 @@ public class Economy : MonoBehaviour {
     private int level = 0;
     private int cntPeople = 0;
     private long money = 0, optMoney = 0;
+    private long cntScience = 0;
+    private long cntProducts = 0;
     private bool isStarted = false;
     // private float deltaTime = 0.1f;
 
@@ -38,6 +40,7 @@ public class Economy : MonoBehaviour {
                     int commerceIt = (int)UnityEngine.Random.Range(0f, BuildsClass.commercesWithAvailableSeats.Count - 0.01f);
                     BuildObject commerceClass = BuildsClass.commercesWithAvailableSeats[commerceIt].GetComponent <BuildObject> ();
                     if (commerceClass.cntPeople < commerceClass.maxCntPeople) {
+                        AddCntPeople();
                         ++commerceClass.cntPeople;
                         ++houseClass.cntPeople;
                     }
@@ -52,8 +55,8 @@ public class Economy : MonoBehaviour {
     private void Start() {
         money = (long)UnityEngine.Random.Range(0f, 1000000000000f);
         LevelUp();
-        SetCntPeople(cntPeople);
         SetMoney(money);
+        SetCntPeople(cntPeople);
     }
 
     private void WriteMoney(bool deleteOptMoney = true) {
@@ -61,6 +64,10 @@ public class Economy : MonoBehaviour {
         if (deleteOptMoney) optMoney = 0;
         if (optMoney > 0) Money.text += "\n+ " + Math.Abs(optMoney) + " ₽";
         if (optMoney < 0) Money.text += "\n- " + Math.Abs(optMoney) + " ₽";
+    }
+
+    private void WriteCntPeople() {
+        CntPeople.text = cntPeople + " чел";
     }
 
     public void StartEconomy() {
@@ -81,10 +88,12 @@ public class Economy : MonoBehaviour {
             if (commerceObj.GetComponent <Factory> ()) {
                 Factory factoryClass = commerceObj.GetComponent <Factory> ();
                 tax -= factoryClass.GetServiceCost();
+                cntProducts += factoryClass.GetProductsRate();
             }
             else if (commerceObj.GetComponent <Science> ()) {
                 Science scienceClass = commerceObj.GetComponent <Science> ();
                 tax -= scienceClass.GetServiceCost();
+                cntScience += scienceClass.GetScienceRate();
             }
             else if (commerceObj.GetComponent <Shop> ()) {
                 Shop shopClass = commerceObj.GetComponent <Shop> ();
@@ -112,9 +121,19 @@ public class Economy : MonoBehaviour {
         Level.text = ++level + "";
     }
     
+    public void AddCntPeople() {
+        ++cntPeople;
+        WriteCntPeople();
+    }
+    
+    public void AddCntPeople(int dCntPeople) {
+        cntPeople += dCntPeople;
+        WriteCntPeople();
+    }
+    
     public void SetCntPeople(int _cntPeople) {
         cntPeople = _cntPeople;
-        CntPeople.text = cntPeople + "";
+        WriteCntPeople();
     }
 
     public void AddMoney() {

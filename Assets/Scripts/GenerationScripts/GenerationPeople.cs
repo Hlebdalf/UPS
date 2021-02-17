@@ -6,12 +6,14 @@ using UnityEngine;
 public class GenerationPeople : MonoBehaviour {
     private GameObject MainCamera;
     private Builds BuildsClass;
+    private Economy EconomyClass;
     
     public bool isOver = false;
     
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         BuildsClass = MainCamera.GetComponent <Builds> ();
+        EconomyClass = MainCamera.GetComponent <Economy> ();
     }
 
     IEnumerator AsyncGen() {
@@ -26,6 +28,7 @@ public class GenerationPeople : MonoBehaviour {
                     int commerceIt = (int)UnityEngine.Random.Range(0f, BuildsClass.commerces.Count - 0.01f);
                     BuildObject commerceClass = BuildsClass.commerces[commerceIt].GetComponent <BuildObject> ();
                     if (commerceClass.cntPeople < commerceClass.maxCntPeople) {
+                        EconomyClass.AddCntPeople();
                         ++commerceClass.cntPeople;
                         ++houseClass.cntPeople;
                     }
@@ -37,6 +40,7 @@ public class GenerationPeople : MonoBehaviour {
                         }
                         if (it == -1) prePass = false;
                         else {
+                            EconomyClass.AddCntPeople();
                             ++BuildsClass.commerces[it].GetComponent <BuildObject> ().cntPeople;
                             ++houseClass.cntPeople;
                         }
