@@ -104,4 +104,5 @@ public class SityInfo : MonoBehaviour
         RadialDiagramObjectC.GetComponent<Image>().fillAmount = a + b + c;
         RadialDiagramObjectD.GetComponent<Image>().fillAmount = a + b + c + d;
     }
+
 }
