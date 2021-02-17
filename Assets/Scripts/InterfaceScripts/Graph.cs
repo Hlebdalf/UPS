@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Graph : MonoBehaviour
+public class BurseGraph : MonoBehaviour
 {   
     private struct vertex
     {
@@ -20,6 +20,7 @@ public class Graph : MonoBehaviour
     public const int iterations = 100;
     public float A = 1;
     public float B = 0.5f;
+    public int Price;
     void Start()
     {
         texture = gameObject.GetComponent<RawImage>().mainTexture as Texture2D;
@@ -59,7 +60,7 @@ public class Graph : MonoBehaviour
                 {
                     yield return null;
                 }
-
+                Price = (int)(y * 10 + Height / 2);
             }
             
             texture.Apply();
@@ -68,7 +69,6 @@ public class Graph : MonoBehaviour
             foreach (vertex i in erazer)
             {    
                 texture.SetPixel(i.x, i.y, erazeColor);
-                //if (i.x % 500 == 0) yield return null;
             }
             erazer.Clear();
         }

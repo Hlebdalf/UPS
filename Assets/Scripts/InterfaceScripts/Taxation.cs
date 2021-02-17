@@ -14,7 +14,6 @@ public class Taxation : MonoBehaviour
     public float NDFLkoeff = 1;
     public float NPPkoeff = 1;
 
-
     float GetGKH()
     {
         return GKHObject.GetComponent<Slider>().value * GKHkoeff;

@@ -5963,9 +5963,91 @@ MonoBehaviour:
   m_GameObject: {fileID: 859296339}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4d2dd06e5c6c304495d36f068c60bcd, type: 3}
+  m_Script: {fileID: 11500000, guid: e44e8add24e85f24cbb488f0edcbd614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameObjects:
+  - {fileID: 1410381730}
+  - {fileID: 951435474}
+  - {fileID: 1079052575}
+  - {fileID: 2007458693}
+  - {fileID: 765557728}
+  - {fileID: 210140703}
+  - {fileID: 1217844172}
+  - {fileID: 1133525730}
+  - {fileID: 1810562580}
+  - {fileID: 1779151062}
+  - {fileID: 1597150305}
+  - {fileID: 205894131}
+  - {fileID: 460380286}
+  - {fileID: 1003563702}
+  - {fileID: 1078763338}
+  - {fileID: 1431461184}
+  - {fileID: 1700377295}
+  - {fileID: 1393781399}
+  - {fileID: 2140966051}
+  - {fileID: 2077135060}
+  - {fileID: 582570135}
+  - {fileID: 139062106}
+  - {fileID: 133441178}
+  - {fileID: 1332362704}
+  - {fileID: 1724189576}
+  - {fileID: 1626044832}
+  - {fileID: 727805649}
+  - {fileID: 754357469}
+  - {fileID: 765942688}
+  - {fileID: 656339756}
+  - {fileID: 1486783496}
+  - {fileID: 2130918300}
+  - {fileID: 756009921}
+  - {fileID: 1819358822}
+  - {fileID: 831622810}
+  - {fileID: 1495041555}
+  - {fileID: 492915106}
+  - {fileID: 2002054776}
+  - {fileID: 1330403901}
+  - {fileID: 665854917}
+  Texts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &876168264
 GameObject:
   m_ObjectHideFlags: 0
@@ -9618,16 +9700,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e44e8add24e85f24cbb488f0edcbd614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HouseNumObject: {fileID: 1700377295}
-  PopulationIncrementObject: {fileID: 1724189576}
-  ScienceNumObject: {fileID: 460380286}
-  ProductionNumObject: {fileID: 1810562580}
-  BudgeIncrementObject: {fileID: 582570135}
-  ScienceIncrementObject: {fileID: 756009921}
-  ProductionIncrementObject: {fileID: 765942688}
-  AVGLoyalityObject: {fileID: 1410381730}
-  PostersNumObject: {fileID: 492915106}
-  CommerceNumObject: {fileID: 0}
+  GameObjects: []
+  Texts: []
 --- !u!1001 &1282805731
 PrefabInstance:
   m_ObjectHideFlags: 0
