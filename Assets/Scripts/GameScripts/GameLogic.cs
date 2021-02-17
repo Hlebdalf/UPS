@@ -26,12 +26,12 @@ public class GameLogic : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if ((int)(LightObject.transform.eulerAngles.x) == 45 && preAngleLight <= LightObject.transform.eulerAngles.x && !isChangeOfDay) {
+        if ((int)(LightObject.transform.eulerAngles.x) == 45 && preAngleLight < LightObject.transform.eulerAngles.x && !isChangeOfDay) {
             StartCoroutine(ChangeOfDay());
             EconomyClass.NewDay();
         }
-        LightObject.transform.Rotate(gameSpeed * Time.deltaTime, 0, 0);
         preAngleLight = LightObject.transform.eulerAngles.x;
+        LightObject.transform.Rotate(gameSpeed * Time.deltaTime, 0, 0);
     }
 
     IEnumerator ChangeOfDay() {
