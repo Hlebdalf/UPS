@@ -286,6 +286,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2338229129935016776}
   - component: {fileID: 3824447116256343972}
+  - component: {fileID: 6283696301467265761}
+  - component: {fileID: -4141834124652416292}
   m_Layer: 0
   m_Name: House4
   m_TagString: Untagged
@@ -322,6 +324,44 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 95, y: 400, z: 55}
   m_Center: {x: 0, y: 200, z: 0}
+--- !u!114 &6283696301467265761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3114485079931292146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d4f5a132f2b2f44cac115f245581094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-4141834124652416292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3114485079931292146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41432a22634b84e4bae90518bd8f38d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  idx: 0
+  connectedRoad: 0
+  idxCommerceType: -1
+  idxPreFub: -1
+  cntPeople: 0
+  maxCntPeople: 10000
+  cntPosters: 0
+  maxCntPosters: 0
+  startMenuSizeW: 200
+  startMenuSizeH: 100
+  isGenBuild: 0
+  isDeleting: 0
 --- !u!1 &3756340786513798980
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,15 +1499,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dade131e108a28b42819dfd2168b2294, type: 3}
---- !u!23 &1203185698843715684 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 2686003227297935723, guid: dade131e108a28b42819dfd2168b2294,
-    type: 3}
-  m_PrefabInstance: {fileID: 3887744133498771727}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &666539865905165754 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4374135195664936117, guid: dade131e108a28b42819dfd2168b2294,
+    type: 3}
+  m_PrefabInstance: {fileID: 3887744133498771727}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1203185698843715684 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2686003227297935723, guid: dade131e108a28b42819dfd2168b2294,
     type: 3}
   m_PrefabInstance: {fileID: 3887744133498771727}
   m_PrefabAsset: {fileID: 0}

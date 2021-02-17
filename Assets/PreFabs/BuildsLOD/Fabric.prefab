@@ -1008,6 +1008,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7784988042326102656}
   - component: {fileID: 8719518718268342495}
+  - component: {fileID: -4475187278907738435}
+  - component: {fileID: -7668167664266349521}
   m_Layer: 0
   m_Name: Fabric
   m_TagString: Untagged
@@ -1044,6 +1046,44 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 90, y: 80, z: 150}
   m_Center: {x: 0, y: 40, z: 0}
+--- !u!114 &-4475187278907738435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7440515908657907770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72b4d2b747337a946ac2b2583905d4ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7668167664266349521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7440515908657907770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41432a22634b84e4bae90518bd8f38d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  idx: 0
+  connectedRoad: 0
+  idxCommerceType: -1
+  idxPreFub: -1
+  cntPeople: 0
+  maxCntPeople: 10000
+  cntPosters: 0
+  maxCntPosters: 0
+  startMenuSizeW: 200
+  startMenuSizeH: 100
+  isGenBuild: 0
+  isDeleting: 0
 --- !u!1 &7754817751698500813
 GameObject:
   m_ObjectHideFlags: 0

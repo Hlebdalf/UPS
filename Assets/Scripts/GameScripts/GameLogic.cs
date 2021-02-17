@@ -7,6 +7,7 @@ public class GameLogic : MonoBehaviour {
     private GameObject MainCamera;
     private Generation GenerationClass;
     private Interface InterfaceClass;
+    private Economy EconomyClass;
     private Cars CarsClass;
     private People PeopleClass;
 
@@ -18,6 +19,7 @@ public class GameLogic : MonoBehaviour {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         GenerationClass = MainCamera.GetComponent <Generation> ();
         InterfaceClass = InterfaceObject.GetComponent <Interface> ();
+        EconomyClass = MainCamera.GetComponent <Economy> ();
         CarsClass = MainCamera.GetComponent <Cars> ();
         PeopleClass = MainCamera.GetComponent <People> ();
     }
@@ -33,6 +35,7 @@ public class GameLogic : MonoBehaviour {
         }
         CarsClass.StartCars();
         PeopleClass.StartPeople();
+        EconomyClass.StartEconomy();
     }
 
     private void Start() {

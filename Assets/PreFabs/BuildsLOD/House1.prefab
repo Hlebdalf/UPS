@@ -366,6 +366,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4090971264506553086}
   - component: {fileID: 6542638617808881406}
+  - component: {fileID: -1296422539998866725}
+  - component: {fileID: -8501308995205155888}
   m_Layer: 0
   m_Name: House1
   m_TagString: Untagged
@@ -402,6 +404,44 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 60, y: 140, z: 45}
   m_Center: {x: 2, y: 70, z: 0}
+--- !u!114 &-1296422539998866725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3714867281366235204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d4f5a132f2b2f44cac115f245581094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-8501308995205155888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3714867281366235204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41432a22634b84e4bae90518bd8f38d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  idx: 0
+  connectedRoad: 0
+  idxCommerceType: -1
+  idxPreFub: -1
+  cntPeople: 0
+  maxCntPeople: 5000
+  cntPosters: 0
+  maxCntPosters: 0
+  startMenuSizeW: 200
+  startMenuSizeH: 100
+  isGenBuild: 0
+  isDeleting: 0
 --- !u!1 &3738560644334972116
 GameObject:
   m_ObjectHideFlags: 0

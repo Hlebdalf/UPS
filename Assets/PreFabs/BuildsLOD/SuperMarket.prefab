@@ -484,6 +484,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1373076725444083046}
   - component: {fileID: 3655770923420638476}
+  - component: {fileID: 1397264609705111895}
+  - component: {fileID: -723305346106912099}
   m_Layer: 0
   m_Name: SuperMarket
   m_TagString: Untagged
@@ -520,6 +522,44 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 90, y: 20, z: 70}
   m_Center: {x: 0, y: 10, z: 0}
+--- !u!114 &1397264609705111895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749075254799706076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0e419b356707754681e2969b23ec73f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-723305346106912099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749075254799706076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41432a22634b84e4bae90518bd8f38d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  idx: 0
+  connectedRoad: 0
+  idxCommerceType: -1
+  idxPreFub: -1
+  cntPeople: 0
+  maxCntPeople: 1000
+  cntPosters: 0
+  maxCntPosters: 0
+  startMenuSizeW: 200
+  startMenuSizeH: 100
+  isGenBuild: 0
+  isDeleting: 0
 --- !u!1 &1910457305842461472
 GameObject:
   m_ObjectHideFlags: 0

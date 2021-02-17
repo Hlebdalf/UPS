@@ -2227,6 +2227,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9055782979891796999}
   - component: {fileID: 1942226727426402977}
+  - component: {fileID: 7750235765295849281}
+  - component: {fileID: -7799951782763353335}
   m_Layer: 0
   m_Name: House8
   m_TagString: Untagged
@@ -2263,6 +2265,44 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 25, y: 20, z: 30}
   m_Center: {x: 1.5, y: 10, z: 2}
+--- !u!114 &7750235765295849281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8567898246088410813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d4f5a132f2b2f44cac115f245581094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7799951782763353335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8567898246088410813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41432a22634b84e4bae90518bd8f38d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  idx: 0
+  connectedRoad: 0
+  idxCommerceType: -1
+  idxPreFub: -1
+  cntPeople: 0
+  maxCntPeople: 5
+  cntPosters: 0
+  maxCntPosters: 0
+  startMenuSizeW: 200
+  startMenuSizeH: 100
+  isGenBuild: 0
+  isDeleting: 0
 --- !u!1 &8620082152000199418
 GameObject:
   m_ObjectHideFlags: 0
@@ -2767,6 +2807,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f93edf91bb54c3744a272a5002708cde, type: 3}
+--- !u!23 &7848006629079938482 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1264493854111161921, guid: f93edf91bb54c3744a272a5002708cde,
+    type: 3}
+  m_PrefabInstance: {fileID: 9035867951723293683}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2211011124720193900 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7190785019117304479, guid: f93edf91bb54c3744a272a5002708cde,
@@ -2776,12 +2822,6 @@ Transform:
 --- !u!23 &3133792968920581452 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 6203886732743372479, guid: f93edf91bb54c3744a272a5002708cde,
-    type: 3}
-  m_PrefabInstance: {fileID: 9035867951723293683}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &7848006629079938482 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 1264493854111161921, guid: f93edf91bb54c3744a272a5002708cde,
     type: 3}
   m_PrefabInstance: {fileID: 9035867951723293683}
   m_PrefabAsset: {fileID: 0}
@@ -2926,9 +2966,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f93edf91bb54c3744a272a5002708cde, type: 3}
---- !u!23 &2989650164341598873 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 6203886732743372479, guid: f93edf91bb54c3744a272a5002708cde,
+--- !u!4 &2066923536232382137 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7190785019117304479, guid: f93edf91bb54c3744a272a5002708cde,
     type: 3}
   m_PrefabInstance: {fileID: 9180021459629212710}
   m_PrefabAsset: {fileID: 0}
@@ -2950,9 +2990,9 @@ MeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 9180021459629212710}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2066923536232382137 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7190785019117304479, guid: f93edf91bb54c3744a272a5002708cde,
+--- !u!23 &2989650164341598873 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6203886732743372479, guid: f93edf91bb54c3744a272a5002708cde,
     type: 3}
   m_PrefabInstance: {fileID: 9180021459629212710}
   m_PrefabAsset: {fileID: 0}

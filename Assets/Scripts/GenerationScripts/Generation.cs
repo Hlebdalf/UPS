@@ -16,6 +16,7 @@ public class Generation : MonoBehaviour {
     private GenerationCommerces GenerationCommercesClass;
     private GenerationParkings GenerationParkingsClass;
     private GenerationGraph GenerationGraphClass;
+    private GenerationPeople GenerationPeopleClass;
     private ulong seed;
 
     public GameObject loadPanelObj;
@@ -38,6 +39,7 @@ public class Generation : MonoBehaviour {
         GenerationCommercesClass = MainCamera.GetComponent <GenerationCommerces> ();
         GenerationParkingsClass = MainCamera.GetComponent <GenerationParkings> ();
         GenerationGraphClass = MainCamera.GetComponent <GenerationGraph> ();
+        GenerationPeopleClass = MainCamera.GetComponent <GenerationPeople> ();
     }
 
     private void Start() {
@@ -133,6 +135,16 @@ public class Generation : MonoBehaviour {
         GenerationGraphClass.StartGeneration();
         loadText.text = "Чертим план города...";
         while (!GenerationGraphClass.isOver) {
+            loadCircleObj.transform.Rotate(0, 0, 2);
+            yield return null;
+        }
+        StartCoroutine(StartPeopleGen());
+    }
+
+    IEnumerator StartPeopleGen() {
+        GenerationPeopleClass.StartGeneration();
+        loadText.text = "Заполняем город людьми...";
+        while (!GenerationPeopleClass.isOver) {
             loadCircleObj.transform.Rotate(0, 0, 2);
             yield return null;
         }

@@ -1125,6 +1125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6543904761679177258}
   - component: {fileID: 5963381920108139014}
+  - component: {fileID: -7732716719625068220}
   m_Layer: 0
   m_Name: Parking
   m_TagString: Untagged
@@ -1161,6 +1162,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 120, y: 100, z: 120}
   m_Center: {x: 0, y: 50, z: 0}
+--- !u!114 &-7732716719625068220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5880379608572869776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41432a22634b84e4bae90518bd8f38d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  idx: 0
+  connectedRoad: 0
+  idxCommerceType: -1
+  idxPreFub: -1
+  cntPeople: 0
+  maxCntPeople: 100
+  cntPosters: 0
+  maxCntPosters: 0
+  startMenuSizeW: 200
+  startMenuSizeH: 100
+  isGenBuild: 0
+  isDeleting: 0
 --- !u!1 &6112003835665585092
 GameObject:
   m_ObjectHideFlags: 0

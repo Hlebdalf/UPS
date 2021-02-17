@@ -20,7 +20,9 @@ public class Builds : MonoBehaviour {
     public int idxParking;
     public Texture[] posterTextures;
     public List <GameObject> objects;
+    public List <GameObject> objectsWithAvailableSeats;
     public List <GameObject> commerces;
+    public List <GameObject> commercesWithAvailableSeats;
     public List <GameObject> parkings;
     public List <GameObject> ghostObjects;
     public List <GameObject> deleteObjects;
@@ -38,7 +40,9 @@ public class Builds : MonoBehaviour {
         InterfaceClass = InterfaceObject.GetComponent <Interface> ();
         GenerationGraphClass = MainCamera.GetComponent <GenerationGraph> ();
         objects = new List <GameObject> ();
+        objectsWithAvailableSeats = new List <GameObject> ();
         commerces = new List <GameObject> ();
+        commercesWithAvailableSeats = new List <GameObject> ();
         parkings = new List <GameObject> ();
         ghostObjects = new List <GameObject> ();
         deleteObjects = new List <GameObject> ();
@@ -133,7 +137,7 @@ public class Builds : MonoBehaviour {
         }
         if (p) {
             commerces.Add(Instantiate(preFubs[idxPreFub], point, Quaternion.Euler(0, rotate, 0)));
-            commerces[commerces.Count - 1].AddComponent <BuildObject> ();
+            commercesWithAvailableSeats.Add(commerces[commerces.Count - 1]);
             BuildObject data = commerces[commerces.Count - 1].GetComponent <BuildObject> ();
 
             data.x = point.x;
@@ -153,7 +157,6 @@ public class Builds : MonoBehaviour {
         }
         else if (idxPreFub == idxParking) {
             parkings.Add(Instantiate(preFubs[idxPreFub], point, Quaternion.Euler(0, rotate, 0)));
-            parkings[parkings.Count - 1].AddComponent <BuildObject> ();
             BuildObject data = parkings[parkings.Count - 1].GetComponent <BuildObject> ();
 
             data.x = point.x;
@@ -172,7 +175,7 @@ public class Builds : MonoBehaviour {
         }
         else {
             objects.Add(Instantiate(preFubs[idxPreFub], point, Quaternion.Euler(0, rotate, 0)));
-            objects[objects.Count - 1].AddComponent <BuildObject> ();
+            objectsWithAvailableSeats.Add(objects[objects.Count - 1]);
             BuildObject data = objects[objects.Count - 1].GetComponent <BuildObject> ();
 
             data.x = point.x;
@@ -197,8 +200,14 @@ public class Builds : MonoBehaviour {
             GameObject obj = deleteObjects[i];
             BuildObject objClass = obj.GetComponent <BuildObject> ();
             if (objClass.idxPreFub == -1 && objClass.idxCommerceType == -1) parkings.Remove(obj);
-            else if (objClass.idxPreFub == -1) commerces.Remove(obj);
-            else objects.Remove(obj);
+            else if (objClass.idxPreFub == -1) {
+                commerces.Remove(obj);
+                commercesWithAvailableSeats.Remove(obj);
+            }
+            else {
+                objects.Remove(obj);
+                objectsWithAvailableSeats.Remove(obj);
+            }
             deleteObjects.RemoveAt(i);
             Destroy(obj);
         }

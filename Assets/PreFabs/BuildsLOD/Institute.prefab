@@ -484,6 +484,8 @@ GameObject:
   m_Component:
   - component: {fileID: 423620685908664950}
   - component: {fileID: 7129209229212665145}
+  - component: {fileID: -9088815345396842996}
+  - component: {fileID: -3417609537526591418}
   m_Layer: 0
   m_Name: Institute
   m_TagString: Untagged
@@ -520,6 +522,44 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 140, y: 60, z: 110}
   m_Center: {x: 0, y: 30, z: 0}
+--- !u!114 &-9088815345396842996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056886209506687180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5868b9d6c7cd50446bf1b0a286dee901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3417609537526591418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056886209506687180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41432a22634b84e4bae90518bd8f38d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  idx: 0
+  connectedRoad: 0
+  idxCommerceType: -1
+  idxPreFub: -1
+  cntPeople: 0
+  maxCntPeople: 10000
+  cntPosters: 0
+  maxCntPosters: 0
+  startMenuSizeW: 200
+  startMenuSizeH: 100
+  isGenBuild: 0
+  isDeleting: 0
 --- !u!1 &1301118817646767174
 GameObject:
   m_ObjectHideFlags: 0

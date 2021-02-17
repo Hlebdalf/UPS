@@ -89,6 +89,8 @@ GameObject:
   m_Component:
   - component: {fileID: 460999297808846191}
   - component: {fileID: 795756379902753484}
+  - component: {fileID: -3969485663350592477}
+  - component: {fileID: 6845127769235370967}
   m_Layer: 0
   m_Name: House7
   m_TagString: Untagged
@@ -125,6 +127,44 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 105, y: 85, z: 30}
   m_Center: {x: 0, y: 40, z: 0}
+--- !u!114 &-3969485663350592477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949728215149680597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d4f5a132f2b2f44cac115f245581094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6845127769235370967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949728215149680597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41432a22634b84e4bae90518bd8f38d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  idx: 0
+  connectedRoad: 0
+  idxCommerceType: -1
+  idxPreFub: -1
+  cntPeople: 0
+  maxCntPeople: 4000
+  cntPosters: 0
+  maxCntPosters: 0
+  startMenuSizeW: 200
+  startMenuSizeH: 100
+  isGenBuild: 0
+  isDeleting: 0
 --- !u!1 &1137820663487040816
 GameObject:
   m_ObjectHideFlags: 0

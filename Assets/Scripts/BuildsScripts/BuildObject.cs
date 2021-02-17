@@ -14,7 +14,7 @@ public class BuildObject : MonoBehaviour {
 
     public float x, y;
     public int idx, connectedRoad, idxCommerceType = -1, idxPreFub = -1;
-    public int maxCntPeople = 0, cntPosters = 0, maxCntPosters = 0;
+    public int cntPeople = 0, maxCntPeople = 100, cntPosters = 0, maxCntPosters = 0;
     public int startMenuSizeW = 200, startMenuSizeH = 100;
     public bool isGenBuild = false, isDeleting = false;
 
@@ -74,8 +74,7 @@ public class BuildObject : MonoBehaviour {
         HouseMenu = null;
     }
 
-    public void AddPoster()
-    {
+    public void AddPoster() {
         if (idxNotActive.Count <= 0) return;
         int idx = (int)UnityEngine.Random.Range(0f, idxNotActive.Count - 0.01f);
         posterObjects[idxNotActive[idx]].SetActive(true);
@@ -88,6 +87,4 @@ public class BuildObject : MonoBehaviour {
         idxNotActive.RemoveAt(idx);
         ++cntPosters;
     }
-
-
 }
