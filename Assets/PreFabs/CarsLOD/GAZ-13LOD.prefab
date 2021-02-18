@@ -79,7 +79,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2559690475557572281}
-  - screenRelativeHeight: 0.0012931958
+  - screenRelativeHeight: 0.0052491208
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 8023210329865979532}
@@ -98,6 +98,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GAZ-13LP
+      objectReference: {fileID: 0}
+    - target: {fileID: 210451934009459366, guid: 68f70e458593b5c4d95bcea4ed7f6512,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8961463510134657437, guid: 68f70e458593b5c4d95bcea4ed7f6512,
         type: 3}
@@ -234,6 +239,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GAZ-13HP
+      objectReference: {fileID: 0}
+    - target: {fileID: 5386608266880505202, guid: df165dd09fe41f74882bf02eeb4f19fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df165dd09fe41f74882bf02eeb4f19fc, type: 3}
