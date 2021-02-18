@@ -36,7 +36,7 @@ public class GameLogic : MonoBehaviour {
 
     IEnumerator ChangeOfDay() {
         isChangeOfDay = true;
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
         isChangeOfDay = false;
     }
 

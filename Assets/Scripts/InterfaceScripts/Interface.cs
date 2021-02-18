@@ -21,6 +21,7 @@ public class Interface : MonoBehaviour {
     private string lastMenu = "";
 
     public GameObject PreFubButton;
+    public GameObject FastStats;
     public GameObject InterfaceBuilds;
     public GameObject InterfaceCommerces;
     public GameObject InterfaceRoads;
@@ -45,6 +46,9 @@ public class Interface : MonoBehaviour {
             if (isActivityInfo) SetDisabilityInfo();
             else SetActivityInfo();
             isBusy = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.Tab) && !isBusy) {
+            FastStats.SetActive(!FastStats.activeSelf);
         }
         else isBusy = false;
     }

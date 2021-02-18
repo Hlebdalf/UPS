@@ -3460,6 +3460,7 @@ MonoBehaviour:
   InterfaceObject: {fileID: 1344676605}
   LightObject: {fileID: 705507993}
   gameSpeed: 1
+  preAngleLight: 45
 --- !u!114 &963194242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3866,7 +3867,7 @@ PrefabInstance:
     - target: {fileID: 2636937680349900943, guid: d00946bd94b56db4b90f954cc293fb68,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d00946bd94b56db4b90f954cc293fb68, type: 3}
@@ -4047,7 +4048,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1149143472
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5416,6 +5417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PreFubButton: {fileID: 8068880203141385849, guid: 0dc7e325288ebd0458de921d7d110a07,
     type: 3}
+  FastStats: {fileID: 1149143471}
   InterfaceBuilds: {fileID: 1475420342}
   InterfaceCommerces: {fileID: 833403270}
   InterfaceRoads: {fileID: 332194191}
