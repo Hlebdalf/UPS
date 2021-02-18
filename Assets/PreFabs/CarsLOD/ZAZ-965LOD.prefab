@@ -79,7 +79,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 7208117742490002199}
-  - screenRelativeHeight: 0.0031975792
+  - screenRelativeHeight: 0.005889656
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 6124422485746624291}
@@ -153,6 +153,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ZAZ-965LP
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859629944509362968, guid: 270092b5de8ba3c49ba453e0b87ee0fd,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 270092b5de8ba3c49ba453e0b87ee0fd, type: 3}
@@ -234,6 +239,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ZAZ-965HP
+      objectReference: {fileID: 0}
+    - target: {fileID: 8914517185736335243, guid: 8ca74dcaef5cf304884f09d59ce4f231,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ca74dcaef5cf304884f09d59ce4f231, type: 3}
