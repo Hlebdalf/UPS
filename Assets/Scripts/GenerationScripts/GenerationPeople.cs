@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GenerationPeople : MonoBehaviour {
     private GameObject MainCamera;
+    private Field FieldClass;
     private Builds BuildsClass;
     private Economy EconomyClass;
     
@@ -12,6 +13,7 @@ public class GenerationPeople : MonoBehaviour {
     
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        FieldClass = MainCamera.GetComponent <Field> ();
         BuildsClass = MainCamera.GetComponent <Builds> ();
         EconomyClass = MainCamera.GetComponent <Economy> ();
     }
@@ -28,7 +30,7 @@ public class GenerationPeople : MonoBehaviour {
                     int commerceIt = (int)UnityEngine.Random.Range(0f, BuildsClass.commerces.Count - 0.01f);
                     BuildObject commerceClass = BuildsClass.commerces[commerceIt].GetComponent <BuildObject> ();
                     if (commerceClass.cntPeople < commerceClass.maxCntPeople) {
-                        EconomyClass.AddCntPeople();
+                        EconomyClass.AddCntPeople(FieldClass.districts[(int)houseClass.x + FieldClass.fieldSizeHalf, (int)houseClass.y + FieldClass.fieldSizeHalf]);
                         ++commerceClass.cntPeople;
                         ++houseClass.cntPeople;
                     }
@@ -40,7 +42,7 @@ public class GenerationPeople : MonoBehaviour {
                         }
                         if (it == -1) prePass = false;
                         else {
-                            EconomyClass.AddCntPeople();
+                            EconomyClass.AddCntPeople(FieldClass.districts[(int)houseClass.x + FieldClass.fieldSizeHalf, (int)houseClass.y + FieldClass.fieldSizeHalf]);
                             ++BuildsClass.commerces[it].GetComponent <BuildObject> ().cntPeople;
                             ++houseClass.cntPeople;
                         }

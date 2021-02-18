@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Economy : MonoBehaviour {
+    private Field FieldClass;
     private Builds BuildsClass;
 
     private InputField CityName;
@@ -27,7 +28,7 @@ public class Economy : MonoBehaviour {
     private List <int> cntShops;
     private List <int> cntSciences;
     private List <int> cntFactories;
-    private int cntPeople1 = 0, cntPeople2 = 0, cntPeople3 = 0, cntPeople4 = 0;
+    private List <int> cntPeopleD;
     private int cntPosters1 = 0, cntPosters2 = 0, cntPosters3 = 0, cntPosters4 = 0;
     private float averageLoyality1 = 0, averageLoyality2 = 0, averageLoyality3 = 0, averageLoyality4 = 0;
     private int sciensePerDay1 = 0, sciensePerDay2 = 0, sciensePerDay3 = 0, sciensePerDay4 = 0;
@@ -37,6 +38,7 @@ public class Economy : MonoBehaviour {
     public GameObject fastStats;
 
     private void Awake() {
+        FieldClass = Camera.main.GetComponent <Field> ();
         BuildsClass = Camera.main.GetComponent <Builds> ();
         CityName = fastStats.transform.Find("CityName").gameObject.GetComponent <InputField> ();
         Level = fastStats.transform.Find("Level").gameObject.GetComponent <Text> ();
@@ -46,6 +48,7 @@ public class Economy : MonoBehaviour {
         cntShops = new List <int> () {0, 0, 0, 0};
         cntSciences = new List <int> () {0, 0, 0, 0};
         cntFactories = new List <int> () {0, 0, 0, 0};
+        cntPeopleD = new List <int> () {0, 0, 0, 0};
     }
 
     IEnumerator AsyncStartEconomy() {
@@ -57,7 +60,7 @@ public class Economy : MonoBehaviour {
                     int commerceIt = (int)UnityEngine.Random.Range(0f, BuildsClass.commercesWithAvailableSeats.Count - 0.01f);
                     BuildObject commerceClass = BuildsClass.commercesWithAvailableSeats[commerceIt].GetComponent <BuildObject> ();
                     if (commerceClass.cntPeople < commerceClass.maxCntPeople) {
-                        AddCntPeople();
+                        AddCntPeople(FieldClass.districts[(int)houseClass.x + FieldClass.fieldSizeHalf, (int)houseClass.y + FieldClass.fieldSizeHalf]);
                         ++commerceClass.cntPeople;
                         ++houseClass.cntPeople;
                     }
@@ -73,7 +76,7 @@ public class Economy : MonoBehaviour {
         money = (long)UnityEngine.Random.Range(0f, 1000000000000f);
         LevelUp();
         SetMoney(money);
-        SetCntPeople(cntPeople);
+        WriteCntPeople();
     }
 
     private void WriteMoney(bool deleteOptMoney = true) {
@@ -138,23 +141,19 @@ public class Economy : MonoBehaviour {
         Level.text = ++level + "";
     }
     
-    public void AddCntPeople() {
-        ++cntPeople;
-        WriteCntPeople();
-    }
-    
-    public void AddCntPeople(int dCntPeople) {
+    public void AddCntPeople(int districtNum, int dCntPeople = 1) {
+        if (districtNum < 0 || districtNum > 3) {
+            Debug.Log("Incorrect: districtNum = " + districtNum);
+            return;
+        }
         cntPeople += dCntPeople;
-        WriteCntPeople();
-    }
-    
-    public void SetCntPeople(int _cntPeople) {
-        cntPeople = _cntPeople;
+        cntPeopleD[districtNum] += dCntPeople;
         WriteCntPeople();
     }
 
-    public void AddMoney() {
-        money += optMoney;
+    public void AddMoney(long dMoney = 0) {
+        if (dMoney == 0) money += optMoney;
+        else money += dMoney;
         WriteMoney();
     }
 
@@ -164,7 +163,10 @@ public class Economy : MonoBehaviour {
     }
 
     public void AddBuild(int districtNum, int idxPreFub) {
-        if (districtNum < 0 || districtNum > 3) return;
+        if (districtNum < 0 || districtNum > 3) {
+            Debug.Log("Incorrect: districtNum = " + districtNum);
+            return;
+        }
         if (idxPreFub <= 7) ++cntHouses[districtNum];
         else if (idxPreFub == 8) ++cntShops[districtNum];
         else if (idxPreFub == 10 || idxPreFub == 11 || idxPreFub == 12 || idxPreFub == 13 || idxPreFub == 15) ++cntSciences[districtNum];
