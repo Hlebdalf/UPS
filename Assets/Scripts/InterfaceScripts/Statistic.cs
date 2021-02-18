@@ -131,18 +131,18 @@ public class Statistic : MonoBehaviour
         switch (Class)
         {
             case 1:
-                postersNum.Class1.text = postersNum.ToString() + " ШТ.";
+                postersNum.Class1.text = PostersNum.ToString() + " ШТ.";
                 break;
             case 2:
-                postersNum.Class2.text = postersNum.ToString() + " ШТ.";
+                postersNum.Class2.text = PostersNum.ToString() + " ШТ.";
                 break;
             case 3:
-                postersNum.Class3.text = postersNum.ToString() + " ШТ.";
+                postersNum.Class3.text = PostersNum.ToString() + " ШТ.";
                 break;
             case 4:
-                postersNum.Class4.text = postersNum.ToString() + " ШТ.";
+                postersNum.Class4.text = PostersNum.ToString() + " ШТ.";
                 break;
-        }     
+        }
     }
 
     public void SetScienceNum(long ScienceNum, int Class)
