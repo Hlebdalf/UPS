@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Builds : MonoBehaviour {
     private GameObject MainCamera;
+    private Economy EconomyClass;
     private Roads RoadsClass;
     private Field FieldClass;
     private GenerationGraph GenerationGraphClass;
@@ -35,6 +36,7 @@ public class Builds : MonoBehaviour {
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        EconomyClass = MainCamera.GetComponent <Economy> ();
         RoadsClass = MainCamera.GetComponent <Roads> ();
         FieldClass = MainCamera.GetComponent <Field> ();
         InterfaceClass = InterfaceObject.GetComponent <Interface> ();
@@ -151,6 +153,7 @@ public class Builds : MonoBehaviour {
                 data.connectedRoad = connectedRoad;
             }
             if (isGeneration) data.isGenBuild = true;
+            EconomyClass.AddBuild(FieldClass.districts[(int)data.x + FieldClass.fieldSizeHalf, (int)data.y + FieldClass.fieldSizeHalf], idxPreFub);
 
             commerces[commerces.Count - 1].AddComponent <Rigidbody> ();
             commerces[commerces.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
@@ -189,6 +192,7 @@ public class Builds : MonoBehaviour {
                 data.connectedRoad = connectedRoad;
             }
             if (isGeneration) data.isGenBuild = true;
+            EconomyClass.AddBuild(FieldClass.districts[(int)data.x + FieldClass.fieldSizeHalf, (int)data.y + FieldClass.fieldSizeHalf], idxPreFub);
 
             objects[objects.Count - 1].AddComponent <Rigidbody> ();
             objects[objects.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
