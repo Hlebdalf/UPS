@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Economy : MonoBehaviour {
     private Field FieldClass;
     private Builds BuildsClass;
+    private People PeopleClass;
 
     private InputField CityName;
     private Text Level;
@@ -17,38 +18,51 @@ public class Economy : MonoBehaviour {
     private int level = 0;
     private int cntPeople = 0, cntPeoplePerDay = 0;
     private long money = 0, optMoney = 0, moneyPerDay = 0;
-    private long cntScience = 0, cntSciencePerDay = 0;
-    private long cntProducts = 0, cntProductsPerDay = 0;
+    private long science = 0, sciencePerDay = 0;
+    private long products = 0, productsPerDay = 0;
     private float averageLoyality = 0;
     private float HCS = 0, PIT = 0, VAT = 0, CIT = 0; // Коэффиценты налогов
     private bool isStarted = false;
     // private float deltaTime = 0.1f;
     
-    private List <int> cntHouses;
-    private List <int> cntShops;
-    private List <int> cntSciences;
-    private List <int> cntFactories;
+    private List <int> cntHousesD;
+    private List <int> cntShopsD;
+    private List <int> cntSciencesD;
+    private List <int> cntFactoriesD;
     private List <int> cntPeopleD;
-    private int cntPosters1 = 0, cntPosters2 = 0, cntPosters3 = 0, cntPosters4 = 0;
-    private float averageLoyality1 = 0, averageLoyality2 = 0, averageLoyality3 = 0, averageLoyality4 = 0;
-    private int sciensePerDay1 = 0, sciensePerDay2 = 0, sciensePerDay3 = 0, sciensePerDay4 = 0;
-    private int productsPreDay1 = 0, productsPreDay2 = 0, productsPreDay3 = 0, productsPreDay4 = 0;
-    private long moneyPerDay1 = 0, moneyPerDay2 = 0, moneyPerDay3 = 0, moneyPerDay4 = 0;
+    private List <int> cntPostersD;
+    private List <int> averageLoyalityD;
+    private List <long> moneyPerDayD;
+    private List <long> sciencePerDayD;
+    private List <long> productsPerDayD;
 
     public GameObject fastStats;
 
     private void Awake() {
         FieldClass = Camera.main.GetComponent <Field> ();
         BuildsClass = Camera.main.GetComponent <Builds> ();
+        PeopleClass = Camera.main.GetComponent <People> ();
         CityName = fastStats.transform.Find("CityName").gameObject.GetComponent <InputField> ();
         Level = fastStats.transform.Find("Level").gameObject.GetComponent <Text> ();
         CntPeople = fastStats.transform.Find("CntPeople").gameObject.GetComponent <Text> ();
         Money = fastStats.transform.Find("Money").gameObject.GetComponent <Text> ();
-        cntHouses = new List <int> () {0, 0, 0, 0};
-        cntShops = new List <int> () {0, 0, 0, 0};
-        cntSciences = new List <int> () {0, 0, 0, 0};
-        cntFactories = new List <int> () {0, 0, 0, 0};
+        cntHousesD = new List <int> () {0, 0, 0, 0};
+        cntShopsD = new List <int> () {0, 0, 0, 0};
+        cntSciencesD = new List <int> () {0, 0, 0, 0};
+        cntFactoriesD = new List <int> () {0, 0, 0, 0};
         cntPeopleD = new List <int> () {0, 0, 0, 0};
+        cntPostersD = new List <int> () {0, 0, 0, 0};
+        averageLoyalityD = new List <int> () {0, 0, 0, 0};
+        moneyPerDayD = new List <long> () {0, 0, 0, 0};
+        sciencePerDayD = new List <long> () {0, 0, 0, 0};
+        productsPerDayD = new List <long> () {0, 0, 0, 0};
+    }
+    
+    private void Start() {
+        money = (long)UnityEngine.Random.Range(0f, 1000000000000f);
+        LevelUp();
+        SetMoney(money);
+        WriteCntPeople();
     }
 
     IEnumerator AsyncStartEconomy() {
@@ -71,64 +85,114 @@ public class Economy : MonoBehaviour {
             if (i % 10 == 0) yield return null;
         }
     }
-    
-    private void Start() {
-        money = (long)UnityEngine.Random.Range(0f, 1000000000000f);
-        LevelUp();
-        SetMoney(money);
-        WriteCntPeople();
+
+    IEnumerator AddMoneyWithDelay() {
+        WriteMoney(false, true);
+        yield return new WaitForSeconds(5f);
+        WriteMoney(false);
     }
 
-    private void WriteMoney(bool deleteOptMoney = true) {
+    private void WriteMoney(bool deleteOptMoney = true, bool writePerDay = false) {
         Money.text = money + " ₽";
         if (deleteOptMoney) optMoney = 0;
         if (optMoney > 0) Money.text += "\n+ " + Math.Abs(optMoney) + " ₽";
         if (optMoney < 0) Money.text += "\n- " + Math.Abs(optMoney) + " ₽";
+        if (writePerDay) {
+            if (optMoney != 0) Money.text += "\n";
+            if (moneyPerDay > 0) Money.text += "+ " + Math.Abs(moneyPerDay) + " ₽";
+            if (moneyPerDay < 0) Money.text += "- " + Math.Abs(moneyPerDay) + " ₽";
+        }
     }
 
     private void WriteCntPeople() {
         CntPeople.text = cntPeople + " чел";
     }
 
-    public void StartEconomy() {
-        isStarted = true;
-        StartCoroutine(AsyncStartEconomy());
-    }
-
-    IEnumerator PayTax() {
-        long tax = 0;
+    private void CalcStatsPerDay() {
+        moneyPerDay = sciencePerDay = productsPerDay = 0;
+        moneyPerDayD = new List <long> () {0, 0, 0, 0};
+        sciencePerDayD = new List <long> () {0, 0, 0, 0};
+        productsPerDayD = new List <long> () {0, 0, 0, 0};
         for (int houseIt = 0; houseIt < BuildsClass.objects.Count; ++houseIt) {
+            BuildObject buildClass = BuildsClass.objects[houseIt].GetComponent <BuildObject> ();
             House houseClass = BuildsClass.objects[houseIt].GetComponent <House> ();
-            tax += houseClass.GetTaxRate();
-            tax -= houseClass.GetServiceCost();
+            int districtNum = FieldClass.districts[(int)buildClass.x + FieldClass.fieldSizeHalf, (int)buildClass.y + FieldClass.fieldSizeHalf];
+            moneyPerDay += houseClass.GetTaxRate();
+            moneyPerDay -= houseClass.GetServiceCost();
+            moneyPerDayD[districtNum] += houseClass.GetTaxRate();
+            moneyPerDayD[districtNum] -= houseClass.GetServiceCost();
+            
         }
-        yield return null;
         for (int commerceIt = 0; commerceIt < BuildsClass.commerces.Count; ++commerceIt) {
             GameObject commerceObj = BuildsClass.commerces[commerceIt];
+            BuildObject buildClass = BuildsClass.commerces[commerceIt].GetComponent <BuildObject> ();
+            int districtNum = FieldClass.districts[(int)buildClass.x + FieldClass.fieldSizeHalf, (int)buildClass.y + FieldClass.fieldSizeHalf];
             if (commerceObj.GetComponent <Factory> ()) {
                 Factory factoryClass = commerceObj.GetComponent <Factory> ();
-                tax -= factoryClass.GetServiceCost();
-                cntProducts += factoryClass.GetProductsRate();
+                moneyPerDay -= factoryClass.GetServiceCost();
+                productsPerDay += factoryClass.GetProductsRate();
+                moneyPerDayD[districtNum] -= factoryClass.GetServiceCost();
+                productsPerDayD[districtNum] += factoryClass.GetProductsRate();
             }
             else if (commerceObj.GetComponent <Science> ()) {
                 Science scienceClass = commerceObj.GetComponent <Science> ();
-                tax -= scienceClass.GetServiceCost();
-                cntScience += scienceClass.GetScienceRate();
+                moneyPerDay -= scienceClass.GetServiceCost();
+                sciencePerDay += scienceClass.GetScienceRate();
+                moneyPerDayD[districtNum] -= scienceClass.GetServiceCost();
+                sciencePerDayD[districtNum] += scienceClass.GetScienceRate();
             }
             else if (commerceObj.GetComponent <Shop> ()) {
                 Shop shopClass = commerceObj.GetComponent <Shop> ();
-                tax += shopClass.GetTaxRate();
+                moneyPerDay += shopClass.GetTaxRate();
+                moneyPerDayD[districtNum] += shopClass.GetTaxRate();
             }
         }
-        optMoney = tax;
-        WriteMoney(false);
-        yield return new WaitForSeconds(5f);
-        AddMoney();
+    }
+
+    private void CalcPeopleStats() {
+        averageLoyality = 0;
+        averageLoyalityD = new List <int> () {0, 0, 0, 0};
+        List <int> counting = new List <int> () {0, 0, 0, 0};
+        for (int i = 0; i < PeopleClass.objects.Count; ++i) {
+            Passport passportClass = PeopleClass.objects[i].GetComponent <Passport> ();
+            if (passportClass.idxSocialСlass < 1 || passportClass.idxSocialСlass > 4) {
+                Debug.Log("Incorrect: passportClass.idxSocialСlass = " + passportClass.idxSocialСlass);
+                continue;
+            }
+            averageLoyalityD[passportClass.idxSocialСlass - 1] += passportClass.GetLoyalty().loyalty;
+            ++counting[passportClass.idxSocialСlass - 1];
+        }
+        if (counting[0] > 0) averageLoyalityD[0] /= counting[0];
+        if (counting[1] > 0) averageLoyalityD[1] /= counting[1];
+        if (counting[2] > 0) averageLoyalityD[2] /= counting[2];
+        if (counting[3] > 0) averageLoyalityD[3] /= counting[3];
+        if (counting[0] + counting[1] + counting[2] + counting[3] > 0) {
+            averageLoyality = (averageLoyalityD[0] + averageLoyalityD[1] + averageLoyalityD[2] + averageLoyalityD[3]) / (counting[0] + counting[1] + counting[2] + counting[3]);
+        }
+    }
+
+    private void AddScience() {
+        science += sciencePerDay;
+    }
+
+    private void AddProducts() {
+        products += productsPerDay;
+    }
+
+    public void StartEconomy() {
+        isStarted = true;
+        CalcStatsPerDay();
+        CalcPeopleStats();
+        StartCoroutine(AsyncStartEconomy());
     }
 
     public void NewDay() {
         if (isStarted) {
-            StartCoroutine(PayTax());
+            CalcStatsPerDay();
+            CalcPeopleStats();
+            StartCoroutine(AddMoneyWithDelay());
+            AddScience();
+            AddProducts();
         }
     }
 
@@ -167,9 +231,17 @@ public class Economy : MonoBehaviour {
             Debug.Log("Incorrect: districtNum = " + districtNum);
             return;
         }
-        if (idxPreFub <= 7) ++cntHouses[districtNum];
-        else if (idxPreFub == 8) ++cntShops[districtNum];
-        else if (idxPreFub == 10 || idxPreFub == 11 || idxPreFub == 12 || idxPreFub == 13 || idxPreFub == 15) ++cntSciences[districtNum];
-        else if (idxPreFub == 14) ++cntFactories[districtNum];
+        if (idxPreFub <= 7) ++cntHousesD[districtNum];
+        else if (idxPreFub == 8) ++cntShopsD[districtNum];
+        else if (idxPreFub == 10 || idxPreFub == 11 || idxPreFub == 12 || idxPreFub == 13 || idxPreFub == 15) ++cntSciencesD[districtNum];
+        else if (idxPreFub == 14) ++cntFactoriesD[districtNum];
+    }
+
+    public void AddPoster(int districtNum) {
+        if (districtNum < 0 || districtNum > 3) {
+            Debug.Log("Incorrect: districtNum = " + districtNum);
+            return;
+        }
+        ++cntPostersD[districtNum];
     }
 }

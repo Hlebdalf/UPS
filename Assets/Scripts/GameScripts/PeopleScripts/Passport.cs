@@ -59,56 +59,6 @@ public class Passport : MonoBehaviour {
         WriteSpec();
     }
 
-    private (int, List <string>) GetLoyalty() {
-        // Зависимость от количества плакатов, удовлетворённости, числа жителей выше по статусу и т.д.
-        List <string> reasonsLoyalty = new List <string> ();
-        double loyalty = 0, envy = 0;
-        int posX = (int)gameObject.transform.position.x, posZ = (int)gameObject.transform.position.z;
-        int radius = 20, cntPosters = 0, cntPostersMax = 0;
-
-        if (satisfaction < 60) reasonsLoyalty.Add("Удовлетворённость: " + (int)satisfaction + " < 60%");
-
-        if (idxSocialСlass == 1) { // Пролетариат
-            double ratioWith3, ratioWith4;
-            if (PeopleClass.cntPeople3 == 0) ratioWith3 = 0;
-            else ratioWith3 = PeopleClass.cntPeople1 / PeopleClass.cntPeople3; // От 2 до 0.5
-            if (PeopleClass.cntPeople4 == 0) ratioWith4 = 0;
-            else ratioWith4 = PeopleClass.cntPeople1 / PeopleClass.cntPeople4; // От 5 до 2
-            double envy1 = 0, envy2 = 0;
-            if (ratioWith3 < 2 && ratioWith3 >= 0.5) envy1 = (0.67 / ratioWith3 - 0.335) * 100;
-            else if (ratioWith3 < 0.5) envy1 = 100;
-            if (ratioWith4 < 5 && ratioWith4 >= 2) envy2 = (3.36 / ratioWith4 - 0.672) * 100;
-            else if (ratioWith4 < 2) envy2 = 100;
-            envy = (envy1 + envy2) / 2;
-            if (envy1 > 40) reasonsLoyalty.Add("Зависть интеллигенции: " + (int)envy1 + " > 40 пунктов");
-            if (envy2 > 40) reasonsLoyalty.Add("Зависть буржуям: " + (int)envy2 + " > 40 пунктов");
-        }
-        if (idxSocialСlass == 2) { // Бюрократия
-            double ratioWith4;
-            if (PeopleClass.cntPeople4 == 0) ratioWith4 = 0;
-            else ratioWith4 = PeopleClass.cntPeople2 / PeopleClass.cntPeople4; // От 2 до 0.5
-            if (ratioWith4 < 2 && ratioWith4 >= 0.5) envy = (0.67 / ratioWith4 - 0.335) * 100;
-            else if (ratioWith4 < 0.5) envy = 100;
-            if (envy > 40) reasonsLoyalty.Add("Зависть буржуям: " + (int)envy + " > 40 пунктов");
-        }
-
-        for (int x = posX - radius; x < posX + radius; ++x) {
-            for (int z = posZ - radius; z < posZ + radius; ++z) {
-                if (x + FieldClass.fieldSizeHalf >= 0 &&
-                    z + FieldClass.fieldSizeHalf < FieldClass.fieldSize &&
-                    FieldClass.objects[x + FieldClass.fieldSizeHalf, z + FieldClass.fieldSizeHalf] != null &&
-                    FieldClass.objects[x + FieldClass.fieldSizeHalf, z + FieldClass.fieldSizeHalf].GetComponent <BuildObject> ()) {
-                    cntPosters += FieldClass.objects[x + FieldClass.fieldSizeHalf, z + FieldClass.fieldSizeHalf].GetComponent <BuildObject> ().cntPosters;
-                    cntPostersMax += FieldClass.objects[x + FieldClass.fieldSizeHalf, z + FieldClass.fieldSizeHalf].GetComponent <BuildObject> ().cntPosters;
-                }
-            }
-        }
-        if (cntPosters / Math.Max(cntPostersMax, 1) * 100 < 50) reasonsLoyalty.Add("Кол-во плакатов в данной области: " + cntPosters + " < 50% от макс. кол-ва");
-
-        loyalty = (2 * satisfaction + (101 - envy) + 3 * (cntPosters / Math.Max(cntPostersMax, 1) * 100)) / 6;
-        return ((int)loyalty, reasonsLoyalty);
-    }
-
     private void SetGender() {
         if (idxPreFub == 0) gender = "Муж";
         if (idxPreFub == 1) gender = "Жен";
@@ -292,6 +242,56 @@ public class Passport : MonoBehaviour {
             string[] fatherNames = text.Split(new char[] {' '}, System.StringSplitOptions.RemoveEmptyEntries);
             fatherNameHuman = fatherNames[(int)UnityEngine.Random.Range(0, fatherNames.Length - 0.01f)];
         }
+    }
+
+    public (int loyalty, List <string> reasonsLoyalty) GetLoyalty() {
+        // Зависимость от количества плакатов, удовлетворённости, числа жителей выше по статусу и т.д.
+        List <string> reasonsLoyalty = new List <string> ();
+        double loyalty = 0, envy = 0;
+        int posX = (int)gameObject.transform.position.x, posZ = (int)gameObject.transform.position.z;
+        int radius = 20, cntPosters = 0, cntPostersMax = 0;
+
+        if (satisfaction < 60) reasonsLoyalty.Add("Удовлетворённость: " + (int)satisfaction + " < 60%");
+
+        if (idxSocialСlass == 1) { // Пролетариат
+            double ratioWith3, ratioWith4;
+            if (PeopleClass.cntPeople3 == 0) ratioWith3 = 0;
+            else ratioWith3 = PeopleClass.cntPeople1 / PeopleClass.cntPeople3; // От 2 до 0.5
+            if (PeopleClass.cntPeople4 == 0) ratioWith4 = 0;
+            else ratioWith4 = PeopleClass.cntPeople1 / PeopleClass.cntPeople4; // От 5 до 2
+            double envy1 = 0, envy2 = 0;
+            if (ratioWith3 < 2 && ratioWith3 >= 0.5) envy1 = (0.67 / ratioWith3 - 0.335) * 100;
+            else if (ratioWith3 < 0.5) envy1 = 100;
+            if (ratioWith4 < 5 && ratioWith4 >= 2) envy2 = (3.36 / ratioWith4 - 0.672) * 100;
+            else if (ratioWith4 < 2) envy2 = 100;
+            envy = (envy1 + envy2) / 2;
+            if (envy1 > 40) reasonsLoyalty.Add("Зависть интеллигенции: " + (int)envy1 + " > 40 пунктов");
+            if (envy2 > 40) reasonsLoyalty.Add("Зависть буржуям: " + (int)envy2 + " > 40 пунктов");
+        }
+        if (idxSocialСlass == 2) { // Бюрократия
+            double ratioWith4;
+            if (PeopleClass.cntPeople4 == 0) ratioWith4 = 0;
+            else ratioWith4 = PeopleClass.cntPeople2 / PeopleClass.cntPeople4; // От 2 до 0.5
+            if (ratioWith4 < 2 && ratioWith4 >= 0.5) envy = (0.67 / ratioWith4 - 0.335) * 100;
+            else if (ratioWith4 < 0.5) envy = 100;
+            if (envy > 40) reasonsLoyalty.Add("Зависть буржуям: " + (int)envy + " > 40 пунктов");
+        }
+
+        for (int x = posX - radius; x < posX + radius; ++x) {
+            for (int z = posZ - radius; z < posZ + radius; ++z) {
+                if (x + FieldClass.fieldSizeHalf >= 0 &&
+                    z + FieldClass.fieldSizeHalf < FieldClass.fieldSize &&
+                    FieldClass.objects[x + FieldClass.fieldSizeHalf, z + FieldClass.fieldSizeHalf] != null &&
+                    FieldClass.objects[x + FieldClass.fieldSizeHalf, z + FieldClass.fieldSizeHalf].GetComponent <BuildObject> ()) {
+                    cntPosters += FieldClass.objects[x + FieldClass.fieldSizeHalf, z + FieldClass.fieldSizeHalf].GetComponent <BuildObject> ().cntPosters;
+                    cntPostersMax += FieldClass.objects[x + FieldClass.fieldSizeHalf, z + FieldClass.fieldSizeHalf].GetComponent <BuildObject> ().cntPosters;
+                }
+            }
+        }
+        if (cntPosters / Math.Max(cntPostersMax, 1) * 100 < 50) reasonsLoyalty.Add("Кол-во плакатов в данной области: " + cntPosters + " < 50% от макс. кол-ва");
+
+        loyalty = (2 * satisfaction + (101 - envy) + 3 * (cntPosters / Math.Max(cntPostersMax, 1) * 100)) / 6;
+        return ((int)loyalty, reasonsLoyalty);
     }
 
     public void WriteSpec() {

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class BuildObject : MonoBehaviour {
     private GameObject MainCamera;
+    private Field FieldClass;
     private Interface InterfaceClass;
+    private Economy EconomyClass;
     private Builds BuildsClass;
     private List <GameObject> posterObjects;
     private List <int> idxNotActive;
@@ -20,7 +22,9 @@ public class BuildObject : MonoBehaviour {
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        FieldClass = MainCamera.GetComponent <Field> ();
         InterfaceClass = MainCamera.GetComponent <Interface> ();
+        EconomyClass = MainCamera.GetComponent <Economy> ();
         BuildsClass = MainCamera.GetComponent <Builds> ();
         posterObjects = new List <GameObject> ();
         idxNotActive = new List <int> ();
@@ -76,6 +80,7 @@ public class BuildObject : MonoBehaviour {
 
     public void AddPoster() {
         if (idxNotActive.Count <= 0) return;
+        EconomyClass.AddPoster(FieldClass.districts[(int)x + FieldClass.fieldSizeHalf, (int)y + FieldClass.fieldSizeHalf]);
         int idx = (int)UnityEngine.Random.Range(0f, idxNotActive.Count - 0.01f);
         posterObjects[idxNotActive[idx]].SetActive(true);
         Material posterMatHD = posterObjects[idxNotActive[idx]].GetComponent<Transform>().transform.Find("PosterPlaneHD").GetComponent<MeshRenderer>().material;
