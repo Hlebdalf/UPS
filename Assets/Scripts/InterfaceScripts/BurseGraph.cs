@@ -12,25 +12,19 @@ public class BurseGraph : MonoBehaviour
     private const float shift = 1e-5f;
     private float x = 0;
     private Color color = Color.black;
+    private Color colorRed = Color.red;
     private Color erazeColor = Color.white;
     private List<vertex> erazer = new List<vertex>();
     private Texture2D texture;
     private int Height;
     private int Weight;
-    public const int iterations = 100;
+    public int iterations = 100;
     public float A = 1;
     public float B = 0.5f;
     public int Price;
-    void Start()
-    {
-        texture = gameObject.GetComponent<RawImage>().mainTexture as Texture2D;
-        Height = texture.height;
-        Weight = texture.width;
-        StartCoroutine(GraphCoroutine());
-    }
     private float Weierstrass(float x, float A, float B)
     {
-        
+
         float total = 0;
         for (int n = 0; n < iterations; n++)
         {
@@ -42,19 +36,25 @@ public class BurseGraph : MonoBehaviour
         return (float)total;
     }
 
+    void Start()
+    {
+        texture = gameObject.GetComponent<RawImage>().mainTexture as Texture2D;
+        Height = texture.height;
+        Weight = texture.width;
+        StartCoroutine(GraphCoroutine());
+    }
+
     IEnumerator GraphCoroutine()
     {
         while (true)
         {
-            yield return new WaitForSeconds(60);
+            yield return new WaitForSeconds(10);
             for (int i = 0; i < Weight * 100; i++) {
                 
                 float y = Weierstrass(x, A, B);           
                 texture.SetPixel((int)x, (int)(y * 10 + Height / 2), color);
                 vertex toEraze = new vertex { x = (int)x, y = (int)(y * 10 + Height / 2) };
-                erazer.Add(toEraze);
-                float UVX = gameObject.GetComponent<RawImage>().uvRect.x;
-                gameObject.GetComponent<RawImage>().uvRect = new Rect(UVX + shift, 0, 1, 1);
+                erazer.Add(toEraze);        
                 x += 0.01f;
                 if ((int)(x * 100) % 1000 == 0)
                 {
@@ -62,10 +62,10 @@ public class BurseGraph : MonoBehaviour
                 }
                 Price = (int)(y * 10 + Height / 2);
             }
-            
+            float UVX = gameObject.GetComponent<RawImage>().uvRect.x;
+            gameObject.GetComponent<RawImage>().uvRect = new Rect(UVX + 0.2f, 0, 1, 1);
             texture.Apply();
             yield return null;
-            x -= 200;
             foreach (vertex i in erazer)
             {    
                 texture.SetPixel(i.x, i.y, erazeColor);
@@ -74,6 +74,10 @@ public class BurseGraph : MonoBehaviour
         }
     }
 
+    public int GetPrice()
+    {
+        return Price;
+    }
 }
 
 

@@ -980,7 +980,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1188,7 +1188,6 @@ GameObject:
   - component: {fileID: 150559749}
   - component: {fileID: 150559751}
   - component: {fileID: 150559750}
-  - component: {fileID: 150559752}
   m_Layer: 5
   m_Name: BureaucracyPanel
   m_TagString: Untagged
@@ -1263,28 +1262,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 150559748}
   m_CullTransparentMesh: 0
---- !u!114 &150559752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 150559748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1129bad30d48e14da33dc1754131805, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HouseNumObject: {fileID: 1393781399}
-  PopulationIncrementObject: {fileID: 1626044832}
-  ScienceNumObject: {fileID: 1003563702}
-  ProductionNumObject: {fileID: 1779151062}
-  BudgeIncrementObject: {fileID: 139062106}
-  ScienceIncrementObject: {fileID: 1819358822}
-  ProductionIncrementObject: {fileID: 656339756}
-  AVGLoyalityObject: {fileID: 951435474}
-  PostersNumObject: {fileID: 2002054776}
-  CommerceNumObject: {fileID: 210140703}
 --- !u!1 &157096136
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,8 +1312,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d1ca9b34ae9e194f9ed562b42bf04c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iterations: 10
   A: 1
   B: 0.5
+  Price: 0
 --- !u!114 &157096139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1404,7 +1383,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2179,7 +2158,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6007,47 +5986,6 @@ MonoBehaviour:
   - {fileID: 2002054776}
   - {fileID: 1330403901}
   - {fileID: 665854917}
-  Texts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &876168264
 GameObject:
   m_ObjectHideFlags: 0
@@ -8898,7 +8836,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9613,7 +9551,6 @@ GameObject:
   - component: {fileID: 1280265244}
   - component: {fileID: 1280265246}
   - component: {fileID: 1280265245}
-  - component: {fileID: 1280265247}
   m_Layer: 5
   m_Name: ProletariatPanel
   m_TagString: Untagged
@@ -9688,20 +9625,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1280265243}
   m_CullTransparentMesh: 0
---- !u!114 &1280265247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1280265243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e44e8add24e85f24cbb488f0edcbd614, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GameObjects: []
-  Texts: []
 --- !u!1001 &1282805731
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10080,7 +10003,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -11330,7 +11253,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -13807,7 +13730,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -14753,7 +14676,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1926992665
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14848,7 +14771,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -15292,7 +15215,6 @@ GameObject:
   - component: {fileID: 2003864643}
   - component: {fileID: 2003864645}
   - component: {fileID: 2003864644}
-  - component: {fileID: 2003864646}
   m_Layer: 5
   m_Name: IntelligentsiaPanel
   m_TagString: Untagged
@@ -15367,28 +15289,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2003864642}
   m_CullTransparentMesh: 0
---- !u!114 &2003864646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2003864642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32b01c307da910a478a0bc2e98102e92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HouseNumObject: {fileID: 2140966051}
-  PopulationIncrementObject: {fileID: 727805649}
-  ScienceNumObject: {fileID: 1078763338}
-  ProductionNumObject: {fileID: 1597150305}
-  BudgeIncrementObject: {fileID: 133441178}
-  ScienceIncrementObject: {fileID: 831622810}
-  ProductionIncrementObject: {fileID: 1486783496}
-  AVGLoyalityObject: {fileID: 1079052575}
-  PostersNumObject: {fileID: 1330403901}
-  CommerceNumObject: {fileID: 1217844172}
 --- !u!1 &2007458693
 GameObject:
   m_ObjectHideFlags: 0
@@ -15820,7 +15720,6 @@ GameObject:
   - component: {fileID: 2052735116}
   - component: {fileID: 2052735118}
   - component: {fileID: 2052735117}
-  - component: {fileID: 2052735119}
   m_Layer: 5
   m_Name: BourgeoisiePanel
   m_TagString: Untagged
@@ -15895,28 +15794,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2052735115}
   m_CullTransparentMesh: 0
---- !u!114 &2052735119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2052735115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4a2619be7897ae4c8082f91ec6cb425, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HouseNumObject: {fileID: 2077135060}
-  PopulationIncrementObject: {fileID: 754357469}
-  ScienceNumObject: {fileID: 1431461184}
-  ProductionNumObject: {fileID: 205894131}
-  BudgeIncrementObject: {fileID: 1332362704}
-  ScienceIncrementObject: {fileID: 1495041555}
-  ProductionIncrementObject: {fileID: 2130918300}
-  AVGLoyalityObject: {fileID: 2007458693}
-  PostersNumObject: {fileID: 665854917}
-  CommerceNumObject: {fileID: 1133525730}
 --- !u!1 &2077135060
 GameObject:
   m_ObjectHideFlags: 0
