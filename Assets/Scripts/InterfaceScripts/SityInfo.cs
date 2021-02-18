@@ -31,8 +31,7 @@ public class SityInfo : MonoBehaviour
     private Text scienceIncrement;
     private Text productionIncrement;
 
-
-    void Start()
+    void Awake()
     {
         selfName = NameObject.GetComponent<Text>();
         level = LevelObject.GetComponent<Text>();
@@ -48,14 +47,14 @@ public class SityInfo : MonoBehaviour
 
     public void SetName(string Name)
     {
-        selfName.text = Name;
+        if (Name.Length > 0) selfName.text = Name;
     }
     public void SetLevel(int Level)
     {
-        level.text = Level.ToString() + " LVL";
+        level.text = Level + " LVL";
     }
 
-    public void SetBudget(int Budget)
+    public void SetBudget(long Budget)
     {
         budget.text = Budget.ToString() + " ₽";
     }
@@ -65,17 +64,17 @@ public class SityInfo : MonoBehaviour
         population.text = Population.ToString() + " Ч.";
     }
 
-    public void SetScience(int Science)
+    public void SetScience(long Science)
     {
         science.text = Science.ToString() + " Н.";
     }
 
-    public void SetProduction(int Production)
+    public void SetProduction(long Production)
     {
         production.text = Production.ToString() + " П.";
     }
 
-    public void SetBudgeIncrement(int BudgeIncrement)
+    public void SetBudgeIncrement(long BudgeIncrement)
     {
         budgeIncrement.text = BudgeIncrement.ToString() + " ₽/Д";
     }
@@ -85,12 +84,12 @@ public class SityInfo : MonoBehaviour
         populationIncrement.text = PopulationIncrement.ToString() + " Ч/Д";
     }
 
-    public void SetScienceIncrement(int ScienceIncrement)
+    public void SetScienceIncrement(long ScienceIncrement)
     {
         scienceIncrement.text = ScienceIncrement.ToString() + " Н/Д";
     }
 
-    public void SetProductionIncrement(int ProductionIncrement)
+    public void SetProductionIncrement(long ProductionIncrement)
     {
         productionIncrement.text = ProductionIncrement.ToString() + " П/Д";
     }

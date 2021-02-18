@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Interface : MonoBehaviour {
     private GameObject MainCamera;
+    private Economy EconomyClass;
     private Builds BuildsClass;
     private Roads RoadsClass;
     private bool interfaceBuildsIsOpened = false;
@@ -35,6 +36,7 @@ public class Interface : MonoBehaviour {
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        EconomyClass = MainCamera.GetComponent <Economy> ();
         BuildsClass = MainCamera.GetComponent <Builds> ();
         RoadsClass = MainCamera.GetComponent <Roads> ();
         InterfaceBuildsAnimator = InterfaceBuilds.GetComponent <Animator> ();
@@ -76,7 +78,7 @@ public class Interface : MonoBehaviour {
             InterfaceOtherIsOpened = false;
             lastMenu = "Other";
         }
-        EconomyPanelActivity = !EconomyPanelActivity;
+        EconomyPanelActivity = false;
     }
 
     public void ActivateMenu(string type = "Last") {
@@ -125,6 +127,7 @@ public class Interface : MonoBehaviour {
     {
         EconomyPanelActivity = !EconomyPanelActivity;
         EconomyPanelObject.SetActive(EconomyPanelActivity);
+        EconomyClass.FillInTheMenuWithStatistics();
     }
 
     public void ExitToMainMenu() {

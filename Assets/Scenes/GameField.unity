@@ -6426,6 +6426,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fastStats: {fileID: 1149143471}
+  SityInfoClass: {fileID: 1259262006}
+  TaxationClass: {fileID: 1212650884}
+  StatisticClass: {fileID: 859296343}
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9472,7 +9475,7 @@ MonoBehaviour:
   ProductionObject: {fileID: 420039008}
   BudgeIncrementObject: {fileID: 1748502466}
   PopulationIncrementObject: {fileID: 1202183924}
-  ScienceIncrementObject: {fileID: 2142647740}
+  ScienceIncrementObject: {fileID: 1221160652}
   ProductionIncrementObject: {fileID: 2048398206}
   RadialDiagramObjectA: {fileID: 557013830}
   RadialDiagramObjectB: {fileID: 912428440}

@@ -16,27 +16,45 @@ public class Economy : MonoBehaviour {
 
     private string cityName = "";
     private int level = 0;
+    [SerializeField]
     private int cntPeople = 0, cntPeoplePerDay = 0;
+    [SerializeField]
     private long money = 0, optMoney = 0, moneyPerDay = 0;
+    [SerializeField]
     private long science = 0, sciencePerDay = 0;
+    [SerializeField]
     private long products = 0, productsPerDay = 0;
+    [SerializeField]
     private float averageLoyality = 0;
     private float HCS = 0, PIT = 0, VAT = 0, CIT = 0; // Коэффиценты налогов
     private bool isStarted = false;
     // private float deltaTime = 0.1f;
     
+    [SerializeField]
     private List <int> cntHousesD;
+    [SerializeField]
     private List <int> cntShopsD;
+    [SerializeField]
     private List <int> cntSciencesD;
+    [SerializeField]
     private List <int> cntFactoriesD;
+    [SerializeField]
     private List <int> cntPeopleD;
+    [SerializeField]
     private List <int> cntPostersD;
+    [SerializeField]
     private List <int> averageLoyalityD;
+    [SerializeField]
     private List <long> moneyPerDayD;
+    [SerializeField]
     private List <long> sciencePerDayD;
+    [SerializeField]
     private List <long> productsPerDayD;
 
     public GameObject fastStats;
+    public SityInfo SityInfoClass;
+    public Taxation TaxationClass;
+    public Statistic StatisticClass;
 
     private void Awake() {
         FieldClass = Camera.main.GetComponent <Field> ();
@@ -169,6 +187,7 @@ public class Economy : MonoBehaviour {
         if (counting[0] + counting[1] + counting[2] + counting[3] > 0) {
             averageLoyality = (averageLoyalityD[0] + averageLoyalityD[1] + averageLoyalityD[2] + averageLoyalityD[3]) / (counting[0] + counting[1] + counting[2] + counting[3]);
         }
+
     }
 
     private void AddScience() {
@@ -243,5 +262,63 @@ public class Economy : MonoBehaviour {
             return;
         }
         ++cntPostersD[districtNum];
+    }
+
+    public void FillInTheMenuWithStatistics() {
+        CalcStatsPerDay();
+        CalcPeopleStats();
+
+        SityInfoClass.SetName(cityName);
+        SityInfoClass.SetLevel(level);
+        SityInfoClass.SetBudget(money);
+        SityInfoClass.SetPopulation(cntPeople);
+        SityInfoClass.SetScience(science);
+        SityInfoClass.SetProduction(products);
+        SityInfoClass.SetBudgeIncrement(moneyPerDay);
+        SityInfoClass.SetPopulationIncrement(cntPeoplePerDay);
+        SityInfoClass.SetScienceIncrement(sciencePerDay);
+        SityInfoClass.SetProductionIncrement(productsPerDay);
+        //SityInfoClass.SetGDP();
+
+        StatisticClass.SetCommerceNum(cntShopsD[0], 1);
+        StatisticClass.SetCommerceNum(cntShopsD[1], 2);
+        StatisticClass.SetCommerceNum(cntShopsD[2], 3);
+        StatisticClass.SetCommerceNum(cntShopsD[3], 4);
+        StatisticClass.HouseNum(cntHousesD[0], 1);
+        StatisticClass.HouseNum(cntHousesD[1], 2);
+        StatisticClass.HouseNum(cntHousesD[2], 3);
+        StatisticClass.HouseNum(cntHousesD[3], 4);
+        StatisticClass.SetAVGLoyality(averageLoyalityD[0], 1);
+        StatisticClass.SetAVGLoyality(averageLoyalityD[1], 2);
+        StatisticClass.SetAVGLoyality(averageLoyalityD[2], 3);
+        StatisticClass.SetAVGLoyality(averageLoyalityD[3], 4);
+        StatisticClass.SetPostersNum(cntPostersD[0], 1);
+        StatisticClass.SetPostersNum(cntPostersD[1], 2);
+        StatisticClass.SetPostersNum(cntPostersD[2], 3);
+        StatisticClass.SetPostersNum(cntPostersD[3], 4);
+        StatisticClass.SetScienceNum(cntSciencesD[0], 1);
+        StatisticClass.SetScienceNum(cntSciencesD[1], 2);
+        StatisticClass.SetScienceNum(cntSciencesD[2], 3);
+        StatisticClass.SetScienceNum(cntSciencesD[3], 4);
+        StatisticClass.SetProductionNum(cntFactoriesD[0], 1);
+        StatisticClass.SetProductionNum(cntFactoriesD[1], 2);
+        StatisticClass.SetProductionNum(cntFactoriesD[2], 3);
+        StatisticClass.SetProductionNum(cntFactoriesD[3], 4);
+        StatisticClass.SetBudgeIncrement(moneyPerDayD[0], 1);
+        StatisticClass.SetBudgeIncrement(moneyPerDayD[1], 2);
+        StatisticClass.SetBudgeIncrement(moneyPerDayD[2], 3);
+        StatisticClass.SetBudgeIncrement(moneyPerDayD[3], 4);
+        StatisticClass.SetPopulation(cntPeopleD[0], 1);
+        StatisticClass.SetPopulation(cntPeopleD[1], 2);
+        StatisticClass.SetPopulation(cntPeopleD[2], 3);
+        StatisticClass.SetPopulation(cntPeopleD[3], 4);
+        StatisticClass.SetScienceIncrement(sciencePerDayD[0], 1);
+        StatisticClass.SetScienceIncrement(sciencePerDayD[1], 2);
+        StatisticClass.SetScienceIncrement(sciencePerDayD[2], 3);
+        StatisticClass.SetScienceIncrement(sciencePerDayD[3], 4);
+        StatisticClass.SetProductionIncrement(productsPerDayD[0], 1);
+        StatisticClass.SetProductionIncrement(productsPerDayD[1], 2);
+        StatisticClass.SetProductionIncrement(productsPerDayD[2], 3);
+        StatisticClass.SetProductionIncrement(productsPerDayD[3], 4);
     }
 }

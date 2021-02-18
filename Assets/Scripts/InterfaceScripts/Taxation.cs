@@ -14,22 +14,22 @@ public class Taxation : MonoBehaviour
     public float NDFLkoeff = 1;
     public float NPPkoeff = 1;
 
-    float GetGKH()
+    public float GetGKH()
     {
         return GKHObject.GetComponent<Slider>().value * GKHkoeff;
     }
 
-    float GetNDS()
+    public float GetNDS()
     {
         return NDSObject.GetComponent<Slider>().value * NDSkoeff;
     }
 
-    float GetNDFL()
+    public float GetNDFL()
     {
         return NDFLObject.GetComponent<Slider>().value * NDFLkoeff;
     }
 
-    float GetNPP()
+    public float GetNPP()
     {
         return NPPObject.GetComponent<Slider>().value * NPPkoeff;
     }

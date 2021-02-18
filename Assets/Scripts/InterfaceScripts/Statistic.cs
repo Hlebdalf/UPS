@@ -24,10 +24,11 @@ public class Statistic : MonoBehaviour
     private SocText avgLoyality;
     private SocText postersNum;
     private SocText commerceNum;
-    void Start()
+
+    private void Awake()
     {
-        commerceNum.Class1 = GameObjects[0].GetComponent<Text>();
-        avgLoyality.Class1 = GameObjects[4].GetComponent<Text>();
+        avgLoyality.Class1 = GameObjects[0].GetComponent<Text>();
+        commerceNum.Class1 = GameObjects[4].GetComponent<Text>();
         postersNum.Class1 = GameObjects[8].GetComponent<Text>();
         houseNum.Class1 = GameObjects[12].GetComponent<Text>();
         scienceNum.Class1 = GameObjects[16].GetComponent<Text>();
@@ -37,8 +38,8 @@ public class Statistic : MonoBehaviour
         scienceIncrement.Class1 = GameObjects[32].GetComponent<Text>();
         productionIncrement.Class1 = GameObjects[36].GetComponent<Text>();
 
-        commerceNum.Class2 = GameObjects[1].GetComponent<Text>();
-        avgLoyality.Class2 = GameObjects[5].GetComponent<Text>();
+        avgLoyality.Class2 = GameObjects[1].GetComponent<Text>();
+        commerceNum.Class2 = GameObjects[5].GetComponent<Text>();
         postersNum.Class2 = GameObjects[9].GetComponent<Text>();
         houseNum.Class2 = GameObjects[13].GetComponent<Text>();
         scienceNum.Class2 = GameObjects[17].GetComponent<Text>();
@@ -48,8 +49,8 @@ public class Statistic : MonoBehaviour
         scienceIncrement.Class2 = GameObjects[33].GetComponent<Text>();
         productionIncrement.Class2 = GameObjects[37].GetComponent<Text>();
 
-        commerceNum.Class3 = GameObjects[2].GetComponent<Text>();
-        avgLoyality.Class3 = GameObjects[6].GetComponent<Text>();
+        avgLoyality.Class3 = GameObjects[2].GetComponent<Text>();
+        commerceNum.Class3 = GameObjects[6].GetComponent<Text>();
         postersNum.Class3 = GameObjects[10].GetComponent<Text>();
         houseNum.Class3 = GameObjects[14].GetComponent<Text>();
         scienceNum.Class3 = GameObjects[18].GetComponent<Text>();
@@ -59,8 +60,8 @@ public class Statistic : MonoBehaviour
         scienceIncrement.Class3 = GameObjects[34].GetComponent<Text>();
         productionIncrement.Class3 = GameObjects[38].GetComponent<Text>();
 
-        commerceNum.Class4 = GameObjects[3].GetComponent<Text>();
-        avgLoyality.Class4 = GameObjects[7].GetComponent<Text>();
+        avgLoyality.Class4 = GameObjects[3].GetComponent<Text>();
+        commerceNum.Class4 = GameObjects[7].GetComponent<Text>();
         postersNum.Class4 = GameObjects[11].GetComponent<Text>();
         houseNum.Class4 = GameObjects[15].GetComponent<Text>();
         scienceNum.Class4 = GameObjects[19].GetComponent<Text>();
@@ -104,7 +105,7 @@ public class Statistic : MonoBehaviour
             case 4:
                 houseNum.Class4.text = HouseNum.ToString() + " ШТ.";
                 break;
-        }      
+        }
     }
     public void SetAVGLoyality(int AVGLoyality, int Class)
     {
@@ -144,7 +145,7 @@ public class Statistic : MonoBehaviour
         }     
     }
 
-    public void SetScienceNum(int ScienceNum, int Class)
+    public void SetScienceNum(long ScienceNum, int Class)
     {
         switch (Class)
         {
@@ -164,7 +165,7 @@ public class Statistic : MonoBehaviour
         
     }
 
-    public void SetProductionNum(int ProductionNum, int Class)
+    public void SetProductionNum(long ProductionNum, int Class)
     {
         switch (Class)
         {
@@ -183,7 +184,7 @@ public class Statistic : MonoBehaviour
         }   
     }
 
-    public void SetBudgeIncrement(int BudgeIncrement, int Class)
+    public void SetBudgeIncrement(long BudgeIncrement, int Class)
     {
         switch (Class)
         {
@@ -202,26 +203,26 @@ public class Statistic : MonoBehaviour
         }   
     }
 
-    public void SetPopulationIncrement(int PopulationIncrement, int Class)
+    public void SetPopulation(int PopulationIncrement, int Class)
     {
         switch (Class)
         {
             case 1:
-                populationIncrement.Class1.text = PopulationIncrement.ToString() + " Ч/Д";
+                populationIncrement.Class1.text = PopulationIncrement.ToString() + " Ч";
                 break;
             case 2:
-                populationIncrement.Class2.text = PopulationIncrement.ToString() + " Ч/Д";
+                populationIncrement.Class2.text = PopulationIncrement.ToString() + " Ч";
                 break;
             case 3:
-                populationIncrement.Class3.text = PopulationIncrement.ToString() + " Ч/Д";
+                populationIncrement.Class3.text = PopulationIncrement.ToString() + " Ч";
                 break;
             case 4:
-                populationIncrement.Class4.text = PopulationIncrement.ToString() + " Ч/Д";
+                populationIncrement.Class4.text = PopulationIncrement.ToString() + " Ч";
                 break;
         }      
     }
 
-    public void SetScienceIncrement(int ScienceIncrement, int Class)
+    public void SetScienceIncrement(long ScienceIncrement, int Class)
     {
         switch (Class)
         {
@@ -240,7 +241,7 @@ public class Statistic : MonoBehaviour
         }   
     }
 
-    public void SetProductionIncrement(int ProductionIncrement, int Class)
+    public void SetProductionIncrement(long ProductionIncrement, int Class)
     {
         switch (Class)
         {
