@@ -181,6 +181,9 @@ public class Economy : MonoBehaviour {
             }
             averageLoyalityD[passportClass.idxSocialСlass - 1] += passportClass.GetLoyalty().loyalty;
             ++counting[passportClass.idxSocialСlass - 1];
+
+            PITn += (float)passportClass.salary;
+            PITnD[passportClass.idxSocialСlass - 1] += (float)passportClass.salary;
         }
         if (counting[0] > 0) averageLoyalityD[0] /= counting[0];
         if (counting[1] > 0) averageLoyalityD[1] /= counting[1];
