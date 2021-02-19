@@ -184,7 +184,7 @@ public class Statistic : MonoBehaviour
         }   
     }
 
-    public void SetBudgeIncrement(long BudgeIncrement, int Class)
+    public void SetBudgetIncrement(long BudgeIncrement, int Class)
     {
         switch (Class)
         {

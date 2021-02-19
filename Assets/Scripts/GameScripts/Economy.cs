@@ -17,11 +17,12 @@ public class Economy : MonoBehaviour {
     private string cityName = "";
     private int level = 0;
     private int cntPeople = 0, cntPeoplePerDay = 0;
-    private long money = 0, optMoney = 0, moneyPerDay = 0;
+    private long money = 0, optMoney = 0, serviceCost = 0;
     private long science = 0, sciencePerDay = 0;
     private long products = 0, productsPerDay = 0;
     private float averageLoyality = 0;
-    private float HCS = 0, PIT = 0, VAT = 0, CIT = 0; // Коэффиценты налогов
+    private float HCSk = 0, PITk = 0, VATk = 0, CITk = 0; // Коэффиценты налогов
+    private float HCSn = 0, PITn = 0, VATn = 0, CITn = 0;
     private bool isStarted = false;
     // private float deltaTime = 0.1f;
     
@@ -32,7 +33,11 @@ public class Economy : MonoBehaviour {
     private List <int> cntPeopleD;
     private List <int> cntPostersD;
     private List <int> averageLoyalityD;
-    private List <long> moneyPerDayD;
+    private List <float> HCSnD;
+    private List <float> PITnD;
+    private List <float> VATnD;
+    private List <float> CITnD;
+    private List <long> serviceCostD;
     private List <long> sciencePerDayD;
     private List <long> productsPerDayD;
 
@@ -56,19 +61,16 @@ public class Economy : MonoBehaviour {
         cntPeopleD = new List <int> () {0, 0, 0, 0};
         cntPostersD = new List <int> () {0, 0, 0, 0};
         averageLoyalityD = new List <int> () {0, 0, 0, 0};
-        moneyPerDayD = new List <long> () {0, 0, 0, 0};
+        HCSnD = new List <float> () {0, 0, 0, 0};
+        PITnD = new List <float> () {0, 0, 0, 0};
+        VATnD = new List <float> () {0, 0, 0, 0};
+        CITnD = new List <float> () {0, 0, 0, 0};
+        serviceCostD = new List <long> () {0, 0, 0, 0};
         sciencePerDayD = new List <long> () {0, 0, 0, 0};
         productsPerDayD = new List <long> () {0, 0, 0, 0};
     }
-    
-    private void Start() {
-        money = (long)UnityEngine.Random.Range(0f, 1000000000000f);
-        LevelUp();
-        SetMoney(money);
-        WriteCntPeople();
-    }
 
-    IEnumerator AsyncStartEconomy() {
+    IEnumerator AsyncEconomy() {
         for (int i = 0; true; ++i) {
             if (BuildsClass.objectsWithAvailableSeats.Count > 0 && BuildsClass.commercesWithAvailableSeats.Count > 0) {
                 int houseIt = (int)UnityEngine.Random.Range(0f, BuildsClass.objectsWithAvailableSeats.Count - 0.01f);
@@ -102,8 +104,8 @@ public class Economy : MonoBehaviour {
         if (optMoney < 0) Money.text += "\n- " + Math.Abs(optMoney) + " ₽";
         if (writePerDay) {
             if (optMoney != 0) Money.text += "\n";
-            if (moneyPerDay > 0) Money.text += "+ " + Math.Abs(moneyPerDay) + " ₽";
-            if (moneyPerDay < 0) Money.text += "- " + Math.Abs(moneyPerDay) + " ₽";
+            if (GetMoneyPerDay() > 0) Money.text += "+ " + Math.Abs(GetMoneyPerDay()) + " ₽";
+            if (GetMoneyPerDay() < 0) Money.text += "- " + Math.Abs(GetMoneyPerDay()) + " ₽";
         }
     }
 
@@ -112,42 +114,57 @@ public class Economy : MonoBehaviour {
     }
 
     private void CalcStatsPerDay() {
-        moneyPerDay = sciencePerDay = productsPerDay = 0;
-        moneyPerDayD = new List <long> () {0, 0, 0, 0};
+        HCSn = PITn = VATn = CITn = 0;
+        serviceCost = sciencePerDay = productsPerDay = 0;
+        HCSnD = new List <float> () {0, 0, 0, 0};
+        PITnD = new List <float> () {0, 0, 0, 0};
+        VATnD = new List <float> () {0, 0, 0, 0};
+        CITnD = new List <float> () {0, 0, 0, 0};
+        serviceCostD = new List <long> () {0, 0, 0, 0};
         sciencePerDayD = new List <long> () {0, 0, 0, 0};
         productsPerDayD = new List <long> () {0, 0, 0, 0};
+
         for (int houseIt = 0; houseIt < BuildsClass.objects.Count; ++houseIt) {
             BuildObject buildClass = BuildsClass.objects[houseIt].GetComponent <BuildObject> ();
             House houseClass = BuildsClass.objects[houseIt].GetComponent <House> ();
             int districtNum = FieldClass.districts[(int)buildClass.x + FieldClass.fieldSizeHalf, (int)buildClass.y + FieldClass.fieldSizeHalf];
-            moneyPerDay += houseClass.GetTaxRate();
-            moneyPerDay -= houseClass.GetServiceCost();
-            moneyPerDayD[districtNum] += houseClass.GetTaxRate();
-            moneyPerDayD[districtNum] -= houseClass.GetServiceCost();
-            
+
+            HCSn += houseClass.GetTaxRate();
+            serviceCost -= houseClass.GetServiceCost();
+
+            HCSnD[districtNum] += (long)(houseClass.GetTaxRate());
+            serviceCostD[districtNum] -= houseClass.GetServiceCost();
         }
+
         for (int commerceIt = 0; commerceIt < BuildsClass.commerces.Count; ++commerceIt) {
             GameObject commerceObj = BuildsClass.commerces[commerceIt];
             BuildObject buildClass = BuildsClass.commerces[commerceIt].GetComponent <BuildObject> ();
             int districtNum = FieldClass.districts[(int)buildClass.x + FieldClass.fieldSizeHalf, (int)buildClass.y + FieldClass.fieldSizeHalf];
+
             if (commerceObj.GetComponent <Factory> ()) {
                 Factory factoryClass = commerceObj.GetComponent <Factory> ();
-                moneyPerDay -= factoryClass.GetServiceCost();
+
+                serviceCost -= factoryClass.GetServiceCost();
                 productsPerDay += factoryClass.GetProductsRate();
-                moneyPerDayD[districtNum] -= factoryClass.GetServiceCost();
+
+                serviceCostD[districtNum] -= factoryClass.GetServiceCost();
                 productsPerDayD[districtNum] += factoryClass.GetProductsRate();
             }
             else if (commerceObj.GetComponent <Science> ()) {
                 Science scienceClass = commerceObj.GetComponent <Science> ();
-                moneyPerDay -= scienceClass.GetServiceCost();
+
+                serviceCost -= scienceClass.GetServiceCost();
                 sciencePerDay += scienceClass.GetScienceRate();
-                moneyPerDayD[districtNum] -= scienceClass.GetServiceCost();
+
+                serviceCostD[districtNum] -= scienceClass.GetServiceCost();
                 sciencePerDayD[districtNum] += scienceClass.GetScienceRate();
             }
             else if (commerceObj.GetComponent <Shop> ()) {
                 Shop shopClass = commerceObj.GetComponent <Shop> ();
-                moneyPerDay += shopClass.GetTaxRate();
-                moneyPerDayD[districtNum] += shopClass.GetTaxRate();
+
+                VATn += shopClass.GetTaxRate();
+
+                VATnD[districtNum] += (long)(shopClass.GetTaxRate());
             }
         }
     }
@@ -183,15 +200,26 @@ public class Economy : MonoBehaviour {
         products += productsPerDay;
     }
 
+    private void SetGDP() {
+        (float HCS, float PIT, float VAT, float CIT) k = TaxationClass.GetGDPk();
+        HCSk = k.HCS; PITk = k.PIT; VATk = k.VAT; CITk = k.CIT;
+    }
+
     public void StartEconomy() {
+        money = (long)UnityEngine.Random.Range(0f, 1000000000000f);
+        LevelUp();
+        SetMoney(money);
+        WriteCntPeople();
         isStarted = true;
+        SetGDP();
         CalcStatsPerDay();
         CalcPeopleStats();
-        StartCoroutine(AsyncStartEconomy());
+        StartCoroutine(AsyncEconomy());
     }
 
     public void NewDay() {
         if (isStarted) {
+            SetGDP();
             CalcStatsPerDay();
             CalcPeopleStats();
             StartCoroutine(AddMoneyWithDelay());
@@ -200,10 +228,26 @@ public class Economy : MonoBehaviour {
         }
     }
 
-    public int GetLevel() { return level; }
-    public int GetCntPeople() { return cntPeople; }
-    public long GetMoney() { return money; }
     public string GetCityName() { return cityName; }
+    public int GetLevel() { return level; }
+    public long GetMoney() { return money; }
+    public int GetCntPeople() { return cntPeople; }
+    public long GetScience() { return science; }
+    public long GetProducts() { return products; }
+    public long GetMoneyPerDay() { return (long)(HCSn * HCSk + PITn * PITk + VATn * VATk + CITn * CITk) + serviceCost; }
+    public int GetPeoplePerDay() { return cntPeoplePerDay; }
+    public long GetSciencePerDay() { return sciencePerDay; }
+    public long GetProductsPerDay() { return productsPerDay; }
+    public int GetCntShopsD(int idx) { return cntShopsD[idx]; }
+    public int GetCntHousesD(int idx) { return cntHousesD[idx]; }
+    public float GetAverageLoyalityD(int idx) { return averageLoyalityD[idx]; }
+    public int GetCntPostersD(int idx) { return cntPostersD[idx]; }
+    public long GetCntSciencesD(int idx) { return cntSciencesD[idx]; }
+    public long GetCntFactoriesD(int idx) { return cntFactoriesD[idx]; }
+    public long GetMoneyPerDayD(int idx) { return (long)(HCSnD[idx] * HCSk + PITnD[idx] * PITk + VATnD[idx] * VATk + CITnD[idx] * CITk) + serviceCostD[idx]; }
+    public int GetCntPeopleD(int idx) { return cntPeopleD[idx]; }
+    public long GetSciencePerDayD(int idx) { return sciencePerDayD[idx]; }
+    public long GetProductsPerDayD(int idx) { return productsPerDayD[idx]; }
 
     public void LevelUp() {
         Level.text = ++level + "";
@@ -252,61 +296,81 @@ public class Economy : MonoBehaviour {
         ++cntPostersD[districtNum];
     }
 
+    public void ChangeGDP() {
+        SetGDP();
+        SityInfoClass.SetBudgetIncrement(GetMoneyPerDay());
+        StatisticClass.SetBudgetIncrement(GetMoneyPerDayD(0), 1);
+        StatisticClass.SetBudgetIncrement(GetMoneyPerDayD(1), 2);
+        StatisticClass.SetBudgetIncrement(GetMoneyPerDayD(2), 3);
+        StatisticClass.SetBudgetIncrement(GetMoneyPerDayD(3), 4);
+        SityInfoClass.SetGDP(HCSn * HCSk, PITn * PITk, VATn * VATk, CITn * CITk); // Цена без обслуживания
+    }
+
     public void FillInTheMenuWithStatistics() {
+        SetGDP();
         CalcStatsPerDay();
         CalcPeopleStats();
 
-        SityInfoClass.SetName(cityName);
-        SityInfoClass.SetLevel(level);
-        SityInfoClass.SetBudget(money);
-        SityInfoClass.SetPopulation(cntPeople);
-        SityInfoClass.SetScience(science);
-        SityInfoClass.SetProduction(products);
-        SityInfoClass.SetBudgeIncrement(moneyPerDay);
-        SityInfoClass.SetPopulationIncrement(cntPeoplePerDay); // Don't working
-        SityInfoClass.SetScienceIncrement(sciencePerDay);
-        SityInfoClass.SetProductionIncrement(productsPerDay);
-        //SityInfoClass.SetGDP();
+        SityInfoClass.SetName(GetCityName());
+        SityInfoClass.SetLevel(GetLevel());
+        SityInfoClass.SetBudget(GetMoney());
+        SityInfoClass.SetPopulation(GetCntPeople());
+        SityInfoClass.SetScience(GetScience());
+        SityInfoClass.SetProduction(GetProducts());
+        SityInfoClass.SetBudgetIncrement(GetMoneyPerDay());
+        SityInfoClass.SetPopulationIncrement(GetPeoplePerDay()); // Don't working
+        SityInfoClass.SetScienceIncrement(GetSciencePerDay());
+        SityInfoClass.SetProductionIncrement(GetProductsPerDay());
+        SityInfoClass.SetGDP(HCSn * HCSk, PITn * PITk, VATn * VATk, CITn * CITk); // Цена без обслуживания
 
-        StatisticClass.SetCommerceNum(cntShopsD[0], 1);
-        StatisticClass.SetCommerceNum(cntShopsD[1], 2);
-        StatisticClass.SetCommerceNum(cntShopsD[2], 3);
-        StatisticClass.SetCommerceNum(cntShopsD[3], 4);
-        StatisticClass.HouseNum(cntHousesD[0], 1);
-        StatisticClass.HouseNum(cntHousesD[1], 2);
-        StatisticClass.HouseNum(cntHousesD[2], 3);
-        StatisticClass.HouseNum(cntHousesD[3], 4);
-        StatisticClass.SetAVGLoyality(averageLoyalityD[0], 1);
-        StatisticClass.SetAVGLoyality(averageLoyalityD[1], 2);
-        StatisticClass.SetAVGLoyality(averageLoyalityD[2], 3);
-        StatisticClass.SetAVGLoyality(averageLoyalityD[3], 4);
-        StatisticClass.SetPostersNum(cntPostersD[0], 1);
-        StatisticClass.SetPostersNum(cntPostersD[1], 2);
-        StatisticClass.SetPostersNum(cntPostersD[2], 3);
-        StatisticClass.SetPostersNum(cntPostersD[3], 4);
-        StatisticClass.SetScienceNum(cntSciencesD[0], 1);
-        StatisticClass.SetScienceNum(cntSciencesD[1], 2);
-        StatisticClass.SetScienceNum(cntSciencesD[2], 3);
-        StatisticClass.SetScienceNum(cntSciencesD[3], 4);
-        StatisticClass.SetProductionNum(cntFactoriesD[0], 1);
-        StatisticClass.SetProductionNum(cntFactoriesD[1], 2);
-        StatisticClass.SetProductionNum(cntFactoriesD[2], 3);
-        StatisticClass.SetProductionNum(cntFactoriesD[3], 4);
-        StatisticClass.SetBudgeIncrement(moneyPerDayD[0], 1);
-        StatisticClass.SetBudgeIncrement(moneyPerDayD[1], 2);
-        StatisticClass.SetBudgeIncrement(moneyPerDayD[2], 3);
-        StatisticClass.SetBudgeIncrement(moneyPerDayD[3], 4);
-        StatisticClass.SetPopulation(cntPeopleD[0], 1);
-        StatisticClass.SetPopulation(cntPeopleD[1], 2);
-        StatisticClass.SetPopulation(cntPeopleD[2], 3);
-        StatisticClass.SetPopulation(cntPeopleD[3], 4);
-        StatisticClass.SetScienceIncrement(sciencePerDayD[0], 1);
-        StatisticClass.SetScienceIncrement(sciencePerDayD[1], 2);
-        StatisticClass.SetScienceIncrement(sciencePerDayD[2], 3);
-        StatisticClass.SetScienceIncrement(sciencePerDayD[3], 4);
-        StatisticClass.SetProductionIncrement(productsPerDayD[0], 1);
-        StatisticClass.SetProductionIncrement(productsPerDayD[1], 2);
-        StatisticClass.SetProductionIncrement(productsPerDayD[2], 3);
-        StatisticClass.SetProductionIncrement(productsPerDayD[3], 4);
+        StatisticClass.SetCommerceNum(GetCntShopsD(0), 1);
+        StatisticClass.SetCommerceNum(GetCntShopsD(1), 2);
+        StatisticClass.SetCommerceNum(GetCntShopsD(2), 3);
+        StatisticClass.SetCommerceNum(GetCntShopsD(3), 4);
+
+        StatisticClass.HouseNum(GetCntHousesD(0), 1);
+        StatisticClass.HouseNum(GetCntHousesD(1), 2);
+        StatisticClass.HouseNum(GetCntHousesD(2), 3);
+        StatisticClass.HouseNum(GetCntHousesD(3), 4);
+
+        StatisticClass.SetAVGLoyality((int)GetAverageLoyalityD(0), 1);
+        StatisticClass.SetAVGLoyality((int)GetAverageLoyalityD(1), 2);
+        StatisticClass.SetAVGLoyality((int)GetAverageLoyalityD(2), 3);
+        StatisticClass.SetAVGLoyality((int)GetAverageLoyalityD(3), 4);
+
+        StatisticClass.SetPostersNum(GetCntPostersD(0), 1);
+        StatisticClass.SetPostersNum(GetCntPostersD(1), 2);
+        StatisticClass.SetPostersNum(GetCntPostersD(2), 3);
+        StatisticClass.SetPostersNum(GetCntPostersD(3), 4);
+
+        StatisticClass.SetScienceNum(GetCntSciencesD(0), 1);
+        StatisticClass.SetScienceNum(GetCntSciencesD(1), 2);
+        StatisticClass.SetScienceNum(GetCntSciencesD(2), 3);
+        StatisticClass.SetScienceNum(GetCntSciencesD(3), 4);
+
+        StatisticClass.SetProductionNum(GetCntFactoriesD(0), 1);
+        StatisticClass.SetProductionNum(GetCntFactoriesD(1), 2);
+        StatisticClass.SetProductionNum(GetCntFactoriesD(2), 3);
+        StatisticClass.SetProductionNum(GetCntFactoriesD(3), 4);
+
+        StatisticClass.SetBudgetIncrement(GetMoneyPerDayD(0), 1);
+        StatisticClass.SetBudgetIncrement(GetMoneyPerDayD(1), 2);
+        StatisticClass.SetBudgetIncrement(GetMoneyPerDayD(2), 3);
+        StatisticClass.SetBudgetIncrement(GetMoneyPerDayD(3), 4);
+
+        StatisticClass.SetPopulation(GetCntPeopleD(0), 1);
+        StatisticClass.SetPopulation(GetCntPeopleD(1), 2);
+        StatisticClass.SetPopulation(GetCntPeopleD(2), 3);
+        StatisticClass.SetPopulation(GetCntPeopleD(3), 4);
+
+        StatisticClass.SetScienceIncrement(GetSciencePerDayD(0), 1);
+        StatisticClass.SetScienceIncrement(GetSciencePerDayD(1), 2);
+        StatisticClass.SetScienceIncrement(GetSciencePerDayD(2), 3);
+        StatisticClass.SetScienceIncrement(GetSciencePerDayD(3), 4);
+
+        StatisticClass.SetProductionIncrement(GetProductsPerDayD(0), 1);
+        StatisticClass.SetProductionIncrement(GetProductsPerDayD(1), 2);
+        StatisticClass.SetProductionIncrement(GetProductsPerDayD(2), 3);
+        StatisticClass.SetProductionIncrement(GetProductsPerDayD(3), 4);
     }
 }

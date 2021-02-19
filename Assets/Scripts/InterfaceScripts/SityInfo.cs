@@ -74,7 +74,7 @@ public class SityInfo : MonoBehaviour
         production.text = Production.ToString() + " П.";
     }
 
-    public void SetBudgeIncrement(long BudgeIncrement)
+    public void SetBudgetIncrement(long BudgeIncrement)
     {
         budgeIncrement.text = BudgeIncrement.ToString() + " ₽/Д";
     }
