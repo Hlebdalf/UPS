@@ -56,42 +56,42 @@ public class SityInfo : MonoBehaviour
 
     public void SetBudget(long Budget)
     {
-        budget.text = Budget.ToString() + " ₽";
+        budget.text = Budget.ToString();
     }
 
     public void SetPopulation(int Population)
     {
-        population.text = Population.ToString() + " Ч.";
+        population.text = Population.ToString();
     }
 
     public void SetScience(long Science)
     {
-        science.text = Science.ToString() + " Н.";
+        science.text = Science.ToString();
     }
 
     public void SetProduction(long Production)
     {
-        production.text = Production.ToString() + " П.";
+        production.text = Production.ToString();
     }
 
     public void SetBudgetIncrement(long BudgeIncrement)
     {
-        budgeIncrement.text = BudgeIncrement.ToString() + " ₽/Д";
+        budgeIncrement.text = BudgeIncrement.ToString();
     }
 
     public void SetPopulationIncrement(int PopulationIncrement)
     {
-        populationIncrement.text = PopulationIncrement.ToString() + " Ч/Д";
+        populationIncrement.text = PopulationIncrement.ToString();
     }
 
     public void SetScienceIncrement(long ScienceIncrement)
     {
-        scienceIncrement.text = ScienceIncrement.ToString() + " Н/Д";
+        scienceIncrement.text = ScienceIncrement.ToString();
     }
 
     public void SetProductionIncrement(long ProductionIncrement)
     {
-        productionIncrement.text = ProductionIncrement.ToString() + " П/Д";
+        productionIncrement.text = ProductionIncrement.ToString();
     }
 
     public void SetGDP(float A, float B, float C, float D)

@@ -76,16 +76,16 @@ public class Statistic : MonoBehaviour
     {   
         switch (Class) {
             case 1:
-                commerceNum.Class1.text = CommerceNum.ToString() + " ШТ.";
+                commerceNum.Class1.text = CommerceNum.ToString() ;
                 break;
             case 2:
-                commerceNum.Class2.text = CommerceNum.ToString() + " ШТ.";
+                commerceNum.Class2.text = CommerceNum.ToString() ;
                 break;
             case 3:
-                commerceNum.Class3.text = CommerceNum.ToString() + " ШТ.";
+                commerceNum.Class3.text = CommerceNum.ToString() ;
                 break;
             case 4:
-                commerceNum.Class4.text = CommerceNum.ToString() + " ШТ.";
+                commerceNum.Class4.text = CommerceNum.ToString() ;
                 break;
         }
     }
@@ -94,16 +94,16 @@ public class Statistic : MonoBehaviour
         switch (Class)
         {
             case 1:
-                houseNum.Class1.text = HouseNum.ToString() + " ШТ.";
+                houseNum.Class1.text = HouseNum.ToString() ;
                 break;
             case 2:
-                houseNum.Class2.text = HouseNum.ToString() + " ШТ.";
+                houseNum.Class2.text = HouseNum.ToString() ;
                 break;
             case 3:
-                houseNum.Class3.text = HouseNum.ToString() + " ШТ.";
+                houseNum.Class3.text = HouseNum.ToString() ;
                 break;
             case 4:
-                houseNum.Class4.text = HouseNum.ToString() + " ШТ.";
+                houseNum.Class4.text = HouseNum.ToString() ;
                 break;
         }
     }
@@ -131,16 +131,16 @@ public class Statistic : MonoBehaviour
         switch (Class)
         {
             case 1:
-                postersNum.Class1.text = PostersNum.ToString() + " ШТ.";
+                postersNum.Class1.text = PostersNum.ToString() ;
                 break;
             case 2:
-                postersNum.Class2.text = PostersNum.ToString() + " ШТ.";
+                postersNum.Class2.text = PostersNum.ToString() ;
                 break;
             case 3:
-                postersNum.Class3.text = PostersNum.ToString() + " ШТ.";
+                postersNum.Class3.text = PostersNum.ToString() ;
                 break;
             case 4:
-                postersNum.Class4.text = PostersNum.ToString() + " ШТ.";
+                postersNum.Class4.text = PostersNum.ToString() ;
                 break;
         }
     }
@@ -150,16 +150,16 @@ public class Statistic : MonoBehaviour
         switch (Class)
         {
             case 1:
-                scienceNum.Class1.text = ScienceNum.ToString() + " ШТ.";
+                scienceNum.Class1.text = ScienceNum.ToString() ;
                 break;
             case 2:
-                scienceNum.Class2.text = ScienceNum.ToString() + " ШТ.";
+                scienceNum.Class2.text = ScienceNum.ToString() ;
                 break;
             case 3:
-                scienceNum.Class3.text = ScienceNum.ToString() + " ШТ.";
+                scienceNum.Class3.text = ScienceNum.ToString() ;
                 break;
             case 4:
-                scienceNum.Class4.text = ScienceNum.ToString() + " ШТ.";
+                scienceNum.Class4.text = ScienceNum.ToString() ;
                 break;
         }
         
@@ -170,16 +170,16 @@ public class Statistic : MonoBehaviour
         switch (Class)
         {
             case 1:
-                productionNum.Class1.text = ProductionNum.ToString() + " ШТ.";
+                productionNum.Class1.text = ProductionNum.ToString() ;
                 break;
             case 2:
-                productionNum.Class2.text = ProductionNum.ToString() + " ШТ.";
+                productionNum.Class2.text = ProductionNum.ToString() ;
                 break;
             case 3:
-                productionNum.Class3.text = ProductionNum.ToString() + " ШТ.";
+                productionNum.Class3.text = ProductionNum.ToString() ;
                 break;
             case 4:
-                productionNum.Class4.text = ProductionNum.ToString() + " ШТ.";
+                productionNum.Class4.text = ProductionNum.ToString() ;
                 break;
         }   
     }
@@ -189,16 +189,16 @@ public class Statistic : MonoBehaviour
         switch (Class)
         {
             case 1:
-                budgeIncrement.Class1.text = BudgeIncrement.ToString() + " ₽/Д";
+                budgeIncrement.Class1.text = BudgeIncrement.ToString();
                 break;
             case 2:
-                budgeIncrement.Class2.text = BudgeIncrement.ToString() + " ₽/Д";
+                budgeIncrement.Class2.text = BudgeIncrement.ToString();
                 break;
             case 3:
-                budgeIncrement.Class3.text = BudgeIncrement.ToString() + " ₽/Д";
+                budgeIncrement.Class3.text = BudgeIncrement.ToString();
                 break;
             case 4:
-                budgeIncrement.Class4.text = BudgeIncrement.ToString() + " ₽/Д";
+                budgeIncrement.Class4.text = BudgeIncrement.ToString();
                 break;
         }   
     }
@@ -208,16 +208,16 @@ public class Statistic : MonoBehaviour
         switch (Class)
         {
             case 1:
-                populationIncrement.Class1.text = PopulationIncrement.ToString() + " Ч";
+                populationIncrement.Class1.text = PopulationIncrement.ToString();
                 break;
             case 2:
-                populationIncrement.Class2.text = PopulationIncrement.ToString() + " Ч";
+                populationIncrement.Class2.text = PopulationIncrement.ToString();
                 break;
             case 3:
-                populationIncrement.Class3.text = PopulationIncrement.ToString() + " Ч";
+                populationIncrement.Class3.text = PopulationIncrement.ToString();
                 break;
             case 4:
-                populationIncrement.Class4.text = PopulationIncrement.ToString() + " Ч";
+                populationIncrement.Class4.text = PopulationIncrement.ToString();
                 break;
         }      
     }
@@ -227,16 +227,16 @@ public class Statistic : MonoBehaviour
         switch (Class)
         {
             case 1:
-                scienceIncrement.Class1.text = ScienceIncrement.ToString() + " Н/Д";
+                scienceIncrement.Class1.text = ScienceIncrement.ToString();
                 break;
             case 2:
-                scienceIncrement.Class2.text = ScienceIncrement.ToString() + " Н/Д";
+                scienceIncrement.Class2.text = ScienceIncrement.ToString();
                 break;
             case 3:
-                scienceIncrement.Class3.text = ScienceIncrement.ToString() + " Н/Д";
+                scienceIncrement.Class3.text = ScienceIncrement.ToString();
                 break;
             case 4:
-                scienceIncrement.Class4.text = ScienceIncrement.ToString() + " Н/Д";
+                scienceIncrement.Class4.text = ScienceIncrement.ToString();
                 break;
         }   
     }
@@ -246,16 +246,16 @@ public class Statistic : MonoBehaviour
         switch (Class)
         {
             case 1:
-                productionIncrement.Class1.text = ProductionIncrement.ToString() + " П/Д";
+                productionIncrement.Class1.text = ProductionIncrement.ToString();
                 break;
             case 2:
-                productionIncrement.Class2.text = ProductionIncrement.ToString() + " П/Д";
+                productionIncrement.Class2.text = ProductionIncrement.ToString();
                 break;
             case 3:
-                productionIncrement.Class3.text = ProductionIncrement.ToString() + " П/Д";
+                productionIncrement.Class3.text = ProductionIncrement.ToString();
                 break;
             case 4:
-                productionIncrement.Class4.text = ProductionIncrement.ToString() + " П/Д";
+                productionIncrement.Class4.text = ProductionIncrement.ToString();
                 break;
         }
         

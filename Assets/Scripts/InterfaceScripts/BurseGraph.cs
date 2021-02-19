@@ -11,9 +11,8 @@ public class BurseGraph : MonoBehaviour
     }
     private const float shift = 1e-5f;
     private float x = 0;
-    private Color color = Color.black;
-    private Color colorRed = Color.red;
-    private Color erazeColor = Color.white;
+    private Color color = Color.green;
+    private Color erazeColor = Color.black;
     private List<vertex> erazer = new List<vertex>();
     private Texture2D texture;
     private int Height;
