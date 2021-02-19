@@ -235,7 +235,10 @@ public class Economy : MonoBehaviour {
             Debug.Log("Incorrect: districtNum = " + districtNum);
             return;
         }
-        if (idxPreFub <= 7) ++cntHousesD[districtNum];
+        if (idxPreFub == 5 || idxPreFub == 6) ++cntHousesD[0];
+        else if (idxPreFub == 0 || idxPreFub == 1) ++cntHousesD[1];
+        else if (idxPreFub == 2 || idxPreFub == 3) ++cntHousesD[2];
+        else if (idxPreFub == 4 || idxPreFub == 7) ++cntHousesD[3];
         else if (idxPreFub == 8) ++cntShopsD[districtNum];
         else if (idxPreFub == 10 || idxPreFub == 11 || idxPreFub == 12 || idxPreFub == 13 || idxPreFub == 15) ++cntSciencesD[districtNum];
         else if (idxPreFub == 14) ++cntFactoriesD[districtNum];
@@ -260,7 +263,7 @@ public class Economy : MonoBehaviour {
         SityInfoClass.SetScience(science);
         SityInfoClass.SetProduction(products);
         SityInfoClass.SetBudgeIncrement(moneyPerDay);
-        SityInfoClass.SetPopulationIncrement(cntPeoplePerDay);
+        SityInfoClass.SetPopulationIncrement(cntPeoplePerDay); // Don't working
         SityInfoClass.SetScienceIncrement(sciencePerDay);
         SityInfoClass.SetProductionIncrement(productsPerDay);
         //SityInfoClass.SetGDP();
