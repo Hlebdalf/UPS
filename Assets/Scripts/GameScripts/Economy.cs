@@ -162,9 +162,9 @@ public class Economy : MonoBehaviour {
             else if (commerceObj.GetComponent <Shop> ()) {
                 Shop shopClass = commerceObj.GetComponent <Shop> ();
 
-                VATn += shopClass.GetTaxRate();
+                CITn += shopClass.GetTaxRate();
 
-                VATnD[districtNum] += (long)(shopClass.GetTaxRate());
+                CITnD[districtNum] += (long)(shopClass.GetTaxRate());
             }
         }
     }
@@ -184,6 +184,12 @@ public class Economy : MonoBehaviour {
 
             PITn += (float)passportClass.salary;
             PITnD[passportClass.idxSocialСlass - 1] += (float)passportClass.salary;
+
+            if (passportClass.idxCommerceType == 0) {
+                float purchaseSum = UnityEngine.Random.Range((float)passportClass.salary / 100f + 1f, (float)passportClass.salary / 2f);
+                VATn += purchaseSum;
+                VATnD[passportClass.idxSocialСlass - 1] += purchaseSum;
+            }
         }
         if (counting[0] > 0) averageLoyalityD[0] /= counting[0];
         if (counting[1] > 0) averageLoyalityD[1] /= counting[1];
