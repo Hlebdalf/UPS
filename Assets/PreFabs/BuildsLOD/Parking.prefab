@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 820647646703600783}
   - component: {fileID: 404777125342695960}
   m_Layer: 0
-  m_Name: GAZ-24LOD (2)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &820647646703600783
 Transform:
   m_ObjectHideFlags: 0
@@ -149,12 +149,12 @@ GameObject:
   - component: {fileID: 802638899239380243}
   - component: {fileID: 8056116373920332095}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (7)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &802638899239380243
 Transform:
   m_ObjectHideFlags: 0
@@ -208,12 +208,12 @@ GameObject:
   - component: {fileID: 855070807783826223}
   - component: {fileID: 8012830237562420995}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (47)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &855070807783826223
 Transform:
   m_ObjectHideFlags: 0
@@ -267,12 +267,12 @@ GameObject:
   - component: {fileID: 745150466394728805}
   - component: {fileID: 7978644187027666249}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (2)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &745150466394728805
 Transform:
   m_ObjectHideFlags: 0
@@ -326,12 +326,12 @@ GameObject:
   - component: {fileID: 750063941642376759}
   - component: {fileID: 330252779541643424}
   m_Layer: 0
-  m_Name: GAZ-24LOD (28)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &750063941642376759
 Transform:
   m_ObjectHideFlags: 0
@@ -385,12 +385,12 @@ GameObject:
   - component: {fileID: 728253171592166646}
   - component: {fileID: 353196600246102625}
   m_Layer: 0
-  m_Name: GAZ-24LOD (64)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &728253171592166646
 Transform:
   m_ObjectHideFlags: 0
@@ -444,12 +444,12 @@ GameObject:
   - component: {fileID: 734127120562293210}
   - component: {fileID: 2620019701458186486}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (61)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &734127120562293210
 Transform:
   m_ObjectHideFlags: 0
@@ -503,12 +503,12 @@ GameObject:
   - component: {fileID: 767272159387789139}
   - component: {fileID: 7947583464410413951}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (62)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &767272159387789139
 Transform:
   m_ObjectHideFlags: 0
@@ -562,12 +562,12 @@ GameObject:
   - component: {fileID: 675281857891833070}
   - component: {fileID: 550175058332385913}
   m_Layer: 0
-  m_Name: GAZ-24LOD (48)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &675281857891833070
 Transform:
   m_ObjectHideFlags: 0
@@ -621,12 +621,12 @@ GameObject:
   - component: {fileID: 661488418387501898}
   - component: {fileID: 7908475757786955622}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (21)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &661488418387501898
 Transform:
   m_ObjectHideFlags: 0
@@ -680,12 +680,12 @@ GameObject:
   - component: {fileID: 692416643861425863}
   - component: {fileID: 7887330993362039531}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (5)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &692416643861425863
 Transform:
   m_ObjectHideFlags: 0
@@ -739,12 +739,12 @@ GameObject:
   - component: {fileID: 621867010521224773}
   - component: {fileID: 7804676836781099625}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (16)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &621867010521224773
 Transform:
   m_ObjectHideFlags: 0
@@ -798,12 +798,12 @@ GameObject:
   - component: {fileID: 1076866422995806110}
   - component: {fileID: 76645214471674454}
   m_Layer: 0
-  m_Name: GAZ-13LOD (2)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1076866422995806110
 Transform:
   m_ObjectHideFlags: 0
@@ -857,12 +857,12 @@ GameObject:
   - component: {fileID: 1061698538606098958}
   - component: {fileID: 97505889032751046}
   m_Layer: 0
-  m_Name: GAZ-13LOD (42)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1061698538606098958
 Transform:
   m_ObjectHideFlags: 0
@@ -916,12 +916,12 @@ GameObject:
   - component: {fileID: 963316139535592115}
   - component: {fileID: 262311475365641252}
   m_Layer: 0
-  m_Name: GAZ-24LOD (69)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &963316139535592115
 Transform:
   m_ObjectHideFlags: 0
@@ -975,12 +975,12 @@ GameObject:
   - component: {fileID: 938143401240688874}
   - component: {fileID: 7632031853326345414}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (85)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &938143401240688874
 Transform:
   m_ObjectHideFlags: 0
@@ -1034,12 +1034,12 @@ GameObject:
   - component: {fileID: 1004201683606504117}
   - component: {fileID: 221287801221616674}
   m_Layer: 0
-  m_Name: GAZ-24LOD (17)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1004201683606504117
 Transform:
   m_ObjectHideFlags: 0
@@ -1093,12 +1093,12 @@ GameObject:
   - component: {fileID: 988877673770383297}
   - component: {fileID: 2582033399100067565}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (43)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &988877673770383297
 Transform:
   m_ObjectHideFlags: 0
@@ -1152,12 +1152,12 @@ GameObject:
   - component: {fileID: 886410535198199115}
   - component: {fileID: 2459285474876798055}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (20)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &886410535198199115
 Transform:
   m_ObjectHideFlags: 0
@@ -1211,12 +1211,12 @@ GameObject:
   - component: {fileID: 883904494747719929}
   - component: {fileID: 262829804467496241}
   m_Layer: 0
-  m_Name: GAZ-13LOD (35)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &883904494747719929
 Transform:
   m_ObjectHideFlags: 0
@@ -1270,12 +1270,12 @@ GameObject:
   - component: {fileID: 232892589926652118}
   - component: {fileID: 926306348742911262}
   m_Layer: 0
-  m_Name: GAZ-13LOD (43)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &232892589926652118
 Transform:
   m_ObjectHideFlags: 0
@@ -1329,12 +1329,12 @@ GameObject:
   - component: {fileID: 281410151627463923}
   - component: {fileID: 3281945150218675679}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (10)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &281410151627463923
 Transform:
   m_ObjectHideFlags: 0
@@ -1388,12 +1388,12 @@ GameObject:
   - component: {fileID: 264771234127385724}
   - component: {fileID: 7440563358435100752}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (65)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &264771234127385724
 Transform:
   m_ObjectHideFlags: 0
@@ -1447,12 +1447,12 @@ GameObject:
   - component: {fileID: 270091841616274015}
   - component: {fileID: 7444757920277642867}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (17)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &270091841616274015
 Transform:
   m_ObjectHideFlags: 0
@@ -1506,12 +1506,12 @@ GameObject:
   - component: {fileID: 153006940873911371}
   - component: {fileID: 3203077156378596711}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (23)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &153006940873911371
 Transform:
   m_ObjectHideFlags: 0
@@ -1644,12 +1644,12 @@ GameObject:
   - component: {fileID: 157604514853782622}
   - component: {fileID: 7404327370954627186}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (23)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &157604514853782622
 Transform:
   m_ObjectHideFlags: 0
@@ -1703,12 +1703,12 @@ GameObject:
   - component: {fileID: 88998505599626815}
   - component: {fileID: 3409265703719950099}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (42)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &88998505599626815
 Transform:
   m_ObjectHideFlags: 0
@@ -1762,12 +1762,12 @@ GameObject:
   - component: {fileID: 19971912441095193}
   - component: {fileID: 3326751556856012085}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (83)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &19971912441095193
 Transform:
   m_ObjectHideFlags: 0
@@ -1821,12 +1821,12 @@ GameObject:
   - component: {fileID: 17360892097331959}
   - component: {fileID: 1142838464716652351}
   m_Layer: 0
-  m_Name: GAZ-13LOD (27)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &17360892097331959
 Transform:
   m_ObjectHideFlags: 0
@@ -1880,12 +1880,12 @@ GameObject:
   - component: {fileID: 40177687065206722}
   - component: {fileID: 3378464807840851694}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (73)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &40177687065206722
 Transform:
   m_ObjectHideFlags: 0
@@ -1939,12 +1939,12 @@ GameObject:
   - component: {fileID: 36658807490738309}
   - component: {fileID: 1108937574618711373}
   m_Layer: 0
-  m_Name: GAZ-13LOD (15)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &36658807490738309
 Transform:
   m_ObjectHideFlags: 0
@@ -1998,12 +1998,12 @@ GameObject:
   - component: {fileID: 506454417651080123}
   - component: {fileID: 2984553049150530199}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (66)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &506454417651080123
 Transform:
   m_ObjectHideFlags: 0
@@ -2136,12 +2136,12 @@ GameObject:
   - component: {fileID: 555388783304967711}
   - component: {fileID: 600283884135234519}
   m_Layer: 0
-  m_Name: GAZ-13LOD (48)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &555388783304967711
 Transform:
   m_ObjectHideFlags: 0
@@ -2195,12 +2195,12 @@ GameObject:
   - component: {fileID: 486688781312150972}
   - component: {fileID: 7075023232368054672}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (4)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &486688781312150972
 Transform:
   m_ObjectHideFlags: 0
@@ -2254,12 +2254,12 @@ GameObject:
   - component: {fileID: 502813917104280028}
   - component: {fileID: 7067487487814782448}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (42)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &502813917104280028
 Transform:
   m_ObjectHideFlags: 0
@@ -2313,12 +2313,12 @@ GameObject:
   - component: {fileID: 476578774710293628}
   - component: {fileID: 2950191378903149904}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (59)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &476578774710293628
 Transform:
   m_ObjectHideFlags: 0
@@ -2372,12 +2372,12 @@ GameObject:
   - component: {fileID: 389643213355070339}
   - component: {fileID: 3099673651172313775}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (31)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &389643213355070339
 Transform:
   m_ObjectHideFlags: 0
@@ -2431,12 +2431,12 @@ GameObject:
   - component: {fileID: 366235743380611863}
   - component: {fileID: 858122090707334528}
   m_Layer: 0
-  m_Name: GAZ-24LOD (42)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &366235743380611863
 Transform:
   m_ObjectHideFlags: 0
@@ -2490,12 +2490,12 @@ GameObject:
   - component: {fileID: 307364878974545738}
   - component: {fileID: 3039912198758291046}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (88)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &307364878974545738
 Transform:
   m_ObjectHideFlags: 0
@@ -2549,12 +2549,12 @@ GameObject:
   - component: {fileID: 296204711053149429}
   - component: {fileID: 6985870713680206041}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (53)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &296204711053149429
 Transform:
   m_ObjectHideFlags: 0
@@ -2608,12 +2608,12 @@ GameObject:
   - component: {fileID: 344469412539136100}
   - component: {fileID: 3074770696900559176}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (38)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &344469412539136100
 Transform:
   m_ObjectHideFlags: 0
@@ -2667,12 +2667,12 @@ GameObject:
   - component: {fileID: 353973678459630280}
   - component: {fileID: 726233091159008351}
   m_Layer: 0
-  m_Name: GAZ-24LOD (40)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &353973678459630280
 Transform:
   m_ObjectHideFlags: 0
@@ -2805,12 +2805,12 @@ GameObject:
   - component: {fileID: 1948747402035071501}
   - component: {fileID: 1507253742769059781}
   m_Layer: 0
-  m_Name: GAZ-13LOD (14)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1948747402035071501
 Transform:
   m_ObjectHideFlags: 0
@@ -2864,12 +2864,12 @@ GameObject:
   - component: {fileID: 1946796446462128949}
   - component: {fileID: 9217445628546019097}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (18)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1946796446462128949
 Transform:
   m_ObjectHideFlags: 0
@@ -2923,12 +2923,12 @@ GameObject:
   - component: {fileID: 1960084808864624100}
   - component: {fileID: 3845955389596882120}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (19)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1960084808864624100
 Transform:
   m_ObjectHideFlags: 0
@@ -2982,12 +2982,12 @@ GameObject:
   - component: {fileID: 1832239543052769909}
   - component: {fileID: 1624933105488963517}
   m_Layer: 0
-  m_Name: GAZ-13LOD (13)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1832239543052769909
 Transform:
   m_ObjectHideFlags: 0
@@ -3403,12 +3403,12 @@ GameObject:
   - component: {fileID: 1740202280284010489}
   - component: {fileID: 1713603053783058993}
   m_Layer: 0
-  m_Name: GAZ-13LOD (11)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1740202280284010489
 Transform:
   m_ObjectHideFlags: 0
@@ -3462,12 +3462,12 @@ GameObject:
   - component: {fileID: 1796514422178510193}
   - component: {fileID: 1590624234509886438}
   m_Layer: 0
-  m_Name: GAZ-24LOD (24)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1796514422178510193
 Transform:
   m_ObjectHideFlags: 0
@@ -3521,12 +3521,12 @@ GameObject:
   - component: {fileID: 2257238001343804778}
   - component: {fileID: 8916506018850302278}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (68)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2257238001343804778
 Transform:
   m_ObjectHideFlags: 0
@@ -3580,12 +3580,12 @@ GameObject:
   - component: {fileID: 2290675973756503710}
   - component: {fileID: 8873363754804255410}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (81)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2290675973756503710
 Transform:
   m_ObjectHideFlags: 0
@@ -3639,12 +3639,12 @@ GameObject:
   - component: {fileID: 2270186857985105761}
   - component: {fileID: 8894549960815412045}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (84)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2270186857985105761
 Transform:
   m_ObjectHideFlags: 0
@@ -3698,12 +3698,12 @@ GameObject:
   - component: {fileID: 2183058076905556438}
   - component: {fileID: 1272908897138799646}
   m_Layer: 0
-  m_Name: GAZ-13LOD (34)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2183058076905556438
 Transform:
   m_ObjectHideFlags: 0
@@ -3757,12 +3757,12 @@ GameObject:
   - component: {fileID: 2223189434636469044}
   - component: {fileID: 1164131070433465763}
   m_Layer: 0
-  m_Name: GAZ-24LOD (45)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2223189434636469044
 Transform:
   m_ObjectHideFlags: 0
@@ -3816,12 +3816,12 @@ GameObject:
   - component: {fileID: 2229812243748262746}
   - component: {fileID: 8799886959167590262}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (91)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2229812243748262746
 Transform:
   m_ObjectHideFlags: 0
@@ -3875,12 +3875,12 @@ GameObject:
   - component: {fileID: 2101415185829931568}
   - component: {fileID: 8775018689107424796}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (87)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2101415185829931568
 Transform:
   m_ObjectHideFlags: 0
@@ -3934,12 +3934,12 @@ GameObject:
   - component: {fileID: 2102254121286664210}
   - component: {fileID: 1354797168807919066}
   m_Layer: 0
-  m_Name: GAZ-13LOD (20)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2102254121286664210
 Transform:
   m_ObjectHideFlags: 0
@@ -3993,12 +3993,12 @@ GameObject:
   - component: {fileID: 2156176129887719640}
   - component: {fileID: 3711050168545208820}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (56)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2156176129887719640
 Transform:
   m_ObjectHideFlags: 0
@@ -4052,12 +4052,12 @@ GameObject:
   - component: {fileID: 2128719343625537396}
   - component: {fileID: 8747153819112430424}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (31)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2128719343625537396
 Transform:
   m_ObjectHideFlags: 0
@@ -4111,12 +4111,12 @@ GameObject:
   - component: {fileID: 2129500021591195833}
   - component: {fileID: 1400629336144827950}
   m_Layer: 0
-  m_Name: GAZ-24LOD (38)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2129500021591195833
 Transform:
   m_ObjectHideFlags: 0
@@ -4170,12 +4170,12 @@ GameObject:
   - component: {fileID: 2126226917094341540}
   - component: {fileID: 3741904901976883848}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (48)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2126226917094341540
 Transform:
   m_ObjectHideFlags: 0
@@ -4229,12 +4229,12 @@ GameObject:
   - component: {fileID: 1403478247920818655}
   - component: {fileID: 8616706587369047539}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (73)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1403478247920818655
 Transform:
   m_ObjectHideFlags: 0
@@ -4288,12 +4288,12 @@ GameObject:
   - component: {fileID: 1439644583757349954}
   - component: {fileID: 4437927637855518062}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (2)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1439644583757349954
 Transform:
   m_ObjectHideFlags: 0
@@ -4347,12 +4347,12 @@ GameObject:
   - component: {fileID: 1405503771065683910}
   - component: {fileID: 2044874058976408078}
   m_Layer: 0
-  m_Name: GAZ-13LOD (29)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1405503771065683910
 Transform:
   m_ObjectHideFlags: 0
@@ -4406,12 +4406,12 @@ GameObject:
   - component: {fileID: 1329252791682154167}
   - component: {fileID: 4332039445399275419}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (60)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1329252791682154167
 Transform:
   m_ObjectHideFlags: 0
@@ -4465,12 +4465,12 @@ GameObject:
   - component: {fileID: 1350794563628610335}
   - component: {fileID: 4382836746798533171}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (57)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1350794563628610335
 Transform:
   m_ObjectHideFlags: 0
@@ -4603,12 +4603,12 @@ GameObject:
   - component: {fileID: 1252202294335254634}
   - component: {fileID: 8470760318008585286}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (72)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1252202294335254634
 Transform:
   m_ObjectHideFlags: 0
@@ -4662,12 +4662,12 @@ GameObject:
   - component: {fileID: 1242435278574596143}
   - component: {fileID: 2288827263365162680}
   m_Layer: 0
-  m_Name: GAZ-24LOD (18)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1242435278574596143
 Transform:
   m_ObjectHideFlags: 0
@@ -4721,12 +4721,12 @@ GameObject:
   - component: {fileID: 1178791632675570006}
   - component: {fileID: 8409751323682856314}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (80)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1178791632675570006
 Transform:
   m_ObjectHideFlags: 0
@@ -4780,12 +4780,12 @@ GameObject:
   - component: {fileID: 1156973165500099129}
   - component: {fileID: 2230386823569145006}
   m_Layer: 0
-  m_Name: GAZ-24LOD (63)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1156973165500099129
 Transform:
   m_ObjectHideFlags: 0
@@ -4839,12 +4839,12 @@ GameObject:
   - component: {fileID: 1216560340112847989}
   - component: {fileID: 2170628532626465506}
   m_Layer: 0
-  m_Name: GAZ-24LOD (21)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1216560340112847989
 Transform:
   m_ObjectHideFlags: 0
@@ -4898,12 +4898,12 @@ GameObject:
   - component: {fileID: 1223842814955556098}
   - component: {fileID: 8364713333563019566}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (74)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1223842814955556098
 Transform:
   m_ObjectHideFlags: 0
@@ -4957,12 +4957,12 @@ GameObject:
   - component: {fileID: 1613740962267446059}
   - component: {fileID: 1772343283712044476}
   m_Layer: 0
-  m_Name: GAZ-24LOD (44)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1613740962267446059
 Transform:
   m_ObjectHideFlags: 0
@@ -5016,12 +5016,12 @@ GameObject:
   - component: {fileID: 3118180535991112103}
   - component: {fileID: 2718917039406155568}
   m_Layer: 0
-  m_Name: GAZ-24LOD (54)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3118180535991112103
 Transform:
   m_ObjectHideFlags: 0
@@ -5075,12 +5075,12 @@ GameObject:
   - component: {fileID: 3127265175339075477}
   - component: {fileID: 2709987280437580034}
   m_Layer: 0
-  m_Name: GAZ-24LOD (52)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3127265175339075477
 Transform:
   m_ObjectHideFlags: 0
@@ -5213,12 +5213,12 @@ GameObject:
   - component: {fileID: 3110644738756626713}
   - component: {fileID: 2651136717328905425}
   m_Layer: 0
-  m_Name: GAZ-13LOD (32)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3110644738756626713
 Transform:
   m_ObjectHideFlags: 0
@@ -5272,12 +5272,12 @@ GameObject:
   - component: {fileID: 3095766324713790506}
   - component: {fileID: 5627467545532874758}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (55)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3095766324713790506
 Transform:
   m_ObjectHideFlags: 0
@@ -5331,12 +5331,12 @@ GameObject:
   - component: {fileID: 3070019210881726306}
   - component: {fileID: 357733287651888718}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (79)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3070019210881726306
 Transform:
   m_ObjectHideFlags: 0
@@ -5390,12 +5390,12 @@ GameObject:
   - component: {fileID: 3016509616860319028}
   - component: {fileID: 2819609104988003235}
   m_Layer: 0
-  m_Name: GAZ-24LOD (6)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3016509616860319028
 Transform:
   m_ObjectHideFlags: 0
@@ -5449,12 +5449,12 @@ GameObject:
   - component: {fileID: 3013301289154807573}
   - component: {fileID: 2822892233878573442}
   m_Layer: 0
-  m_Name: GAZ-24LOD (49)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3013301289154807573
 Transform:
   m_ObjectHideFlags: 0
@@ -5508,12 +5508,12 @@ GameObject:
   - component: {fileID: 2906165172193224668}
   - component: {fileID: 5528833921675443184}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (60)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2906165172193224668
 Transform:
   m_ObjectHideFlags: 0
@@ -5567,12 +5567,12 @@ GameObject:
   - component: {fileID: 2913060232365575380}
   - component: {fileID: 432713263350789624}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (47)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2913060232365575380
 Transform:
   m_ObjectHideFlags: 0
@@ -5626,12 +5626,12 @@ GameObject:
   - component: {fileID: 2894630101671663766}
   - component: {fileID: 2798497563019103745}
   m_Layer: 0
-  m_Name: GAZ-24LOD (27)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2894630101671663766
 Transform:
   m_ObjectHideFlags: 0
@@ -5685,12 +5685,12 @@ GameObject:
   - component: {fileID: 3395457191427013451}
   - component: {fileID: 2377503093734098563}
   m_Layer: 0
-  m_Name: GAZ-13LOD (18)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3395457191427013451
 Transform:
   m_ObjectHideFlags: 0
@@ -5744,12 +5744,12 @@ GameObject:
   - component: {fileID: 3404288919096280358}
   - component: {fileID: 2368883065153714414}
   m_Layer: 0
-  m_Name: GAZ-13LOD (24)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3404288919096280358
 Transform:
   m_ObjectHideFlags: 0
@@ -5803,12 +5803,12 @@ GameObject:
   - component: {fileID: 3453694914969000296}
   - component: {fileID: 5405275858214880580}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (99)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3453694914969000296
 Transform:
   m_ObjectHideFlags: 0
@@ -5862,12 +5862,12 @@ GameObject:
   - component: {fileID: 3449973412852719204}
   - component: {fileID: 2386147503761705203}
   m_Layer: 0
-  m_Name: GAZ-24LOD (33)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3449973412852719204
 Transform:
   m_ObjectHideFlags: 0
@@ -6000,12 +6000,12 @@ GameObject:
   - component: {fileID: 3300854382412678173}
   - component: {fileID: 2463325744208247253}
   m_Layer: 0
-  m_Name: GAZ-13LOD (30)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3300854382412678173
 Transform:
   m_ObjectHideFlags: 0
@@ -6059,12 +6059,12 @@ GameObject:
   - component: {fileID: 3302355354855280509}
   - component: {fileID: 268060941842265681}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (50)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3302355354855280509
 Transform:
   m_ObjectHideFlags: 0
@@ -6118,12 +6118,12 @@ GameObject:
   - component: {fileID: 3283864854218130063}
   - component: {fileID: 2482364701928554311}
   m_Layer: 0
-  m_Name: GAZ-13LOD (19)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3283864854218130063
 Transform:
   m_ObjectHideFlags: 0
@@ -6177,12 +6177,12 @@ GameObject:
   - component: {fileID: 3190971586236943723}
   - component: {fileID: 2569615731501052067}
   m_Layer: 0
-  m_Name: GAZ-13LOD (47)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3190971586236943723
 Transform:
   m_ObjectHideFlags: 0
@@ -6236,12 +6236,12 @@ GameObject:
   - component: {fileID: 3180238900099885758}
   - component: {fileID: 2577178611516807030}
   m_Layer: 0
-  m_Name: GAZ-13LOD (41)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3180238900099885758
 Transform:
   m_ObjectHideFlags: 0
@@ -6295,12 +6295,12 @@ GameObject:
   - component: {fileID: 3187042920715719711}
   - component: {fileID: 5247888037857675315}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (29)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3187042920715719711
 Transform:
   m_ObjectHideFlags: 0
@@ -6354,12 +6354,12 @@ GameObject:
   - component: {fileID: 3231467757125969952}
   - component: {fileID: 5203595145025909772}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (56)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3231467757125969952
 Transform:
   m_ObjectHideFlags: 0
@@ -6413,12 +6413,12 @@ GameObject:
   - component: {fileID: 2540190690582453443}
   - component: {fileID: 949304363682358767}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (33)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2540190690582453443
 Transform:
   m_ObjectHideFlags: 0
@@ -6472,12 +6472,12 @@ GameObject:
   - component: {fileID: 2547603030645098768}
   - component: {fileID: 5166894921955087676}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (77)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2547603030645098768
 Transform:
   m_ObjectHideFlags: 0
@@ -6531,12 +6531,12 @@ GameObject:
   - component: {fileID: 2552704844537259590}
   - component: {fileID: 3283281914341486801}
   m_Layer: 0
-  m_Name: GAZ-24LOD (5)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2552704844537259590
 Transform:
   m_ObjectHideFlags: 0
@@ -6590,12 +6590,12 @@ GameObject:
   - component: {fileID: 2566916789315296323}
   - component: {fileID: 5147928574492639343}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (75)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2566916789315296323
 Transform:
   m_ObjectHideFlags: 0
@@ -6649,12 +6649,12 @@ GameObject:
   - component: {fileID: 2575499308027586087}
   - component: {fileID: 3261603322653159600}
   m_Layer: 0
-  m_Name: GAZ-24LOD (70)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2575499308027586087
 Transform:
   m_ObjectHideFlags: 0
@@ -6708,12 +6708,12 @@ GameObject:
   - component: {fileID: 2450773519337260948}
   - component: {fileID: 895916384890928824}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (36)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2450773519337260948
 Transform:
   m_ObjectHideFlags: 0
@@ -6767,12 +6767,12 @@ GameObject:
   - component: {fileID: 2405399780635460953}
   - component: {fileID: 3430681141107119054}
   m_Layer: 0
-  m_Name: GAZ-24LOD (8)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2405399780635460953
 Transform:
   m_ObjectHideFlags: 0
@@ -6826,12 +6826,12 @@ GameObject:
   - component: {fileID: 2380098464483715440}
   - component: {fileID: 1111197521006891100}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (16)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2380098464483715440
 Transform:
   m_ObjectHideFlags: 0
@@ -6885,12 +6885,12 @@ GameObject:
   - component: {fileID: 2436297405563124286}
   - component: {fileID: 1126881935698920210}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (3)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2436297405563124286
 Transform:
   m_ObjectHideFlags: 0
@@ -6944,12 +6944,12 @@ GameObject:
   - component: {fileID: 2327541760901107248}
   - component: {fileID: 4945953072779989532}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (51)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2327541760901107248
 Transform:
   m_ObjectHideFlags: 0
@@ -7003,12 +7003,12 @@ GameObject:
   - component: {fileID: 2371423511640565972}
   - component: {fileID: 1046233339879510520}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (22)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2371423511640565972
 Transform:
   m_ObjectHideFlags: 0
@@ -7062,12 +7062,12 @@ GameObject:
   - component: {fileID: 2829910228803988328}
   - component: {fileID: 2928567332282275488}
   m_Layer: 0
-  m_Name: GAZ-13LOD (5)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2829910228803988328
 Transform:
   m_ObjectHideFlags: 0
@@ -7121,12 +7121,12 @@ GameObject:
   - component: {fileID: 2868222827698185712}
   - component: {fileID: 4837817679273638364}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (20)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2868222827698185712
 Transform:
   m_ObjectHideFlags: 0
@@ -7180,12 +7180,12 @@ GameObject:
   - component: {fileID: 2868883916328626612}
   - component: {fileID: 4845532642339272088}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (13)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2868883916328626612
 Transform:
   m_ObjectHideFlags: 0
@@ -7239,12 +7239,12 @@ GameObject:
   - component: {fileID: 2877088466159016395}
   - component: {fileID: 684953980180111591}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (12)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2877088466159016395
 Transform:
   m_ObjectHideFlags: 0
@@ -7298,12 +7298,12 @@ GameObject:
   - component: {fileID: 2880444853927499404}
   - component: {fileID: 4834611650413398688}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (46)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2880444853927499404
 Transform:
   m_ObjectHideFlags: 0
@@ -7357,12 +7357,12 @@ GameObject:
   - component: {fileID: 2881275601502135820}
   - component: {fileID: 4833136593510382112}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (24)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2881275601502135820
 Transform:
   m_ObjectHideFlags: 0
@@ -7416,12 +7416,12 @@ GameObject:
   - component: {fileID: 2878923428758766104}
   - component: {fileID: 4836133045543050804}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (70)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2878923428758766104
 Transform:
   m_ObjectHideFlags: 0
@@ -7475,12 +7475,12 @@ GameObject:
   - component: {fileID: 2860414775682616347}
   - component: {fileID: 2905873106137772499}
   m_Layer: 0
-  m_Name: GAZ-13LOD (38)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2860414775682616347
 Transform:
   m_ObjectHideFlags: 0
@@ -7534,12 +7534,12 @@ GameObject:
   - component: {fileID: 2764180810539390838}
   - component: {fileID: 590074347801996890}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (14)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2764180810539390838
 Transform:
   m_ObjectHideFlags: 0
@@ -7593,12 +7593,12 @@ GameObject:
   - component: {fileID: 2769291489555672600}
   - component: {fileID: 4792084079876125236}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (82)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2769291489555672600
 Transform:
   m_ObjectHideFlags: 0
@@ -7652,12 +7652,12 @@ GameObject:
   - component: {fileID: 2807889725354409760}
   - component: {fileID: 620276734811424268}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (86)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2807889725354409760
 Transform:
   m_ObjectHideFlags: 0
@@ -7711,12 +7711,12 @@ GameObject:
   - component: {fileID: 2676715288820057667}
   - component: {fileID: 3081617162383571851}
   m_Layer: 0
-  m_Name: GAZ-13LOD (6)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2676715288820057667
 Transform:
   m_ObjectHideFlags: 0
@@ -7770,12 +7770,12 @@ GameObject:
   - component: {fileID: 2625955257552201586}
   - component: {fileID: 4656683119122824030}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (38)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2625955257552201586
 Transform:
   m_ObjectHideFlags: 0
@@ -7829,12 +7829,12 @@ GameObject:
   - component: {fileID: 2649049867755385930}
   - component: {fileID: 3108276444543732098}
   m_Layer: 0
-  m_Name: GAZ-13LOD (31)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2649049867755385930
 Transform:
   m_ObjectHideFlags: 0
@@ -7888,12 +7888,12 @@ GameObject:
   - component: {fileID: 4212211629050818778}
   - component: {fileID: 3785627475054290509}
   m_Layer: 0
-  m_Name: GAZ-24LOD (26)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4212211629050818778
 Transform:
   m_ObjectHideFlags: 0
@@ -7947,12 +7947,12 @@ GameObject:
   - component: {fileID: 4244764715524101354}
   - component: {fileID: 1478418417139920326}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (41)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4244764715524101354
 Transform:
   m_ObjectHideFlags: 0
@@ -8006,12 +8006,12 @@ GameObject:
   - component: {fileID: 4159270794741583203}
   - component: {fileID: 3982654081246993396}
   m_Layer: 0
-  m_Name: GAZ-24LOD (75)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4159270794741583203
 Transform:
   m_ObjectHideFlags: 0
@@ -8065,12 +8065,12 @@ GameObject:
   - component: {fileID: 4610702899823559771}
   - component: {fileID: 6562335236094466167}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (95)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4610702899823559771
 Transform:
   m_ObjectHideFlags: 0
@@ -8124,12 +8124,12 @@ GameObject:
   - component: {fileID: 4577246306654792683}
   - component: {fileID: 3486953136990721571}
   m_Layer: 0
-  m_Name: GAZ-13LOD (12)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4577246306654792683
 Transform:
   m_ObjectHideFlags: 0
@@ -8183,12 +8183,12 @@ GameObject:
   - component: {fileID: 4489223463806697206}
   - component: {fileID: 1162181900461393882}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (4)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4489223463806697206
 Transform:
   m_ObjectHideFlags: 0
@@ -8242,12 +8242,12 @@ GameObject:
   - component: {fileID: 4500978140435157715}
   - component: {fileID: 3573377474786701083}
   m_Layer: 0
-  m_Name: GAZ-13LOD
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4500978140435157715
 Transform:
   m_ObjectHideFlags: 0
@@ -8380,12 +8380,12 @@ GameObject:
   - component: {fileID: 4482699309893025281}
   - component: {fileID: 3515120312138721430}
   m_Layer: 0
-  m_Name: GAZ-24LOD (1)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4482699309893025281
 Transform:
   m_ObjectHideFlags: 0
@@ -8439,12 +8439,12 @@ GameObject:
   - component: {fileID: 4459468063893965316}
   - component: {fileID: 6416976808242124328}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (8)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4459468063893965316
 Transform:
   m_ObjectHideFlags: 0
@@ -8498,12 +8498,12 @@ GameObject:
   - component: {fileID: 4346402558433436459}
   - component: {fileID: 6394863953963286279}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (98)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4346402558433436459
 Transform:
   m_ObjectHideFlags: 0
@@ -8557,12 +8557,12 @@ GameObject:
   - component: {fileID: 4334150458852892389}
   - component: {fileID: 3663809037511936114}
   m_Layer: 0
-  m_Name: GAZ-24LOD (67)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4334150458852892389
 Transform:
   m_ObjectHideFlags: 0
@@ -8616,12 +8616,12 @@ GameObject:
   - component: {fileID: 4373685977080789894}
   - component: {fileID: 3625393509315898641}
   m_Layer: 0
-  m_Name: GAZ-24LOD (39)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4373685977080789894
 Transform:
   m_ObjectHideFlags: 0
@@ -8675,12 +8675,12 @@ GameObject:
   - component: {fileID: 3696056715328555625}
   - component: {fileID: 6315613461148816965}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (54)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3696056715328555625
 Transform:
   m_ObjectHideFlags: 0
@@ -8734,12 +8734,12 @@ GameObject:
   - component: {fileID: 3718178017932572489}
   - component: {fileID: 2158796000668503653}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (77)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3718178017932572489
 Transform:
   m_ObjectHideFlags: 0
@@ -8793,12 +8793,12 @@ GameObject:
   - component: {fileID: 3610529907471770416}
   - component: {fileID: 2051151453681048092}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (6)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3610529907471770416
 Transform:
   m_ObjectHideFlags: 0
@@ -8852,12 +8852,12 @@ GameObject:
   - component: {fileID: 3612002872602224048}
   - component: {fileID: 6255202475487082908}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (27)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3612002872602224048
 Transform:
   m_ObjectHideFlags: 0
@@ -8911,12 +8911,12 @@ GameObject:
   - component: {fileID: 3642271354663366210}
   - component: {fileID: 2082906910534817646}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (74)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3642271354663366210
 Transform:
   m_ObjectHideFlags: 0
@@ -8970,12 +8970,12 @@ GameObject:
   - component: {fileID: 3648051632282457805}
   - component: {fileID: 4349900721391190106}
   m_Layer: 0
-  m_Name: GAZ-24LOD (25)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3648051632282457805
 Transform:
   m_ObjectHideFlags: 0
@@ -9029,12 +9029,12 @@ GameObject:
   - component: {fileID: 3535139091296195072}
   - component: {fileID: 6188454674948345388}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (14)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3535139091296195072
 Transform:
   m_ObjectHideFlags: 0
@@ -9088,12 +9088,12 @@ GameObject:
   - component: {fileID: 3541458693101873135}
   - component: {fileID: 2254547877741616835}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (81)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3541458693101873135
 Transform:
   m_ObjectHideFlags: 0
@@ -9147,12 +9147,12 @@ GameObject:
   - component: {fileID: 3584894280788171790}
   - component: {fileID: 6137986974098456610}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (30)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3584894280788171790
 Transform:
   m_ObjectHideFlags: 0
@@ -9206,12 +9206,12 @@ GameObject:
   - component: {fileID: 3580861352434288124}
   - component: {fileID: 4490166109959485492}
   m_Layer: 0
-  m_Name: GAZ-13LOD (37)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3580861352434288124
 Transform:
   m_ObjectHideFlags: 0
@@ -9265,12 +9265,12 @@ GameObject:
   - component: {fileID: 3582438784424163112}
   - component: {fileID: 6150221520569854724}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (49)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3582438784424163112
 Transform:
   m_ObjectHideFlags: 0
@@ -9324,12 +9324,12 @@ GameObject:
   - component: {fileID: 3493196667677473646}
   - component: {fileID: 6094719567120443202}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (79)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3493196667677473646
 Transform:
   m_ObjectHideFlags: 0
@@ -9383,12 +9383,12 @@ GameObject:
   - component: {fileID: 3492670448391481457}
   - component: {fileID: 4505285513621995238}
   m_Layer: 0
-  m_Name: GAZ-24LOD (34)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3492670448391481457
 Transform:
   m_ObjectHideFlags: 0
@@ -9442,12 +9442,12 @@ GameObject:
   - component: {fileID: 3461467215641064333}
   - component: {fileID: 2190315830873033377}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (53)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3461467215641064333
 Transform:
   m_ObjectHideFlags: 0
@@ -9580,12 +9580,12 @@ GameObject:
   - component: {fileID: 3494955753162441126}
   - component: {fileID: 6083812544925719946}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (36)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3494955753162441126
 Transform:
   m_ObjectHideFlags: 0
@@ -9718,12 +9718,12 @@ GameObject:
   - component: {fileID: 3508816363164749045}
   - component: {fileID: 4562236310687314237}
   m_Layer: 0
-  m_Name: GAZ-13LOD (39)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3508816363164749045
 Transform:
   m_ObjectHideFlags: 0
@@ -9777,12 +9777,12 @@ GameObject:
   - component: {fileID: 3988681261868360751}
   - component: {fileID: 6031512333208254467}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (71)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3988681261868360751
 Transform:
   m_ObjectHideFlags: 0
@@ -9836,12 +9836,12 @@ GameObject:
   - component: {fileID: 3998735273415392687}
   - component: {fileID: 6021528690231861635}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (34)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3998735273415392687
 Transform:
   m_ObjectHideFlags: 0
@@ -9895,12 +9895,12 @@ GameObject:
   - component: {fileID: 3898144606621764622}
   - component: {fileID: 4177508638496076230}
   m_Layer: 0
-  m_Name: GAZ-13LOD (3)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3898144606621764622
 Transform:
   m_ObjectHideFlags: 0
@@ -9954,12 +9954,12 @@ GameObject:
   - component: {fileID: 3928317505445310841}
   - component: {fileID: 1794725435123959893}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (82)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3928317505445310841
 Transform:
   m_ObjectHideFlags: 0
@@ -10013,12 +10013,12 @@ GameObject:
   - component: {fileID: 3859034451645393912}
   - component: {fileID: 5863848997943850964}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (39)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3859034451645393912
 Transform:
   m_ObjectHideFlags: 0
@@ -10072,12 +10072,12 @@ GameObject:
   - component: {fileID: 3765954548172021286}
   - component: {fileID: 5813517435200274954}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (61)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3765954548172021286
 Transform:
   m_ObjectHideFlags: 0
@@ -10131,12 +10131,12 @@ GameObject:
   - component: {fileID: 3814762345824817634}
   - component: {fileID: 4256255693394816042}
   m_Layer: 0
-  m_Name: GAZ-13LOD (9)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3814762345824817634
 Transform:
   m_ObjectHideFlags: 0
@@ -10190,12 +10190,12 @@ GameObject:
   - component: {fileID: 5412396206226801756}
   - component: {fileID: 3454869319387338864}
   m_Layer: 0
-  m_Name: ZAZ-965LOD
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5412396206226801756
 Transform:
   m_ObjectHideFlags: 0
@@ -10249,12 +10249,12 @@ GameObject:
   - component: {fileID: 5468978017296469215}
   - component: {fileID: 4901102368697151767}
   m_Layer: 0
-  m_Name: GAZ-13LOD (44)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5468978017296469215
 Transform:
   m_ObjectHideFlags: 0
@@ -10308,12 +10308,12 @@ GameObject:
   - component: {fileID: 5472861022629546127}
   - component: {fileID: 3394899250969187491}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (12)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5472861022629546127
 Transform:
   m_ObjectHideFlags: 0
@@ -10367,12 +10367,12 @@ GameObject:
   - component: {fileID: 5358772815389432808}
   - component: {fileID: 7219874696599610052}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (72)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5358772815389432808
 Transform:
   m_ObjectHideFlags: 0
@@ -10426,12 +10426,12 @@ GameObject:
   - component: {fileID: 5388718988375589643}
   - component: {fileID: 7252090547193494055}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (64)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5388718988375589643
 Transform:
   m_ObjectHideFlags: 0
@@ -10485,12 +10485,12 @@ GameObject:
   - component: {fileID: 5401106214347132420}
   - component: {fileID: 3321982550439137832}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (59)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5401106214347132420
 Transform:
   m_ObjectHideFlags: 0
@@ -10544,12 +10544,12 @@ GameObject:
   - component: {fileID: 5295625682088770808}
   - component: {fileID: 3284055943603445972}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (37)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5295625682088770808
 Transform:
   m_ObjectHideFlags: 0
@@ -10603,12 +10603,12 @@ GameObject:
   - component: {fileID: 5714768954851245166}
   - component: {fileID: 3143627907826376770}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (83)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5714768954851245166
 Transform:
   m_ObjectHideFlags: 0
@@ -10662,12 +10662,12 @@ GameObject:
   - component: {fileID: 5707984439529641884}
   - component: {fileID: 3159360214339636144}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (69)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5707984439529641884
 Transform:
   m_ObjectHideFlags: 0
@@ -10721,12 +10721,12 @@ GameObject:
   - component: {fileID: 5648090653182705048}
   - component: {fileID: 6921476503272195252}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (7)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5648090653182705048
 Transform:
   m_ObjectHideFlags: 0
@@ -10780,12 +10780,12 @@ GameObject:
   - component: {fileID: 5621388182931813343}
   - component: {fileID: 4747549234958306839}
   m_Layer: 0
-  m_Name: GAZ-13LOD (10)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5621388182931813343
 Transform:
   m_ObjectHideFlags: 0
@@ -10839,12 +10839,12 @@ GameObject:
   - component: {fileID: 5676923090681193856}
   - component: {fileID: 6963816037656288428}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (71)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5676923090681193856
 Transform:
   m_ObjectHideFlags: 0
@@ -10898,12 +10898,12 @@ GameObject:
   - component: {fileID: 5573976724131514988}
   - component: {fileID: 4874924791882161403}
   m_Layer: 0
-  m_Name: GAZ-24LOD (16)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5573976724131514988
 Transform:
   m_ObjectHideFlags: 0
@@ -10997,12 +10997,12 @@ GameObject:
   - component: {fileID: 5554195957760777486}
   - component: {fileID: 7167616764192613410}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (46)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5554195957760777486
 Transform:
   m_ObjectHideFlags: 0
@@ -11056,12 +11056,12 @@ GameObject:
   - component: {fileID: 5617031596582242663}
   - component: {fileID: 7178666103538069579}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (5)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5617031596582242663
 Transform:
   m_ObjectHideFlags: 0
@@ -11115,12 +11115,12 @@ GameObject:
   - component: {fileID: 5510881857653773340}
   - component: {fileID: 7068011940612746544}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (17)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5510881857653773340
 Transform:
   m_ObjectHideFlags: 0
@@ -11174,12 +11174,12 @@ GameObject:
   - component: {fileID: 5478123685903179916}
   - component: {fileID: 4826658677814441499}
   m_Layer: 0
-  m_Name: GAZ-24LOD (53)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5478123685903179916
 Transform:
   m_ObjectHideFlags: 0
@@ -11312,12 +11312,12 @@ GameObject:
   - component: {fileID: 4894514120892205881}
   - component: {fileID: 2810904028077201173}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (1)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4894514120892205881
 Transform:
   m_ObjectHideFlags: 0
@@ -11371,12 +11371,12 @@ GameObject:
   - component: {fileID: 4822596252086714811}
   - component: {fileID: 2739267496277843351}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (64)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4822596252086714811
 Transform:
   m_ObjectHideFlags: 0
@@ -11509,12 +11509,12 @@ GameObject:
   - component: {fileID: 4618108621851395030}
   - component: {fileID: 7960917053353179898}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (40)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4618108621851395030
 Transform:
   m_ObjectHideFlags: 0
@@ -11647,12 +11647,12 @@ GameObject:
   - component: {fileID: 5122992251849558396}
   - component: {fileID: 5324677828318617579}
   m_Layer: 0
-  m_Name: GAZ-24LOD (73)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5122992251849558396
 Transform:
   m_ObjectHideFlags: 0
@@ -11706,12 +11706,12 @@ GameObject:
   - component: {fileID: 5128748495164653824}
   - component: {fileID: 2576729063967399212}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (15)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5128748495164653824
 Transform:
   m_ObjectHideFlags: 0
@@ -11765,12 +11765,12 @@ GameObject:
   - component: {fileID: 5173590138783586170}
   - component: {fileID: 7611156356703252054}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (32)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5173590138783586170
 Transform:
   m_ObjectHideFlags: 0
@@ -11824,12 +11824,12 @@ GameObject:
   - component: {fileID: 5046122322116099526}
   - component: {fileID: 5258767910207236945}
   m_Layer: 0
-  m_Name: GAZ-24LOD
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5046122322116099526
 Transform:
   m_ObjectHideFlags: 0
@@ -11883,12 +11883,12 @@ GameObject:
   - component: {fileID: 5061115735357942962}
   - component: {fileID: 7516713666965558686}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (18)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5061115735357942962
 Transform:
   m_ObjectHideFlags: 0
@@ -11942,12 +11942,12 @@ GameObject:
   - component: {fileID: 5058991536062995986}
   - component: {fileID: 2511809044953842238}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (90)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5058991536062995986
 Transform:
   m_ObjectHideFlags: 0
@@ -12001,12 +12001,12 @@ GameObject:
   - component: {fileID: 5092969179876856452}
   - component: {fileID: 7548550635977354152}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (39)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5092969179876856452
 Transform:
   m_ObjectHideFlags: 0
@@ -12060,12 +12060,12 @@ GameObject:
   - component: {fileID: 5089878910191939503}
   - component: {fileID: 5215003371646761272}
   m_Layer: 0
-  m_Name: GAZ-24LOD (29)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5089878910191939503
 Transform:
   m_ObjectHideFlags: 0
@@ -12119,12 +12119,12 @@ GameObject:
   - component: {fileID: 4987690217118481692}
   - component: {fileID: 2439065510103605552}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (52)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4987690217118481692
 Transform:
   m_ObjectHideFlags: 0
@@ -12178,12 +12178,12 @@ GameObject:
   - component: {fileID: 5024320524666818602}
   - component: {fileID: 2402494610720951302}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (40)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5024320524666818602
 Transform:
   m_ObjectHideFlags: 0
@@ -12237,12 +12237,12 @@ GameObject:
   - component: {fileID: 4926248165677405633}
   - component: {fileID: 7652044749552430317}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (24)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4926248165677405633
 Transform:
   m_ObjectHideFlags: 0
@@ -12296,12 +12296,12 @@ GameObject:
   - component: {fileID: 4927671786549199383}
   - component: {fileID: 7642205952012385083}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (65)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4927671786549199383
 Transform:
   m_ObjectHideFlags: 0
@@ -12355,12 +12355,12 @@ GameObject:
   - component: {fileID: 4933224866939949139}
   - component: {fileID: 5447057320514219419}
   m_Layer: 0
-  m_Name: GAZ-13LOD (22)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4933224866939949139
 Transform:
   m_ObjectHideFlags: 0
@@ -12414,12 +12414,12 @@ GameObject:
   - component: {fileID: 4933195811165669799}
   - component: {fileID: 5371584319573696304}
   m_Layer: 0
-  m_Name: GAZ-24LOD (11)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4933195811165669799
 Transform:
   m_ObjectHideFlags: 0
@@ -12473,12 +12473,12 @@ GameObject:
   - component: {fileID: 4962222023033950477}
   - component: {fileID: 2320411919110327585}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (3)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4962222023033950477
 Transform:
   m_ObjectHideFlags: 0
@@ -12532,12 +12532,12 @@ GameObject:
   - component: {fileID: 6515477393667429410}
   - component: {fileID: 6095103272948105909}
   m_Layer: 0
-  m_Name: GAZ-24LOD (22)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6515477393667429410
 Transform:
   m_ObjectHideFlags: 0
@@ -12591,12 +12591,12 @@ GameObject:
   - component: {fileID: 6500821410598898453}
   - component: {fileID: 8384440345062568505}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (55)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6500821410598898453
 Transform:
   m_ObjectHideFlags: 0
@@ -12723,12 +12723,12 @@ GameObject:
   - component: {fileID: 6555903558358604787}
   - component: {fileID: 6132424578456856123}
   m_Layer: 0
-  m_Name: GAZ-13LOD (45)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6555903558358604787
 Transform:
   m_ObjectHideFlags: 0
@@ -12782,12 +12782,12 @@ GameObject:
   - component: {fileID: 6536088553692437948}
   - component: {fileID: 4492975131739406736}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (10)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6536088553692437948
 Transform:
   m_ObjectHideFlags: 0
@@ -12841,12 +12841,12 @@ GameObject:
   - component: {fileID: 6435229482504078372}
   - component: {fileID: 8584579613893524744}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (68)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6435229482504078372
 Transform:
   m_ObjectHideFlags: 0
@@ -12900,12 +12900,12 @@ GameObject:
   - component: {fileID: 6446976119684987387}
   - component: {fileID: 6240232868897571891}
   m_Layer: 0
-  m_Name: GAZ-13LOD (16)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6446976119684987387
 Transform:
   m_ObjectHideFlags: 0
@@ -12959,12 +12959,12 @@ GameObject:
   - component: {fileID: 6462136524478911281}
   - component: {fileID: 8629482226319141405}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (49)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6462136524478911281
 Transform:
   m_ObjectHideFlags: 0
@@ -13018,12 +13018,12 @@ GameObject:
   - component: {fileID: 6362229367650455652}
   - component: {fileID: 8513816869926676808}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (62)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6362229367650455652
 Transform:
   m_ObjectHideFlags: 0
@@ -13077,12 +13077,12 @@ GameObject:
   - component: {fileID: 6412720702248581578}
   - component: {fileID: 4327985061467629030}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (92)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6412720702248581578
 Transform:
   m_ObjectHideFlags: 0
@@ -13136,12 +13136,12 @@ GameObject:
   - component: {fileID: 6907657024360741578}
   - component: {fileID: 5846065385115675741}
   m_Layer: 0
-  m_Name: GAZ-24LOD (58)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6907657024360741578
 Transform:
   m_ObjectHideFlags: 0
@@ -13274,12 +13274,12 @@ GameObject:
   - component: {fileID: 6891797171926341383}
   - component: {fileID: 5861748319095619984}
   m_Layer: 0
-  m_Name: GAZ-24LOD (4)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6891797171926341383
 Transform:
   m_ObjectHideFlags: 0
@@ -13333,12 +13333,12 @@ GameObject:
   - component: {fileID: 6836120437203216176}
   - component: {fileID: 5774546386990084519}
   m_Layer: 0
-  m_Name: GAZ-24LOD (37)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6836120437203216176
 Transform:
   m_ObjectHideFlags: 0
@@ -13392,12 +13392,12 @@ GameObject:
   - component: {fileID: 6833637362568065999}
   - component: {fileID: 8122803000602053347}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (26)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6833637362568065999
 Transform:
   m_ObjectHideFlags: 0
@@ -13451,12 +13451,12 @@ GameObject:
   - component: {fileID: 6727856959931675581}
   - component: {fileID: 4157032159400800145}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (88)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6727856959931675581
 Transform:
   m_ObjectHideFlags: 0
@@ -13510,12 +13510,12 @@ GameObject:
   - component: {fileID: 6770209516077947070}
   - component: {fileID: 4114607069844456594}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (22)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6770209516077947070
 Transform:
   m_ObjectHideFlags: 0
@@ -13569,12 +13569,12 @@ GameObject:
   - component: {fileID: 6650311978578513906}
   - component: {fileID: 5960284906204731749}
   m_Layer: 0
-  m_Name: GAZ-24LOD (30)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6650311978578513906
 Transform:
   m_ObjectHideFlags: 0
@@ -13628,12 +13628,12 @@ GameObject:
   - component: {fileID: 6656875561894817617}
   - component: {fileID: 8218492895415506557}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (87)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6656875561894817617
 Transform:
   m_ObjectHideFlags: 0
@@ -13687,12 +13687,12 @@ GameObject:
   - component: {fileID: 6699635582152839311}
   - component: {fileID: 5987644780344847687}
   m_Layer: 0
-  m_Name: GAZ-13LOD (7)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6699635582152839311
 Transform:
   m_ObjectHideFlags: 0
@@ -13746,12 +13746,12 @@ GameObject:
   - component: {fileID: 6038615245522545691}
   - component: {fileID: 6641957013712900563}
   m_Layer: 0
-  m_Name: GAZ-13LOD (25)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6038615245522545691
 Transform:
   m_ObjectHideFlags: 0
@@ -13805,12 +13805,12 @@ GameObject:
   - component: {fileID: 6036342534508725533}
   - component: {fileID: 6717379999529128842}
   m_Layer: 0
-  m_Name: GAZ-24LOD (65)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6036342534508725533
 Transform:
   m_ObjectHideFlags: 0
@@ -13864,12 +13864,12 @@ GameObject:
   - component: {fileID: 6040276253933794866}
   - component: {fileID: 6643618025068547066}
   m_Layer: 0
-  m_Name: GAZ-13LOD (21)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6040276253933794866
 Transform:
   m_ObjectHideFlags: 0
@@ -13923,12 +13923,12 @@ GameObject:
   - component: {fileID: 5935746025067773125}
   - component: {fileID: 6673641435744430674}
   m_Layer: 0
-  m_Name: GAZ-24LOD (47)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5935746025067773125
 Transform:
   m_ObjectHideFlags: 0
@@ -13982,12 +13982,12 @@ GameObject:
   - component: {fileID: 5916220939399013979}
   - component: {fileID: 8968541706504052599}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (70)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5916220939399013979
 Transform:
   m_ObjectHideFlags: 0
@@ -14041,12 +14041,12 @@ GameObject:
   - component: {fileID: 5946819867380289419}
   - component: {fileID: 3920878059679929255}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (67)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5946819867380289419
 Transform:
   m_ObjectHideFlags: 0
@@ -14100,12 +14100,12 @@ GameObject:
   - component: {fileID: 5956402256136529598}
   - component: {fileID: 6653202318862610473}
   m_Layer: 0
-  m_Name: GAZ-24LOD (50)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5956402256136529598
 Transform:
   m_ObjectHideFlags: 0
@@ -14159,12 +14159,12 @@ GameObject:
   - component: {fileID: 5883597193790842982}
   - component: {fileID: 6793464934551770542}
   m_Layer: 0
-  m_Name: GAZ-13LOD (40)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5883597193790842982
 Transform:
   m_ObjectHideFlags: 0
@@ -14218,12 +14218,12 @@ GameObject:
   - component: {fileID: 5777506339703123607}
   - component: {fileID: 9097792229798991803}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (21)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5777506339703123607
 Transform:
   m_ObjectHideFlags: 0
@@ -14277,12 +14277,12 @@ GameObject:
   - component: {fileID: 5780273853065315688}
   - component: {fileID: 6830307488364614655}
   m_Layer: 0
-  m_Name: GAZ-24LOD (60)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5780273853065315688
 Transform:
   m_ObjectHideFlags: 0
@@ -14336,12 +14336,12 @@ GameObject:
   - component: {fileID: 5832014243220543980}
   - component: {fileID: 3747525907724993984}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (11)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5832014243220543980
 Transform:
   m_ObjectHideFlags: 0
@@ -14395,12 +14395,12 @@ GameObject:
   - component: {fileID: 5836222430765112167}
   - component: {fileID: 9120466349016212043}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (51)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5836222430765112167
 Transform:
   m_ObjectHideFlags: 0
@@ -14454,12 +14454,12 @@ GameObject:
   - component: {fileID: 5814844733450015372}
   - component: {fileID: 9141868304107760544}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (84)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5814844733450015372
 Transform:
   m_ObjectHideFlags: 0
@@ -14513,12 +14513,12 @@ GameObject:
   - component: {fileID: 6277571998733582555}
   - component: {fileID: 8751163448590367223}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (35)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6277571998733582555
 Transform:
   m_ObjectHideFlags: 0
@@ -14572,12 +14572,12 @@ GameObject:
   - component: {fileID: 6274813199894145377}
   - component: {fileID: 6478732994996174838}
   m_Layer: 0
-  m_Name: GAZ-24LOD (19)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6274813199894145377
 Transform:
   m_ObjectHideFlags: 0
@@ -14631,12 +14631,12 @@ GameObject:
   - component: {fileID: 6328406216796408704}
   - component: {fileID: 8772740905895342764}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (11)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6328406216796408704
 Transform:
   m_ObjectHideFlags: 0
@@ -14690,12 +14690,12 @@ GameObject:
   - component: {fileID: 6228907160217805913}
   - component: {fileID: 6380490191906108110}
   m_Layer: 0
-  m_Name: GAZ-24LOD (51)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6228907160217805913
 Transform:
   m_ObjectHideFlags: 0
@@ -14749,12 +14749,12 @@ GameObject:
   - component: {fileID: 6240069071506671400}
   - component: {fileID: 6447094072726928096}
   m_Layer: 0
-  m_Name: GAZ-13LOD (23)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6240069071506671400
 Transform:
   m_ObjectHideFlags: 0
@@ -14808,12 +14808,12 @@ GameObject:
   - component: {fileID: 6134953445086524493}
   - component: {fileID: 6619785324920234714}
   m_Layer: 0
-  m_Name: GAZ-24LOD (7)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6134953445086524493
 Transform:
   m_ObjectHideFlags: 0
@@ -14867,12 +14867,12 @@ GameObject:
   - component: {fileID: 6191550150500576840}
   - component: {fileID: 3531480672259682916}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (76)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6191550150500576840
 Transform:
   m_ObjectHideFlags: 0
@@ -14926,12 +14926,12 @@ GameObject:
   - component: {fileID: 6055857026505359016}
   - component: {fileID: 3522977205738005124}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (94)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6055857026505359016
 Transform:
   m_ObjectHideFlags: 0
@@ -14985,12 +14985,12 @@ GameObject:
   - component: {fileID: 6064141925082031465}
   - component: {fileID: 8810204432957004869}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (45)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6064141925082031465
 Transform:
   m_ObjectHideFlags: 0
@@ -15044,12 +15044,12 @@ GameObject:
   - component: {fileID: 6115796973223464776}
   - component: {fileID: 8841593299137263204}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (9)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6115796973223464776
 Transform:
   m_ObjectHideFlags: 0
@@ -15103,12 +15103,12 @@ GameObject:
   - component: {fileID: 7718609916198811793}
   - component: {fileID: 1148587409596622013}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (50)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7718609916198811793
 Transform:
   m_ObjectHideFlags: 0
@@ -15162,12 +15162,12 @@ GameObject:
   - component: {fileID: 7661987612943498249}
   - component: {fileID: 7253417919918811806}
   m_Layer: 0
-  m_Name: GAZ-24LOD (62)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7661987612943498249
 Transform:
   m_ObjectHideFlags: 0
@@ -15221,12 +15221,12 @@ GameObject:
   - component: {fileID: 7655402571899769946}
   - component: {fileID: 1068458047960696950}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (44)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7655402571899769946
 Transform:
   m_ObjectHideFlags: 0
@@ -15280,12 +15280,12 @@ GameObject:
   - component: {fileID: 7653861883948505919}
   - component: {fileID: 4925794945187389971}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (13)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7653861883948505919
 Transform:
   m_ObjectHideFlags: 0
@@ -15418,12 +15418,12 @@ GameObject:
   - component: {fileID: 7596324650105601578}
   - component: {fileID: 974195883216085510}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (58)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7596324650105601578
 Transform:
   m_ObjectHideFlags: 0
@@ -15477,12 +15477,12 @@ GameObject:
   - component: {fileID: 7606528804752741557}
   - component: {fileID: 7380926455652608381}
   m_Layer: 0
-  m_Name: GAZ-13LOD (36)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7606528804752741557
 Transform:
   m_ObjectHideFlags: 0
@@ -15615,12 +15615,12 @@ GameObject:
   - component: {fileID: 7546949811783364096}
   - component: {fileID: 5102627225377986348}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (58)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7546949811783364096
 Transform:
   m_ObjectHideFlags: 0
@@ -15674,12 +15674,12 @@ GameObject:
   - component: {fileID: 7928373262526954282}
   - component: {fileID: 4641865184602194438}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (54)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7928373262526954282
 Transform:
   m_ObjectHideFlags: 0
@@ -15733,12 +15733,12 @@ GameObject:
   - component: {fileID: 7964744596703380471}
   - component: {fileID: 6950739826151888224}
   m_Layer: 0
-  m_Name: GAZ-24LOD (72)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7964744596703380471
 Transform:
   m_ObjectHideFlags: 0
@@ -15792,12 +15792,12 @@ GameObject:
   - component: {fileID: 7975631902171432160}
   - component: {fileID: 4666617920751386060}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (80)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7975631902171432160
 Transform:
   m_ObjectHideFlags: 0
@@ -15851,12 +15851,12 @@ GameObject:
   - component: {fileID: 7882087116740625325}
   - component: {fileID: 7098601396783988325}
   m_Layer: 0
-  m_Name: GAZ-13LOD (8)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7882087116740625325
 Transform:
   m_ObjectHideFlags: 0
@@ -15910,12 +15910,12 @@ GameObject:
   - component: {fileID: 7856714432071433222}
   - component: {fileID: 7127271877603082702}
   m_Layer: 0
-  m_Name: GAZ-13LOD (49)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7856714432071433222
 Transform:
   m_ObjectHideFlags: 0
@@ -15969,12 +15969,12 @@ GameObject:
   - component: {fileID: 7859679908821689669}
   - component: {fileID: 7200896493632451538}
   m_Layer: 0
-  m_Name: GAZ-24LOD (61)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7859679908821689669
 Transform:
   m_ObjectHideFlags: 0
@@ -16028,12 +16028,12 @@ GameObject:
   - component: {fileID: 7867547729885085242}
   - component: {fileID: 4846768521856878358}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (34)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7867547729885085242
 Transform:
   m_ObjectHideFlags: 0
@@ -16087,12 +16087,12 @@ GameObject:
   - component: {fileID: 7805344427631090016}
   - component: {fileID: 7111095225438736375}
   m_Layer: 0
-  m_Name: GAZ-24LOD (43)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7805344427631090016
 Transform:
   m_ObjectHideFlags: 0
@@ -16146,12 +16146,12 @@ GameObject:
   - component: {fileID: 7845378717493044674}
   - component: {fileID: 7134232068496660490}
   m_Layer: 0
-  m_Name: GAZ-13LOD (17)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7845378717493044674
 Transform:
   m_ObjectHideFlags: 0
@@ -16205,12 +16205,12 @@ GameObject:
   - component: {fileID: 7830285130240673904}
   - component: {fileID: 7086214863361597159}
   m_Layer: 0
-  m_Name: GAZ-24LOD (36)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7830285130240673904
 Transform:
   m_ObjectHideFlags: 0
@@ -16264,12 +16264,12 @@ GameObject:
   - component: {fileID: 7832645482143471542}
   - component: {fileID: 602846188740447130}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (45)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7832645482143471542
 Transform:
   m_ObjectHideFlags: 0
@@ -16323,12 +16323,12 @@ GameObject:
   - component: {fileID: 7165803173106671506}
   - component: {fileID: 5556886370847024830}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (69)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7165803173106671506
 Transform:
   m_ObjectHideFlags: 0
@@ -16382,12 +16382,12 @@ GameObject:
   - component: {fileID: 7192046466454383242}
   - component: {fileID: 513921479058241190}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (25)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7192046466454383242
 Transform:
   m_ObjectHideFlags: 0
@@ -16441,12 +16441,12 @@ GameObject:
   - component: {fileID: 7194846614842206904}
   - component: {fileID: 7864607564062882863}
   m_Layer: 0
-  m_Name: GAZ-24LOD (74)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7194846614842206904
 Transform:
   m_ObjectHideFlags: 0
@@ -16579,12 +16579,12 @@ GameObject:
   - component: {fileID: 7179743397452032089}
   - component: {fileID: 7880765659914944206}
   m_Layer: 0
-  m_Name: GAZ-24LOD (14)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7179743397452032089
 Transform:
   m_ObjectHideFlags: 0
@@ -16638,12 +16638,12 @@ GameObject:
   - component: {fileID: 7095648733564300105}
   - component: {fileID: 5482222557642150501}
   m_Layer: 0
-  m_Name: VAZ-2107LOD
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7095648733564300105
 Transform:
   m_ObjectHideFlags: 0
@@ -16697,12 +16697,12 @@ GameObject:
   - component: {fileID: 7124790299571217738}
   - component: {fileID: 436514896780147046}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (63)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7124790299571217738
 Transform:
   m_ObjectHideFlags: 0
@@ -16756,12 +16756,12 @@ GameObject:
   - component: {fileID: 7105924237137116458}
   - component: {fileID: 5544312408149672966}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (27)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7105924237137116458
 Transform:
   m_ObjectHideFlags: 0
@@ -16815,12 +16815,12 @@ GameObject:
   - component: {fileID: 7109844161648491222}
   - component: {fileID: 7806626638564125761}
   m_Layer: 0
-  m_Name: GAZ-24LOD (35)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7109844161648491222
 Transform:
   m_ObjectHideFlags: 0
@@ -16874,12 +16874,12 @@ GameObject:
   - component: {fileID: 7009956289553991216}
   - component: {fileID: 407231489639045660}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (43)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7009956289553991216
 Transform:
   m_ObjectHideFlags: 0
@@ -16933,12 +16933,12 @@ GameObject:
   - component: {fileID: 6991245631710058261}
   - component: {fileID: 7990622657944021725}
   m_Layer: 0
-  m_Name: GAZ-13LOD (28)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6991245631710058261
 Transform:
   m_ObjectHideFlags: 0
@@ -16992,12 +16992,12 @@ GameObject:
   - component: {fileID: 6998406027404924042}
   - component: {fileID: 8062249526333424157}
   m_Layer: 0
-  m_Name: GAZ-24LOD (31)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6998406027404924042
 Transform:
   m_ObjectHideFlags: 0
@@ -17051,12 +17051,12 @@ GameObject:
   - component: {fileID: 6997686802101803498}
   - component: {fileID: 5724301218841338054}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (29)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6997686802101803498
 Transform:
   m_ObjectHideFlags: 0
@@ -17110,12 +17110,12 @@ GameObject:
   - component: {fileID: 7060949683805553803}
   - component: {fileID: 7998393328429503004}
   m_Layer: 0
-  m_Name: GAZ-24LOD (12)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7060949683805553803
 Transform:
   m_ObjectHideFlags: 0
@@ -17248,12 +17248,12 @@ GameObject:
   - component: {fileID: 6952017848875745501}
   - component: {fileID: 329923433129467121}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (26)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6952017848875745501
 Transform:
   m_ObjectHideFlags: 0
@@ -17307,12 +17307,12 @@ GameObject:
   - component: {fileID: 6920824515400101128}
   - component: {fileID: 5649694856748258340}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (52)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6920824515400101128
 Transform:
   m_ObjectHideFlags: 0
@@ -17366,12 +17366,12 @@ GameObject:
   - component: {fileID: 6957816559168567701}
   - component: {fileID: 5684435501465632953}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (85)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6957816559168567701
 Transform:
   m_ObjectHideFlags: 0
@@ -17504,12 +17504,12 @@ GameObject:
   - component: {fileID: 7354074032970629919}
   - component: {fileID: 5215979730427951667}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (44)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7354074032970629919
 Transform:
   m_ObjectHideFlags: 0
@@ -17563,12 +17563,12 @@ GameObject:
   - component: {fileID: 7294526444130682156}
   - component: {fileID: 132229313225431296}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (57)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7294526444130682156
 Transform:
   m_ObjectHideFlags: 0
@@ -17622,12 +17622,12 @@ GameObject:
   - component: {fileID: 7294951095357234838}
   - component: {fileID: 7700415915732099934}
   m_Layer: 0
-  m_Name: GAZ-13LOD (4)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7294951095357234838
 Transform:
   m_ObjectHideFlags: 0
@@ -17681,12 +17681,12 @@ GameObject:
   - component: {fileID: 7228377990772316382}
   - component: {fileID: 7687032639546084937}
   m_Layer: 0
-  m_Name: GAZ-24LOD (56)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7228377990772316382
 Transform:
   m_ObjectHideFlags: 0
@@ -17740,12 +17740,12 @@ GameObject:
   - component: {fileID: 7206519165185011041}
   - component: {fileID: 7709945918826724342}
   m_Layer: 0
-  m_Name: GAZ-24LOD (55)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7206519165185011041
 Transform:
   m_ObjectHideFlags: 0
@@ -17799,12 +17799,12 @@ GameObject:
   - component: {fileID: 8890797540747003368}
   - component: {fileID: 8395823952965990432}
   m_Layer: 0
-  m_Name: GAZ-13LOD (33)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8890797540747003368
 Transform:
   m_ObjectHideFlags: 0
@@ -17937,12 +17937,12 @@ GameObject:
   - component: {fileID: 8877907051024222975}
   - component: {fileID: 6149845471592723411}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (15)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8877907051024222975
 Transform:
   m_ObjectHideFlags: 0
@@ -17996,12 +17996,12 @@ GameObject:
   - component: {fileID: 8901223016277205067}
   - component: {fileID: 2263595198721539175}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (89)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8901223016277205067
 Transform:
   m_ObjectHideFlags: 0
@@ -18055,12 +18055,12 @@ GameObject:
   - component: {fileID: 8816467746678247784}
   - component: {fileID: 8483623434626444448}
   m_Layer: 0
-  m_Name: GAZ-13LOD (26)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8816467746678247784
 Transform:
   m_ObjectHideFlags: 0
@@ -18114,12 +18114,12 @@ GameObject:
   - component: {fileID: 8823996046214475351}
   - component: {fileID: 2205560248167101051}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (97)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8823996046214475351
 Transform:
   m_ObjectHideFlags: 0
@@ -18173,12 +18173,12 @@ GameObject:
   - component: {fileID: 8807987469982276068}
   - component: {fileID: 6075438758357541064}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (67)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8807987469982276068
 Transform:
   m_ObjectHideFlags: 0
@@ -18232,12 +18232,12 @@ GameObject:
   - component: {fileID: 8849212537049583493}
   - component: {fileID: 8373106379589687570}
   m_Layer: 0
-  m_Name: GAZ-24LOD (9)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8849212537049583493
 Transform:
   m_ObjectHideFlags: 0
@@ -18291,12 +18291,12 @@ GameObject:
   - component: {fileID: 8851579989123005263}
   - component: {fileID: 6105521725758882403}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (8)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8851579989123005263
 Transform:
   m_ObjectHideFlags: 0
@@ -18350,12 +18350,12 @@ GameObject:
   - component: {fileID: 8838670845085846652}
   - component: {fileID: 2181955222473658448}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (19)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8838670845085846652
 Transform:
   m_ObjectHideFlags: 0
@@ -18409,12 +18409,12 @@ GameObject:
   - component: {fileID: 8840238127475275521}
   - component: {fileID: 8382146359892976022}
   m_Layer: 0
-  m_Name: GAZ-24LOD (46)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8840238127475275521
 Transform:
   m_ObjectHideFlags: 0
@@ -18468,12 +18468,12 @@ GameObject:
   - component: {fileID: 8842406078876103554}
   - component: {fileID: 2186516868922240942}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (48)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8842406078876103554
 Transform:
   m_ObjectHideFlags: 0
@@ -18527,12 +18527,12 @@ GameObject:
   - component: {fileID: 8746844083577904799}
   - component: {fileID: 2129517227828511411}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (32)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8746844083577904799
 Transform:
   m_ObjectHideFlags: 0
@@ -18586,12 +18586,12 @@ GameObject:
   - component: {fileID: 8720426744284573204}
   - component: {fileID: 6298608815819315000}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (63)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8720426744284573204
 Transform:
   m_ObjectHideFlags: 0
@@ -18645,12 +18645,12 @@ GameObject:
   - component: {fileID: 8724343375967788678}
   - component: {fileID: 6304778485369907114}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (25)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8724343375967788678
 Transform:
   m_ObjectHideFlags: 0
@@ -18704,12 +18704,12 @@ GameObject:
   - component: {fileID: 8657368698377223536}
   - component: {fileID: 8563787101929876455}
   m_Layer: 0
-  m_Name: GAZ-24LOD (13)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8657368698377223536
 Transform:
   m_ObjectHideFlags: 0
@@ -18763,12 +18763,12 @@ GameObject:
   - component: {fileID: 8660626787650863022}
   - component: {fileID: 8560553596917082425}
   m_Layer: 0
-  m_Name: GAZ-24LOD (71)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8660626787650863022
 Transform:
   m_ObjectHideFlags: 0
@@ -18822,12 +18822,12 @@ GameObject:
   - component: {fileID: 8696684444977472907}
   - component: {fileID: 2044155495553726887}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (35)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8696684444977472907
 Transform:
   m_ObjectHideFlags: 0
@@ -18881,12 +18881,12 @@ GameObject:
   - component: {fileID: 9187131147479213375}
   - component: {fileID: 8115133854211660023}
   m_Layer: 0
-  m_Name: GAZ-13LOD (1)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9187131147479213375
 Transform:
   m_ObjectHideFlags: 0
@@ -18940,12 +18940,12 @@ GameObject:
   - component: {fileID: 9160253876843963477}
   - component: {fileID: 5869255661057334649}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (76)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9160253876843963477
 Transform:
   m_ObjectHideFlags: 0
@@ -18999,12 +18999,12 @@ GameObject:
   - component: {fileID: 9192491052032044242}
   - component: {fileID: 1980687817113334014}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (28)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9192491052032044242
 Transform:
   m_ObjectHideFlags: 0
@@ -19058,12 +19058,12 @@ GameObject:
   - component: {fileID: 9203586209516154114}
   - component: {fileID: 1970091870118523182}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (33)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9203586209516154114
 Transform:
   m_ObjectHideFlags: 0
@@ -19117,12 +19117,12 @@ GameObject:
   - component: {fileID: 9101898604962108212}
   - component: {fileID: 1927233282232782616}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (9)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9101898604962108212
 Transform:
   m_ObjectHideFlags: 0
@@ -19176,12 +19176,12 @@ GameObject:
   - component: {fileID: 9096644894274668848}
   - component: {fileID: 8124579887938461607}
   m_Layer: 0
-  m_Name: GAZ-24LOD (20)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9096644894274668848
 Transform:
   m_ObjectHideFlags: 0
@@ -19235,12 +19235,12 @@ GameObject:
   - component: {fileID: 9147970967008033838}
   - component: {fileID: 5807415441017111810}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (78)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9147970967008033838
 Transform:
   m_ObjectHideFlags: 0
@@ -19294,12 +19294,12 @@ GameObject:
   - component: {fileID: 9130456072776196659}
   - component: {fileID: 8090837011900150948}
   m_Layer: 0
-  m_Name: GAZ-24LOD (15)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9130456072776196659
 Transform:
   m_ObjectHideFlags: 0
@@ -19353,12 +19353,12 @@ GameObject:
   - component: {fileID: 8306272216323157623}
   - component: {fileID: 9059068282382153952}
   m_Layer: 0
-  m_Name: GAZ-24LOD (57)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8306272216323157623
 Transform:
   m_ObjectHideFlags: 0
@@ -19412,12 +19412,12 @@ GameObject:
   - component: {fileID: 8321448545718365883}
   - component: {fileID: 9044971140128045100}
   m_Layer: 0
-  m_Name: GAZ-24LOD (41)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8321448545718365883
 Transform:
   m_ObjectHideFlags: 0
@@ -19471,12 +19471,12 @@ GameObject:
   - component: {fileID: 8299080582467686415}
   - component: {fileID: 1712169586943347747}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (66)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8299080582467686415
 Transform:
   m_ObjectHideFlags: 0
@@ -19530,12 +19530,12 @@ GameObject:
   - component: {fileID: 8221652938441288813}
   - component: {fileID: 8999500203280104186}
   m_Layer: 0
-  m_Name: GAZ-24LOD (10)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8221652938441288813
 Transform:
   m_ObjectHideFlags: 0
@@ -19589,12 +19589,12 @@ GameObject:
   - component: {fileID: 8169828938090914016}
   - component: {fileID: 1553610862226701516}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (86)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8169828938090914016
 Transform:
   m_ObjectHideFlags: 0
@@ -19648,12 +19648,12 @@ GameObject:
   - component: {fileID: 8073706445978696650}
   - component: {fileID: 1505620401902790630}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (41)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8073706445978696650
 Transform:
   m_ObjectHideFlags: 0
@@ -19707,12 +19707,12 @@ GameObject:
   - component: {fileID: 8077141616867070116}
   - component: {fileID: 6808263079399975304}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (37)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8077141616867070116
 Transform:
   m_ObjectHideFlags: 0
@@ -19766,12 +19766,12 @@ GameObject:
   - component: {fileID: 8110279654264553782}
   - component: {fileID: 9110791295235938209}
   m_Layer: 0
-  m_Name: GAZ-24LOD (68)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8110279654264553782
 Transform:
   m_ObjectHideFlags: 0
@@ -19825,12 +19825,12 @@ GameObject:
   - component: {fileID: 8600008659455211280}
   - component: {fileID: 6428137488290958908}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (1)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8600008659455211280
 Transform:
   m_ObjectHideFlags: 0
@@ -19884,12 +19884,12 @@ GameObject:
   - component: {fileID: 8586264271885119798}
   - component: {fileID: 8778925060478019489}
   m_Layer: 0
-  m_Name: GAZ-24LOD (3)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8586264271885119798
 Transform:
   m_ObjectHideFlags: 0
@@ -19943,12 +19943,12 @@ GameObject:
   - component: {fileID: 8633826919751648580}
   - component: {fileID: 8731366832231322579}
   m_Layer: 0
-  m_Name: GAZ-24LOD (59)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8633826919751648580
 Transform:
   m_ObjectHideFlags: 0
@@ -20002,12 +20002,12 @@ GameObject:
   - component: {fileID: 8627065441928396337}
   - component: {fileID: 1393836272754680349}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (93)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8627065441928396337
 Transform:
   m_ObjectHideFlags: 0
@@ -20061,12 +20061,12 @@ GameObject:
   - component: {fileID: 8505239469136020364}
   - component: {fileID: 1361836166723428256}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (78)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8505239469136020364
 Transform:
   m_ObjectHideFlags: 0
@@ -20120,12 +20120,12 @@ GameObject:
   - component: {fileID: 8559225133266263519}
   - component: {fileID: 6387357008546653427}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (30)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8559225133266263519
 Transform:
   m_ObjectHideFlags: 0
@@ -20179,12 +20179,12 @@ GameObject:
   - component: {fileID: 8571619313180134863}
   - component: {fileID: 1304384329179369955}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (6)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8571619313180134863
 Transform:
   m_ObjectHideFlags: 0
@@ -20238,12 +20238,12 @@ GameObject:
   - component: {fileID: 8492008807997897143}
   - component: {fileID: 8806838688216990847}
   m_Layer: 0
-  m_Name: GAZ-13LOD (46)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8492008807997897143
 Transform:
   m_ObjectHideFlags: 0
@@ -20297,12 +20297,12 @@ GameObject:
   - component: {fileID: 8363327077600796016}
   - component: {fileID: 6520239303910827100}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (28)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8363327077600796016
 Transform:
   m_ObjectHideFlags: 0
@@ -20356,12 +20356,12 @@ GameObject:
   - component: {fileID: 8365116307924955823}
   - component: {fileID: 6519759003727793027}
   m_Layer: 0
-  m_Name: VAZ-2107LOD (75)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8365116307924955823
 Transform:
   m_ObjectHideFlags: 0
@@ -20415,12 +20415,12 @@ GameObject:
   - component: {fileID: 8422522565614179913}
   - component: {fileID: 8799831015173587166}
   m_Layer: 0
-  m_Name: GAZ-24LOD (23)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8422522565614179913
 Transform:
   m_ObjectHideFlags: 0
@@ -20474,12 +20474,12 @@ GameObject:
   - component: {fileID: 8396909438883415778}
   - component: {fileID: 8825463916365828213}
   m_Layer: 0
-  m_Name: GAZ-24LOD (66)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8396909438883415778
 Transform:
   m_ObjectHideFlags: 0
@@ -20533,12 +20533,12 @@ GameObject:
   - component: {fileID: 8409923186965143967}
   - component: {fileID: 1177854509364854195}
   m_Layer: 0
-  m_Name: ZAZ-965LOD (96)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8409923186965143967
 Transform:
   m_ObjectHideFlags: 0

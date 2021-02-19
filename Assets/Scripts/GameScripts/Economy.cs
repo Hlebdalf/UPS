@@ -16,39 +16,24 @@ public class Economy : MonoBehaviour {
 
     private string cityName = "";
     private int level = 0;
-    [SerializeField]
     private int cntPeople = 0, cntPeoplePerDay = 0;
-    [SerializeField]
     private long money = 0, optMoney = 0, moneyPerDay = 0;
-    [SerializeField]
     private long science = 0, sciencePerDay = 0;
-    [SerializeField]
     private long products = 0, productsPerDay = 0;
-    [SerializeField]
     private float averageLoyality = 0;
     private float HCS = 0, PIT = 0, VAT = 0, CIT = 0; // Коэффиценты налогов
     private bool isStarted = false;
     // private float deltaTime = 0.1f;
     
-    [SerializeField]
     private List <int> cntHousesD;
-    [SerializeField]
     private List <int> cntShopsD;
-    [SerializeField]
     private List <int> cntSciencesD;
-    [SerializeField]
     private List <int> cntFactoriesD;
-    [SerializeField]
     private List <int> cntPeopleD;
-    [SerializeField]
     private List <int> cntPostersD;
-    [SerializeField]
     private List <int> averageLoyalityD;
-    [SerializeField]
     private List <long> moneyPerDayD;
-    [SerializeField]
     private List <long> sciencePerDayD;
-    [SerializeField]
     private List <long> productsPerDayD;
 
     public GameObject fastStats;

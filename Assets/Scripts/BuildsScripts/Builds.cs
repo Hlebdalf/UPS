@@ -173,6 +173,18 @@ public class Builds : MonoBehaviour {
             }
             if (isGeneration) data.isGenBuild = true;
 
+            List <GameObject> carObjects = new List <GameObject> ();
+            Transform parent = parkings[parkings.Count - 1].transform.Find("Build");
+            foreach (Transform child in parent) {
+                if (child.gameObject.name == "Car") {
+                    carObjects.Add(child.gameObject);
+                }
+            }
+            int cntCars = (int)UnityEngine.Random.Range(25f, carObjects.Count - 25f);
+            for (int i = 0; i < cntCars; ++i) {
+                carObjects[(int)UnityEngine.Random.Range(0f, carObjects.Count - 0.01f)].SetActive(true);
+            }
+
             parkings[parkings.Count - 1].AddComponent <Rigidbody> ();
             parkings[parkings.Count - 1].GetComponent <Rigidbody> ().useGravity = false;
         }
