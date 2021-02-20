@@ -6128,6 +6128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87099f8fd3c75f9409ef36146af0785e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InterfaceClass: {fileID: 1344676610}
   fastStats: {fileID: 1149143471}
   SityInfoClass: {fileID: 1259262006}
   TaxationClass: {fileID: 1212650884}

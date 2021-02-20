@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Economy : MonoBehaviour {
     private Field FieldClass;
+    [SerializeField]
+    private Interface InterfaceClass;
     private Builds BuildsClass;
     private People PeopleClass;
 
@@ -257,6 +259,7 @@ public class Economy : MonoBehaviour {
             PaySalaries();
             AddScience();
             AddProducts();
+            if (InterfaceClass.EconomyPanelActivity) FillInTheMenuWithStatistics();
         }
     }
 
