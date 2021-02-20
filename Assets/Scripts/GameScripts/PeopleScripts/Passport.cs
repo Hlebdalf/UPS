@@ -203,19 +203,19 @@ public class Passport : MonoBehaviour {
         else if (age < 23) {
             if (idxSocialСlass == 1) {
                 budget = (int)UnityEngine.Random.Range(-1000, 10000);
-                if (socialStatus == "Рабочий") salary = (int)UnityEngine.Random.Range(-100, 1000);
+                if (socialStatus == "Рабочий") salary = (int)UnityEngine.Random.Range(-10, 100);
             }
             if (idxSocialСlass == 2) {
                 budget = (int)UnityEngine.Random.Range(-10000, 100000);
-                if (socialStatus == "Рабочий") salary = (int)UnityEngine.Random.Range(-1000, 10000);
+                if (socialStatus == "Рабочий") salary = (int)UnityEngine.Random.Range(-100, 1000);
             }
             if (idxSocialСlass == 3) {
                 budget = (int)UnityEngine.Random.Range(-100000, 1000000);
-                if (socialStatus == "Рабочий") salary = (int)UnityEngine.Random.Range(-10000, 100000);
+                if (socialStatus == "Рабочий") salary = (int)UnityEngine.Random.Range(-1000, 10000);
             }
             if (idxSocialСlass == 4) {
                 budget = (int)UnityEngine.Random.Range(-1000000, 10000000);
-                if (socialStatus == "Рабочий") salary = (int)UnityEngine.Random.Range(-100000, 1000000);
+                if (socialStatus == "Рабочий") salary = (int)UnityEngine.Random.Range(-10000, 100000);
             }
         }
         else {

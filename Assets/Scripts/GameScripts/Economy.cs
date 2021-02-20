@@ -170,9 +170,11 @@ public class Economy : MonoBehaviour {
     }
 
     private void CalcPeopleStats() {
-        averageLoyality = 0;
+        PITn = VATn = averageLoyality = 0;
         averageLoyalityD = new List <int> () {0, 0, 0, 0};
-        List <int> counting = new List <int> () {0, 0, 0, 0};
+        List <int> countingAvgLoyality = new List <int> () {0, 0, 0, 0};
+        List <int> countingPIT = new List <int> () {0, 0, 0, 0};
+        List <int> countingVAT = new List <int> () {0, 0, 0, 0};
         for (int i = 0; i < PeopleClass.objects.Count; ++i) {
             Passport passportClass = PeopleClass.objects[i].GetComponent <Passport> ();
             if (passportClass.idxSocialСlass < 1 || passportClass.idxSocialСlass > 4) {
@@ -180,25 +182,39 @@ public class Economy : MonoBehaviour {
                 continue;
             }
             averageLoyalityD[passportClass.idxSocialСlass - 1] += passportClass.GetLoyalty().loyalty;
-            ++counting[passportClass.idxSocialСlass - 1];
+            ++countingAvgLoyality[passportClass.idxSocialСlass - 1];
 
-            PITn += (float)passportClass.salary;
             PITnD[passportClass.idxSocialСlass - 1] += (float)passportClass.salary;
+            ++countingPIT[passportClass.idxSocialСlass - 1];
 
             if (passportClass.idxCommerceType == 0) {
-                float purchaseSum = UnityEngine.Random.Range((float)passportClass.salary / 100f + 1f, (float)passportClass.salary / 2f);
-                VATn += purchaseSum;
-                VATnD[passportClass.idxSocialСlass - 1] += purchaseSum;
+                VATnD[passportClass.idxSocialСlass - 1] += UnityEngine.Random.Range((float)passportClass.salary / 100f + 1f, (float)passportClass.salary / 2f);
+                ++countingVAT[passportClass.idxSocialСlass - 1];
             }
         }
-        if (counting[0] > 0) averageLoyalityD[0] /= counting[0];
-        if (counting[1] > 0) averageLoyalityD[1] /= counting[1];
-        if (counting[2] > 0) averageLoyalityD[2] /= counting[2];
-        if (counting[3] > 0) averageLoyalityD[3] /= counting[3];
-        if (counting[0] + counting[1] + counting[2] + counting[3] > 0) {
-            averageLoyality = (averageLoyalityD[0] + averageLoyalityD[1] + averageLoyalityD[2] + averageLoyalityD[3]) / (counting[0] + counting[1] + counting[2] + counting[3]);
+        if (countingAvgLoyality[0] + countingAvgLoyality[1] + countingAvgLoyality[2] + countingAvgLoyality[3] > 0) {
+            averageLoyality = (averageLoyalityD[0] + averageLoyalityD[1] + averageLoyalityD[2] + averageLoyalityD[3]) / (countingAvgLoyality[0] + countingAvgLoyality[1] + countingAvgLoyality[2] + countingAvgLoyality[3]);
         }
+        if (countingAvgLoyality[0] > 0) averageLoyalityD[0] /= countingAvgLoyality[0];
+        if (countingAvgLoyality[1] > 0) averageLoyalityD[1] /= countingAvgLoyality[1];
+        if (countingAvgLoyality[2] > 0) averageLoyalityD[2] /= countingAvgLoyality[2];
+        if (countingAvgLoyality[3] > 0) averageLoyalityD[3] /= countingAvgLoyality[3];
 
+        if (countingPIT[0] + countingPIT[1] + countingPIT[2] + countingPIT[3] > 0) {
+            PITn = (PITnD[0] + PITnD[1] + PITnD[2] + PITnD[3]) / (countingPIT[0] + countingPIT[1] + countingPIT[2] + countingPIT[3]) * cntPeople;
+        }
+        if (countingPIT[0] > 0) PITnD[0] = PITnD[0] / countingPIT[0] * cntPeople;
+        if (countingPIT[1] > 0) PITnD[1] = PITnD[1] / countingPIT[1] * cntPeople;
+        if (countingPIT[2] > 0) PITnD[2] = PITnD[2] / countingPIT[2] * cntPeople;
+        if (countingPIT[3] > 0) PITnD[3] = PITnD[3] / countingPIT[3] * cntPeople;
+
+        if (countingVAT[0] + countingVAT[1] + countingVAT[2] + countingVAT[3] > 0) {
+            VATn = (VATnD[0] + VATnD[1] + VATnD[2] + VATnD[3]) / (countingVAT[0] + countingVAT[1] + countingVAT[2] + countingVAT[3]) * cntPeople;
+        }
+        if (countingVAT[0] > 0) VATnD[0] = VATnD[0] / countingVAT[0] * cntPeople;
+        if (countingVAT[1] > 0) VATnD[1] = VATnD[1] / countingVAT[1] * cntPeople;
+        if (countingVAT[2] > 0) VATnD[2] = VATnD[2] / countingVAT[2] * cntPeople;
+        if (countingVAT[3] > 0) VATnD[3] = VATnD[3] / countingVAT[3] * cntPeople;
     }
 
     private void AddScience() {
