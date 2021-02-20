@@ -15,4 +15,14 @@ public class Factory : MonoBehaviour {
     public long GetProductsRate() {
         return productsRate;
     }
+
+    public void ChangeServiceCost(long _serviceCost) {
+        serviceCost = _serviceCost;
+    }
+    
+    public void ChangeProductsRate(long _productsRate) {
+        productsRate = _productsRate;
+    }
+    
+    public void LevelUpgrade() {}
 }

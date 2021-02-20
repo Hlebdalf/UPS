@@ -15,4 +15,14 @@ public class Science : MonoBehaviour {
     public long GetScienceRate() {
         return scienceRate;
     }
+
+    public void ChangeServiceCost(long _serviceCost) {
+        serviceCost = _serviceCost;
+    }
+    
+    public void ChangeScienceRate(long _scienceRate) {
+        scienceRate = _scienceRate;
+    }
+
+    public void LevelUpgrade() {}
 }
