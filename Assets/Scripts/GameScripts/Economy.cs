@@ -217,6 +217,12 @@ public class Economy : MonoBehaviour {
         if (countingVAT[3] > 0) VATnD[3] = VATnD[3] / countingVAT[3] * cntPeople;
     }
 
+    private void PaySalaries() {
+        for (int i = 0; i < PeopleClass.objects.Count; ++i) {
+            PeopleClass.objects[i].GetComponent <Passport> ().PaySalary();
+        }
+    }
+
     private void AddScience() {
         science += sciencePerDay;
     }
@@ -248,6 +254,7 @@ public class Economy : MonoBehaviour {
             CalcStatsPerDay();
             CalcPeopleStats();
             StartCoroutine(AddMoneyWithDelay());
+            PaySalaries();
             AddScience();
             AddProducts();
         }

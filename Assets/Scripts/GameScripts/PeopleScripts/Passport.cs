@@ -268,6 +268,10 @@ public class Passport : MonoBehaviour {
         }
     }
 
+    public void PaySalary() {
+        budget += salary;
+    }
+
     public (int loyalty, List <string> reasonsLoyalty) GetLoyalty() {
         // Зависимость от количества плакатов, удовлетворённости, числа жителей выше по статусу и т.д.
         List <string> reasonsLoyalty = new List <string> ();
