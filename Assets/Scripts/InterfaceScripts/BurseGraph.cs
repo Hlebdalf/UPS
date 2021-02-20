@@ -9,6 +9,7 @@ public class BurseGraph : MonoBehaviour
     {
         public int x; public int y;
     }
+    private Economy EconomyClass;
     private const float shift = 1e-5f;
     private float x = 0;
     private Color color = Color.green;
@@ -17,13 +18,18 @@ public class BurseGraph : MonoBehaviour
     private Texture2D texture;
     private int Height;
     private int Weight;
+
     public int iterations = 100;
     public float A = 1;
     public float B = 0.5f;
     public int Price;
+
+    private void Awake() {
+        EconomyClass = Camera.main.GetComponent <Economy> ();
+    }
+    
     private float Weierstrass(float x, float A, float B)
     {
-
         float total = 0;
         for (int n = 0; n < iterations; n++)
         {
@@ -35,7 +41,7 @@ public class BurseGraph : MonoBehaviour
         return (float)total;
     }
 
-    void Start()
+    private void Start()
     {
         texture = gameObject.GetComponent<RawImage>().mainTexture as Texture2D;
         Height = texture.height;
@@ -73,9 +79,9 @@ public class BurseGraph : MonoBehaviour
         }
     }
 
-    public int GetPrice()
+    public void SellProducts()
     {
-        return Price;
+        EconomyClass.SellProducts(Price);
     }
 }
 

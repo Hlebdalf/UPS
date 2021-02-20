@@ -96,7 +96,16 @@ public class Economy : MonoBehaviour {
     IEnumerator AddMoneyWithDelay() {
         WriteMoney(false, true);
         yield return new WaitForSeconds(5f);
+        money += GetMoneyPerDay();
         WriteMoney(false);
+    }
+    
+    IEnumerator AddMoneyWithDelay(long dMoney) {
+        optMoney += dMoney;
+        WriteMoney(false);
+        yield return new WaitForSeconds(5f);
+        money += dMoney;
+        WriteMoney(true);
     }
 
     private void WriteMoney(bool deleteOptMoney = true, bool writePerDay = false) {
@@ -339,6 +348,13 @@ public class Economy : MonoBehaviour {
         StatisticClass.SetBudgetIncrement(GetMoneyPerDayD(2), 3);
         StatisticClass.SetBudgetIncrement(GetMoneyPerDayD(3), 4);
         SityInfoClass.SetGDP(HCSn * HCSk, PITn * PITk, VATn * VATk, CITn * CITk); // Цена без обслуживания
+    }
+
+    public void SellProducts(long price) {
+        StartCoroutine(AddMoneyWithDelay(price * GetProducts()));
+        products = 0;
+        SityInfoClass.SetBudget(GetMoney());
+        SityInfoClass.SetProduction(GetProducts());
     }
 
     public void FillInTheMenuWithStatistics() {
