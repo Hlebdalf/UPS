@@ -13,12 +13,14 @@ public class Interface : MonoBehaviour {
     private bool InterfaceCommercesIsOpened = false;
     private bool InterfaceRoadsIsOpened = false;
     private bool InterfaceOtherIsOpened = false;
+    public bool EconomyPanelActivity = false;
+    private bool UpgradesPanelActivity = false;
+    private bool isActivityInfo = true;
+    private bool isBusy = false;
     private Animator InterfaceBuildsAnimator;
     private Animator InterfaceCommercesAnimator;
     private Animator InterfaceRoadsAnimator;
     private Animator InterfaceOtherAnimator;
-    private bool isActivityInfo = true;
-    private bool isBusy = false;
     private string lastMenu = "";
 
     public GameObject PreFubButton;
@@ -32,8 +34,8 @@ public class Interface : MonoBehaviour {
     public GameObject InterfaceRoadsContent;
     public GameObject PanelClass;
     public GameObject EconomyPanelObject;
-    public bool EconomyPanelActivity = false;
-
+    public GameObject UpgradesPanelObject;
+    
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         EconomyClass = MainCamera.GetComponent <Economy> ();
@@ -79,6 +81,9 @@ public class Interface : MonoBehaviour {
             lastMenu = "Other";
         }
         EconomyPanelActivity = false;
+        UpgradesPanelActivity = false;
+        UpgradesPanelObject.SetActive(UpgradesPanelActivity); 
+        EconomyPanelObject.SetActive(EconomyPanelActivity);   
     }
 
     public void ActivateMenu(string type = "Last") {
@@ -129,7 +134,11 @@ public class Interface : MonoBehaviour {
         EconomyPanelObject.SetActive(EconomyPanelActivity);
         EconomyClass.FillInTheMenuWithStatistics();
     }
-
+    public void SetUpgradesPanelActivity()
+    {
+        UpgradesPanelActivity = !UpgradesPanelActivity;
+        UpgradesPanelObject.SetActive(UpgradesPanelActivity);
+    }
     public void ExitToMainMenu() {
         SceneManager.LoadScene("MainMenu");
     }
