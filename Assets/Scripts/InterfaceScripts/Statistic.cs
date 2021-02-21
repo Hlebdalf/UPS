@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Statistic : MonoBehaviour
-{
+{   
     public List<GameObject> CommerceNumObjects = new List<GameObject>(4);
     public List<GameObject> CommerceIncomeObjects = new List<GameObject>(4);
     public List<GameObject> CommerceWorkplacesObjects = new List<GameObject>(4);
@@ -25,6 +25,8 @@ public class Statistic : MonoBehaviour
 
     public List<GameObject> PostersNumObjects = new List<GameObject>(4);
     public List<GameObject> PostersOutcomeObjects = new List<GameObject>(4);
+
+    public List<GameObject> AVGLoyaltyObjects = new List<GameObject>(4);
 
     public List<GameObject> BudgeIncrementObjects = new List<GameObject>(4);
     public List<GameObject> PopulationIncrementObjects = new List<GameObject>(4);
@@ -51,6 +53,8 @@ public class Statistic : MonoBehaviour
 
     private List<Text> PostersNumTexts = new List<Text>(4);
     private List<Text> PostersOutcomeTexts = new List<Text>(4);
+
+    public List<GameObject> AVGLoyaltyTexts = new List<GameObject>(4);
 
     private List<Text> BudgeIncrementTexts = new List<Text>(4);
     private List<Text> PopulationIncrementTexts = new List<Text>(4);
@@ -97,7 +101,7 @@ public class Statistic : MonoBehaviour
     {
         for (int i = 0; i < 4; i++) CommerceWorkplacesTexts[i].text = input[i].ToString();
     }
-
+    //
     public void SetProductionNum(List<int> input)
     {
         for (int i = 0; i < 4; i++) ProductionNumTexts[i].text = input[i].ToString();
@@ -110,7 +114,7 @@ public class Statistic : MonoBehaviour
     {
         for (int i = 0; i < 4; i++) ProductionWorkplacesTexts[i].text = input[i].ToString();
     }
-
+    //
     public void SetScienceNum(List<int> input)
     {
         for (int i = 0; i < 4; i++) ScienceNumTexts[i].text = input[i].ToString();
@@ -123,7 +127,7 @@ public class Statistic : MonoBehaviour
     {
         for (int i = 0; i < 4; i++) ScienceWorkplacesTexts[i].text = input[i].ToString();
     }
-
+    //
     public void SetHouseNum(List<int> input)
     {
         for (int i = 0; i < 4; i++) HouseNumTexts[i].text = input[i].ToString();
@@ -140,7 +144,20 @@ public class Statistic : MonoBehaviour
     {
         for (int i = 0; i < 4; i++) HouseOccupiedPlacesTexts[i].text = input[i].ToString();
     }
-
+    public void SetHouseAllPlaces(List<int> input)
+    {
+        for (int i = 0; i < 4; i++) HouseAllPlacesTexts[i].text = input[i].ToString();
+    }
+    //
+    public void SetPostersNum(List<int> input)
+    {
+        for (int i = 0; i < 4; i++) PostersNumTexts[i].text = input[i].ToString();
+    }
+    public void SetPostersOutcome(List<int> input)
+    {
+        for (int i = 0; i < 4; i++) PostersOutcomeTexts[i].text = input[i].ToString();
+    }
+    //
     public void SetBudgeIncrement(List<int> input)
     {
         for (int i = 0; i < 4; i++) BudgeIncrementTexts[i].text = input[i].ToString();
