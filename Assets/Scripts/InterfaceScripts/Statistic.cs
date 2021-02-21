@@ -5,259 +5,97 @@ using UnityEngine.UI;
 
 public class Statistic : MonoBehaviour
 {
-    public List<GameObject> GameObjects = new List<GameObject>(40);
-    public struct SocText
-    {
-        public Text Class1;
-        public Text Class2;
-        public Text Class3;
-        public Text Class4;
-    }
+    public List<GameObject> CommerceNumObjects = new List<GameObject>(4);
+    public List<GameObject> CommerceIncomeObjects = new List<GameObject>(4);
+    public List<GameObject> CommerceWorkplacesObjects = new List<GameObject>(4);
 
-    private SocText houseNum;
-    private SocText scienceNum;
-    private SocText productionNum;
-    private SocText budgeIncrement;
-    private SocText populationIncrement;
-    private SocText scienceIncrement;
-    private SocText productionIncrement;
-    private SocText avgLoyality;
-    private SocText postersNum;
-    private SocText commerceNum;
+    public List<GameObject> ProductionNumObjects = new List<GameObject>(4);
+    public List<GameObject> ProductionOutcomeObjects = new List<GameObject>(4);
+    public List<GameObject> ProductionWorkplacesObjects = new List<GameObject>(4);
+
+    public List<GameObject> ScienceNumObjects = new List<GameObject>(4);
+    public List<GameObject> ScienceOutcomeObjects = new List<GameObject>(4);
+    public List<GameObject> ScienceWorkplacesObjects = new List<GameObject>(4);
+
+    public List<GameObject> HouseNumObjects = new List<GameObject>(4);
+    public List<GameObject> HouseIncomeObjects = new List<GameObject>(4);
+    public List<GameObject> HouseOutcomeObjects = new List<GameObject>(4);
+    public List<GameObject> HouseOccuppiedPlacesObjects = new List<GameObject>(4);
+    public List<GameObject> HouseAllPlacesObjects = new List<GameObject>(4);
+
+    public List<GameObject> PostersNumObjects = new List<GameObject>(4);
+    public List<GameObject> PostersOutcomeObjects = new List<GameObject>(4);
+
+    public List<GameObject> BudgeIncrementObjects = new List<GameObject>(4);
+    public List<GameObject> PopulationIncrementObjects = new List<GameObject>(4);
+    public List<GameObject> ScienceIncrementObjects = new List<GameObject>(4);
+    public List<GameObject> ProductionIncrementObjects = new List<GameObject>(4);
+
+    private List<Text> CommerceNumTexts = new List<Text>(4);
+    private List<Text> CommerceIncomeTexts = new List<Text>(4);
+    private List<Text> CommerceWorkplacesTexts = new List<Text>(4);
+
+    private List<Text> ProductionNumTexts = new List<Text>(4);
+    private List<Text> ProductionOutcomeTexts = new List<Text>(4);
+    private List<Text> ProductionWorkplacesTexts = new List<Text>(4);
+
+    private List<Text> ScienceNumTexts = new List<Text>(4);
+    private List<Text> ScienceOutcomeTexts = new List<Text>(4);
+    private List<Text> ScienceWorkplacesTexts = new List<Text>(4);
+
+    private List<Text> HouseNumTexts = new List<Text>(4);
+    private List<Text> HouseIncomeTexts = new List<Text>(4);
+    private List<Text> HouseOutcomeTexts = new List<Text>(4);
+    private List<Text> HouseOccuppiedPlacesTexts = new List<Text>(4);
+    private List<Text> HouseAllPlacesTexts = new List<Text>(4);
+
+    private List<Text> PostersNumTexts = new List<Text>(4);
+    private List<Text> PostersOutcomeTexts = new List<Text>(4);
+
+    private List<Text> BudgeIncrementTexts = new List<Text>(4);
+    private List<Text> PopulationIncrementTexts = new List<Text>(4);
+    private List<Text> ScienceIncrementTexts = new List<Text>(4);
+    private List<Text> ProductionIncrementTexts = new List<Text>(4);
 
     private void Awake()
     {
-        avgLoyality.Class1 = GameObjects[0].GetComponent<Text>();
-        commerceNum.Class1 = GameObjects[4].GetComponent<Text>();
-        postersNum.Class1 = GameObjects[8].GetComponent<Text>();
-        houseNum.Class1 = GameObjects[12].GetComponent<Text>();
-        scienceNum.Class1 = GameObjects[16].GetComponent<Text>();
-        productionNum.Class1 = GameObjects[20].GetComponent<Text>();
-        budgeIncrement.Class1 = GameObjects[24].GetComponent<Text>();
-        populationIncrement.Class1 = GameObjects[28].GetComponent<Text>();
-        scienceIncrement.Class1 = GameObjects[32].GetComponent<Text>();
-        productionIncrement.Class1 = GameObjects[36].GetComponent<Text>();
-
-        avgLoyality.Class2 = GameObjects[1].GetComponent<Text>();
-        commerceNum.Class2 = GameObjects[5].GetComponent<Text>();
-        postersNum.Class2 = GameObjects[9].GetComponent<Text>();
-        houseNum.Class2 = GameObjects[13].GetComponent<Text>();
-        scienceNum.Class2 = GameObjects[17].GetComponent<Text>();
-        productionNum.Class2 = GameObjects[21].GetComponent<Text>();
-        budgeIncrement.Class2 = GameObjects[25].GetComponent<Text>();
-        populationIncrement.Class2 = GameObjects[29].GetComponent<Text>();
-        scienceIncrement.Class2 = GameObjects[33].GetComponent<Text>();
-        productionIncrement.Class2 = GameObjects[37].GetComponent<Text>();
-
-        avgLoyality.Class3 = GameObjects[2].GetComponent<Text>();
-        commerceNum.Class3 = GameObjects[6].GetComponent<Text>();
-        postersNum.Class3 = GameObjects[10].GetComponent<Text>();
-        houseNum.Class3 = GameObjects[14].GetComponent<Text>();
-        scienceNum.Class3 = GameObjects[18].GetComponent<Text>();
-        productionNum.Class3 = GameObjects[22].GetComponent<Text>();
-        budgeIncrement.Class3 = GameObjects[26].GetComponent<Text>();
-        populationIncrement.Class3 = GameObjects[30].GetComponent<Text>();
-        scienceIncrement.Class3 = GameObjects[34].GetComponent<Text>();
-        productionIncrement.Class3 = GameObjects[38].GetComponent<Text>();
-
-        avgLoyality.Class4 = GameObjects[3].GetComponent<Text>();
-        commerceNum.Class4 = GameObjects[7].GetComponent<Text>();
-        postersNum.Class4 = GameObjects[11].GetComponent<Text>();
-        houseNum.Class4 = GameObjects[15].GetComponent<Text>();
-        scienceNum.Class4 = GameObjects[19].GetComponent<Text>();
-        productionNum.Class4 = GameObjects[23].GetComponent<Text>();
-        budgeIncrement.Class4 = GameObjects[27].GetComponent<Text>();
-        populationIncrement.Class4 = GameObjects[31].GetComponent<Text>();
-        scienceIncrement.Class4 = GameObjects[35].GetComponent<Text>();
-        productionIncrement.Class4 = GameObjects[39].GetComponent<Text>();
-    }
-
-    public void SetCommerceNum(int CommerceNum, int Class)
-    {   
-        switch (Class) {
-            case 1:
-                commerceNum.Class1.text = CommerceNum.ToString() ;
-                break;
-            case 2:
-                commerceNum.Class2.text = CommerceNum.ToString() ;
-                break;
-            case 3:
-                commerceNum.Class3.text = CommerceNum.ToString() ;
-                break;
-            case 4:
-                commerceNum.Class4.text = CommerceNum.ToString() ;
-                break;
-        }
-    }
-    public void HouseNum(int HouseNum, int Class)
-    {
-        switch (Class)
+        for (int i = 0; i < 4; i++)
         {
-            case 1:
-                houseNum.Class1.text = HouseNum.ToString() ;
-                break;
-            case 2:
-                houseNum.Class2.text = HouseNum.ToString() ;
-                break;
-            case 3:
-                houseNum.Class3.text = HouseNum.ToString() ;
-                break;
-            case 4:
-                houseNum.Class4.text = HouseNum.ToString() ;
-                break;
-        }
-    }
-    public void SetAVGLoyality(int AVGLoyality, int Class)
-    {
-        switch (Class)
-        {
-            case 1:
-                avgLoyality.Class1.text = AVGLoyality.ToString();
-                break;
-            case 2:
-                avgLoyality.Class2.text = AVGLoyality.ToString();
-                break;
-            case 3:
-                avgLoyality.Class3.text = AVGLoyality.ToString();
-                break;
-            case 4:
-                avgLoyality.Class4.text = AVGLoyality.ToString();
-                break;
-        } 
-    }
+            CommerceNumTexts[i] = CommerceNumObjects[i].GetComponent<Text>();
+            CommerceIncomeTexts[i] = CommerceIncomeObjects[i].GetComponent<Text>();
+            CommerceWorkplacesTexts[i] = CommerceWorkplacesObjects[i].GetComponent<Text>();
 
-    public void SetPostersNum(int PostersNum, int Class)
-    {
-        switch (Class)
-        {
-            case 1:
-                postersNum.Class1.text = PostersNum.ToString() ;
-                break;
-            case 2:
-                postersNum.Class2.text = PostersNum.ToString() ;
-                break;
-            case 3:
-                postersNum.Class3.text = PostersNum.ToString() ;
-                break;
-            case 4:
-                postersNum.Class4.text = PostersNum.ToString() ;
-                break;
+            ProductionNumTexts[i] = ProductionNumObjects[i].GetComponent<Text>();
+            ProductionOutcomeTexts[i] = ProductionOutcomeObjects[i].GetComponent<Text>();
+            ProductionWorkplacesTexts[i] = ProductionWorkplacesObjects[i].GetComponent<Text>();
+
+            ScienceNumTexts[i] = ScienceNumObjects[i].GetComponent<Text>();
+            ScienceOutcomeTexts[i] = ScienceOutcomeObjects[i].GetComponent<Text>();
+            ScienceWorkplacesTexts[i] = ScienceWorkplacesObjects[i].GetComponent<Text>();
+
+            HouseNumTexts[i] = HouseNumObjects[i].GetComponent<Text>();
+            HouseOutcomeTexts[i] = HouseOutcomeObjects[i].GetComponent<Text>();
+            HouseIncomeTexts[i] = HouseIncomeObjects[i].GetComponent<Text>();
+            HouseOccuppiedPlacesTexts[i] = HouseOccuppiedPlacesObjects[i].GetComponent<Text>();
+            HouseAllPlacesTexts[i] = HouseAllPlacesObjects[i].GetComponent<Text>();
+
+            BudgeIncrementTexts[i] = BudgeIncrementObjects[i].GetComponent<Text>();
+            PopulationIncrementTexts[i] = PopulationIncrementObjects[i].GetComponent<Text>();
+            ScienceIncrementTexts[i] = PopulationIncrementObjects[i].GetComponent<Text>();
+            ScienceIncrementTexts[i] = ScienceIncrementObjects[i].GetComponent<Text>();
         }
     }
 
-    public void SetScienceNum(long ScienceNum, int Class)
+    public void SetCommerceNum(List<int> input) {
+        for (int i = 0; i < 4; i++) CommerceNumTexts[i].text = input[i].ToString();
+    }
+    public void SetCommerceIncome(List<int> input)
     {
-        switch (Class)
-        {
-            case 1:
-                scienceNum.Class1.text = ScienceNum.ToString() ;
-                break;
-            case 2:
-                scienceNum.Class2.text = ScienceNum.ToString() ;
-                break;
-            case 3:
-                scienceNum.Class3.text = ScienceNum.ToString() ;
-                break;
-            case 4:
-                scienceNum.Class4.text = ScienceNum.ToString() ;
-                break;
-        }
-        
+        for (int i = 0; i < 4; i++) CommerceIncomeTexts[i].text = input[i].ToString();
+    }
+    public void SetCommerceWorkplaces(List<int> input)
+    {
+        for (int i = 0; i < 4; i++) CommerceWorkplacesTexts[i].text = input[i].ToString();
     }
 
-    public void SetProductionNum(long ProductionNum, int Class)
-    {
-        switch (Class)
-        {
-            case 1:
-                productionNum.Class1.text = ProductionNum.ToString() ;
-                break;
-            case 2:
-                productionNum.Class2.text = ProductionNum.ToString() ;
-                break;
-            case 3:
-                productionNum.Class3.text = ProductionNum.ToString() ;
-                break;
-            case 4:
-                productionNum.Class4.text = ProductionNum.ToString() ;
-                break;
-        }   
-    }
-
-    public void SetBudgetIncrement(long BudgeIncrement, int Class)
-    {
-        switch (Class)
-        {
-            case 1:
-                budgeIncrement.Class1.text = BudgeIncrement.ToString();
-                break;
-            case 2:
-                budgeIncrement.Class2.text = BudgeIncrement.ToString();
-                break;
-            case 3:
-                budgeIncrement.Class3.text = BudgeIncrement.ToString();
-                break;
-            case 4:
-                budgeIncrement.Class4.text = BudgeIncrement.ToString();
-                break;
-        }   
-    }
-
-    public void SetPopulation(int PopulationIncrement, int Class)
-    {
-        switch (Class)
-        {
-            case 1:
-                populationIncrement.Class1.text = PopulationIncrement.ToString();
-                break;
-            case 2:
-                populationIncrement.Class2.text = PopulationIncrement.ToString();
-                break;
-            case 3:
-                populationIncrement.Class3.text = PopulationIncrement.ToString();
-                break;
-            case 4:
-                populationIncrement.Class4.text = PopulationIncrement.ToString();
-                break;
-        }      
-    }
-
-    public void SetScienceIncrement(long ScienceIncrement, int Class)
-    {
-        switch (Class)
-        {
-            case 1:
-                scienceIncrement.Class1.text = ScienceIncrement.ToString();
-                break;
-            case 2:
-                scienceIncrement.Class2.text = ScienceIncrement.ToString();
-                break;
-            case 3:
-                scienceIncrement.Class3.text = ScienceIncrement.ToString();
-                break;
-            case 4:
-                scienceIncrement.Class4.text = ScienceIncrement.ToString();
-                break;
-        }   
-    }
-
-    public void SetProductionIncrement(long ProductionIncrement, int Class)
-    {
-        switch (Class)
-        {
-            case 1:
-                productionIncrement.Class1.text = ProductionIncrement.ToString();
-                break;
-            case 2:
-                productionIncrement.Class2.text = ProductionIncrement.ToString();
-                break;
-            case 3:
-                productionIncrement.Class3.text = ProductionIncrement.ToString();
-                break;
-            case 4:
-                productionIncrement.Class4.text = ProductionIncrement.ToString();
-                break;
-        }
-        
-    }
 }
