@@ -65,28 +65,28 @@ public class Statistic : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
-            CommerceNumTexts[i] = CommerceNumObjects[i].GetComponent<Text>();
-            CommerceIncomeTexts[i] = CommerceIncomeObjects[i].GetComponent<Text>();
-            CommerceWorkplacesTexts[i] = CommerceWorkplacesObjects[i].GetComponent<Text>();
+            CommerceNumTexts.Add(CommerceNumObjects[i].GetComponent<Text>());
+            CommerceIncomeTexts.Add(CommerceIncomeObjects[i].GetComponent<Text>());
+            CommerceWorkplacesTexts.Add(CommerceWorkplacesObjects[i].GetComponent<Text>());
 
-            ProductionNumTexts[i] = ProductionNumObjects[i].GetComponent<Text>();
-            ProductionOutcomeTexts[i] = ProductionOutcomeObjects[i].GetComponent<Text>();
-            ProductionWorkplacesTexts[i] = ProductionWorkplacesObjects[i].GetComponent<Text>();
+            ProductionNumTexts.Add(ProductionNumObjects[i].GetComponent<Text>());
+            ProductionOutcomeTexts.Add(ProductionOutcomeObjects[i].GetComponent<Text>());
+            ProductionWorkplacesTexts.Add(ProductionWorkplacesObjects[i].GetComponent<Text>());
 
-            ScienceNumTexts[i] = ScienceNumObjects[i].GetComponent<Text>();
-            ScienceOutcomeTexts[i] = ScienceOutcomeObjects[i].GetComponent<Text>();
-            ScienceWorkplacesTexts[i] = ScienceWorkplacesObjects[i].GetComponent<Text>();
+            ScienceNumTexts.Add(ScienceNumObjects[i].GetComponent<Text>());
+            ScienceOutcomeTexts.Add(ScienceOutcomeObjects[i].GetComponent<Text>());
+            ScienceWorkplacesTexts.Add(ScienceWorkplacesObjects[i].GetComponent<Text>());
 
-            HouseNumTexts[i] = HouseNumObjects[i].GetComponent<Text>();
-            HouseOutcomeTexts[i] = HouseOutcomeObjects[i].GetComponent<Text>();
-            HouseIncomeTexts[i] = HouseIncomeObjects[i].GetComponent<Text>();
-            HouseOccupiedPlacesTexts[i] = HouseOccupiedPlacesObjects[i].GetComponent<Text>();
-            HouseAllPlacesTexts[i] = HouseAllPlacesObjects[i].GetComponent<Text>();
+            HouseNumTexts.Add(HouseNumObjects[i].GetComponent<Text>());
+            HouseOutcomeTexts.Add(HouseOutcomeObjects[i].GetComponent<Text>());
+            HouseIncomeTexts.Add(HouseIncomeObjects[i].GetComponent<Text>());
+            HouseOccupiedPlacesTexts.Add(HouseOccupiedPlacesObjects[i].GetComponent<Text>());
+            HouseAllPlacesTexts.Add(HouseAllPlacesObjects[i].GetComponent<Text>());
 
-            BudgeIncrementTexts[i] = BudgeIncrementObjects[i].GetComponent<Text>();
-            PopulationIncrementTexts[i] = PopulationIncrementObjects[i].GetComponent<Text>();
-            ScienceIncrementTexts[i] = PopulationIncrementObjects[i].GetComponent<Text>();
-            ScienceIncrementTexts[i] = ScienceIncrementObjects[i].GetComponent<Text>();
+            BudgeIncrementTexts.Add(BudgeIncrementObjects[i].GetComponent<Text>());
+            PopulationIncrementTexts.Add(PopulationIncrementObjects[i].GetComponent<Text>());
+            ScienceIncrementTexts.Add(PopulationIncrementObjects[i].GetComponent<Text>());
+            ScienceIncrementTexts.Add(ScienceIncrementObjects[i].GetComponent<Text>());
         }
     }
 
