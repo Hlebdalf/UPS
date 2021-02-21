@@ -401,10 +401,10 @@ public class Economy : MonoBehaviour {
     public void ChangeGDP() {
         SetGDP();
         SityInfoClass.SetBudgetIncrement(GetMoneyPerDay());
-        StatisticClass.SetBudgetIncrement(GetMoneyPerDayD(0), 1);
+        /*StatisticClass.SetBudgetIncrement(GetMoneyPerDayD(0), 1);
         StatisticClass.SetBudgetIncrement(GetMoneyPerDayD(1), 2);
         StatisticClass.SetBudgetIncrement(GetMoneyPerDayD(2), 3);
-        StatisticClass.SetBudgetIncrement(GetMoneyPerDayD(3), 4);
+        StatisticClass.SetBudgetIncrement(GetMoneyPerDayD(3), 4);*/
         SityInfoClass.SetGDP(HCSn * HCSk, PITn * PITk, VATn * VATk, CITn * CITk); // Цена без обслуживания
     }
 
@@ -432,7 +432,7 @@ public class Economy : MonoBehaviour {
         SityInfoClass.SetProductionIncrement(GetProductsPerDay());
         SityInfoClass.SetGDP(HCSn * HCSk, PITn * PITk, VATn * VATk, CITn * CITk); // Цена без обслуживания
 
-        StatisticClass.SetCommerceNum(GetCntShopsD(0), 1);
+        /*StatisticClass.SetCommerceNum(GetCntShopsD(0), 1);
         StatisticClass.SetCommerceNum(GetCntShopsD(1), 2);
         StatisticClass.SetCommerceNum(GetCntShopsD(2), 3);
         StatisticClass.SetCommerceNum(GetCntShopsD(3), 4);
@@ -480,6 +480,6 @@ public class Economy : MonoBehaviour {
         StatisticClass.SetProductionIncrement(GetProductsPerDayD(0), 1);
         StatisticClass.SetProductionIncrement(GetProductsPerDayD(1), 2);
         StatisticClass.SetProductionIncrement(GetProductsPerDayD(2), 3);
-        StatisticClass.SetProductionIncrement(GetProductsPerDayD(3), 4);
+        StatisticClass.SetProductionIncrement(GetProductsPerDayD(3), 4);*/
     }
 }

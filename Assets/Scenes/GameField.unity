@@ -4941,7 +4941,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1410381731}
   - {fileID: 1908680885}
   m_Father: {fileID: 1280265244}
   m_RootOrder: 4
@@ -5433,7 +5432,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1280265244}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -6975,7 +6974,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1280265244}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -7247,7 +7246,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1280265244}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -8047,26 +8046,108 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e44e8add24e85f24cbb488f0edcbd614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CommerceNumObjects: []
-  CommerceIncomeObjects: []
-  CommerceWorkplacesObjects: []
-  ProductionNumObjects: []
-  ProductionOutcomeObjects: []
-  ProductionWorkplacesObjects: []
-  ScienceNumObjects: []
-  ScienceOutcomeObjects: []
-  ScienceWorkplacesObjects: []
-  HouseNumObjects: []
-  HouseIncomeObjects: []
-  HouseOutcomeObjects: []
-  HouseOccuppiedPlacesObjects: []
-  HouseAllPlacesObjects: []
-  PostersNumObjects: []
-  PostersOutcomeObjects: []
-  BudgeIncrementObjects: []
-  PopulationIncrementObjects: []
-  ScienceIncrementObjects: []
-  ProductionIncrementObjects: []
+  CommerceNumObjects:
+  - {fileID: 765557728}
+  - {fileID: 584720582}
+  - {fileID: 1366586570}
+  - {fileID: 1603793840}
+  CommerceIncomeObjects:
+  - {fileID: 2028970063}
+  - {fileID: 1049866063}
+  - {fileID: 28257913}
+  - {fileID: 1832509046}
+  CommerceWorkplacesObjects:
+  - {fileID: 163480495}
+  - {fileID: 237726084}
+  - {fileID: 216071901}
+  - {fileID: 1158045322}
+  ProductionNumObjects:
+  - {fileID: 1810562580}
+  - {fileID: 905103050}
+  - {fileID: 704676368}
+  - {fileID: 546924269}
+  ProductionOutcomeObjects:
+  - {fileID: 1875846676}
+  - {fileID: 2142637687}
+  - {fileID: 1128872733}
+  - {fileID: 138753750}
+  ProductionWorkplacesObjects:
+  - {fileID: 765294820}
+  - {fileID: 170681802}
+  - {fileID: 1086180590}
+  - {fileID: 1586603439}
+  ScienceNumObjects:
+  - {fileID: 460380286}
+  - {fileID: 594371437}
+  - {fileID: 296728412}
+  - {fileID: 1358781844}
+  ScienceOutcomeObjects:
+  - {fileID: 607695952}
+  - {fileID: 956588172}
+  - {fileID: 471956266}
+  - {fileID: 2012280180}
+  ScienceWorkplacesObjects:
+  - {fileID: 915807699}
+  - {fileID: 921676411}
+  - {fileID: 433864558}
+  - {fileID: 1039707325}
+  HouseNumObjects:
+  - {fileID: 1700377295}
+  - {fileID: 1075866056}
+  - {fileID: 116078263}
+  - {fileID: 1153497416}
+  HouseIncomeObjects:
+  - {fileID: 259588222}
+  - {fileID: 1341553285}
+  - {fileID: 2121184405}
+  - {fileID: 202184590}
+  HouseOutcomeObjects:
+  - {fileID: 1468173736}
+  - {fileID: 1657617541}
+  - {fileID: 1614974768}
+  - {fileID: 1054151851}
+  HouseOccupiedPlacesObjects: []
+  HouseAllPlacesObjects:
+  - {fileID: 1724902698}
+  - {fileID: 1996046540}
+  - {fileID: 2031485279}
+  - {fileID: 1796503376}
+  PostersNumObjects:
+  - {fileID: 492915106}
+  - {fileID: 602914296}
+  - {fileID: 368873984}
+  - {fileID: 1031233230}
+  PostersOutcomeObjects:
+  - {fileID: 1908680884}
+  - {fileID: 1396786870}
+  - {fileID: 1800789067}
+  - {fileID: 1427309204}
+  AVGLoyaltyObjects:
+  - {fileID: 1410381730}
+  - {fileID: 951435474}
+  - {fileID: 1079052575}
+  - {fileID: 2007458693}
+  BudgeIncrementObjects:
+  - {fileID: 582570135}
+  - {fileID: 1085006533}
+  - {fileID: 472845748}
+  - {fileID: 464681630}
+  PopulationIncrementObjects:
+  - {fileID: 1724189576}
+  - {fileID: 894946535}
+  - {fileID: 798560241}
+  - {fileID: 1416524023}
+  ScienceIncrementObjects:
+  - {fileID: 756009921}
+  - {fileID: 1820954223}
+  - {fileID: 1099201713}
+  - {fileID: 1766349173}
+  ProductionIncrementObjects:
+  - {fileID: 765942688}
+  - {fileID: 262895346}
+  - {fileID: 429255521}
+  - {fileID: 208024755}
+  AVGLoyaltyTexts: []
 --- !u!1 &876168264
 GameObject:
   m_ObjectHideFlags: 0
@@ -12610,6 +12691,7 @@ RectTransform:
   - {fileID: 460380287}
   - {fileID: 1700377296}
   - {fileID: 492915107}
+  - {fileID: 1410381731}
   - {fileID: 582570136}
   - {fileID: 1724189577}
   - {fileID: 756009922}
@@ -14141,12 +14223,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 492915107}
-  m_RootOrder: 0
+  m_Father: {fileID: 1280265244}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 77.79874, y: -86.910675}
+  m_AnchoredPosition: {x: 291.33, y: -596.6699}
   m_SizeDelta: {x: 35.70009, y: 27.65931}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1410381732
@@ -16323,7 +16405,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1280265244}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -17940,7 +18022,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 492915107}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}

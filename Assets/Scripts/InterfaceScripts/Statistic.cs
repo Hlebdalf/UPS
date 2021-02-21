@@ -54,7 +54,7 @@ public class Statistic : MonoBehaviour
     private List<Text> PostersNumTexts = new List<Text>(4);
     private List<Text> PostersOutcomeTexts = new List<Text>(4);
 
-    public List<GameObject> AVGLoyaltyTexts = new List<GameObject>(4);
+    private List<GameObject> AVGLoyaltyTexts = new List<GameObject>(4);
 
     private List<Text> BudgeIncrementTexts = new List<Text>(4);
     private List<Text> PopulationIncrementTexts = new List<Text>(4);
