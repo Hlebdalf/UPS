@@ -13,7 +13,7 @@ public class BurseGraph : MonoBehaviour
     private const float shift = 1e-5f;
     private float x = 0;
     private Color color = Color.green;
-    private Color erazeColor = Color.black;
+    private Color erazeColor = Color.red;
     private List<vertex> erazer = new List<vertex>();
     private Texture2D texture;
     private int Height;
@@ -26,6 +26,7 @@ public class BurseGraph : MonoBehaviour
 
     private void Awake() {
         EconomyClass = Camera.main.GetComponent <Economy> ();
+        erazeColor.r = 42; erazeColor.g = 42; erazeColor.b = 42;
     }
     
     private float Weierstrass(float x, float A, float B)
