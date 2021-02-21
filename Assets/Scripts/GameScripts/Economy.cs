@@ -33,13 +33,20 @@ public class Economy : MonoBehaviour {
     private List <int> cntSciencesD;
     private List <int> cntFactoriesD;
     private List <int> cntPeopleD;
+    private List <int> housesCntPeopleD;
+    private List <int> housesCntMaxPeopleD;
+    private List <int> factoriesCntPeopleD;
+    private List <int> sciencesCntPeopleD;
+    private List <int> commercesCntPeopleD;
     private List <int> cntPostersD;
     private List <int> averageLoyalityD;
     private List <float> HCSnD;
     private List <float> PITnD;
     private List <float> VATnD;
     private List <float> CITnD;
-    private List <long> serviceCostD;
+    private List <long> housesServiceCostD;
+    private List <long> factoriesServiceCostD;
+    private List <long> sciencesServiceCostD;
     private List <long> sciencePerDayD;
     private List <long> productsPerDayD;
 
@@ -61,13 +68,20 @@ public class Economy : MonoBehaviour {
         cntSciencesD = new List <int> () {0, 0, 0, 0};
         cntFactoriesD = new List <int> () {0, 0, 0, 0};
         cntPeopleD = new List <int> () {0, 0, 0, 0};
+        housesCntPeopleD = new List <int> () {0, 0, 0, 0};
+        housesCntMaxPeopleD = new List <int> () {0, 0, 0, 0};
+        factoriesCntPeopleD = new List <int> () {0, 0, 0, 0};
+        sciencesCntPeopleD = new List <int> () {0, 0, 0, 0};
+        commercesCntPeopleD = new List <int> () {0, 0, 0, 0};
         cntPostersD = new List <int> () {0, 0, 0, 0};
         averageLoyalityD = new List <int> () {0, 0, 0, 0};
         HCSnD = new List <float> () {0, 0, 0, 0};
         PITnD = new List <float> () {0, 0, 0, 0};
         VATnD = new List <float> () {0, 0, 0, 0};
         CITnD = new List <float> () {0, 0, 0, 0};
-        serviceCostD = new List <long> () {0, 0, 0, 0};
+        housesServiceCostD = new List <long> () {0, 0, 0, 0};
+        factoriesServiceCostD = new List <long> () {0, 0, 0, 0};
+        sciencesServiceCostD = new List <long> () {0, 0, 0, 0};
         sciencePerDayD = new List <long> () {0, 0, 0, 0};
         productsPerDayD = new List <long> () {0, 0, 0, 0};
     }
@@ -127,13 +141,22 @@ public class Economy : MonoBehaviour {
     private void CalcStatsPerDay() {
         HCSn = PITn = VATn = CITn = 0;
         serviceCost = sciencePerDay = productsPerDay = 0;
+
         HCSnD = new List <float> () {0, 0, 0, 0};
         PITnD = new List <float> () {0, 0, 0, 0};
         VATnD = new List <float> () {0, 0, 0, 0};
         CITnD = new List <float> () {0, 0, 0, 0};
-        serviceCostD = new List <long> () {0, 0, 0, 0};
+        housesServiceCostD = new List <long> () {0, 0, 0, 0};
+        factoriesServiceCostD = new List <long> () {0, 0, 0, 0};
+        sciencesServiceCostD = new List <long> () {0, 0, 0, 0};
         sciencePerDayD = new List <long> () {0, 0, 0, 0};
         productsPerDayD = new List <long> () {0, 0, 0, 0};
+
+        housesCntPeopleD = new List <int> () {0, 0, 0, 0};
+        housesCntMaxPeopleD = new List <int> () {0, 0, 0, 0};
+        factoriesCntPeopleD = new List <int> () {0, 0, 0, 0};
+        sciencesCntPeopleD = new List <int> () {0, 0, 0, 0};
+        commercesCntPeopleD = new List <int> () {0, 0, 0, 0};
 
         for (int houseIt = 0; houseIt < BuildsClass.objects.Count; ++houseIt) {
             BuildObject buildClass = BuildsClass.objects[houseIt].GetComponent <BuildObject> ();
@@ -144,7 +167,10 @@ public class Economy : MonoBehaviour {
             serviceCost -= houseClass.GetServiceCost();
 
             HCSnD[districtNum] += (long)(houseClass.GetTaxRate());
-            serviceCostD[districtNum] -= houseClass.GetServiceCost();
+            housesServiceCostD[districtNum] -= houseClass.GetServiceCost();
+
+            housesCntPeopleD[districtNum] += buildClass.cntPeople;
+            housesCntMaxPeopleD[districtNum] += buildClass.maxCntPeople;
         }
 
         for (int commerceIt = 0; commerceIt < BuildsClass.commerces.Count; ++commerceIt) {
@@ -158,8 +184,10 @@ public class Economy : MonoBehaviour {
                 serviceCost -= factoryClass.GetServiceCost();
                 productsPerDay += factoryClass.GetProductsRate();
 
-                serviceCostD[districtNum] -= factoryClass.GetServiceCost();
+                factoriesServiceCostD[districtNum] -= factoryClass.GetServiceCost();
                 productsPerDayD[districtNum] += factoryClass.GetProductsRate();
+
+                factoriesCntPeopleD[districtNum] += buildClass.cntPeople;
             }
             else if (commerceObj.GetComponent <Science> ()) {
                 Science scienceClass = commerceObj.GetComponent <Science> ();
@@ -167,8 +195,10 @@ public class Economy : MonoBehaviour {
                 serviceCost -= scienceClass.GetServiceCost();
                 sciencePerDay += scienceClass.GetScienceRate();
 
-                serviceCostD[districtNum] -= scienceClass.GetServiceCost();
+                sciencesServiceCostD[districtNum] -= scienceClass.GetServiceCost();
                 sciencePerDayD[districtNum] += scienceClass.GetScienceRate();
+
+                sciencesCntPeopleD[districtNum] += buildClass.cntPeople;
             }
             else if (commerceObj.GetComponent <Shop> ()) {
                 Shop shopClass = commerceObj.GetComponent <Shop> ();
@@ -176,6 +206,8 @@ public class Economy : MonoBehaviour {
                 CITn += shopClass.GetTaxRate();
 
                 CITnD[districtNum] += (long)(shopClass.GetTaxRate());
+
+                commercesCntPeopleD[districtNum] += buildClass.cntPeople;
             }
         }
     }
@@ -272,6 +304,7 @@ public class Economy : MonoBehaviour {
         }
     }
 
+    // Получение основной информации о городе
     public string GetCityName() { return cityName; }
     public int GetLevel() { return level; }
     public long GetMoney() { return money; }
@@ -282,13 +315,38 @@ public class Economy : MonoBehaviour {
     public int GetPeoplePerDay() { return cntPeoplePerDay; }
     public long GetSciencePerDay() { return sciencePerDay; }
     public long GetProductsPerDay() { return productsPerDay; }
+
+    // Получение информации о коммерции
     public int GetCntShopsD(int idx) { return cntShopsD[idx]; }
-    public int GetCntHousesD(int idx) { return cntHousesD[idx]; }
-    public float GetAverageLoyalityD(int idx) { return averageLoyalityD[idx]; }
-    public int GetCntPostersD(int idx) { return cntPostersD[idx]; }
-    public long GetCntSciencesD(int idx) { return cntSciencesD[idx]; }
+    public long GetShopsMoneyPerDayD(int idx) { return (long)(CITnD[idx] * CITk); }
+    public int GetShopsCntPeopleD(int idx) { return commercesCntPeopleD[idx]; }
+    
+    // Получение информации о заводах
     public long GetCntFactoriesD(int idx) { return cntFactoriesD[idx]; }
-    public long GetMoneyPerDayD(int idx) { return (long)(HCSnD[idx] * HCSk + PITnD[idx] * PITk + VATnD[idx] * VATk + CITnD[idx] * CITk) + serviceCostD[idx]; }
+    public long GetFactoriesServicesCostD(int idx) { return factoriesServiceCostD[idx]; }
+    public long GetFactoriesCntPeopleD(int idx) { return factoriesCntPeopleD[idx]; }
+    
+    // Получение информации о науке
+    public long GetCntSciencesD(int idx) { return cntSciencesD[idx]; }
+    public long GetSciencesServicesCostD(int idx) { return sciencesServiceCostD[idx]; }
+    public long GetSciencesCntPeopleD(int idx) { return sciencesCntPeopleD[idx]; }
+
+    // Получение информации о домах
+    public int GetCntHousesD(int idx) { return cntHousesD[idx]; }
+    public long GetHousesMoneyPerDayD(int idx) { return (long)(HCSnD[idx] * HCSk); }
+    public long GetHousesServicesCostD(int idx) { return housesServiceCostD[idx]; }
+    public int GetHousesCntPeopleD(int idx) { return housesCntPeopleD[idx]; }
+    public int GetHousesCntMaxPeopleD(int idx) { return housesCntMaxPeopleD[idx]; }
+
+    // Получение информации о плакатах
+    public int GetCntPostersD(int idx) { return cntPostersD[idx]; }
+    public long GetPostersServicesCostD(int idx) { return cntHousesD[idx]; } // !
+    public float GetAverageLoyalityD(int idx) { return averageLoyalityD[idx]; }
+
+    // Получение общей информации о квартале
+    public long GetUpMoneyPerDayD(int idx) { return (long)(HCSnD[idx] * HCSk + PITnD[idx] * PITk + VATnD[idx] * VATk + CITnD[idx] * CITk); }
+    public long GetDownMoneyPerDayD(int idx) { return housesServiceCostD[idx] + factoriesServiceCostD[idx] + sciencesServiceCostD[idx]; }
+    public long GetMoneyPerDayD(int idx) { return GetUpMoneyPerDayD(idx) + GetDownMoneyPerDayD(idx); }
     public int GetCntPeopleD(int idx) { return cntPeopleD[idx]; }
     public long GetSciencePerDayD(int idx) { return sciencePerDayD[idx]; }
     public long GetProductsPerDayD(int idx) { return productsPerDayD[idx]; }
