@@ -20,7 +20,7 @@ public class Statistic : MonoBehaviour
     public List<GameObject> HouseNumObjects = new List<GameObject>(4);
     public List<GameObject> HouseIncomeObjects = new List<GameObject>(4);
     public List<GameObject> HouseOutcomeObjects = new List<GameObject>(4);
-    public List<GameObject> HouseOccuppiedPlacesObjects = new List<GameObject>(4);
+    public List<GameObject> HouseOccupiedPlacesObjects = new List<GameObject>(4);
     public List<GameObject> HouseAllPlacesObjects = new List<GameObject>(4);
 
     public List<GameObject> PostersNumObjects = new List<GameObject>(4);
@@ -46,7 +46,7 @@ public class Statistic : MonoBehaviour
     private List<Text> HouseNumTexts = new List<Text>(4);
     private List<Text> HouseIncomeTexts = new List<Text>(4);
     private List<Text> HouseOutcomeTexts = new List<Text>(4);
-    private List<Text> HouseOccuppiedPlacesTexts = new List<Text>(4);
+    private List<Text> HouseOccupiedPlacesTexts = new List<Text>(4);
     private List<Text> HouseAllPlacesTexts = new List<Text>(4);
 
     private List<Text> PostersNumTexts = new List<Text>(4);
@@ -76,7 +76,7 @@ public class Statistic : MonoBehaviour
             HouseNumTexts[i] = HouseNumObjects[i].GetComponent<Text>();
             HouseOutcomeTexts[i] = HouseOutcomeObjects[i].GetComponent<Text>();
             HouseIncomeTexts[i] = HouseIncomeObjects[i].GetComponent<Text>();
-            HouseOccuppiedPlacesTexts[i] = HouseOccuppiedPlacesObjects[i].GetComponent<Text>();
+            HouseOccupiedPlacesTexts[i] = HouseOccupiedPlacesObjects[i].GetComponent<Text>();
             HouseAllPlacesTexts[i] = HouseAllPlacesObjects[i].GetComponent<Text>();
 
             BudgeIncrementTexts[i] = BudgeIncrementObjects[i].GetComponent<Text>();
@@ -98,4 +98,63 @@ public class Statistic : MonoBehaviour
         for (int i = 0; i < 4; i++) CommerceWorkplacesTexts[i].text = input[i].ToString();
     }
 
+    public void SetProductionNum(List<int> input)
+    {
+        for (int i = 0; i < 4; i++) ProductionNumTexts[i].text = input[i].ToString();
+    }
+    public void SetProductionOutcome(List<int> input)
+    {
+        for (int i = 0; i < 4; i++) ProductionOutcomeTexts[i].text = input[i].ToString();
+    }
+    public void SetProductionWorkplaces(List<int> input)
+    {
+        for (int i = 0; i < 4; i++) ProductionWorkplacesTexts[i].text = input[i].ToString();
+    }
+
+    public void SetScienceNum(List<int> input)
+    {
+        for (int i = 0; i < 4; i++) ScienceNumTexts[i].text = input[i].ToString();
+    }
+    public void SetScienceOutcome(List<int> input)
+    {
+        for (int i = 0; i < 4; i++) ScienceOutcomeTexts[i].text = input[i].ToString();
+    }
+    public void SetScienceWorkplaces(List<int> input)
+    {
+        for (int i = 0; i < 4; i++) ScienceWorkplacesTexts[i].text = input[i].ToString();
+    }
+
+    public void SetHouseNum(List<int> input)
+    {
+        for (int i = 0; i < 4; i++) HouseNumTexts[i].text = input[i].ToString();
+    }
+    public void SetHouseOutcome(List<int> input)
+    {
+        for (int i = 0; i < 4; i++) HouseOutcomeTexts[i].text = input[i].ToString();
+    }
+    public void SetHouseIncome(List<int> input)
+    {
+        for (int i = 0; i < 4; i++) HouseIncomeTexts[i].text = input[i].ToString();
+    }
+    public void SetHouseOccupiedPlaces(List<int> input)
+    {
+        for (int i = 0; i < 4; i++) HouseOccupiedPlacesTexts[i].text = input[i].ToString();
+    }
+
+    public void SetBudgeIncrement(List<int> input)
+    {
+        for (int i = 0; i < 4; i++) BudgeIncrementTexts[i].text = input[i].ToString();
+    }
+    public void SetPopulationIncrement(List<int> input)
+    {
+        for (int i = 0; i < 4; i++) PopulationIncrementTexts[i].text = input[i].ToString();
+    }
+    public void SetScinceIncrement(List<int> input)
+    {
+        for (int i = 0; i < 4; i++) ScienceIncrementTexts[i].text = input[i].ToString();
+    }
+    public void SetproductionIncrement(List<int> input)
+    {
+        for (int i = 0; i < 4; i++) ProductionIncrementTexts[i].text = input[i].ToString();
+    }
 }
