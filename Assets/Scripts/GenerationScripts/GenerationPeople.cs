@@ -30,6 +30,8 @@ public class GenerationPeople : MonoBehaviour {
                     int commerceIt = (int)UnityEngine.Random.Range(0f, BuildsClass.commerces.Count - 0.01f);
                     BuildObject commerceClass = BuildsClass.commerces[commerceIt].GetComponent <BuildObject> ();
                     if (commerceClass.cntPeople < commerceClass.maxCntPeople) {
+                        if (houseClass.cntPeople == 0) BuildsClass.objectsWithoutAvailableSeats.Add(BuildsClass.objects[buildIt]);
+                        if (commerceClass.cntPeople == 0) BuildsClass.commercesWithoutAvailableSeats.Add(BuildsClass.commerces[commerceIt]);
                         EconomyClass.AddCntPeople(FieldClass.districts[(int)houseClass.x + FieldClass.fieldSizeHalf, (int)houseClass.y + FieldClass.fieldSizeHalf]);
                         ++commerceClass.cntPeople;
                         ++houseClass.cntPeople;

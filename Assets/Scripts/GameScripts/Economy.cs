@@ -26,7 +26,8 @@ public class Economy : MonoBehaviour {
     private float HCSk = 0, PITk = 0, VATk = 0, CITk = 0; // Коэффиценты налогов
     private float HCSn = 0, PITn = 0, VATn = 0, CITn = 0;
     private bool isStarted = false;
-    // private float deltaTime = 0.1f;
+    [SerializeField]
+    private double deltaTime = 0.1; // Не более 6 знаков после запятой
     
     private List <int> cntHousesD;
     private List <int> cntShopsD;
@@ -87,14 +88,33 @@ public class Economy : MonoBehaviour {
     }
 
     IEnumerator AsyncEconomy() {
-        for (int i = 0; true; ++i) {
-            if (BuildsClass.objectsWithAvailableSeats.Count > 0 && BuildsClass.commercesWithAvailableSeats.Count > 0) {
+        for (int i = 0; true; i = (i + 1) % 1000000000) {
+            if (deltaTime < 0 && BuildsClass.objectsWithoutAvailableSeats.Count > 0 && BuildsClass.commercesWithoutAvailableSeats.Count > 0) {
+                int houseIt = (int)UnityEngine.Random.Range(0f, BuildsClass.objectsWithoutAvailableSeats.Count - 0.01f);
+                BuildObject houseClass = BuildsClass.objectsWithoutAvailableSeats[houseIt].GetComponent <BuildObject> ();
+                if (houseClass.cntPeople > 0) {
+                    int commerceIt = (int)UnityEngine.Random.Range(0f, BuildsClass.commercesWithoutAvailableSeats.Count - 0.01f);
+                    BuildObject commerceClass = BuildsClass.commercesWithoutAvailableSeats[commerceIt].GetComponent <BuildObject> ();
+                    if (commerceClass.cntPeople > 0) {
+                        if (houseClass.cntPeople == houseClass.maxCntPeople) BuildsClass.objectsWithAvailableSeats.Add(BuildsClass.objectsWithoutAvailableSeats[houseIt]);
+                        if (commerceClass.cntPeople == commerceClass.maxCntPeople) BuildsClass.commercesWithAvailableSeats.Add(BuildsClass.commercesWithoutAvailableSeats[commerceIt]);
+                        AddCntPeople(FieldClass.districts[(int)houseClass.x + FieldClass.fieldSizeHalf, (int)houseClass.y + FieldClass.fieldSizeHalf], -1);
+                        --commerceClass.cntPeople;
+                        --houseClass.cntPeople;
+                    }
+                    else BuildsClass.commercesWithoutAvailableSeats.RemoveAt(commerceIt);
+                }
+                else BuildsClass.objectsWithoutAvailableSeats.RemoveAt(houseIt);
+            }
+            else if (deltaTime > 0 && BuildsClass.objectsWithAvailableSeats.Count > 0 && BuildsClass.commercesWithAvailableSeats.Count > 0) {
                 int houseIt = (int)UnityEngine.Random.Range(0f, BuildsClass.objectsWithAvailableSeats.Count - 0.01f);
                 BuildObject houseClass = BuildsClass.objectsWithAvailableSeats[houseIt].GetComponent <BuildObject> ();
                 if (houseClass.cntPeople < houseClass.maxCntPeople) {
                     int commerceIt = (int)UnityEngine.Random.Range(0f, BuildsClass.commercesWithAvailableSeats.Count - 0.01f);
                     BuildObject commerceClass = BuildsClass.commercesWithAvailableSeats[commerceIt].GetComponent <BuildObject> ();
                     if (commerceClass.cntPeople < commerceClass.maxCntPeople) {
+                        if (houseClass.cntPeople == 0) BuildsClass.objectsWithoutAvailableSeats.Add(BuildsClass.objectsWithAvailableSeats[houseIt]);
+                        if (commerceClass.cntPeople == 0) BuildsClass.commercesWithoutAvailableSeats.Add(BuildsClass.commercesWithAvailableSeats[commerceIt]);
                         AddCntPeople(FieldClass.districts[(int)houseClass.x + FieldClass.fieldSizeHalf, (int)houseClass.y + FieldClass.fieldSizeHalf]);
                         ++commerceClass.cntPeople;
                         ++houseClass.cntPeople;
@@ -103,7 +123,13 @@ public class Economy : MonoBehaviour {
                 }
                 else BuildsClass.objectsWithAvailableSeats.RemoveAt(houseIt);
             }
-            if (i % 10 == 0) yield return null;
+            double d = 1;
+            if (deltaTime != 0) d /= Math.Abs(deltaTime);
+            if (d <= 1) {
+                for (double t = 0; t <= 1; t += d) yield return null;
+            }
+            else if (i % (int)d == 0) yield return null;
+            // Изменение deltaTime
         }
     }
 

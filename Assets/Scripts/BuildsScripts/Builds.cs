@@ -22,8 +22,10 @@ public class Builds : MonoBehaviour {
     public Texture[] posterTextures;
     public List <GameObject> objects;
     public List <GameObject> objectsWithAvailableSeats;
+    public List <GameObject> objectsWithoutAvailableSeats;
     public List <GameObject> commerces;
     public List <GameObject> commercesWithAvailableSeats;
+    public List <GameObject> commercesWithoutAvailableSeats;
     public List <GameObject> parkings;
     public List <GameObject> ghostObjects;
     public List <GameObject> deleteObjects;
@@ -43,8 +45,10 @@ public class Builds : MonoBehaviour {
         GenerationGraphClass = MainCamera.GetComponent <GenerationGraph> ();
         objects = new List <GameObject> ();
         objectsWithAvailableSeats = new List <GameObject> ();
+        objectsWithoutAvailableSeats = new List <GameObject> ();
         commerces = new List <GameObject> ();
         commercesWithAvailableSeats = new List <GameObject> ();
+        commercesWithoutAvailableSeats = new List <GameObject> ();
         parkings = new List <GameObject> ();
         ghostObjects = new List <GameObject> ();
         deleteObjects = new List <GameObject> ();
@@ -219,10 +223,12 @@ public class Builds : MonoBehaviour {
             else if (objClass.idxPreFub == -1) {
                 commerces.Remove(obj);
                 commercesWithAvailableSeats.Remove(obj);
+                commercesWithoutAvailableSeats.Remove(obj);
             }
             else {
                 objects.Remove(obj);
                 objectsWithAvailableSeats.Remove(obj);
+                objectsWithoutAvailableSeats.Remove(obj);
             }
             deleteObjects.RemoveAt(i);
             Destroy(obj);
