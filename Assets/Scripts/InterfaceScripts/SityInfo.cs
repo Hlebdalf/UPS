@@ -15,6 +15,7 @@ public class SityInfo : MonoBehaviour
     public GameObject PopulationIncrementObject;
     public GameObject ScienceIncrementObject;
     public GameObject ProductionIncrementObject;
+    public GameObject AVGLoyaltyObject;
     public GameObject RadialDiagramObjectA;
     public GameObject RadialDiagramObjectB;
     public GameObject RadialDiagramObjectC;
@@ -30,6 +31,7 @@ public class SityInfo : MonoBehaviour
     private Text populationIncrement;
     private Text scienceIncrement;
     private Text productionIncrement;
+    private Text AVGLoyaltyText;
 
     void Awake()
     {
@@ -43,6 +45,7 @@ public class SityInfo : MonoBehaviour
         populationIncrement = PopulationIncrementObject.GetComponent<Text>();
         scienceIncrement = ScienceIncrementObject.GetComponent<Text>();
         productionIncrement = ProductionIncrementObject.GetComponent<Text>();
+        AVGLoyaltyText = AVGLoyaltyObject.GetComponent<Text>();
     }
 
     public void SetName(string Name)
@@ -92,6 +95,11 @@ public class SityInfo : MonoBehaviour
     public void SetProductionIncrement(long ProductionIncrement)
     {
         productionIncrement.text = ProductionIncrement.ToString();
+    }
+
+    public void SetAVGLoyalty(long AVGLoyalty)
+    {
+        AVGLoyaltyText.text = AVGLoyalty.ToString();
     }
 
     public void SetGDP(float A, float B, float C, float D)

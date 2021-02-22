@@ -25,10 +25,17 @@ public class Statistic : MonoBehaviour {
     public List <GameObject> PostersNumObjects = new List <GameObject>(4);
     public List <GameObject> PostersOutcomeObjects = new List <GameObject>(4);
 
+    public List<GameObject> RoadsOutcomeObjects = new List<GameObject>(4);
+
     public List <GameObject> AVGLoyaltyObjects = new List <GameObject>(4);
 
-    public List <GameObject> BudgeIncrementObjects = new List <GameObject>(4);
+    public List <GameObject> BudgetIncrementObjects = new List <GameObject>(4);
+    public List<GameObject> BudgetDecrementObjects = new List<GameObject>(4);
+
     public List <GameObject> PopulationIncrementObjects = new List <GameObject>(4);
+    public List<GameObject> PopulationDecrementObjects = new List<GameObject>(4);
+    public List<GameObject> PopulationNumObjects = new List<GameObject>(4);
+
     public List <GameObject> ScienceIncrementObjects = new List <GameObject>(4);
     public List <GameObject> ProductionIncrementObjects = new List <GameObject>(4);
 
@@ -53,10 +60,17 @@ public class Statistic : MonoBehaviour {
     private List<Text> PostersNumTexts = new List <Text>(4);
     private List<Text> PostersOutcomeTexts = new List <Text>(4);
 
+    private List<Text> RoadsOutcomeTexts = new List<Text>(4);
+
     private List<Text> AVGLoyaltyTexts = new List <Text>(4);
 
-    private List<Text> BudgeIncrementTexts = new List <Text>(4);
+    private List<Text> BudgetIncrementTexts = new List <Text>(4);
+    private List<Text> BudgetDecrementTexts = new List<Text>(4);
+
     private List<Text> PopulationIncrementTexts = new List <Text>(4);
+    private List<Text> PopulationDecrementTexts = new List<Text>(4);
+    private List<Text> PopulationNumTexts = new List<Text>(4);
+
     private List<Text> ScienceIncrementTexts = new List <Text>(4);
     private List<Text> ProductionIncrementTexts = new List <Text>(4);
 
@@ -83,12 +97,19 @@ public class Statistic : MonoBehaviour {
             PostersNumTexts.Add(PostersNumObjects[i].GetComponent<Text>());
             PostersOutcomeTexts.Add(PostersOutcomeObjects[i].GetComponent<Text>());
 
+            RoadsOutcomeTexts.Add(RoadsOutcomeObjects[i].GetComponent<Text>());
+
             AVGLoyaltyTexts.Add(AVGLoyaltyObjects[i].GetComponent<Text>());
 
-            BudgeIncrementTexts.Add(BudgeIncrementObjects[i].GetComponent<Text>());
+            BudgetIncrementTexts.Add(BudgetIncrementObjects[i].GetComponent<Text>());
+            BudgetDecrementTexts.Add(BudgetDecrementObjects[i].GetComponent<Text>());
+
             PopulationIncrementTexts.Add(PopulationIncrementObjects[i].GetComponent<Text>());
+            PopulationDecrementTexts.Add(PopulationDecrementObjects[i].GetComponent<Text>());
+            PopulationNumTexts.Add(PopulationNumObjects[i].GetComponent<Text>());
+
             ScienceIncrementTexts.Add(PopulationIncrementObjects[i].GetComponent<Text>());
-            ProductionIncrementTexts.Add(ScienceIncrementObjects[i].GetComponent<Text>());
+            ProductionIncrementTexts.Add(ScienceIncrementObjects[i].GetComponent<Text>()); ////////////////////
         }
     }
 
@@ -156,16 +177,36 @@ public class Statistic : MonoBehaviour {
         for (int i = 0; i < 4; ++i) PostersOutcomeTexts[i].text = input[i].ToString();
     }
 
+    public void SetRoadsOutcome(List<long> input)
+    {
+        for (int i = 0; i < 4; ++i) RoadsOutcomeTexts[i].text = input[i].ToString();
+    }
+
     public void SetAVGLoyalty(List <int> input) {
         for (int i = 0; i < 4; ++i) AVGLoyaltyTexts[i].text = input[i].ToString();
     }
     
     public void SetBudgetIncrement(List <long> input) {
-        for (int i = 0; i < 4; ++i) BudgeIncrementTexts[i].text = input[i].ToString();
+        for (int i = 0; i < 4; ++i) BudgetIncrementTexts[i].text = input[i].ToString();
+    }
+
+    public void SetBudgetDecrement(List<long> input)
+    {
+        for (int i = 0; i < 4; ++i) BudgetDecrementTexts[i].text = input[i].ToString();
     }
 
     public void SetPopulationIncrement(List <int> input) {
         for (int i = 0; i < 4; ++i) PopulationIncrementTexts[i].text = input[i].ToString();
+    }
+
+    public void SetPopulationDecrement(List<int> input)
+    {
+        for (int i = 0; i < 4; ++i) PopulationDecrementTexts[i].text = input[i].ToString();
+    }
+
+    public void SetPopulationNum(List<int> input)
+    {
+        for (int i = 0; i < 4; ++i) PopulationNumTexts[i].text = input[i].ToString();
     }
 
     public void SetScinceIncrement(List <long> input) {
