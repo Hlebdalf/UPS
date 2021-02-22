@@ -21,7 +21,7 @@ public class HouseMenu : MonoBehaviour {
         buildSz = Math.Max(szX, szZ);
     }
 
-    private void Update() {
+    private void FixedUpdate() {
         if (BuildObjectClass) {
             Vector3 newPos = new Vector3(BuildObjectClass.x, BuildObjectObject.GetComponent <BoxCollider> ().size.y * BuildObjectObject.transform.localScale.x, BuildObjectClass.y);
             double dist = Math.Max(Math.Sqrt(Math.Pow(newPos.x - MainCamera.transform.position.x, 2) + Math.Pow(newPos.y - MainCamera.transform.position.y, 2) +
