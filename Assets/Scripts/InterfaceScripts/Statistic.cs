@@ -108,8 +108,8 @@ public class Statistic : MonoBehaviour {
             PopulationDecrementTexts.Add(PopulationDecrementObjects[i].GetComponent<Text>());
             PopulationNumTexts.Add(PopulationNumObjects[i].GetComponent<Text>());
 
-            ScienceIncrementTexts.Add(PopulationIncrementObjects[i].GetComponent<Text>());
-            ProductionIncrementTexts.Add(ScienceIncrementObjects[i].GetComponent<Text>()); ////////////////////
+            ScienceIncrementTexts.Add(ScienceIncrementObjects[i].GetComponent<Text>());
+            ProductionIncrementTexts.Add(ProductionIncrementObjects[i].GetComponent<Text>());
         }
     }
 
