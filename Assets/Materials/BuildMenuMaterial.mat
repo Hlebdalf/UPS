@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PosterSQMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: 87f2f7401cd5155418e53b8261e85bed,
+  m_Name: BuildMenuMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: 3596a37db38943748825b07ec54ea33c,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 2
@@ -74,9 +74,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - RandomFlash: 1
+    - RandomFlash: 1.68
     - Vector1_1815D0FA: 1
-    - Vector1_6DC2C68C: 0.1
+    - Vector1_6DC2C68C: 0.02
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -99,9 +99,9 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_19C6C157: {r: 1, g: 1, b: 1, a: 0}
-    - Color_E448CF9F: {r: 29.508846, g: 29.508846, b: 29.508846, a: 1}
-    - Vector2_6925FF1E: {r: 1, g: 23.02, b: 0, a: 0}
+    - Color_19C6C157: {r: 0, g: 1, b: 0, a: 0}
+    - Color_E448CF9F: {r: 0, g: 52.597584, b: 0, a: 1}
+    - Vector2_6925FF1E: {r: 1, g: 2.44, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
