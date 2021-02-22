@@ -343,39 +343,61 @@ public class Economy : MonoBehaviour {
     public long GetProductsPerDay() { return productsPerDay; }
 
     // Получение информации о коммерции
-    public int GetCntShopsD(int idx) { return cntShopsD[idx]; }
-    public long GetShopsMoneyPerDayD(int idx) { return (long)(CITnD[idx] * CITk); }
-    public int GetShopsCntPeopleD(int idx) { return commercesCntPeopleD[idx]; }
+    public List <int> GetCntShopsD() { return cntShopsD; }
+    public List <long> GetShopsMoneyPerDayD() {
+        List <long> ans = new List <long> ();
+        for (int i = 0; i < 4; ++i) ans.Add((long)(CITnD[i] * CITk));
+        return ans;
+    }
+    public List <int> GetShopsCntPeopleD() { return commercesCntPeopleD; }
     
     // Получение информации о заводах
-    public long GetCntFactoriesD(int idx) { return cntFactoriesD[idx]; }
-    public long GetFactoriesServicesCostD(int idx) { return factoriesServiceCostD[idx]; }
-    public long GetFactoriesCntPeopleD(int idx) { return factoriesCntPeopleD[idx]; }
+    public List <int> GetCntFactoriesD() { return cntFactoriesD; }
+    public List <long> GetFactoriesServicesCostD() { return factoriesServiceCostD; }
+    public List <int> GetFactoriesCntPeopleD() { return factoriesCntPeopleD; }
     
     // Получение информации о науке
-    public long GetCntSciencesD(int idx) { return cntSciencesD[idx]; }
-    public long GetSciencesServicesCostD(int idx) { return sciencesServiceCostD[idx]; }
-    public long GetSciencesCntPeopleD(int idx) { return sciencesCntPeopleD[idx]; }
+    public List <int> GetCntSciencesD() { return cntSciencesD; }
+    public List <long> GetSciencesServicesCostD() { return sciencesServiceCostD; }
+    public List <int> GetSciencesCntPeopleD() { return sciencesCntPeopleD; }
 
     // Получение информации о домах
-    public int GetCntHousesD(int idx) { return cntHousesD[idx]; }
-    public long GetHousesMoneyPerDayD(int idx) { return (long)(HCSnD[idx] * HCSk); }
-    public long GetHousesServicesCostD(int idx) { return housesServiceCostD[idx]; }
-    public int GetHousesCntPeopleD(int idx) { return housesCntPeopleD[idx]; }
-    public int GetHousesCntMaxPeopleD(int idx) { return housesCntMaxPeopleD[idx]; }
+    public List <int> GetCntHousesD() { return cntHousesD; }
+    public List <long> GetHousesMoneyPerDayD() {
+        List <long> ans = new List <long> ();
+        for (int i = 0; i < 4; ++i) ans.Add((long)(HCSnD[i] * HCSk));
+        return ans;
+    }
+    public List <long> GetHousesServicesCostD() { return housesServiceCostD; }
+    public List <int> GetHousesCntPeopleD() { return housesCntPeopleD; }
+    public List <int> GetHousesCntMaxPeopleD() { return housesCntMaxPeopleD; }
 
     // Получение информации о плакатах
-    public int GetCntPostersD(int idx) { return cntPostersD[idx]; }
-    public long GetPostersServicesCostD(int idx) { return cntHousesD[idx]; } // !
-    public float GetAverageLoyalityD(int idx) { return averageLoyalityD[idx]; }
+    public List <int> GetCntPostersD() { return cntPostersD; }
+    // public List <long> GetPostersServicesCostD() { return cntHousesD; } // !
+    public List <int> GetAverageLoyalityD() { return averageLoyalityD; }
 
     // Получение общей информации о квартале
-    public long GetUpMoneyPerDayD(int idx) { return (long)(HCSnD[idx] * HCSk + PITnD[idx] * PITk + VATnD[idx] * VATk + CITnD[idx] * CITk); }
-    public long GetDownMoneyPerDayD(int idx) { return housesServiceCostD[idx] + factoriesServiceCostD[idx] + sciencesServiceCostD[idx]; }
-    public long GetMoneyPerDayD(int idx) { return GetUpMoneyPerDayD(idx) + GetDownMoneyPerDayD(idx); }
-    public int GetCntPeopleD(int idx) { return cntPeopleD[idx]; }
-    public long GetSciencePerDayD(int idx) { return sciencePerDayD[idx]; }
-    public long GetProductsPerDayD(int idx) { return productsPerDayD[idx]; }
+    public List <long> GetUpMoneyPerDayD() {
+        List <long> ans = new List <long> ();
+        for (int i = 0; i < 4; ++i) ans.Add((long)(HCSnD[i] * HCSk + PITnD[i] * PITk + VATnD[i] * VATk + CITnD[i] * CITk));
+        return ans;
+    }
+    public List <long> GetDownMoneyPerDayD() {
+        List <long> ans = new List <long> ();
+        for (int i = 0; i < 4; ++i) ans.Add(housesServiceCostD[i] + factoriesServiceCostD[i] + sciencesServiceCostD[i]);
+        return ans;
+    }
+    public List <long> GetMoneyPerDayD() {
+        List <long> up = GetUpMoneyPerDayD();
+        List <long> down = GetDownMoneyPerDayD();
+        List <long> ans = new List <long> ();
+        for (int i = 0; i < 4; ++i) ans.Add(up[i] + down[i]);
+        return ans;
+    }
+    public List <int> GetCntPeopleD() { return cntPeopleD; }
+    public List <long> GetSciencePerDayD() { return sciencePerDayD; }
+    public List <long> GetProductsPerDayD() { return productsPerDayD; }
 
     public void LevelUp() {
         Level.text = ++level + "";
@@ -427,10 +449,7 @@ public class Economy : MonoBehaviour {
     public void ChangeGDP() {
         SetGDP();
         SityInfoClass.SetBudgetIncrement(GetMoneyPerDay());
-        /*StatisticClass.SetBudgetIncrement(GetMoneyPerDayD(0), 1);
-        StatisticClass.SetBudgetIncrement(GetMoneyPerDayD(1), 2);
-        StatisticClass.SetBudgetIncrement(GetMoneyPerDayD(2), 3);
-        StatisticClass.SetBudgetIncrement(GetMoneyPerDayD(3), 4);*/
+        StatisticClass.SetBudgetIncrement(GetMoneyPerDayD());
         SityInfoClass.SetGDP(HCSn * HCSk, PITn * PITk, VATn * VATk, CITn * CITk); // Цена без обслуживания
     }
 
@@ -458,54 +477,31 @@ public class Economy : MonoBehaviour {
         SityInfoClass.SetProductionIncrement(GetProductsPerDay());
         SityInfoClass.SetGDP(HCSn * HCSk, PITn * PITk, VATn * VATk, CITn * CITk); // Цена без обслуживания
 
-        /*StatisticClass.SetCommerceNum(GetCntShopsD(0), 1);
-        StatisticClass.SetCommerceNum(GetCntShopsD(1), 2);
-        StatisticClass.SetCommerceNum(GetCntShopsD(2), 3);
-        StatisticClass.SetCommerceNum(GetCntShopsD(3), 4);
+        StatisticClass.SetCommerceNum(GetCntShopsD());
+        StatisticClass.SetCommerceIncome(GetShopsMoneyPerDayD());
+        StatisticClass.SetCommerceWorkplaces(GetShopsCntPeopleD());
 
-        StatisticClass.HouseNum(GetCntHousesD(0), 1);
-        StatisticClass.HouseNum(GetCntHousesD(1), 2);
-        StatisticClass.HouseNum(GetCntHousesD(2), 3);
-        StatisticClass.HouseNum(GetCntHousesD(3), 4);
+        StatisticClass.SetProductionNum(GetCntFactoriesD());
+        StatisticClass.SetProductionOutcome(GetFactoriesServicesCostD());
+        StatisticClass.SetProductionWorkplaces(GetFactoriesCntPeopleD());
 
-        StatisticClass.SetAVGLoyality((int)GetAverageLoyalityD(0), 1);
-        StatisticClass.SetAVGLoyality((int)GetAverageLoyalityD(1), 2);
-        StatisticClass.SetAVGLoyality((int)GetAverageLoyalityD(2), 3);
-        StatisticClass.SetAVGLoyality((int)GetAverageLoyalityD(3), 4);
+        StatisticClass.SetScienceNum(GetCntSciencesD());
+        StatisticClass.SetScienceOutcome(GetSciencesServicesCostD());
+        StatisticClass.SetScienceWorkplaces(GetSciencesCntPeopleD());
 
-        StatisticClass.SetPostersNum(GetCntPostersD(0), 1);
-        StatisticClass.SetPostersNum(GetCntPostersD(1), 2);
-        StatisticClass.SetPostersNum(GetCntPostersD(2), 3);
-        StatisticClass.SetPostersNum(GetCntPostersD(3), 4);
+        StatisticClass.SetHouseNum(GetCntHousesD());
+        StatisticClass.SetHouseOutcome(GetHousesServicesCostD());
+        StatisticClass.SetHouseIncome(GetHousesMoneyPerDayD());
+        StatisticClass.SetHouseOccupiedPlaces(GetHousesCntPeopleD());
+        StatisticClass.SetHouseAllPlaces(GetHousesCntMaxPeopleD());
 
-        StatisticClass.SetScienceNum(GetCntSciencesD(0), 1);
-        StatisticClass.SetScienceNum(GetCntSciencesD(1), 2);
-        StatisticClass.SetScienceNum(GetCntSciencesD(2), 3);
-        StatisticClass.SetScienceNum(GetCntSciencesD(3), 4);
+        StatisticClass.SetPostersNum(GetCntPostersD());
+        // StatisticClass.SetPostersOutcome(GetPostersServicesCostD());
+        StatisticClass.SetAVGLoyalty(GetAverageLoyalityD());
 
-        StatisticClass.SetProductionNum(GetCntFactoriesD(0), 1);
-        StatisticClass.SetProductionNum(GetCntFactoriesD(1), 2);
-        StatisticClass.SetProductionNum(GetCntFactoriesD(2), 3);
-        StatisticClass.SetProductionNum(GetCntFactoriesD(3), 4);
-
-        StatisticClass.SetBudgetIncrement(GetMoneyPerDayD(0), 1);
-        StatisticClass.SetBudgetIncrement(GetMoneyPerDayD(1), 2);
-        StatisticClass.SetBudgetIncrement(GetMoneyPerDayD(2), 3);
-        StatisticClass.SetBudgetIncrement(GetMoneyPerDayD(3), 4);
-
-        StatisticClass.SetPopulation(GetCntPeopleD(0), 1);
-        StatisticClass.SetPopulation(GetCntPeopleD(1), 2);
-        StatisticClass.SetPopulation(GetCntPeopleD(2), 3);
-        StatisticClass.SetPopulation(GetCntPeopleD(3), 4);
-
-        StatisticClass.SetScienceIncrement(GetSciencePerDayD(0), 1);
-        StatisticClass.SetScienceIncrement(GetSciencePerDayD(1), 2);
-        StatisticClass.SetScienceIncrement(GetSciencePerDayD(2), 3);
-        StatisticClass.SetScienceIncrement(GetSciencePerDayD(3), 4);
-
-        StatisticClass.SetProductionIncrement(GetProductsPerDayD(0), 1);
-        StatisticClass.SetProductionIncrement(GetProductsPerDayD(1), 2);
-        StatisticClass.SetProductionIncrement(GetProductsPerDayD(2), 3);
-        StatisticClass.SetProductionIncrement(GetProductsPerDayD(3), 4);*/
+        StatisticClass.SetBudgetIncrement(GetMoneyPerDayD());
+        StatisticClass.SetPopulationIncrement(GetCntPeopleD());
+        StatisticClass.SetScinceIncrement(GetSciencePerDayD());
+        StatisticClass.SetProductionIncrement(GetProductsPerDayD());
     }
 }
