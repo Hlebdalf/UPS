@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0, g: 0.99999946, b: 0.99999946, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9800,6 +9800,8 @@ MonoBehaviour:
   ghostObjects: []
   InterfaceObject: {fileID: 1344676605}
   InterfaceClass: {fileID: 0}
+  roadsLen: 0
+  serviceCost: 10
   isPressEnter: 0
   isFollowGhost: 0
   idxOverRoad: -1
@@ -15264,7 +15266,6 @@ MonoBehaviour:
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
-  m_ShouldActivateOnSelect: 1
 --- !u!114 &1425013057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19343,7 +19344,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1003.00024, y: 1058.4998}
+  m_AnchoredPosition: {x: 960, y: 1058.4998}
   m_SizeDelta: {x: 1062, y: 43}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1958843621
