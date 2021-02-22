@@ -17,6 +17,7 @@ public class BuildObject : MonoBehaviour {
     public float x, y;
     public int idx, connectedRoad, idxCommerceType = -1, idxPreFub = -1;
     public int cntPeople = 0, maxCntPeople = 100, cntPosters = 0, maxCntPosters = 0;
+    public long posterCost = 10000;
     public int startMenuSizeW = 200, startMenuSizeH = 100;
     public bool isGenBuild = false, isDeleting = false;
 

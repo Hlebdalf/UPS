@@ -97,7 +97,7 @@ public class SityInfo : MonoBehaviour
         productionIncrement.text = ProductionIncrement.ToString();
     }
 
-    public void SetAVGLoyalty(long AVGLoyalty)
+    public void SetAVGLoyalty(int AVGLoyalty)
     {
         AVGLoyaltyText.text = AVGLoyalty.ToString();
     }

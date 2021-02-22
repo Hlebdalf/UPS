@@ -6,6 +6,7 @@ using UnityEngine;
 public class Roads : MonoBehaviour {
     private GameObject MainCamera;
     private Field FieldClass;
+    private Economy EconomyClass;
     private float eps = 1e-5f;
     
     public GameObject[] preFubs;
@@ -17,6 +18,7 @@ public class Roads : MonoBehaviour {
     public List <GameObject> ghostObjects;
     public GameObject InterfaceObject;
     public Interface InterfaceClass;
+    public long roadsLen = 0, serviceCost = 10;
     public bool isPressEnter = false;
     public bool isFollowGhost = false;
     public int idxOverRoad = -1, idxOverCrossroad = -1;
@@ -25,6 +27,7 @@ public class Roads : MonoBehaviour {
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         FieldClass = MainCamera.GetComponent <Field> ();
+        EconomyClass = MainCamera.GetComponent <Economy> ();
         InterfaceClass = InterfaceObject.GetComponent <Interface> ();
     }
 
@@ -296,6 +299,9 @@ public class Roads : MonoBehaviour {
         objectClass.len = len;
         objectClass.angle = angle;
         objectClass.idx = objects.Count - 1;
+
+        EconomyClass.AddRoad(FieldClass.districts[(int)((point1.x + point2.x) / 2) + FieldClass.fieldSizeHalf, (int)((point1.z + point2.z) / 2) + FieldClass.fieldSizeHalf], (int)len);
+        roadsLen += (int)len;
 
         objects[objects.Count - 1].AddComponent <Rigidbody> ();
         objects[objects.Count - 1].GetComponent <Rigidbody> ().useGravity = false;

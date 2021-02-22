@@ -9,6 +9,7 @@ public class Economy : MonoBehaviour {
     [SerializeField]
     private Interface InterfaceClass;
     private Builds BuildsClass;
+    private Roads RoadsClass;
     private People PeopleClass;
 
     private InputField CityName;
@@ -22,7 +23,7 @@ public class Economy : MonoBehaviour {
     private long money = 0, optMoney = 0, serviceCost = 0;
     private long science = 0, sciencePerDay = 0;
     private long products = 0, productsPerDay = 0;
-    private float averageLoyality = 0;
+    private int averageLoyality = 0;
     private float HCSk = 0, PITk = 0, VATk = 0, CITk = 0; // Коэффиценты налогов
     private float HCSn = 0, PITn = 0, VATn = 0, CITn = 0;
     private bool isStarted = false;
@@ -48,6 +49,8 @@ public class Economy : MonoBehaviour {
     private List <long> housesServiceCostD;
     private List <long> factoriesServiceCostD;
     private List <long> sciencesServiceCostD;
+    private List <long> postersServiceCostD;
+    private List <long> roadsLenD;
     private List <long> sciencePerDayD;
     private List <long> productsPerDayD;
 
@@ -59,6 +62,7 @@ public class Economy : MonoBehaviour {
     private void Awake() {
         FieldClass = Camera.main.GetComponent <Field> ();
         BuildsClass = Camera.main.GetComponent <Builds> ();
+        RoadsClass = Camera.main.GetComponent <Roads> ();
         PeopleClass = Camera.main.GetComponent <People> ();
         CityName = fastStats.transform.Find("CityName").gameObject.GetComponent <InputField> ();
         Level = fastStats.transform.Find("Level").gameObject.GetComponent <Text> ();
@@ -83,6 +87,8 @@ public class Economy : MonoBehaviour {
         housesServiceCostD = new List <long> () {0, 0, 0, 0};
         factoriesServiceCostD = new List <long> () {0, 0, 0, 0};
         sciencesServiceCostD = new List <long> () {0, 0, 0, 0};
+        postersServiceCostD = new List <long> () {0, 0, 0, 0};
+        roadsLenD = new List <long> () {0, 0, 0, 0};
         sciencePerDayD = new List <long> () {0, 0, 0, 0};
         productsPerDayD = new List <long> () {0, 0, 0, 0};
     }
@@ -175,6 +181,7 @@ public class Economy : MonoBehaviour {
         housesServiceCostD = new List <long> () {0, 0, 0, 0};
         factoriesServiceCostD = new List <long> () {0, 0, 0, 0};
         sciencesServiceCostD = new List <long> () {0, 0, 0, 0};
+        postersServiceCostD = new List <long> () {0, 0, 0, 0};
         sciencePerDayD = new List <long> () {0, 0, 0, 0};
         productsPerDayD = new List <long> () {0, 0, 0, 0};
 
@@ -197,6 +204,8 @@ public class Economy : MonoBehaviour {
 
             housesCntPeopleD[districtNum] += buildClass.cntPeople;
             housesCntMaxPeopleD[districtNum] += buildClass.maxCntPeople;
+
+            postersServiceCostD[districtNum] -= buildClass.cntPosters * buildClass.posterCost;
         }
 
         for (int commerceIt = 0; commerceIt < BuildsClass.commerces.Count; ++commerceIt) {
@@ -235,6 +244,8 @@ public class Economy : MonoBehaviour {
 
                 commercesCntPeopleD[districtNum] += buildClass.cntPeople;
             }
+            
+            postersServiceCostD[districtNum] -= buildClass.cntPosters * buildClass.posterCost;
         }
     }
 
@@ -262,7 +273,7 @@ public class Economy : MonoBehaviour {
             }
         }
         if (countingAvgLoyality[0] + countingAvgLoyality[1] + countingAvgLoyality[2] + countingAvgLoyality[3] > 0) {
-            averageLoyality = (averageLoyalityD[0] + averageLoyalityD[1] + averageLoyalityD[2] + averageLoyalityD[3]) / (countingAvgLoyality[0] + countingAvgLoyality[1] + countingAvgLoyality[2] + countingAvgLoyality[3]);
+            averageLoyality = (int)((averageLoyalityD[0] + averageLoyalityD[1] + averageLoyalityD[2] + averageLoyalityD[3]) / (countingAvgLoyality[0] + countingAvgLoyality[1] + countingAvgLoyality[2] + countingAvgLoyality[3]));
         }
         if (countingAvgLoyality[0] > 0) averageLoyalityD[0] /= countingAvgLoyality[0];
         if (countingAvgLoyality[1] > 0) averageLoyalityD[1] /= countingAvgLoyality[1];
@@ -284,6 +295,13 @@ public class Economy : MonoBehaviour {
         if (countingVAT[1] > 0) VATnD[1] = VATnD[1] / countingVAT[1] * cntPeople;
         if (countingVAT[2] > 0) VATnD[2] = VATnD[2] / countingVAT[2] * cntPeople;
         if (countingVAT[3] > 0) VATnD[3] = VATnD[3] / countingVAT[3] * cntPeople;
+    }
+
+    private void StartRoads() {
+        for (int i = 0; i < RoadsClass.objects.Count; ++i) {
+            RoadObject roadClass = RoadsClass.objects[i].GetComponent <RoadObject> ();
+            AddRoad(FieldClass.districts[(int)((roadClass.x1 + roadClass.x2) / 2) + FieldClass.fieldSizeHalf, (int)((roadClass.y1 + roadClass.y2) / 2) + FieldClass.fieldSizeHalf], (int)roadClass.len);
+        }
     }
 
     private void PaySalaries() {
@@ -314,6 +332,7 @@ public class Economy : MonoBehaviour {
         SetGDP();
         CalcStatsPerDay();
         CalcPeopleStats();
+        StartRoads();
         StartCoroutine(AsyncEconomy());
     }
 
@@ -338,9 +357,11 @@ public class Economy : MonoBehaviour {
     public long GetScience() { return science; }
     public long GetProducts() { return products; }
     public long GetMoneyPerDay() { return (long)(HCSn * HCSk + PITn * PITk + VATn * VATk + CITn * CITk) + serviceCost; }
-    public int GetPeoplePerDay() { return cntPeoplePerDay; }
+    public int GetCntPeoplePerDay() { return cntPeoplePerDay; }
+    public int GetAverageLoyality() { return averageLoyality; }
     public long GetSciencePerDay() { return sciencePerDay; }
     public long GetProductsPerDay() { return productsPerDay; }
+    public long GetRoadsServicesCost() { return RoadsClass.roadsLen * RoadsClass.serviceCost; }
 
     // Получение информации о коммерции
     public List <int> GetCntShopsD() { return cntShopsD; }
@@ -374,7 +395,6 @@ public class Economy : MonoBehaviour {
 
     // Получение информации о плакатах
     public List <int> GetCntPostersD() { return cntPostersD; }
-    // public List <long> GetPostersServicesCostD() { return cntHousesD; } // !
     public List <int> GetAverageLoyalityD() { return averageLoyalityD; }
 
     // Получение общей информации о квартале
@@ -385,7 +405,7 @@ public class Economy : MonoBehaviour {
     }
     public List <long> GetDownMoneyPerDayD() {
         List <long> ans = new List <long> ();
-        for (int i = 0; i < 4; ++i) ans.Add(housesServiceCostD[i] + factoriesServiceCostD[i] + sciencesServiceCostD[i]);
+        for (int i = 0; i < 4; ++i) ans.Add(housesServiceCostD[i] + factoriesServiceCostD[i] + sciencesServiceCostD[i] + postersServiceCostD[i] - roadsLenD[i] * RoadsClass.serviceCost);
         return ans;
     }
     public List <long> GetMoneyPerDayD() {
@@ -395,9 +415,17 @@ public class Economy : MonoBehaviour {
         for (int i = 0; i < 4; ++i) ans.Add(up[i] + down[i]);
         return ans;
     }
+    // public List <int> GetUpCntPeoplePerDayD() {}
+    // public List <int> GetDownCntPeoplePerDayD() {}
     public List <int> GetCntPeopleD() { return cntPeopleD; }
     public List <long> GetSciencePerDayD() { return sciencePerDayD; }
     public List <long> GetProductsPerDayD() { return productsPerDayD; }
+    public List <long> GetPostersServicesCostD() { return postersServiceCostD; }
+    public List <long> GetRoadsServicesCostD() {
+        List <long> ans = new List <long> ();
+        for (int i = 0; i < 4; ++i) ans.Add(-roadsLenD[i] * RoadsClass.serviceCost);
+        return ans;
+    }
 
     public void LevelUp() {
         Level.text = ++level + "";
@@ -446,10 +474,19 @@ public class Economy : MonoBehaviour {
         ++cntPostersD[districtNum];
     }
 
+    public void AddRoad(int districtNum, int len) {
+        if (districtNum < 0 || districtNum > 3) {
+            Debug.Log("Incorrect: districtNum = " + districtNum);
+            return;
+        }
+        roadsLenD[districtNum] += len;
+    }
+
     public void ChangeGDP() {
         SetGDP();
         SityInfoClass.SetBudgetIncrement(GetMoneyPerDay());
-        StatisticClass.SetBudgetIncrement(GetMoneyPerDayD());
+        StatisticClass.SetBudgetIncrement(GetUpMoneyPerDayD());
+        StatisticClass.SetBudgetDecrement(GetDownMoneyPerDayD());
         SityInfoClass.SetGDP(HCSn * HCSk, PITn * PITk, VATn * VATk, CITn * CITk); // Цена без обслуживания
     }
 
@@ -472,9 +509,10 @@ public class Economy : MonoBehaviour {
         SityInfoClass.SetScience(GetScience());
         SityInfoClass.SetProduction(GetProducts());
         SityInfoClass.SetBudgetIncrement(GetMoneyPerDay());
-        SityInfoClass.SetPopulationIncrement(GetPeoplePerDay()); // Don't working
+        // SityInfoClass.SetPopulationIncrement(GetCntPeoplePerDay());
         SityInfoClass.SetScienceIncrement(GetSciencePerDay());
         SityInfoClass.SetProductionIncrement(GetProductsPerDay());
+        SityInfoClass.SetAVGLoyalty(GetAverageLoyality());
         SityInfoClass.SetGDP(HCSn * HCSk, PITn * PITk, VATn * VATk, CITn * CITk); // Цена без обслуживания
 
         StatisticClass.SetCommerceNum(GetCntShopsD());
@@ -496,11 +534,18 @@ public class Economy : MonoBehaviour {
         StatisticClass.SetHouseAllPlaces(GetHousesCntMaxPeopleD());
 
         StatisticClass.SetPostersNum(GetCntPostersD());
-        // StatisticClass.SetPostersOutcome(GetPostersServicesCostD());
+        StatisticClass.SetPostersOutcome(GetPostersServicesCostD());
+
+        StatisticClass.SetRoadsOutcome(GetRoadsServicesCostD());
         StatisticClass.SetAVGLoyalty(GetAverageLoyalityD());
 
-        StatisticClass.SetBudgetIncrement(GetMoneyPerDayD());
-        StatisticClass.SetPopulationIncrement(GetCntPeopleD());
+        StatisticClass.SetBudgetIncrement(GetUpMoneyPerDayD());
+        StatisticClass.SetBudgetDecrement(GetDownMoneyPerDayD());
+
+        // StatisticClass.SetPopulationIncrement(GetUpCntPeoplePerDayD());
+        // StatisticClass.SetPopulationDecrement(GetDownCntPeoplePerDayD());
+        StatisticClass.SetPopulationNum(GetCntPeopleD());
+
         StatisticClass.SetScinceIncrement(GetSciencePerDayD());
         StatisticClass.SetProductionIncrement(GetProductsPerDayD());
     }
