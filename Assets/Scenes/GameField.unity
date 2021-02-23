@@ -14486,6 +14486,7 @@ MonoBehaviour:
   PanelClass: {fileID: 1977111673}
   EconomyPanelObject: {fileID: 1926992664}
   UpgradesPanelObject: {fileID: 3543}
+  BuildPanelObject: {fileID: 242899381}
 --- !u!114 &1344676612
 MonoBehaviour:
   m_ObjectHideFlags: 0
