@@ -151,6 +151,13 @@ public class Economy : MonoBehaviour {
         }
     }
 
+    IEnumerator AsyncUpdatePeopleStats() {
+        while (true) {
+            CalcPeopleStats();
+            yield return new WaitForSeconds(2);
+        }
+    }
+
     IEnumerator AddMoneyWithDelay() {
         WriteMoney(false, true);
         yield return new WaitForSeconds(5f);
@@ -371,6 +378,7 @@ public class Economy : MonoBehaviour {
         CalcPeopleStats();
         StartRoads();
         StartCoroutine(AsyncEconomy());
+        StartCoroutine(AsyncUpdatePeopleStats());
     }
 
     public void NewDay() {
