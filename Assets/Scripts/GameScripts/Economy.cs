@@ -19,7 +19,7 @@ public class Economy : MonoBehaviour {
 
     private string cityName = "";
     private int level = 0;
-    private int cntPeople = 0, cntPeoplePerDay = 0;
+    private int cntPeople = 0;
     private long money = 0, optMoney = 0, serviceCost = 0;
     private long science = 0, sciencePerDay = 0;
     private long products = 0, productsPerDay = 0;
@@ -394,7 +394,7 @@ public class Economy : MonoBehaviour {
     public long GetScience() { return science; }
     public long GetProducts() { return products; }
     public long GetMoneyPerDay() { return (long)(HCSn * HCSk + PITn * PITk + VATn * VATk + CITn * CITk) + serviceCost; }
-    // public int GetCntPeoplePerDay() { return cntPeoplePerDay; }
+    public int GetCntPeoplePerDay() { return (int)(5 / Math.Sqrt(deltaTime) * 360); }
     public int GetAverageLoyality() { return averageLoyality; }
     public long GetSciencePerDay() { return sciencePerDay; }
     public long GetProductsPerDay() { return productsPerDay; }
@@ -452,8 +452,19 @@ public class Economy : MonoBehaviour {
         for (int i = 0; i < 4; ++i) ans.Add(up[i] + down[i]);
         return ans;
     }
-    // public List <int> GetUpCntPeoplePerDayD() { return deltaTimeUpD; }
-    // public List <int> GetDownCntPeoplePerDayD() { return deltaTimeDownD; }
+    // Скорость: 1 - 5 чел/сек.р.вр
+    // Скорость: 5 - 2 чел/сек.р.вр
+    // Один день = 6 мин.р.вр.
+    public List <int> GetUpCntPeoplePerDayD() {
+        List <int> ans = new List <int> ();
+        for (int i = 0; i < 4; ++i) ans.Add((int)(5 / Math.Sqrt(deltaTimeUpD[i]) * 360));
+        return ans;
+    }
+    public List <int> GetDownCntPeoplePerDayD() {
+        List <int> ans = new List <int> ();
+        for (int i = 0; i < 4; ++i) ans.Add((int)(5 / Math.Sqrt(deltaTimeDownD[i]) * 360));
+        return ans;
+    }
     public List <int> GetCntPeopleD() { return cntPeopleD; }
     public List <long> GetSciencePerDayD() { return sciencePerDayD; }
     public List <long> GetProductsPerDayD() { return productsPerDayD; }
@@ -546,7 +557,7 @@ public class Economy : MonoBehaviour {
         SityInfoClass.SetScience(GetScience());
         SityInfoClass.SetProduction(GetProducts());
         SityInfoClass.SetBudgetIncrement(GetMoneyPerDay());
-        // SityInfoClass.SetPopulationIncrement(GetCntPeoplePerDay());
+        SityInfoClass.SetPopulationIncrement(GetCntPeoplePerDay());
         SityInfoClass.SetScienceIncrement(GetSciencePerDay());
         SityInfoClass.SetProductionIncrement(GetProductsPerDay());
         SityInfoClass.SetAVGLoyalty(GetAverageLoyality());
@@ -579,8 +590,8 @@ public class Economy : MonoBehaviour {
         StatisticClass.SetBudgetIncrement(GetUpMoneyPerDayD());
         StatisticClass.SetBudgetDecrement(GetDownMoneyPerDayD());
 
-        // StatisticClass.SetPopulationIncrement(GetUpCntPeoplePerDayD());
-        // StatisticClass.SetPopulationDecrement(GetDownCntPeoplePerDayD());
+        StatisticClass.SetPopulationIncrement(GetUpCntPeoplePerDayD());
+        StatisticClass.SetPopulationDecrement(GetDownCntPeoplePerDayD());
         StatisticClass.SetPopulationNum(GetCntPeopleD());
 
         StatisticClass.SetScinceIncrement(GetSciencePerDayD());
