@@ -321,7 +321,7 @@ public class Passport : MonoBehaviour {
         if (cntPosters / Math.Max(cntPostersMax, 1) * 100 < 50) reasonsLoyalty.Add("Кол-во плакатов в данной области: " + cntPosters + " < 50% от макс. кол-ва");
 
         loyalty = (2 * satisfaction + (101 - envy) + 3 * (cntPosters / Math.Max(cntPostersMax, 1) * 100) +
-                   5 * EconomyClass.GetHCSk() * 100 + 5 * EconomyClass.GetPITk() * 100 + 4 * EconomyClass.GetVATk() * 100) / 20;
+                   5 * (100 - EconomyClass.GetHCSk() * 100) + 5 * (100 - EconomyClass.GetPITk() * 100) + 4 * (100 - EconomyClass.GetVATk() * 100)) / 20;
         return ((int)loyalty, reasonsLoyalty);
     }
 

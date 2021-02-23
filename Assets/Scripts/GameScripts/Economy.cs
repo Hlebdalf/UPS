@@ -154,6 +154,9 @@ public class Economy : MonoBehaviour {
     IEnumerator AsyncUpdatePeopleStats() {
         while (true) {
             CalcPeopleStats();
+            StatisticClass.SetAVGLoyalty(GetAverageLoyalityD());
+            StatisticClass.SetPopulationIncrement(GetUpCntPeoplePerDayD());
+            StatisticClass.SetPopulationDecrement(GetDownCntPeoplePerDayD());
             yield return new WaitForSeconds(1);
         }
     }
@@ -314,7 +317,7 @@ public class Economy : MonoBehaviour {
             ++countingPIT[passportClass.idxSocialСlass - 1];
 
             if (passportClass.idxCommerceType == 0) {
-                VATnD[passportClass.idxSocialСlass - 1] += UnityEngine.Random.Range((float)passportClass.salary / 100f + 1f, (float)passportClass.salary / 2f);
+                VATnD[passportClass.idxSocialСlass - 1] += (float)passportClass.salary / 10f;
                 ++countingVAT[passportClass.idxSocialСlass - 1];
             }
         }
@@ -549,9 +552,6 @@ public class Economy : MonoBehaviour {
         SityInfoClass.SetBudgetIncrement(GetMoneyPerDay());
         StatisticClass.SetBudgetIncrement(GetUpMoneyPerDayD());
         StatisticClass.SetBudgetDecrement(GetDownMoneyPerDayD());
-        StatisticClass.SetAVGLoyalty(GetAverageLoyalityD());
-        StatisticClass.SetPopulationIncrement(GetUpCntPeoplePerDayD());
-        StatisticClass.SetPopulationDecrement(GetDownCntPeoplePerDayD());
         SityInfoClass.SetGDP(HCSn * HCSk, PITn * PITk, VATn * VATk, CITn * CITk); // Цена без обслуживания
     }
 
