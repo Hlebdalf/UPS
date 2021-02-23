@@ -139,7 +139,8 @@ public class Economy : MonoBehaviour {
             // Изменение deltaTime
             CalcDeltaTimeDown();
             CalcDeltaTimeUp();
-            deltaTime = deltaTimeDown - deltaTimeUp;
+            if (deltaTimeUp == 0 || deltaTimeDown == 0 || 1 / deltaTimeUp - 1 / deltaTimeDown == 0) deltaTime = 0;
+            else deltaTime = 1 / (1 / deltaTimeUp - 1 / deltaTimeDown);
 
             double d = 1;
             if (deltaTime != 0) d /= Math.Abs(deltaTime);
@@ -393,7 +394,7 @@ public class Economy : MonoBehaviour {
     public long GetScience() { return science; }
     public long GetProducts() { return products; }
     public long GetMoneyPerDay() { return (long)(HCSn * HCSk + PITn * PITk + VATn * VATk + CITn * CITk) + serviceCost; }
-    public int GetCntPeoplePerDay() { return cntPeoplePerDay; }
+    // public int GetCntPeoplePerDay() { return cntPeoplePerDay; }
     public int GetAverageLoyality() { return averageLoyality; }
     public long GetSciencePerDay() { return sciencePerDay; }
     public long GetProductsPerDay() { return productsPerDay; }
@@ -451,8 +452,8 @@ public class Economy : MonoBehaviour {
         for (int i = 0; i < 4; ++i) ans.Add(up[i] + down[i]);
         return ans;
     }
-    // public List <int> GetUpCntPeoplePerDayD() {}
-    // public List <int> GetDownCntPeoplePerDayD() {}
+    // public List <int> GetUpCntPeoplePerDayD() { return deltaTimeUpD; }
+    // public List <int> GetDownCntPeoplePerDayD() { return deltaTimeDownD; }
     public List <int> GetCntPeopleD() { return cntPeopleD; }
     public List <long> GetSciencePerDayD() { return sciencePerDayD; }
     public List <long> GetProductsPerDayD() { return productsPerDayD; }
