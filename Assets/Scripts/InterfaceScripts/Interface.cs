@@ -37,6 +37,9 @@ public class Interface : MonoBehaviour {
     public GameObject EconomyPanelObject;
     public GameObject UpgradesPanelObject;
     public GameObject BuildPanelObject;
+    public Animator UpgradesPanelAnimator;
+    public Animator BursePanelAnimator;
+    public Animator EconomyPanelAnimator;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -87,10 +90,19 @@ public class Interface : MonoBehaviour {
             InterfaceOtherIsOpened = false;
             lastMenu = "Other";
         }
-        EconomyPanelActivity = false;
-        UpgradesPanelActivity = false;
-        UpgradesPanelObject.SetActive(UpgradesPanelActivity); 
-        EconomyPanelObject.SetActive(EconomyPanelActivity);   
+        if (EconomyPanelActivity)
+        {
+            EconomyPanelAnimator.Play("Back");
+            EconomyPanelActivity = false;
+            lastMenu = "Economy";
+        }
+        if (UpgradesPanelActivity)
+        {
+            UpgradesPanelAnimator.Play("Back");
+            BursePanelAnimator.Play("Back");
+            UpgradesPanelActivity = false;
+            lastMenu = "Upgrades";
+        }
     }
 
     public void ActivateMenu(string type = "Last") {
@@ -124,6 +136,21 @@ public class Interface : MonoBehaviour {
                     InterfaceOtherIsOpened = true;
                 }
                 break;
+            case "Economy":
+                if (!EconomyPanelActivity)
+                {
+                    EconomyPanelAnimator.Play("Forward");
+                    EconomyPanelActivity = true;
+                }
+                break;
+            case "Upgrades":
+                if (!UpgradesPanelActivity)
+                {
+                    BursePanelAnimator.Play("Forward");
+                    UpgradesPanelAnimator.Play("Forward");
+                    UpgradesPanelActivity = true;
+                }
+                break;
             case "Last":
                 ActivateMenu(lastMenu);
                 break;
@@ -142,13 +169,29 @@ public class Interface : MonoBehaviour {
     public void SetEconomyPanelActivity()
     {
         EconomyPanelActivity = !EconomyPanelActivity;
-        EconomyPanelObject.SetActive(EconomyPanelActivity);
+        if (EconomyPanelActivity)
+        {
+            EconomyPanelAnimator.Play("Forward");
+        }
+        else
+        {
+            EconomyPanelAnimator.Play("Back");
+        }
         EconomyClass.FillInTheMenuWithStatistics();
     }
     public void SetUpgradesPanelActivity()
     {
         UpgradesPanelActivity = !UpgradesPanelActivity;
-        UpgradesPanelObject.SetActive(UpgradesPanelActivity);
+        if (UpgradesPanelActivity)
+        {
+            UpgradesPanelAnimator.Play("Forward");
+            BursePanelAnimator.Play("Forward");
+        }
+        else
+        {
+            UpgradesPanelAnimator.Play("Back");
+            BursePanelAnimator.Play("Back");
+        }
     }
     public void ExitToMainMenu() {
         SceneManager.LoadScene("MainMenu");
