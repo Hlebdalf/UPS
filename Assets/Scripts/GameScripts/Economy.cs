@@ -154,7 +154,7 @@ public class Economy : MonoBehaviour {
     IEnumerator AsyncUpdatePeopleStats() {
         while (true) {
             CalcPeopleStats();
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1);
         }
     }
 
@@ -296,6 +296,8 @@ public class Economy : MonoBehaviour {
     private void CalcPeopleStats() {
         PITn = VATn = averageLoyality = 0;
         averageLoyalityD = new List <int> () {0, 0, 0, 0};
+        PITnD = new List <float> () {0, 0, 0, 0};
+        VATnD = new List <float> () {0, 0, 0, 0};
         List <int> countingAvgLoyality = new List <int> () {0, 0, 0, 0};
         List <int> countingPIT = new List <int> () {0, 0, 0, 0};
         List <int> countingVAT = new List <int> () {0, 0, 0, 0};
@@ -327,18 +329,18 @@ public class Economy : MonoBehaviour {
         if (countingPIT[0] + countingPIT[1] + countingPIT[2] + countingPIT[3] > 0) {
             PITn = (PITnD[0] + PITnD[1] + PITnD[2] + PITnD[3]) / (countingPIT[0] + countingPIT[1] + countingPIT[2] + countingPIT[3]) * cntPeople;
         }
-        if (countingPIT[0] > 0) PITnD[0] = PITnD[0] / countingPIT[0] * cntPeople;
-        if (countingPIT[1] > 0) PITnD[1] = PITnD[1] / countingPIT[1] * cntPeople;
-        if (countingPIT[2] > 0) PITnD[2] = PITnD[2] / countingPIT[2] * cntPeople;
-        if (countingPIT[3] > 0) PITnD[3] = PITnD[3] / countingPIT[3] * cntPeople;
+        if (countingPIT[0] > 0) PITnD[0] = PITnD[0] / countingPIT[0] * cntPeopleD[0];
+        if (countingPIT[1] > 0) PITnD[1] = PITnD[1] / countingPIT[1] * cntPeopleD[1];
+        if (countingPIT[2] > 0) PITnD[2] = PITnD[2] / countingPIT[2] * cntPeopleD[2];
+        if (countingPIT[3] > 0) PITnD[3] = PITnD[3] / countingPIT[3] * cntPeopleD[3];
 
         if (countingVAT[0] + countingVAT[1] + countingVAT[2] + countingVAT[3] > 0) {
             VATn = (VATnD[0] + VATnD[1] + VATnD[2] + VATnD[3]) / (countingVAT[0] + countingVAT[1] + countingVAT[2] + countingVAT[3]) * cntPeople;
         }
-        if (countingVAT[0] > 0) VATnD[0] = VATnD[0] / countingVAT[0] * cntPeople;
-        if (countingVAT[1] > 0) VATnD[1] = VATnD[1] / countingVAT[1] * cntPeople;
-        if (countingVAT[2] > 0) VATnD[2] = VATnD[2] / countingVAT[2] * cntPeople;
-        if (countingVAT[3] > 0) VATnD[3] = VATnD[3] / countingVAT[3] * cntPeople;
+        if (countingVAT[0] > 0) VATnD[0] = VATnD[0] / countingVAT[0] * cntPeopleD[0];
+        if (countingVAT[1] > 0) VATnD[1] = VATnD[1] / countingVAT[1] * cntPeopleD[1];
+        if (countingVAT[2] > 0) VATnD[2] = VATnD[2] / countingVAT[2] * cntPeopleD[2];
+        if (countingVAT[3] > 0) VATnD[3] = VATnD[3] / countingVAT[3] * cntPeopleD[3];
     }
 
     private void StartRoads() {
@@ -402,6 +404,10 @@ public class Economy : MonoBehaviour {
     public long GetScience() { return science; }
     public long GetProducts() { return products; }
     public long GetMoneyPerDay() { return (long)(HCSn * HCSk + PITn * PITk + VATn * VATk + CITn * CITk) + serviceCost; }
+    public float GetHCSk() { return HCSk; }
+    public float GetPITk() { return PITk; }
+    public float GetVATk() { return VATk; }
+    public float GetCITk() { return CITk; }
     public int GetCntPeoplePerDay() { return (int)(5 / Math.Sqrt(deltaTime) * 360); }
     public int GetAverageLoyality() { return averageLoyality; }
     public long GetSciencePerDay() { return sciencePerDay; }
@@ -543,6 +549,9 @@ public class Economy : MonoBehaviour {
         SityInfoClass.SetBudgetIncrement(GetMoneyPerDay());
         StatisticClass.SetBudgetIncrement(GetUpMoneyPerDayD());
         StatisticClass.SetBudgetDecrement(GetDownMoneyPerDayD());
+        StatisticClass.SetAVGLoyalty(GetAverageLoyalityD());
+        StatisticClass.SetPopulationIncrement(GetUpCntPeoplePerDayD());
+        StatisticClass.SetPopulationDecrement(GetDownCntPeoplePerDayD());
         SityInfoClass.SetGDP(HCSn * HCSk, PITn * PITk, VATn * VATk, CITn * CITk); // Цена без обслуживания
     }
 

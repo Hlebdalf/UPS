@@ -8,6 +8,7 @@ public class Passport : MonoBehaviour {
     private GameObject MainCamera;
     private People PeopleClass;
     private Field FieldClass;
+    private Economy EconomyClass;
     private TextLoader TextLoaderClass;
 
     public string nameHuman = "Default";
@@ -32,6 +33,7 @@ public class Passport : MonoBehaviour {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         PeopleClass = MainCamera.GetComponent <People> ();
         FieldClass = MainCamera.GetComponent <Field> ();
+        EconomyClass = MainCamera.GetComponent <Economy> ();
         TextLoaderClass = MainCamera.GetComponent <TextLoader> ();
         preferences = new List <string> ();
         notPreferences = new List <string> ();
@@ -318,7 +320,8 @@ public class Passport : MonoBehaviour {
         }
         if (cntPosters / Math.Max(cntPostersMax, 1) * 100 < 50) reasonsLoyalty.Add("Кол-во плакатов в данной области: " + cntPosters + " < 50% от макс. кол-ва");
 
-        loyalty = (2 * satisfaction + (101 - envy) + 3 * (cntPosters / Math.Max(cntPostersMax, 1) * 100)) / 6;
+        loyalty = (2 * satisfaction + (101 - envy) + 3 * (cntPosters / Math.Max(cntPostersMax, 1) * 100) +
+                   5 * EconomyClass.GetHCSk() * 100 + 5 * EconomyClass.GetPITk() * 100 + 4 * EconomyClass.GetVATk() * 100) / 20;
         return ((int)loyalty, reasonsLoyalty);
     }
 
