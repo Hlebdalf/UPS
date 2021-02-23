@@ -29,6 +29,8 @@ public class Economy : MonoBehaviour {
     private bool isStarted = false;
     [SerializeField]
     private double deltaTime = 0.1; // Не более 6 знаков после запятой
+    [SerializeField]
+    private double deltaTimeDown = 0.1, deltaTimeUp = 0.1;
     
     private List <int> cntHousesD;
     private List <int> cntShopsD;
@@ -53,6 +55,8 @@ public class Economy : MonoBehaviour {
     private List <long> roadsLenD;
     private List <long> sciencePerDayD;
     private List <long> productsPerDayD;
+    [SerializeField]
+    private List <double> deltaTimeDownD, deltaTimeUpD;
 
     public GameObject fastStats;
     public SityInfo SityInfoClass;
@@ -91,6 +95,8 @@ public class Economy : MonoBehaviour {
         roadsLenD = new List <long> () {0, 0, 0, 0};
         sciencePerDayD = new List <long> () {0, 0, 0, 0};
         productsPerDayD = new List <long> () {0, 0, 0, 0};
+        deltaTimeDownD = new List <double> () {0, 0, 0, 0};
+        deltaTimeUpD = new List <double> () {0, 0, 0, 0};
     }
 
     IEnumerator AsyncEconomy() {
@@ -129,13 +135,18 @@ public class Economy : MonoBehaviour {
                 }
                 else BuildsClass.objectsWithAvailableSeats.RemoveAt(houseIt);
             }
+
+            // Изменение deltaTime
+            CalcDeltaTimeDown();
+            CalcDeltaTimeUp();
+            deltaTime = deltaTimeDown - deltaTimeUp;
+
             double d = 1;
             if (deltaTime != 0) d /= Math.Abs(deltaTime);
             if (d <= 1) {
                 for (double t = 0; t <= 1; t += d) yield return null;
             }
             else if (i % (int)d == 0) yield return null;
-            // Изменение deltaTime
         }
     }
 
@@ -168,6 +179,31 @@ public class Economy : MonoBehaviour {
 
     private void WriteCntPeople() {
         CntPeople.text = cntPeople + " чел";
+    }
+
+    private void CalcDeltaTimeDown() {
+        deltaTimeDown = 0;
+        List <int> avgLoyality = GetAverageLoyalityD();
+        for (int i = 0; i < 4; ++i) {
+            double a = Math.Max(avgLoyality[i], 10);
+            deltaTimeDownD[i] = a * a / 10000;
+            deltaTimeDown += deltaTimeDownD[i];
+        }
+        deltaTimeDown /= 4;
+    }
+
+    private void CalcDeltaTimeUp() {
+        deltaTimeUp = 0;
+        List <int> cntPosters = GetCntPostersD();
+        List <int> cntMaxPeople = GetHousesCntMaxPeopleD();
+        List <int> cntPeople = GetHousesCntPeopleD();
+        for (int i = 0; i < 4; ++i) {
+            double a = Math.Max(Math.Min(cntMaxPeople[i] - cntPeople[i], 4000), 500);
+            double b = Math.Max(Math.Min(cntPosters[i], 4000), 500);
+            deltaTimeUpD[i] = a * a * b / 10000000000;
+            deltaTimeUp += deltaTimeUpD[i];
+        }
+        deltaTimeUp /= 4;
     }
 
     private void CalcStatsPerDay() {
