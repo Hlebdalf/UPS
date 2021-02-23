@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PosterSQMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: 87f2f7401cd5155418e53b8261e85bed,
+  m_Name: BuildMenuMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: 271f3fecc8de92845ba0b7c8260b73c6,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 2
@@ -43,6 +43,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - Texture2D_48882336:
         m_Texture: {fileID: 2800000, guid: 03b55380f04edab46b4a1e90d6142be8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_8D8E7540:
+        m_Texture: {fileID: 2800000, guid: bcd360d0644ff5b4f9086e1f31d59dc0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -69,14 +73,18 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_BA589E4_Texture_1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - RandomFlash: 1
+    - RandomFlash: 1.68
     - Vector1_1815D0FA: 1
-    - Vector1_6DC2C68C: 0.1
+    - Vector1_6DC2C68C: -0.02
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -99,9 +107,9 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_19C6C157: {r: 1, g: 1, b: 1, a: 0}
-    - Color_E448CF9F: {r: 29.508846, g: 29.508846, b: 29.508846, a: 1}
-    - Vector2_6925FF1E: {r: 1, g: 23.02, b: 0, a: 0}
+    - Color_19C6C157: {r: 0.28449082, g: 1, b: 0, a: 1}
+    - Color_E448CF9F: {r: 0, g: 72.65929, b: 0, a: 1}
+    - Vector2_6925FF1E: {r: 1, g: 5.68, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

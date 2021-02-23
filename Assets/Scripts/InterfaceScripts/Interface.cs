@@ -21,6 +21,7 @@ public class Interface : MonoBehaviour {
     private Animator InterfaceCommercesAnimator;
     private Animator InterfaceRoadsAnimator;
     private Animator InterfaceOtherAnimator;
+    private Animator BuildPanelAnimator;
     private string lastMenu = "";
 
     public GameObject PreFubButton;
@@ -35,7 +36,8 @@ public class Interface : MonoBehaviour {
     public GameObject PanelClass;
     public GameObject EconomyPanelObject;
     public GameObject UpgradesPanelObject;
-    
+    public GameObject BuildPanelObject;
+
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         EconomyClass = MainCamera.GetComponent <Economy> ();
@@ -45,6 +47,7 @@ public class Interface : MonoBehaviour {
         InterfaceCommercesAnimator = InterfaceCommerces.GetComponent <Animator> ();
         InterfaceRoadsAnimator = InterfaceRoads.GetComponent <Animator> ();
         InterfaceOtherAnimator = InterfaceOther.GetComponent <Animator> ();
+        BuildPanelAnimator = BuildPanelObject.GetComponent<Animator>();
     }
 
     private void Update() {
@@ -61,21 +64,25 @@ public class Interface : MonoBehaviour {
 
     public void DeactivateAllMenu() {
         if (interfaceBuildsIsOpened) {
+            BuildPanelAnimator.Play("Back");
             InterfaceBuildsAnimator.Play("Back");
             interfaceBuildsIsOpened = false;
             lastMenu = "Builds";
         }
         if (InterfaceCommercesIsOpened) {
+            BuildPanelAnimator.Play("Back");
             InterfaceCommercesAnimator.Play("Back");
             InterfaceCommercesIsOpened = false;
             lastMenu = "Commerces";
         }
         if (InterfaceRoadsIsOpened) {
+            BuildPanelAnimator.Play("Back");
             InterfaceRoadsAnimator.Play("Back");
             InterfaceRoadsIsOpened = false;
             lastMenu = "Roads";
         }
         if (InterfaceOtherIsOpened) {
+            BuildPanelAnimator.Play("Back");
             InterfaceOtherAnimator.Play("Back");
             InterfaceOtherIsOpened = false;
             lastMenu = "Other";
@@ -91,24 +98,28 @@ public class Interface : MonoBehaviour {
         switch (type) {
             case "Builds":
                 if (!interfaceBuildsIsOpened) {
+                    BuildPanelAnimator.Play("Forward");
                     InterfaceBuildsAnimator.Play("Forward");
                     interfaceBuildsIsOpened = true;
                 }
                 break;
             case "Commerces":
                 if (!InterfaceCommercesIsOpened) {
+                    BuildPanelAnimator.Play("Forward");
                     InterfaceCommercesAnimator.Play("Forward");
                     InterfaceCommercesIsOpened = true;
                 }
                 break;
             case "Roads":
                 if (!InterfaceRoadsIsOpened) {
+                    BuildPanelAnimator.Play("Forward");
                     InterfaceRoadsAnimator.Play("Forward");
                     InterfaceRoadsIsOpened = true;
                 }
                 break;
             case "Other":
                 if (!InterfaceOtherIsOpened) {
+                    BuildPanelAnimator.Play("Forward");
                     InterfaceOtherAnimator.Play("Forward");
                     InterfaceOtherIsOpened = true;
                 }

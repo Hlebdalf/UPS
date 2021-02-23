@@ -85,10 +85,8 @@ public class BuildObject : MonoBehaviour {
         int idx = (int)UnityEngine.Random.Range(0f, idxNotActive.Count - 0.01f);
         posterObjects[idxNotActive[idx]].SetActive(true);
         Material posterMatHD = posterObjects[idxNotActive[idx]].GetComponent<Transform>().transform.Find("PosterPlaneHD").GetComponent<MeshRenderer>().material;
-        Material posterMatSQ = posterObjects[idxNotActive[idx]].GetComponent<Transform>().transform.Find("PosterPlaneSQ").GetComponent<MeshRenderer>().material;
         Texture HologramBasemap = BuildsClass.posterTextures[(int)UnityEngine.Random.Range(0f, BuildsClass.posterTextures.Length - 0.01f)];
         posterMatHD.SetTexture("HologramAlbedo", HologramBasemap);
-        posterMatSQ.SetTexture("HologramAlbedo", HologramBasemap);
         posterMatHD.SetFloat("RandomFlash", UnityEngine.Random.Range(0.5f, 2f));
         idxNotActive.RemoveAt(idx);
         ++cntPosters;
