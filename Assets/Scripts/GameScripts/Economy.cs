@@ -186,7 +186,7 @@ public class Economy : MonoBehaviour {
         deltaTimeDown = 0;
         List <int> avgLoyality = GetAverageLoyalityD();
         for (int i = 0; i < 4; ++i) {
-            double a = Math.Max(avgLoyality[i], 10);
+            double a = avgLoyality[i] + 10;
             deltaTimeDownD[i] = a * a / 10000;
             deltaTimeDown += deltaTimeDownD[i];
         }
