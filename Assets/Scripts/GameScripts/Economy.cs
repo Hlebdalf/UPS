@@ -506,6 +506,11 @@ public class Economy : MonoBehaviour {
         WriteCntPeople();
     }
 
+    public void AddOptMoney(long dMoney) {
+        optMoney += dMoney;
+        WriteMoney(false);
+    }
+
     public void AddMoney(long dMoney = 0) {
         if (dMoney == 0) money += optMoney;
         else money += dMoney;

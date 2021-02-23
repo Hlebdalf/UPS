@@ -17,6 +17,7 @@ public class BuildGhostObject : MonoBehaviour {
     public GameObject InterfaceObject;
     public float x, y, rotate;
     public int idx, idxPreFub, connectedRoad = -1;
+    public long cost;
     public bool isFollow = true;
 
     private void Awake() {

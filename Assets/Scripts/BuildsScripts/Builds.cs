@@ -103,14 +103,19 @@ public class Builds : MonoBehaviour {
         data.y = point.z;
         data.idx = ghostObjects.Count - 1;
         data.idxPreFub = ToIndex(name);
+        data.cost = preFubs[ToIndex(name)].GetComponent <BuildObject> ().cost;
+
+        EconomyClass.AddOptMoney(-data.cost);
     }
 
-    public void DeleteGhost(GameObject ghostObject) {
+    public void DeleteGhost(GameObject ghostObject, bool addMoney = true) {
+        if (addMoney) EconomyClass.AddOptMoney(ghostObject.GetComponent <BuildGhostObject> ().cost);
         ghostObjects.Remove(ghostObject);
         Destroy(ghostObject);
     }
 
     public void CreateObjects() {
+        EconomyClass.AddMoney();
         for (int i = 0; i < ghostObjects.Count; ++i) {
             GameObject ghostObject = ghostObjects[i];
             BuildGhostObject ghostObjectClass = ghostObject.GetComponent <BuildGhostObject> ();
@@ -128,7 +133,7 @@ public class Builds : MonoBehaviour {
             newObject.AddComponent <Rigidbody> ();
             newObject.GetComponent <Rigidbody> ().useGravity = false;
 
-            DeleteGhost(ghostObject);
+            DeleteGhost(ghostObject, false);
         }
     }
 

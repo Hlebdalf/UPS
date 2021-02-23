@@ -18,7 +18,7 @@ public class Roads : MonoBehaviour {
     public List <GameObject> ghostObjects;
     public GameObject InterfaceObject;
     public Interface InterfaceClass;
-    public long roadsLen = 0, serviceCost = 10;
+    public long roadsLen = 0, cost = 100, serviceCost = 10;
     public bool isPressEnter = false;
     public bool isFollowGhost = false;
     public int idxOverRoad = -1, idxOverCrossroad = -1;
