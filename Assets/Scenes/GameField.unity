@@ -968,7 +968,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 204080508}
   m_HandleRect: {fileID: 204080507}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 1.0000002
   m_Size: 0.21597826
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -6935,7 +6935,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -655.6472, y: 193.49998}
+  m_AnchoredPosition: {x: -655.6472, y: 193.49977}
   m_SizeDelta: {x: 1309.0002, y: 1791.8469}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &704676368
@@ -14323,7 +14323,7 @@ MonoBehaviour:
   EconomyPanelObject: {fileID: 1926992664}
   UpgradesPanelObject: {fileID: 3543}
   BuildPanelObject: {fileID: 242899381}
-  UpgardesPanelAnimator: {fileID: 18541938}
+  UpgradesPanelAnimator: {fileID: 18541938}
   BursePanelAnimator: {fileID: 696978365}
   EconomyPanelAnimator: {fileID: 1926992668}
 --- !u!114 &1344676612
@@ -19290,13 +19290,14 @@ GameObject:
   - component: {fileID: 1958843620}
   - component: {fileID: 1958843622}
   - component: {fileID: 1958843621}
+  - component: {fileID: 1958843623}
   m_Layer: 5
   m_Name: FastStatsPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1958843620
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19319,7 +19320,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 960, y: 1058.4998}
+  m_AnchoredPosition: {x: 960, y: 1103}
   m_SizeDelta: {x: 1062, y: 43}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1958843621
@@ -19359,6 +19360,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1958843619}
   m_CullTransparentMesh: 0
+--- !u!95 &1958843623
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958843619}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7a2adceff97c9754299ae72ab2871080, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1965968799
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,12 +16,14 @@ public class Interface : MonoBehaviour {
     public bool EconomyPanelActivity = false;
     private bool UpgradesPanelActivity = false;
     private bool isActivityInfo = true;
+    private bool FastStatsActivity = false;
     private bool isBusy = false;
     private Animator InterfaceBuildsAnimator;
     private Animator InterfaceCommercesAnimator;
     private Animator InterfaceRoadsAnimator;
     private Animator InterfaceOtherAnimator;
     private Animator BuildPanelAnimator;
+    private Animator FastStatsPanelAnimator;
     private string lastMenu = "";
 
     public GameObject PreFubButton;
@@ -40,6 +42,7 @@ public class Interface : MonoBehaviour {
     public Animator UpgradesPanelAnimator;
     public Animator BursePanelAnimator;
     public Animator EconomyPanelAnimator;
+    
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -51,6 +54,7 @@ public class Interface : MonoBehaviour {
         InterfaceRoadsAnimator = InterfaceRoads.GetComponent <Animator> ();
         InterfaceOtherAnimator = InterfaceOther.GetComponent <Animator> ();
         BuildPanelAnimator = BuildPanelObject.GetComponent<Animator>();
+        FastStatsPanelAnimator = FastStats.GetComponent<Animator>();
     }
 
     private void Update() {
@@ -60,7 +64,15 @@ public class Interface : MonoBehaviour {
             isBusy = true;
         }
         else if (Input.GetKeyDown(KeyCode.Tab) && !isBusy) {
-            FastStats.SetActive(!FastStats.activeSelf);
+            if (FastStatsActivity)
+            {
+                FastStatsPanelAnimator.Play("Back");
+                FastStatsActivity = false;
+            }
+            else {
+                FastStatsActivity = true;
+                FastStatsPanelAnimator.Play("Forward"); 
+            }
         }
         else isBusy = false;
     }
@@ -168,6 +180,7 @@ public class Interface : MonoBehaviour {
     }
     public void SetEconomyPanelActivity()
     {
+        DeactivateAllMenu();
         EconomyPanelActivity = !EconomyPanelActivity;
         if (EconomyPanelActivity)
         {
@@ -181,6 +194,7 @@ public class Interface : MonoBehaviour {
     }
     public void SetUpgradesPanelActivity()
     {
+        DeactivateAllMenu();
         UpgradesPanelActivity = !UpgradesPanelActivity;
         if (UpgradesPanelActivity)
         {
