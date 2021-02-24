@@ -106,9 +106,9 @@ public class Cars : MonoBehaviour {
                 transformArray[i] = objects[i].transform;
                 onVisibleInCamera[i] = objectClasses[i].onVisibleInCamera;
                 speeds[i] = objectClasses[i].speed;
-                numOfLanes[i] = objectClasses[i].numOfLane;
-                // onVisibleInCamera[i] = GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(Camera.main), objects[i].transform.gameObject.GetComponent <Collider> ().bounds);
+                // numOfLanes[i] = objectClasses[i].numOfLane;
                 if (!vertexIsActive[i]) {
+                    numOfLanes[i] = (int)UnityEngine.Random.Range(1f, 2.99f);
                     if (itForQueue[i] < paths[i].pointsPathToStart.Count) {
                         vertexFrom[i] = paths[i].pointsPathToStart[itForQueue[i] - 1];
                         vertexTo[i] = paths[i].pointsPathToStart[itForQueue[i]++];
