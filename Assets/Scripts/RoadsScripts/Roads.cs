@@ -67,7 +67,7 @@ public class Roads : MonoBehaviour {
                 isPressEnter = false;
             }
         }
-        if (isFollowGhost && cost != 0) EconomyClass.UpdateRoadCost(cost);
+        if (isFollowGhost) EconomyClass.UpdateRoadCost(cost);
     }
 
     private int ToIndex(string name) {
@@ -143,7 +143,8 @@ public class Roads : MonoBehaviour {
     }
 
     public void DeleteGhost(GameObject ghostObject) {
-        EconomyClass.UpdateRoadCost(cost);
+        print(cost);
+        EconomyClass.UpdateRoadCost(cost - 100);
         ghostObjects.Remove(ghostObject);
         Destroy(ghostObject);
     }
