@@ -6,7 +6,7 @@ using UnityEngine;
 public class Car : MonoBehaviour {
     private GameObject MainCamera;
     private GameObject CameraCollider;
-    private const float Distance = 1f;
+    private const float Distance = 2f;
 
     public float speed, mainSpeed = 10f;
     public int numOfLane = 0, idxRoad = -3;
@@ -30,7 +30,7 @@ public class Car : MonoBehaviour {
                     else isStop = true;
                     isFollowTheFront = false;
                 }
-                else if (hit.collider.gameObject.tag == "Car") isFollowTheFront = true;
+                else if (hit.collider.gameObject.tag == "Car" && hit.distance <= 1f) isFollowTheFront = true;
                 else {
                     isFollowTheFront = false;
                     isStop = false;
