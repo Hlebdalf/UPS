@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 356139489015536103}
   m_Layer: 0
   m_Name: GAZ-13LOD
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,8 +46,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.4, z: 1.2}
-  m_Center: {x: 0, y: 0.2, z: 0}
+  m_Size: {x: 0.3, y: 0.2, z: 0.8}
+  m_Center: {x: 0, y: 0.1, z: 0}
 --- !u!114 &5810736202823918301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,7 +60,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6281aa32e27f77d479d2d63e5d567ccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
+  mainSpeed: 10
   onVisibleInCamera: 0
+  isFollowTheFront: 0
+  isStop: 0
 --- !u!205 &356139489015536103
 LODGroup:
   m_ObjectHideFlags: 0

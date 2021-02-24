@@ -9,7 +9,7 @@ public struct CarMoveJob : IJobParallelForTransform  {
     public NativeArray <bool> vertexIsActive;
     public NativeArray <bool> onVisibleInCamera;
     public NativeArray <int> cntWaitingFrames;
-    public float speed;
+    public NativeArray <float> speeds;
     public Vector3 cameraPos;
     public float fixedDeltaTime;
     public int cntMissedFrames;
@@ -20,7 +20,7 @@ public struct CarMoveJob : IJobParallelForTransform  {
             Vector3 vertexFrom = transform.position;
             double dist = Math.Sqrt(Math.Pow(vertexTo[idx].x - vertexFrom.x, 2) + Math.Pow(vertexTo[idx].z - vertexFrom.z, 2));
             if (dist > 0.1) {
-                Vector3 move = new Vector3((vertexTo[idx].x - vertexFrom.x) / (float)dist, 0, (vertexTo[idx].z - vertexFrom.z) / (float)dist) * speed * fixedDeltaTime;
+                Vector3 move = new Vector3((vertexTo[idx].x - vertexFrom.x) / (float)dist, 0, (vertexTo[idx].z - vertexFrom.z) / (float)dist) * speeds[idx] * fixedDeltaTime;
                 move.x *= (cntMissedFrames + 1) * (cntWaitingFrames[idx] + 1);
                 move.z *= (cntMissedFrames + 1) * (cntWaitingFrames[idx] + 1);
                 if (move.magnitude >= dist) {
