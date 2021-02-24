@@ -6,10 +6,10 @@ using UnityEngine;
 public class Car : MonoBehaviour {
     private GameObject MainCamera;
     private GameObject CameraCollider;
-    private const float Distance = 4f;
+    private const float Distance = 1f;
 
     public float speed, mainSpeed = 10f;
-    public int numOfLane = 0;
+    public int numOfLane = 0, idxRoad = -3;
     public bool onVisibleInCamera = false, isFollowTheFront = false, isStop = false;
 
     private void Awake() {
@@ -25,10 +25,12 @@ public class Car : MonoBehaviour {
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Distance)) {
                 if (hit.collider.gameObject.tag == "TrafficLight") {
-                    // isStop = true;
+                    CrossroadObject crossroadObjectClass = hit.collider.gameObject.GetComponent <CrossroadObject> ();
+                    if (crossroadObjectClass.idxRoadGO == idxRoad || idxRoad < -1 || crossroadObjectClass.idxRoadGO < -1) isStop = false;
+                    else isStop = true;
                     isFollowTheFront = false;
                 }
-                else if (hit.collider.gameObject.tag == "Car" && hit.distance <= 2f) isFollowTheFront = true;
+                else if (hit.collider.gameObject.tag == "Car") isFollowTheFront = true;
                 else {
                     isFollowTheFront = false;
                     isStop = false;
