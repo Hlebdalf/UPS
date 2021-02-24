@@ -7,7 +7,7 @@ using System;
 public struct CarMoveJob : IJobParallelForTransform  {
     public NativeArray <Vector3> vertexFrom;
     public NativeArray <Vector3> vertexTo;
-    //public NativeArray <bool> isShiftVector;
+    public NativeArray <bool> isShiftVector;
     public NativeArray <int> numOfLanes;
     public NativeArray <bool> vertexIsActive;
     public NativeArray <bool> onVisibleInCamera;
@@ -21,13 +21,15 @@ public struct CarMoveJob : IJobParallelForTransform  {
         double distToCamera = Math.Sqrt(Math.Pow(transform.position.x - cameraPos.x, 2) + Math.Pow(transform.position.z - cameraPos.z, 2));
         if (vertexIsActive[idx] && ((onVisibleInCamera[idx] && distToCamera < 200) || cntWaitingFrames[idx] > 30)) {
             float sideX = 0, sideZ = 0;
-            if (numOfLanes[idx] == 1) {
-                sideX = (float)Math.Cos(Math.Atan2(vertexTo[idx].x - vertexFrom[idx].x, vertexTo[idx].z - vertexFrom[idx].z)) * (0.22f);
-                sideZ = -(float)Math.Sin(Math.Atan2(vertexTo[idx].x - vertexFrom[idx].x, vertexTo[idx].z - vertexFrom[idx].z)) * (0.22f);
-            }
-            else if (numOfLanes[idx] == 2) {
-                sideX = (float)Math.Cos(Math.Atan2(vertexTo[idx].x - vertexFrom[idx].x, vertexTo[idx].z - vertexFrom[idx].z)) * (0.58f);
-                sideZ = -(float)Math.Sin(Math.Atan2(vertexTo[idx].x - vertexFrom[idx].x, vertexTo[idx].z - vertexFrom[idx].z)) * (0.58f);
+            if (isShiftVector[idx]) {
+                if (numOfLanes[idx] == 1) {
+                    sideX = (float)Math.Cos(Math.Atan2(vertexTo[idx].x - vertexFrom[idx].x, vertexTo[idx].z - vertexFrom[idx].z)) * (0.22f);
+                    sideZ = -(float)Math.Sin(Math.Atan2(vertexTo[idx].x - vertexFrom[idx].x, vertexTo[idx].z - vertexFrom[idx].z)) * (0.22f);
+                }
+                else if (numOfLanes[idx] == 2) {
+                    sideX = (float)Math.Cos(Math.Atan2(vertexTo[idx].x - vertexFrom[idx].x, vertexTo[idx].z - vertexFrom[idx].z)) * (0.58f);
+                    sideZ = -(float)Math.Sin(Math.Atan2(vertexTo[idx].x - vertexFrom[idx].x, vertexTo[idx].z - vertexFrom[idx].z)) * (0.58f);
+                }
             }
 
             float mainRoadA = vertexFrom[idx].z - vertexTo[idx].z, mainRoadB = vertexTo[idx].x - vertexFrom[idx].x,

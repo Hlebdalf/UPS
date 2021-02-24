@@ -20,6 +20,7 @@ public class Cars : MonoBehaviour {
     private JobHandle handle;
     private NativeArray <Vector3> vertexTo;
     private NativeArray <Vector3> vertexFrom;
+    private NativeArray <bool> isShiftVector;
     private NativeArray <int> numOfLanes;
     private NativeArray <bool> vertexIsActive;
     private NativeArray <bool> onVisibleInCamera;
@@ -50,6 +51,7 @@ public class Cars : MonoBehaviour {
         cntFrameForDelay = new List <int> ();
         vertexTo = new NativeArray <Vector3> (cntCars, Allocator.Persistent);
         vertexFrom = new NativeArray <Vector3> (cntCars, Allocator.Persistent);
+        isShiftVector = new NativeArray <bool> (cntCars, Allocator.Persistent);
         numOfLanes = new NativeArray <int> (cntCars, Allocator.Persistent);
         vertexIsActive = new NativeArray <bool> (cntCars, Allocator.Persistent);
         onVisibleInCamera = new NativeArray <bool> (cntCars, Allocator.Persistent);
@@ -92,6 +94,7 @@ public class Cars : MonoBehaviour {
                 onVisibleInCamera[objects.Count - 1] = false;
                 cntWaitingFrames[objects.Count - 1] = 0;
                 speeds[objects.Count - 1] = 10f;
+                isShiftVector[objects.Count - 1] = false;
                 numOfLanes[objects.Count - 1] = 0;
                 itForQueue.Add(1);
                 cntFrameForDelay.Add(0);
@@ -106,6 +109,10 @@ public class Cars : MonoBehaviour {
                 transformArray[i] = objects[i].transform;
                 onVisibleInCamera[i] = objectClasses[i].onVisibleInCamera;
                 speeds[i] = objectClasses[i].speed;
+                if (itForQueue[i] == 2 || itForQueue[i] == paths[i].pointsPathToStart.Count + paths[i].pointsPathToEnd.Count + paths[i].pointsPathToParking.Count) {
+                    isShiftVector[i] = false;
+                }
+                else isShiftVector[i] = true;
                 // numOfLanes[i] = objectClasses[i].numOfLane;
                 if (!vertexIsActive[i]) {
                     numOfLanes[i] = (int)UnityEngine.Random.Range(1f, 2.99f);
@@ -150,6 +157,7 @@ public class Cars : MonoBehaviour {
             CarMoveJob job = new CarMoveJob();
             job.vertexTo = vertexTo;
             job.vertexFrom = vertexFrom;
+            job.isShiftVector = isShiftVector;
             job.vertexIsActive = vertexIsActive;
             job.onVisibleInCamera = onVisibleInCamera;
             job.cntWaitingFrames = cntWaitingFrames;
@@ -171,6 +179,7 @@ public class Cars : MonoBehaviour {
     private void OnDisable() {
         vertexTo.Dispose();
         vertexFrom.Dispose();
+        isShiftVector.Dispose();
         vertexIsActive.Dispose();
         onVisibleInCamera.Dispose();
         cntWaitingFrames.Dispose();
@@ -480,6 +489,7 @@ public class Cars : MonoBehaviour {
             onVisibleInCamera[i] = onVisibleInCamera[i + 1];
             vertexTo[i] = vertexTo[i + 1];
             vertexFrom[i] = vertexFrom[i + 1];
+            isShiftVector[i] = isShiftVector[i + 1];
             cntWaitingFrames[i] = cntWaitingFrames[i + 1];
             speeds[i] = speeds[i + 1];
             numOfLanes[i] = numOfLanes[i + 1];
