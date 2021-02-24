@@ -19,6 +19,8 @@ public class Cars : MonoBehaviour {
 
     private JobHandle handle;
     private NativeArray <Vector3> vertexTo;
+    private NativeArray <Vector3> vertexFrom;
+    private NativeArray <int> numOfLanes;
     private NativeArray <bool> vertexIsActive;
     private NativeArray <bool> onVisibleInCamera;
     private NativeArray <int> cntWaitingFrames;
@@ -47,6 +49,8 @@ public class Cars : MonoBehaviour {
         itForQueue = new List <int> ();
         cntFrameForDelay = new List <int> ();
         vertexTo = new NativeArray <Vector3> (cntCars, Allocator.Persistent);
+        vertexFrom = new NativeArray <Vector3> (cntCars, Allocator.Persistent);
+        numOfLanes = new NativeArray <int> (cntCars, Allocator.Persistent);
         vertexIsActive = new NativeArray <bool> (cntCars, Allocator.Persistent);
         onVisibleInCamera = new NativeArray <bool> (cntCars, Allocator.Persistent);
         cntWaitingFrames = new NativeArray <int> (cntCars, Allocator.Persistent);
@@ -56,6 +60,7 @@ public class Cars : MonoBehaviour {
             onVisibleInCamera[i] = false;
             cntWaitingFrames[i] = 0;
             speeds[i] = 10f;
+            numOfLanes[i] = 0;
         }
     }
 
@@ -87,7 +92,8 @@ public class Cars : MonoBehaviour {
                 onVisibleInCamera[objects.Count - 1] = false;
                 cntWaitingFrames[objects.Count - 1] = 0;
                 speeds[objects.Count - 1] = 10f;
-                itForQueue.Add(0);
+                numOfLanes[objects.Count - 1] = 0;
+                itForQueue.Add(1);
                 cntFrameForDelay.Add(0);
             }
         }
@@ -100,23 +106,37 @@ public class Cars : MonoBehaviour {
                 transformArray[i] = objects[i].transform;
                 onVisibleInCamera[i] = objectClasses[i].onVisibleInCamera;
                 speeds[i] = objectClasses[i].speed;
+                numOfLanes[i] = objectClasses[i].numOfLane;
                 // onVisibleInCamera[i] = GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(Camera.main), objects[i].transform.gameObject.GetComponent <Collider> ().bounds);
                 if (!vertexIsActive[i]) {
                     if (itForQueue[i] < paths[i].pointsPathToStart.Count) {
+                        vertexFrom[i] = paths[i].pointsPathToStart[itForQueue[i] - 1];
                         vertexTo[i] = paths[i].pointsPathToStart[itForQueue[i]++];
                         vertexIsActive[i] = true;
                     }
                     else if (cntFrameForDelay[i] < 100) {
                         ++cntFrameForDelay[i];
                     }
+                    else if (itForQueue[i] == paths[i].pointsPathToStart.Count) {
+                        vertexFrom[i] = paths[i].pointsPathToStart[itForQueue[i] - 1];
+                        vertexTo[i] = paths[i].pointsPathToEnd[itForQueue[i]++ - paths[i].pointsPathToStart.Count];
+                        vertexIsActive[i] = true;
+                    }
                     else if (itForQueue[i] < paths[i].pointsPathToStart.Count + paths[i].pointsPathToEnd.Count) {
+                        vertexFrom[i] = paths[i].pointsPathToEnd[itForQueue[i] - paths[i].pointsPathToStart.Count - 1];
                         vertexTo[i] = paths[i].pointsPathToEnd[itForQueue[i]++ - paths[i].pointsPathToStart.Count];
                         vertexIsActive[i] = true;
                     }
                     else if (cntFrameForDelay[i] < 200) {
                         ++cntFrameForDelay[i];
                     }
+                    else if (itForQueue[i] == paths[i].pointsPathToStart.Count + paths[i].pointsPathToEnd.Count) {
+                        vertexFrom[i] = paths[i].pointsPathToEnd[itForQueue[i] - paths[i].pointsPathToStart.Count - 1];
+                        vertexTo[i] = paths[i].pointsPathToParking[itForQueue[i]++ - paths[i].pointsPathToStart.Count - paths[i].pointsPathToEnd.Count];
+                        vertexIsActive[i] = true;
+                    }
                     else if (itForQueue[i] < paths[i].pointsPathToStart.Count + paths[i].pointsPathToEnd.Count + paths[i].pointsPathToParking.Count) {
+                        vertexFrom[i] = paths[i].pointsPathToParking[itForQueue[i] - paths[i].pointsPathToStart.Count - paths[i].pointsPathToEnd.Count - 1];
                         vertexTo[i] = paths[i].pointsPathToParking[itForQueue[i]++ - paths[i].pointsPathToStart.Count - paths[i].pointsPathToEnd.Count];
                         vertexIsActive[i] = true;
                     }
@@ -129,10 +149,12 @@ public class Cars : MonoBehaviour {
 
             CarMoveJob job = new CarMoveJob();
             job.vertexTo = vertexTo;
+            job.vertexFrom = vertexFrom;
             job.vertexIsActive = vertexIsActive;
             job.onVisibleInCamera = onVisibleInCamera;
             job.cntWaitingFrames = cntWaitingFrames;
             job.speeds = speeds;
+            job.numOfLanes = numOfLanes;
             job.cameraPos = MainCamera.transform.position;
             job.fixedDeltaTime = Time.fixedDeltaTime;
             job.cntMissedFrames = cntMissedFrames;
@@ -148,28 +170,19 @@ public class Cars : MonoBehaviour {
 
     private void OnDisable() {
         vertexTo.Dispose();
+        vertexFrom.Dispose();
         vertexIsActive.Dispose();
         onVisibleInCamera.Dispose();
         cntWaitingFrames.Dispose();
         speeds.Dispose();
+        numOfLanes.Dispose();
     }
 
     private List <Vector3> ShiftRoadVectors(List <Vector3> pointsPath, int start, int end) {
         for (int i = start; i < end; i += 2) {
             Vector3 From = pointsPath[i], To = pointsPath[i + 1];
-
-            float sideX, sideZ;
-            if ((int)UnityEngine.Random.Range(0f, 2f) == 0) {
-                sideX = (float)Math.Cos(Math.Atan2(To.x - From.x, To.z - From.z)) * (0.22f);
-                sideZ = -(float)Math.Sin(Math.Atan2(To.x - From.x, To.z - From.z)) * (0.22f);
-            }
-            else {
-                sideX = (float)Math.Cos(Math.Atan2(To.x - From.x, To.z - From.z)) * (0.58f);
-                sideZ = -(float)Math.Sin(Math.Atan2(To.x - From.x, To.z - From.z)) * (0.58f);
-            }
             float lessDX = (float)Math.Cos(Math.Atan2(To.z - From.z, To.x - From.x)) * 1f;
             float lessDZ = (float)Math.Sin(Math.Atan2(To.z - From.z, To.x - From.x)) * 1f;
-
             if (i > start) {
                 From.x += lessDX;
                 From.z += lessDZ;
@@ -178,11 +191,6 @@ public class Cars : MonoBehaviour {
                 To.x -= lessDX;
                 To.z -= lessDZ;
             }
-            From.x += sideX;
-            From.z += sideZ;
-            To.x += sideX;
-            To.z += sideZ;
-            
             pointsPath[i] = From;
             pointsPath[i + 1] = To;
         }
@@ -471,8 +479,10 @@ public class Cars : MonoBehaviour {
             vertexIsActive[i] = vertexIsActive[i + 1];
             onVisibleInCamera[i] = onVisibleInCamera[i + 1];
             vertexTo[i] = vertexTo[i + 1];
+            vertexFrom[i] = vertexFrom[i + 1];
             cntWaitingFrames[i] = cntWaitingFrames[i + 1];
             speeds[i] = speeds[i + 1];
+            numOfLanes[i] = numOfLanes[i + 1];
         }
         Destroy(obj);
     }

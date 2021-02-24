@@ -8,12 +8,14 @@ public class Car : MonoBehaviour {
     private const float Distance = 20f;
 
     public float speed, mainSpeed = 10f;
+    public int numOfLane = 0;
     public bool onVisibleInCamera = false, isFollowTheFront = false, isStop = false;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         CameraCollider = MainCamera.transform.Find("CameraCollider").gameObject;
         mainSpeed = speed = UnityEngine.Random.Range(5f, 10f);
+        numOfLane = (int)UnityEngine.Random.Range(1f, 2.99f);
     }
 
     private void Update() {
