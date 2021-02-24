@@ -32,7 +32,6 @@ public class Cars : MonoBehaviour {
     public List <GameObject> objects;
     public List <Car> objectClasses;
     public bool isStarted = false, isRegeneration = false;
-    public float speed = 10;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -87,7 +86,6 @@ public class Cars : MonoBehaviour {
                 pointsPathToParking = ShiftRoadVectors(pointsPathToParking, 0, pointsPathToParking.Count - 2);
 
                 objects.Add(Instantiate(preFubs[(int)UnityEngine.Random.Range(0, preFubs.Length - 0.01f)], pointsPathToStart[0], Quaternion.Euler(0, 0, 0)));
-                objects[objects.Count - 1].AddComponent <Car> ();
                 objectClasses.Add(objects[objects.Count - 1].GetComponent <Car> ());
                 paths.Add((pointsPathToStart, pointsPathToEnd, pointsPathToParking));
                 vertexIsActive[objects.Count - 1] = false;

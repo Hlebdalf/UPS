@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Car : MonoBehaviour {
     private GameObject MainCamera;
     private GameObject CameraCollider;
-    private const float Distance = 20f;
+    private const float Distance = 4f;
 
     public float speed, mainSpeed = 10f;
     public int numOfLane = 0;
@@ -19,24 +20,30 @@ public class Car : MonoBehaviour {
     }
 
     private void Update() {
-        Ray ray = new Ray(transform.position, transform.forward);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Distance)) {
-            if (hit.collider.gameObject.tag == "Car" && hit.distance <= 10f) isFollowTheFront = true;
-            else if (hit.collider.gameObject.tag == "TrafficLight") isStop = true;
+        if (onVisibleInCamera) {
+            Ray ray = new Ray(transform.position, transform.forward);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, Distance)) {
+                if (hit.collider.gameObject.tag == "TrafficLight") {
+                    // isStop = true;
+                    isFollowTheFront = false;
+                }
+                else if (hit.collider.gameObject.tag == "Car" && hit.distance <= 2f) isFollowTheFront = true;
+                else {
+                    isFollowTheFront = false;
+                    isStop = false;
+                }
+            }
             else {
                 isFollowTheFront = false;
                 isStop = false;
             }
+            if (isStop) speed = 0f;
+            else if (isFollowTheFront) speed = Math.Max(Math.Min(hit.collider.gameObject.GetComponent <Car> ().speed - 1f, mainSpeed), 0f);
+            else speed = mainSpeed;
+            Debug.DrawRay(ray.origin, ray.direction * Distance, Color.red);
         }
-        else {
-            isFollowTheFront = false;
-            isStop = false;
-        }
-        if (isFollowTheFront) speed = hit.collider.gameObject.GetComponent <Car> ().speed;
-        else if (isStop) speed = 0f;
         else speed = mainSpeed;
-        // Debug.DrawRay(ray.origin, ray.direction * Distance, Color.red);
     }
 
     private void OnTriggerEnter(Collider collider) {
