@@ -18,7 +18,7 @@ public class Roads : MonoBehaviour {
     public List <GameObject> ghostObjects;
     public GameObject InterfaceObject;
     public Interface InterfaceClass;
-    public long roadsLen = 0, cost = 100, serviceCost = 10;
+    public long roadsLen = 0, cost = 0, costForMetr = 100, serviceCost = 10;
     public bool isPressEnter = false;
     public bool isFollowGhost = false;
     public int idxOverRoad = -1, idxOverCrossroad = -1;
@@ -67,6 +67,7 @@ public class Roads : MonoBehaviour {
                 isPressEnter = false;
             }
         }
+        if (isFollowGhost && cost != 0) EconomyClass.UpdateRoadCost(cost);
     }
 
     private int ToIndex(string name) {
@@ -142,6 +143,7 @@ public class Roads : MonoBehaviour {
     }
 
     public void DeleteGhost(GameObject ghostObject) {
+        EconomyClass.UpdateRoadCost(cost);
         ghostObjects.Remove(ghostObject);
         Destroy(ghostObject);
     }

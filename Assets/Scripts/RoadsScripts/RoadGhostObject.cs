@@ -17,6 +17,7 @@ public class RoadGhostObject : MonoBehaviour {
     public GameObject InterfaceObject;
     public float x1, y1, x2, y2, len, angle;
     public int idx, idxPreFub, connectedRoad, connectedRoad2 = -1;
+    public long prevCost = 0;
     public bool isFollow = true;
 
     private void Awake() {
@@ -56,6 +57,9 @@ public class RoadGhostObject : MonoBehaviour {
                 }
 
                 len = (float)Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
+                RoadsClass.cost -= prevCost;
+                RoadsClass.cost += (long)(len * RoadsClass.costForMetr);
+                prevCost = (long)(len * RoadsClass.costForMetr);
                 angle = (float)Math.Acos((x2 - x1) / len);
                 transform.rotation = Quaternion.Euler(0, RoadsClass.funcAngle(len, x2 - x1, x1, y1, x2, y2), 0);
                 transform.position = new Vector3((x1 + x2) / 2, 0.2f, (y1 + y2) / 2);
@@ -84,6 +88,7 @@ public class RoadGhostObject : MonoBehaviour {
                     RoadsClass.InterfaceClass.ActivateMenu();
                     RoadsClass.isFollowGhost = isFollow = false;
                     RoadsClass.RoadType = "";
+                    RoadsClass.cost -= prevCost;
                     RoadsClass.DeleteGhost(gameObject);
                 }
             }
@@ -166,6 +171,7 @@ public class RoadGhostObject : MonoBehaviour {
         if (Input.GetMouseButtonDown(1) && !BuildsClass.isFollowGhost && !RoadsClass.isFollowGhost && BuildsClass.ghostObjects.Count == 0) {
             RoadsClass.isFollowGhost = isFollow = false;
             RoadsClass.RoadType = "";
+            RoadsClass.cost -= prevCost;
             RoadsClass.DeleteGhost(gameObject);
         }
     }

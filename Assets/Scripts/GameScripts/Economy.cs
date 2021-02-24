@@ -20,7 +20,7 @@ public class Economy : MonoBehaviour {
     private string cityName = "";
     private int level = 0;
     private int cntPeople = 0;
-    private long money = 0, optMoney = 0, serviceCost = 0;
+    private long money = 0, optMoney = 0, serviceCost = 0, roadCostPrev = 0;
     private long science = 0, sciencePerDay = 0;
     private long products = 0, productsPerDay = 0;
     private int averageLoyality = 0;
@@ -504,6 +504,13 @@ public class Economy : MonoBehaviour {
         cntPeople += dCntPeople;
         cntPeopleD[districtNum] += dCntPeople;
         WriteCntPeople();
+    }
+
+    public void UpdateRoadCost(long roadCost) {
+        optMoney += roadCostPrev;
+        optMoney -= roadCost;
+        roadCostPrev = roadCost;
+        WriteMoney(false);
     }
 
     public void AddOptMoney(long dMoney) {
