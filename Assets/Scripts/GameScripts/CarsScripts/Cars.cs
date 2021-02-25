@@ -208,7 +208,7 @@ public class Cars : MonoBehaviour {
     private int GetIdxRoad(Vector3 From, Vector3 To) {
         GameObject fromObj = FieldClass.objects[(int)From.x + FieldClass.fieldSizeHalf, (int)From.z + FieldClass.fieldSizeHalf];
         GameObject toObj = FieldClass.objects[(int)To.x + FieldClass.fieldSizeHalf, (int)To.z + FieldClass.fieldSizeHalf];
-        if (fromObj == toObj || !fromObj) return -2;
+        if (fromObj == toObj) return -1;
 
         if (fromObj && toObj) {
             if (fromObj.GetComponent <CrossroadObject> () && toObj.GetComponent <CrossroadObject> ()) {

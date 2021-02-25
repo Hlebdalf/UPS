@@ -31,7 +31,7 @@ public class CrossroadObject : MonoBehaviour {
     IEnumerator AsyncTrafficLightsSwitch() {
         for (int i = 0; true; i = (i + 1) % connectedRoads.Count) {
             if (connectedRoads.Count > 2) idxRoadGO = connectedRoads[i];
-            else idxRoadGO = -2;
+            else idxRoadGO = -1;
             yield return new WaitForSeconds(3f);
         }
     }

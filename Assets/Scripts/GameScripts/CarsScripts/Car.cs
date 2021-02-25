@@ -9,8 +9,8 @@ public class Car : MonoBehaviour {
     private const float Distance = 2f;
 
     public float speed, mainSpeed = 10f;
-    public int numOfLane = 0, idxRoad = -3;
-    public bool onVisibleInCamera = false, isFollowTheFront = false, isStop = false;
+    public int numOfLane = 0, idxRoad = -1;
+    public bool onVisibleInCamera = false, isFollowTheFront = false, isStop = false, inCrossroad = false;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -24,13 +24,13 @@ public class Car : MonoBehaviour {
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Distance)) {
-                if (hit.collider.gameObject.tag == "TrafficLight") {
+                if (hit.collider.gameObject.tag == "Car" && !isStop && hit.distance <= 1f) isFollowTheFront = true;
+                else if (hit.collider.gameObject.tag == "TrafficLight" && !inCrossroad && hit.distance <= 1f) {
                     CrossroadObject crossroadObjectClass = hit.collider.gameObject.GetComponent <CrossroadObject> ();
-                    if (crossroadObjectClass.idxRoadGO == idxRoad || idxRoad < -1 || crossroadObjectClass.idxRoadGO < -1) isStop = false;
+                    if (crossroadObjectClass.idxRoadGO == idxRoad || idxRoad < 0 || crossroadObjectClass.idxRoadGO < 0) isStop = false;
                     else isStop = true;
                     isFollowTheFront = false;
                 }
-                else if (hit.collider.gameObject.tag == "Car" && hit.distance <= 1f) isFollowTheFront = true;
                 else {
                     isFollowTheFront = false;
                     isStop = false;
@@ -52,11 +52,17 @@ public class Car : MonoBehaviour {
         if (collider.gameObject == CameraCollider) {
             onVisibleInCamera = true;
         }
+        if (collider.gameObject.tag == "TrafficLight") {
+            inCrossroad = true;
+        }
     }
 
     private void OnTriggerExit(Collider collider) {
         if (collider.gameObject == CameraCollider) {
             onVisibleInCamera = false;
+        }
+        if (collider.gameObject.tag == "TrafficLight") {
+            inCrossroad = false;
         }
     }
 }
