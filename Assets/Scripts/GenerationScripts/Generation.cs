@@ -21,6 +21,9 @@ public class Generation : MonoBehaviour {
 
     public GameObject loadPanelObj;
     public GameObject loadCircleObj;
+    public GameObject BlurVolumeObject;
+    public GameObject cameraBoxObj;
+    public Animator DarkPanelObject;
     public Text loadText;
     public int timeGeneration, maxCntRoads;
     public int minLenRoads, deltaLenRoads;
@@ -40,11 +43,6 @@ public class Generation : MonoBehaviour {
         GenerationParkingsClass = MainCamera.GetComponent <GenerationParkings> ();
         GenerationGraphClass = MainCamera.GetComponent <GenerationGraph> ();
         GenerationPeopleClass = MainCamera.GetComponent <GenerationPeople> ();
-    }
-
-    private void Start() {
-        loadCircleObj = loadPanelObj.transform.Find("LoadCircle").gameObject;
-        loadText = loadPanelObj.transform.Find("LoadText").gameObject.GetComponent <Text> ();
     }
 
     public void FuncSeed() {
@@ -88,9 +86,15 @@ public class Generation : MonoBehaviour {
             loadCircleObj.transform.Rotate(0, 0, 2);
             yield return null;
         }
+        StartCoroutine(SetPosCamGen());
+    }       
+    IEnumerator SetPosCamGen() {   
+        loadPanelObj.SetActive(false);
+        cameraBoxObj.transform.position = new Vector3(FieldClass.centerX, 0, FieldClass.centerY);
+        DarkPanelObject.Play("Forward");
         StartCoroutine(StartDistrictsGen());
+        yield return null;
     }
-
     IEnumerator StartDistrictsGen() {
         GenerationDistrictsClass.StartGeneration();
         loadText.text = "Делим город на кварталы...";
@@ -153,7 +157,9 @@ public class Generation : MonoBehaviour {
 
     IEnumerator EndGen() {
         yield return null;
-        loadPanelObj.SetActive(false);
+        loadCircleObj.SetActive(false);
+        loadText.gameObject.SetActive(false);
+        BlurVolumeObject.SetActive(false);
         Debug.Log("End Generation: " + DateTimeOffset.Now);
         isOver = true;
     }
