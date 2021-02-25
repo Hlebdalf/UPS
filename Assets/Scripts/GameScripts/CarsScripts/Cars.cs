@@ -12,23 +12,26 @@ public class Cars : MonoBehaviour {
     private Roads RoadsClass;
     private Field FieldClass;
     private GenerationGraph GenerationGraphClass;
-    private List <(List <Vector3> pointsPathToStart, List <Vector3> pointsPathToEnd, List <Vector3> pointsPathToParking)> paths;
+    private List <(List <Vector3> pointsPathToStart, List <Vector3> pointsPathToEnd, List <Vector3> pointsPathToParking)> paths, pathsDefault;
     private List <int> itForQueue;
     private List <int> cntFrameForDelay;
     private int cntCars = 1000;
 
     private JobHandle handle;
     private NativeArray <Vector3> vertexTo;
+    private NativeArray <Vector3> vertexFrom;
+    private NativeArray <bool> isShiftVector;
+    private NativeArray <int> numOfLanes;
     private NativeArray <bool> vertexIsActive;
-    public NativeArray <bool> onVisibleInCamera;
+    private NativeArray <bool> onVisibleInCamera;
     private NativeArray <int> cntWaitingFrames;
+    private NativeArray <float> speeds;
     private int cntMissedFrames = 0;
 
     public GameObject[] preFubs;
     public List <GameObject> objects;
     public List <Car> objectClasses;
     public bool isStarted = false, isRegeneration = false;
-    public float speed = 10;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -43,16 +46,23 @@ public class Cars : MonoBehaviour {
 
     private void OnEnable() {
         paths = new List <(List <Vector3> pointsPathToStart, List <Vector3> pointsPathToEnd, List <Vector3> pointsPathToParking)> ();
+        pathsDefault = new List <(List <Vector3> pointsPathToStart, List <Vector3> pointsPathToEnd, List <Vector3> pointsPathToParking)> ();
         itForQueue = new List <int> ();
         cntFrameForDelay = new List <int> ();
         vertexTo = new NativeArray <Vector3> (cntCars, Allocator.Persistent);
+        vertexFrom = new NativeArray <Vector3> (cntCars, Allocator.Persistent);
+        isShiftVector = new NativeArray <bool> (cntCars, Allocator.Persistent);
+        numOfLanes = new NativeArray <int> (cntCars, Allocator.Persistent);
         vertexIsActive = new NativeArray <bool> (cntCars, Allocator.Persistent);
         onVisibleInCamera = new NativeArray <bool> (cntCars, Allocator.Persistent);
         cntWaitingFrames = new NativeArray <int> (cntCars, Allocator.Persistent);
+        speeds = new NativeArray <float> (cntCars, Allocator.Persistent);
         for (int i = 0; i < cntCars; ++i) {
             vertexIsActive[i] = false;
             onVisibleInCamera[i] = false;
             cntWaitingFrames[i] = 0;
+            speeds[i] = 10f;
+            numOfLanes[i] = 0;
         }
     }
 
@@ -72,18 +82,34 @@ public class Cars : MonoBehaviour {
                 List <Vector3> pointsPathToStart = ObjectsToPoints(localPaths.objectPathToStart, "ToStart");
                 List <Vector3> pointsPathToEnd = ObjectsToPoints(localPaths.objectPathToEnd, "ToEnd");
                 List <Vector3> pointsPathToParking = ObjectsToPoints(localPaths.objectPathToParking, "ToParking");
+                
+                List <Vector3> pointsPathToStartDefault = new List <Vector3> ();
+                for (int i = 0; i < pointsPathToStart.Count; ++i)
+                    pointsPathToStartDefault.Add(pointsPathToStart[i]);
+
+                List <Vector3> pointsPathToEndDefault = new List <Vector3> ();
+                for (int i = 0; i < pointsPathToEnd.Count; ++i)
+                    pointsPathToEndDefault.Add(pointsPathToEnd[i]);
+
+                List <Vector3> pointsPathToParkingDefault = new List <Vector3> ();
+                for (int i = 0; i < pointsPathToParking.Count; ++i)
+                    pointsPathToParkingDefault.Add(pointsPathToParking[i]);
+                
                 pointsPathToStart = ShiftRoadVectors(pointsPathToStart, 1, pointsPathToStart.Count - 1);
                 pointsPathToEnd = ShiftRoadVectors(pointsPathToEnd, 0, pointsPathToEnd.Count - 1);
                 pointsPathToParking = ShiftRoadVectors(pointsPathToParking, 0, pointsPathToParking.Count - 2);
 
                 objects.Add(Instantiate(preFubs[(int)UnityEngine.Random.Range(0, preFubs.Length - 0.01f)], pointsPathToStart[0], Quaternion.Euler(0, 0, 0)));
-                objects[objects.Count - 1].AddComponent <Car> ();
                 objectClasses.Add(objects[objects.Count - 1].GetComponent <Car> ());
                 paths.Add((pointsPathToStart, pointsPathToEnd, pointsPathToParking));
+                pathsDefault.Add((pointsPathToStartDefault, pointsPathToEndDefault, pointsPathToParkingDefault));
                 vertexIsActive[objects.Count - 1] = false;
                 onVisibleInCamera[objects.Count - 1] = false;
                 cntWaitingFrames[objects.Count - 1] = 0;
-                itForQueue.Add(0);
+                speeds[objects.Count - 1] = 10f;
+                isShiftVector[objects.Count - 1] = false;
+                numOfLanes[objects.Count - 1] = 0;
+                itForQueue.Add(1);
                 cntFrameForDelay.Add(0);
             }
         }
@@ -95,23 +121,47 @@ public class Cars : MonoBehaviour {
             for (int i = 0; i < objects.Count; ++i) {
                 transformArray[i] = objects[i].transform;
                 onVisibleInCamera[i] = objectClasses[i].onVisibleInCamera;
-                // onVisibleInCamera[i] = GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(Camera.main), objects[i].transform.gameObject.GetComponent <Collider> ().bounds);
+                speeds[i] = objectClasses[i].speed;
+                if (itForQueue[i] == 2 || itForQueue[i] == paths[i].pointsPathToStart.Count + paths[i].pointsPathToEnd.Count + paths[i].pointsPathToParking.Count) {
+                    isShiftVector[i] = false;
+                }
+                else isShiftVector[i] = true;
+                // numOfLanes[i] = objectClasses[i].numOfLane;
                 if (!vertexIsActive[i]) {
+                    numOfLanes[i] = (int)UnityEngine.Random.Range(1f, 2.99f);
                     if (itForQueue[i] < paths[i].pointsPathToStart.Count) {
+                        objectClasses[i].idxRoad = GetIdxRoad(pathsDefault[i].pointsPathToStart[itForQueue[i] - 1], pathsDefault[i].pointsPathToStart[itForQueue[i]]);
+                        vertexFrom[i] = paths[i].pointsPathToStart[itForQueue[i] - 1];
                         vertexTo[i] = paths[i].pointsPathToStart[itForQueue[i]++];
                         vertexIsActive[i] = true;
                     }
                     else if (cntFrameForDelay[i] < 100) {
                         ++cntFrameForDelay[i];
                     }
+                    else if (itForQueue[i] == paths[i].pointsPathToStart.Count) {
+                        objectClasses[i].idxRoad = GetIdxRoad(pathsDefault[i].pointsPathToStart[itForQueue[i] - 1], pathsDefault[i].pointsPathToEnd[itForQueue[i] - pathsDefault[i].pointsPathToStart.Count]);
+                        vertexFrom[i] = paths[i].pointsPathToStart[itForQueue[i] - 1];
+                        vertexTo[i] = paths[i].pointsPathToEnd[itForQueue[i]++ - paths[i].pointsPathToStart.Count];
+                        vertexIsActive[i] = true;
+                    }
                     else if (itForQueue[i] < paths[i].pointsPathToStart.Count + paths[i].pointsPathToEnd.Count) {
+                        objectClasses[i].idxRoad = GetIdxRoad(pathsDefault[i].pointsPathToEnd[itForQueue[i] - pathsDefault[i].pointsPathToStart.Count - 1], pathsDefault[i].pointsPathToEnd[itForQueue[i] - pathsDefault[i].pointsPathToStart.Count]);
+                        vertexFrom[i] = paths[i].pointsPathToEnd[itForQueue[i] - paths[i].pointsPathToStart.Count - 1];
                         vertexTo[i] = paths[i].pointsPathToEnd[itForQueue[i]++ - paths[i].pointsPathToStart.Count];
                         vertexIsActive[i] = true;
                     }
                     else if (cntFrameForDelay[i] < 200) {
                         ++cntFrameForDelay[i];
                     }
+                    else if (itForQueue[i] == paths[i].pointsPathToStart.Count + paths[i].pointsPathToEnd.Count) {
+                        objectClasses[i].idxRoad = GetIdxRoad(pathsDefault[i].pointsPathToEnd[itForQueue[i] - pathsDefault[i].pointsPathToStart.Count - 1], pathsDefault[i].pointsPathToParking[itForQueue[i] - pathsDefault[i].pointsPathToStart.Count - pathsDefault[i].pointsPathToEnd.Count]);
+                        vertexFrom[i] = paths[i].pointsPathToEnd[itForQueue[i] - paths[i].pointsPathToStart.Count - 1];
+                        vertexTo[i] = paths[i].pointsPathToParking[itForQueue[i]++ - paths[i].pointsPathToStart.Count - paths[i].pointsPathToEnd.Count];
+                        vertexIsActive[i] = true;
+                    }
                     else if (itForQueue[i] < paths[i].pointsPathToStart.Count + paths[i].pointsPathToEnd.Count + paths[i].pointsPathToParking.Count) {
+                        objectClasses[i].idxRoad = GetIdxRoad(pathsDefault[i].pointsPathToParking[itForQueue[i] - pathsDefault[i].pointsPathToStart.Count - pathsDefault[i].pointsPathToEnd.Count - 1], pathsDefault[i].pointsPathToParking[itForQueue[i] - pathsDefault[i].pointsPathToStart.Count - pathsDefault[i].pointsPathToEnd.Count]);
+                        vertexFrom[i] = paths[i].pointsPathToParking[itForQueue[i] - paths[i].pointsPathToStart.Count - paths[i].pointsPathToEnd.Count - 1];
                         vertexTo[i] = paths[i].pointsPathToParking[itForQueue[i]++ - paths[i].pointsPathToStart.Count - paths[i].pointsPathToEnd.Count];
                         vertexIsActive[i] = true;
                     }
@@ -124,10 +174,13 @@ public class Cars : MonoBehaviour {
 
             CarMoveJob job = new CarMoveJob();
             job.vertexTo = vertexTo;
+            job.vertexFrom = vertexFrom;
+            job.isShiftVector = isShiftVector;
             job.vertexIsActive = vertexIsActive;
             job.onVisibleInCamera = onVisibleInCamera;
             job.cntWaitingFrames = cntWaitingFrames;
-            job.speed = speed;
+            job.speeds = speeds;
+            job.numOfLanes = numOfLanes;
             job.cameraPos = MainCamera.transform.position;
             job.fixedDeltaTime = Time.fixedDeltaTime;
             job.cntMissedFrames = cntMissedFrames;
@@ -143,27 +196,43 @@ public class Cars : MonoBehaviour {
 
     private void OnDisable() {
         vertexTo.Dispose();
+        vertexFrom.Dispose();
+        isShiftVector.Dispose();
         vertexIsActive.Dispose();
         onVisibleInCamera.Dispose();
         cntWaitingFrames.Dispose();
+        speeds.Dispose();
+        numOfLanes.Dispose();
+    }
+
+    private int GetIdxRoad(Vector3 From, Vector3 To) {
+        GameObject fromObj = FieldClass.objects[(int)From.x + FieldClass.fieldSizeHalf, (int)From.z + FieldClass.fieldSizeHalf];
+        GameObject toObj = FieldClass.objects[(int)To.x + FieldClass.fieldSizeHalf, (int)To.z + FieldClass.fieldSizeHalf];
+        if (fromObj == toObj) return -1;
+
+        if (fromObj && toObj) {
+            if (fromObj.GetComponent <CrossroadObject> () && toObj.GetComponent <CrossroadObject> ()) {
+                CrossroadObject crossroadObjectClassFrom = fromObj.GetComponent <CrossroadObject> ();
+                CrossroadObject crossroadObjectClassTo = toObj.GetComponent <CrossroadObject> ();
+                for (int i = 0; i < crossroadObjectClassFrom.connectedRoads.Count; ++i) {
+                    for (int j = 0; j < crossroadObjectClassTo.connectedRoads.Count; ++j) {
+                        if (crossroadObjectClassFrom.connectedRoads[i] == crossroadObjectClassTo.connectedRoads[j]) {
+                            return crossroadObjectClassFrom.connectedRoads[i];
+                        }
+                    }
+                }
+                return -1;
+            }
+            else return -1;
+        }
+        else return -1;
     }
 
     private List <Vector3> ShiftRoadVectors(List <Vector3> pointsPath, int start, int end) {
         for (int i = start; i < end; i += 2) {
             Vector3 From = pointsPath[i], To = pointsPath[i + 1];
-
-            float sideX, sideZ;
-            if ((int)UnityEngine.Random.Range(0f, 2f) == 0) {
-                sideX = (float)Math.Cos(Math.Atan2(To.x - From.x, To.z - From.z)) * (0.22f);
-                sideZ = -(float)Math.Sin(Math.Atan2(To.x - From.x, To.z - From.z)) * (0.22f);
-            }
-            else {
-                sideX = (float)Math.Cos(Math.Atan2(To.x - From.x, To.z - From.z)) * (0.58f);
-                sideZ = -(float)Math.Sin(Math.Atan2(To.x - From.x, To.z - From.z)) * (0.58f);
-            }
             float lessDX = (float)Math.Cos(Math.Atan2(To.z - From.z, To.x - From.x)) * 1f;
             float lessDZ = (float)Math.Sin(Math.Atan2(To.z - From.z, To.x - From.x)) * 1f;
-
             if (i > start) {
                 From.x += lessDX;
                 From.z += lessDZ;
@@ -172,11 +241,6 @@ public class Cars : MonoBehaviour {
                 To.x -= lessDX;
                 To.z -= lessDZ;
             }
-            From.x += sideX;
-            From.z += sideZ;
-            To.x += sideX;
-            To.z += sideZ;
-            
             pointsPath[i] = From;
             pointsPath[i + 1] = To;
         }
@@ -459,13 +523,18 @@ public class Cars : MonoBehaviour {
         objects.RemoveAt(idx);
         objectClasses.RemoveAt(idx);
         paths.RemoveAt(idx);
+        pathsDefault.RemoveAt(idx);
         itForQueue.RemoveAt(idx);
         cntFrameForDelay.RemoveAt(idx);
         for (int i = idx; i < vertexIsActive.Length - 1; ++i) {
             vertexIsActive[i] = vertexIsActive[i + 1];
             onVisibleInCamera[i] = onVisibleInCamera[i + 1];
             vertexTo[i] = vertexTo[i + 1];
+            vertexFrom[i] = vertexFrom[i + 1];
+            isShiftVector[i] = isShiftVector[i + 1];
             cntWaitingFrames[i] = cntWaitingFrames[i + 1];
+            speeds[i] = speeds[i + 1];
+            numOfLanes[i] = numOfLanes[i + 1];
         }
         Destroy(obj);
     }

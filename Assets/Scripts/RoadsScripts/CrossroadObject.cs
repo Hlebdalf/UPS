@@ -7,7 +7,7 @@ public class CrossroadObject : MonoBehaviour {
     private Roads RoadsClass;
 
     public float x, y;
-    public int idx, xr, yr;
+    public int idx, xr, yr, idxRoadGO = -1;
     public List <int> connectedRoads;
 
     private void Awake() {
@@ -16,11 +16,23 @@ public class CrossroadObject : MonoBehaviour {
         connectedRoads = new List <int> ();
     }
 
+    private void Start() {
+        StartCoroutine(AsyncTrafficLightsSwitch());
+    }
+
     private void OnMouseOver() {
         RoadsClass.idxOverCrossroad = idx;
     }
 
     private void OnMouseExit() {
         RoadsClass.idxOverCrossroad = -1;
+    }
+
+    IEnumerator AsyncTrafficLightsSwitch() {
+        for (int i = 0; true; i = (i + 1) % connectedRoads.Count) {
+            if (connectedRoads.Count > 2) idxRoadGO = connectedRoads[i];
+            else idxRoadGO = -1;
+            yield return new WaitForSeconds(3f);
+        }
     }
 }
