@@ -8,7 +8,7 @@ public class Car : MonoBehaviour {
     private GameObject CameraCollider;
     private const float Distance = 1.5f;
 
-    public float speed, mainSpeed = 10f;
+    public float speed, mainSpeed = 10f, speedTheFront = 0f;
     public int numOfLane = 0, idxRoad = -1;
     public bool onVisibleInCamera = false, isFollowTheFront = false, isStop = false, inCrossroad = false;
 
@@ -21,29 +21,23 @@ public class Car : MonoBehaviour {
 
     private void Update() {
         if (onVisibleInCamera) {
-            Ray ray = new Ray(transform.position, transform.forward);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, Distance)) {
-                if (hit.collider.gameObject.tag == "Car" && !isStop) isFollowTheFront = true;
+            isFollowTheFront = isStop = false;
+            RaycastHit[] hits = Physics.RaycastAll(transform.position, transform.forward, Distance);
+            for (int i = 0; i < hits.Length; ++i) {
+                RaycastHit hit = hits[i];
+                if (hit.collider.gameObject.tag == "Car") {
+                    isFollowTheFront = true;
+                    speedTheFront = hit.collider.gameObject.GetComponent <Car> ().speed;
+                }
                 else if (hit.collider.gameObject.tag == "TrafficLight" && !inCrossroad) {
                     CrossroadObject crossroadObjectClass = hit.collider.gameObject.GetComponent <CrossroadObject> ();
                     if (crossroadObjectClass.idxRoadGO == idxRoad || idxRoad < 0 || crossroadObjectClass.idxRoadGO < 0) isStop = false;
                     else isStop = true;
-                    isFollowTheFront = false;
                 }
-                else {
-                    isFollowTheFront = false;
-                    isStop = false;
-                }
-            }
-            else {
-                isFollowTheFront = false;
-                isStop = false;
             }
             if (isStop) speed = 0f;
-            else if (isFollowTheFront) speed = Math.Max(Math.Min(hit.collider.gameObject.GetComponent <Car> ().speed - 1f, mainSpeed), 0f);
+            else if (isFollowTheFront) speed = Math.Max(Math.Min(speedTheFront - 1f, speed), 0f);
             else speed = mainSpeed;
-            Debug.DrawRay(ray.origin, ray.direction * Distance, Color.red);
         }
         else speed = mainSpeed;
     }
