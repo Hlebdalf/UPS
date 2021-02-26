@@ -6,7 +6,7 @@ using UnityEngine;
 public class Car : MonoBehaviour {
     private GameObject MainCamera;
     private GameObject CameraCollider;
-    private const float Distance = 2f;
+    private const float Distance = 1.5f;
 
     public float speed, mainSpeed = 10f;
     public int numOfLane = 0, idxRoad = -1;
@@ -24,8 +24,8 @@ public class Car : MonoBehaviour {
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Distance)) {
-                if (hit.collider.gameObject.tag == "Car" && !isStop && hit.distance <= 1f) isFollowTheFront = true;
-                else if (hit.collider.gameObject.tag == "TrafficLight" && !inCrossroad && hit.distance <= 1f) {
+                if (hit.collider.gameObject.tag == "Car" && !isStop) isFollowTheFront = true;
+                else if (hit.collider.gameObject.tag == "TrafficLight" && !inCrossroad) {
                     CrossroadObject crossroadObjectClass = hit.collider.gameObject.GetComponent <CrossroadObject> ();
                     if (crossroadObjectClass.idxRoadGO == idxRoad || idxRoad < 0 || crossroadObjectClass.idxRoadGO < 0) isStop = false;
                     else isStop = true;
