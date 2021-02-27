@@ -17,6 +17,7 @@ public class Interface : MonoBehaviour {
     private bool UpgradesPanelActivity = false;
     private bool isActivityInfo = true;
     private bool FastStatsActivity = false;
+    public bool PosterPanelActivity = false;
     private bool isBusy = false;
     private Animator InterfaceBuildsAnimator;
     private Animator InterfaceCommercesAnimator;
@@ -42,6 +43,7 @@ public class Interface : MonoBehaviour {
     public Animator UpgradesPanelAnimator;
     public Animator BursePanelAnimator;
     public Animator EconomyPanelAnimator;
+    public Animator PosterPanelAnimator;
     
 
     private void Awake() {
@@ -49,6 +51,7 @@ public class Interface : MonoBehaviour {
         EconomyClass = MainCamera.GetComponent <Economy> ();
         BuildsClass = MainCamera.GetComponent <Builds> ();
         RoadsClass = MainCamera.GetComponent <Roads> ();
+
         InterfaceBuildsAnimator = InterfaceBuilds.GetComponent <Animator> ();
         InterfaceCommercesAnimator = InterfaceCommerces.GetComponent <Animator> ();
         InterfaceRoadsAnimator = InterfaceRoads.GetComponent <Animator> ();
@@ -115,6 +118,15 @@ public class Interface : MonoBehaviour {
             UpgradesPanelActivity = false;
             lastMenu = "Upgrades";
         }
+        if (PosterPanelActivity)
+        {
+            PosterPanelAnimator.Play("Back");
+            print(6);
+            PosterPanelActivity = false;
+            print(PosterPanelActivity);
+            SetPosterPanelProperties();
+            lastMenu = "PosterPlane";
+        }
     }
 
     public void ActivateMenu(string type = "Last") {
@@ -163,6 +175,15 @@ public class Interface : MonoBehaviour {
                     UpgradesPanelActivity = true;
                 }
                 break;
+            /*case "PosterPlane":
+                if (!PosterPanelActivity)
+                {   
+
+                    PosterPanelAnimator.Play("Forward");
+                    
+                    PosterPanelActivity = true;
+                }
+                break;*/
             case "Last":
                 ActivateMenu(lastMenu);
                 break;
@@ -206,6 +227,26 @@ public class Interface : MonoBehaviour {
             UpgradesPanelAnimator.Play("Back");
             BursePanelAnimator.Play("Back");
         }
+    }
+    public void SetPosterPanelActivity()
+    { 
+        if (!PosterPanelActivity)
+        {
+            PosterPanelAnimator.Play("Forward");
+            PosterPanelActivity = true;
+            print(999);
+        }
+        else
+        {
+            PosterPanelAnimator.Play("Back");
+            print(0);
+            PosterPanelActivity = false;
+        }
+    }
+
+    public void SetPosterPanelProperties()
+    {
+        print(PosterPanelActivity);
     }
     public void ExitToMainMenu() {
         SceneManager.LoadScene("MainMenu");

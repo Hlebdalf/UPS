@@ -62,21 +62,18 @@ public class BuildObject : MonoBehaviour {
             }
             isDeleting = !isDeleting;
         }
-        if (Input.GetMouseButtonDown(1)) CreateMenu();
+        if (Input.GetMouseButtonDown(1)) { CreateMenu();}
     }
 
     public void CreateMenu() {
-        if (HouseMenu == null) {
-            Vector3 screenPos = Camera.main.WorldToScreenPoint(new Vector3(x, gameObject.GetComponent <BoxCollider> ().size.y * gameObject.transform.localScale.x, y));
-            HouseMenu = Instantiate(BuildsClass.PreFubHouseMenu, screenPos, Quaternion.Euler(0, 0, 0));
-            HouseMenu.transform.SetParent(BuildsClass.InterfaceObject.transform);
-            HouseMenu.GetComponent <HouseMenu> ().ActivateMenu(gameObject);
+        if (!BuildsClass.InterfaceObject.GetComponent<Interface>().PosterPanelActivity)
+        {
+            BuildsClass.InterfaceObject.GetComponent<Interface>().SetPosterPanelActivity();
         }
-    }
-
-    public void DestroyMenu() {
-        Destroy(HouseMenu);
-        HouseMenu = null;
+        else
+        {
+            BuildsClass.InterfaceObject.GetComponent<Interface>().SetPosterPanelProperties();
+        }
     }
 
     public void AddPoster() {

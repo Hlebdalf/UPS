@@ -38,9 +38,9 @@ public class HouseMenu : MonoBehaviour {
         BuildObjectClass = BuildObject.GetComponent <BuildObject> ();
     }
 
-    public void DestroyMenu() {
+    /*public void DestroyMenu() {
         BuildObjectClass.DestroyMenu();
-    }
+    }*/
 
     public void AddPoster() {
         BuildObjectClass.AddPoster();
