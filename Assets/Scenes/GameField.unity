@@ -968,8 +968,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 204080508}
   m_HandleRect: {fileID: 204080507}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.2120568
+  m_Value: 1.0000006
+  m_Size: 0.21597826
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5710,7 +5710,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -144.64185, y: 102.683754}
+  m_AnchoredPosition: {x: -144.64185, y: 102.68339}
   m_SizeDelta: {x: 289.28442, y: 1701.032}
   m_Pivot: {x: 0, y: 1}
 --- !u!1001 &506551090
@@ -7506,7 +7506,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -655.6472, y: 193.50009}
+  m_AnchoredPosition: {x: -655.6472, y: 193.49919}
   m_SizeDelta: {x: 1309.0002, y: 1791.8469}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &704676368
@@ -15528,7 +15528,7 @@ GameObject:
   - component: {fileID: 1362742329}
   - component: {fileID: 1362742328}
   m_Layer: 5
-  m_Name: IncomeScience
+  m_Name: IncomeType
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18671,8 +18671,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1558876180}
   m_HandleRect: {fileID: 1558876179}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.11853919
+  m_Value: 1.0000002
+  m_Size: 0.120731205
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -19235,6 +19235,7 @@ GameObject:
   - component: {fileID: 1769479791}
   - component: {fileID: 1769479790}
   - component: {fileID: 1769479792}
+  - component: {fileID: 1769479793}
   m_Layer: 5
   m_Name: PosterPlane
   m_TagString: Untagged
@@ -19330,6 +19331,28 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1769479793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769479788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1259269889476324dae74b1a7956759b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BuildTypeText: {fileID: 74822173}
+  OccupiedPlacesText: {fileID: 1747508811}
+  AllPlacesText: {fileID: 2099526816}
+  PostersNumText: {fileID: 991458383}
+  AllPostersNumText: {fileID: 494136197}
+  AVGLoyaltyText: {fileID: 938047235}
+  IncomeText: {fileID: 306443502}
+  IncomeTypeText: {fileID: 1362742328}
+  OutcomeText: {fileID: 958426377}
+  PosterCostText: {fileID: 408256130}
 --- !u!1 &1774893061
 GameObject:
   m_ObjectHideFlags: 0

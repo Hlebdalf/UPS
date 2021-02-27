@@ -62,14 +62,13 @@ public class BuildObject : MonoBehaviour {
             }
             isDeleting = !isDeleting;
         }
-        if (Input.GetMouseButtonDown(1)) { CreateMenu(); print(3); }
+        if (Input.GetMouseButtonDown(1)) { CreateMenu();}
     }
 
     public void CreateMenu() {
         if (!BuildsClass.InterfaceObject.GetComponent<Interface>().PosterPanelActivity)
         {
             BuildsClass.InterfaceObject.GetComponent<Interface>().SetPosterPanelActivity();
-            print(1);
         }
         else
         {
