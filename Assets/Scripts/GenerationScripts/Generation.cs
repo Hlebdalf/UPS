@@ -17,8 +17,11 @@ public class Generation : MonoBehaviour {
     private GenerationParkings GenerationParkingsClass;
     private GenerationGraph GenerationGraphClass;
     private GenerationPeople GenerationPeopleClass;
+    private CameraScrolling CameraScrollingClass;
     private ulong seed;
 
+    public CameraMoving CameraMovingClass;
+    public CameraRotation CameraRotationClass;
     public GameObject loadPanelObj;
     public GameObject loadCircleObj;
     public GameObject BlurVolumeObject;
@@ -32,6 +35,7 @@ public class Generation : MonoBehaviour {
     public bool isOver = false;
 
     private void Awake() {
+        CameraScrollingClass = GetComponent<CameraScrolling>();
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         BuildsClass = MainCamera.GetComponent <Builds> ();
         RoadsClass = MainCamera.GetComponent <Roads> ();
@@ -160,6 +164,9 @@ public class Generation : MonoBehaviour {
         loadCircleObj.SetActive(false);
         loadText.gameObject.SetActive(false);
         BlurVolumeObject.SetActive(false);
+        CameraScrollingClass.enabled = true;
+        CameraMovingClass.enabled = true;
+        CameraRotationClass.enabled = true;
         Debug.Log("End Generation: " + DateTimeOffset.Now);
         isOver = true;
     }
