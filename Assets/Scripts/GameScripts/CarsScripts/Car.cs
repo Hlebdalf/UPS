@@ -37,7 +37,7 @@ public class Car : MonoBehaviour {
             }
             if (isStop) speed = 0f;
             else if (isFollowTheFront) speed = Math.Max(Math.Min(speedTheFront - 1f, speed), 0f);
-            else speed = mainSpeed;
+            else speed = Math.Min(mainSpeed, speed + 1f);
         }
         else speed = mainSpeed;
     }

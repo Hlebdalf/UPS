@@ -234,7 +234,6 @@ public class Interface : MonoBehaviour {
         {
             PosterPanelAnimator.Play("Forward");
             PosterPanelActivity = true;
-            print(999);
         }
         else
         {
