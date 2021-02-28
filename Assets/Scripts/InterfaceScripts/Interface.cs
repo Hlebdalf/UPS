@@ -175,15 +175,12 @@ public class Interface : MonoBehaviour {
                     UpgradesPanelActivity = true;
                 }
                 break;
-            /*case "PosterPlane":
-                if (!PosterPanelActivity)
-                {   
-
+            case "PosterPlane":
+                if (!PosterPanelActivity) {
                     PosterPanelAnimator.Play("Forward");
-                    
                     PosterPanelActivity = true;
                 }
-                break;*/
+                break;
             case "Last":
                 ActivateMenu(lastMenu);
                 break;
@@ -238,7 +235,6 @@ public class Interface : MonoBehaviour {
         else
         {
             PosterPanelAnimator.Play("Back");
-            print(0);
             PosterPanelActivity = false;
         }
     }

@@ -3,7 +3,9 @@ guid: 41432a22634b84e4bae90518bd8f38d6
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - PosterPanelObj: {fileID: 5570160097999951363, guid: 53e048f22c589a146a48fbb1d7aa6b13,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

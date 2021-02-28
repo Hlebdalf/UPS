@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Car
   - TrafficLight
+  - PosterPlane
+  - UI-Canvas
   layers:
   - Default
   - TransparentFX

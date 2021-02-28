@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuildObject : MonoBehaviour {
     private GameObject MainCamera;
@@ -10,9 +11,9 @@ public class BuildObject : MonoBehaviour {
     private Builds BuildsClass;
     private List <GameObject> posterObjects;
     private List <int> idxNotActive;
-    private GameObject HouseMenu = null;
     private GameObject normObject;
     private GameObject deleteObject;
+    private PosterPanel PosterPanelClass;
 
     public float x, y;
     public int idx, connectedRoad, idxCommerceType = -1, idxPreFub = -1;
@@ -24,9 +25,10 @@ public class BuildObject : MonoBehaviour {
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         FieldClass = MainCamera.GetComponent <Field> ();
-        InterfaceClass = MainCamera.GetComponent <Interface> ();
+        InterfaceClass = GameObject.FindGameObjectWithTag("UI-Canvas").GetComponent <Interface> ();
         EconomyClass = MainCamera.GetComponent <Economy> ();
         BuildsClass = MainCamera.GetComponent <Builds> ();
+        PosterPanelClass = GameObject.FindGameObjectWithTag("PosterPlane").GetComponent <PosterPanel> ();
         posterObjects = new List <GameObject> ();
         idxNotActive = new List <int> ();
         normObject = gameObject.transform.Find("Build").gameObject;
@@ -62,18 +64,55 @@ public class BuildObject : MonoBehaviour {
             }
             isDeleting = !isDeleting;
         }
-        if (Input.GetMouseButtonDown(1)) { CreateMenu();}
+        if (Input.GetMouseButtonDown(1)) {
+            CreateMenu();
+        }
+    }
+    
+    private string GetBuildType() {
+        if (gameObject.GetComponent <Factory> ()) return "Завод";
+        if (gameObject.GetComponent <House> ()) return "Дом";
+        if (gameObject.GetComponent <Science> ()) return "Наука";
+        if (gameObject.GetComponent <Shop> ()) return "Магазин";
+        return "Ошибка!";
+    }
+
+    private long GetIncome() {
+        if (gameObject.GetComponent <Factory> ()) return gameObject.GetComponent <Factory> ().GetProductsRate();
+        if (gameObject.GetComponent <House> ()) return gameObject.GetComponent <House> ().GetTaxRate();
+        if (gameObject.GetComponent <Science> ()) return gameObject.GetComponent <Science> ().GetScienceRate();
+        if (gameObject.GetComponent <Shop> ()) return gameObject.GetComponent <Shop> ().GetTaxRate();
+        return -1;
+    }
+
+    private string GetIncomeType() {
+        if (gameObject.GetComponent <Factory> ()) return "Прод-ции";
+        if (gameObject.GetComponent <House> ()) return "Рублей";
+        if (gameObject.GetComponent <Science> ()) return "Науки";
+        if (gameObject.GetComponent <Shop> ()) return "Рублей";
+        return "Ошибка!";
+    }
+
+    private long GetOutcome() {
+        if (gameObject.GetComponent <Factory> ()) return gameObject.GetComponent <Factory> ().GetServiceCost();
+        if (gameObject.GetComponent <House> ()) return gameObject.GetComponent <House> ().GetServiceCost();
+        if (gameObject.GetComponent <Science> ()) return gameObject.GetComponent <Science> ().GetServiceCost();
+        if (gameObject.GetComponent <Shop> ()) return 0;
+        return -1;
     }
 
     public void CreateMenu() {
-        if (!BuildsClass.InterfaceObject.GetComponent<Interface>().PosterPanelActivity)
-        {
-            BuildsClass.InterfaceObject.GetComponent<Interface>().SetPosterPanelActivity();
-        }
-        else
-        {
-            BuildsClass.InterfaceObject.GetComponent<Interface>().SetPosterPanelProperties();
-        }
+        if (!InterfaceClass.PosterPanelActivity) InterfaceClass.ActivateMenu("PosterPlane");
+        PosterPanelClass.SetBuildType(GetBuildType());
+        PosterPanelClass.SetOccupiedPlaces(cntPeople);
+        PosterPanelClass.SetAllPlaces(maxCntPeople);
+        PosterPanelClass.SetPostersNum(cntPosters);
+        PosterPanelClass.SetAllPostersNum(maxCntPosters);
+        PosterPanelClass.SetAVGLoyalty((int)UnityEngine.Random.Range(10f, 90f)); // В разработке...
+        PosterPanelClass.SetIncome(GetIncome());
+        PosterPanelClass.SetIncomeType(GetIncomeType());
+        PosterPanelClass.SetOutcome(GetOutcome());
+        PosterPanelClass.SetPosterCost(posterCost);
     }
 
     public void AddPoster() {

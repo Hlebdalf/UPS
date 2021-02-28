@@ -40,7 +40,7 @@ public class PosterPanel : MonoBehaviour
     {
         AVGLoyaltyText.text = input.ToString();
     }
-    public void SetIncome(int input)
+    public void SetIncome(long input)
     {
         IncomeText.text = input.ToString();
     }
@@ -48,11 +48,11 @@ public class PosterPanel : MonoBehaviour
     {
         IncomeTypeText.text = type;
     }
-    public void SetOutcome(int input)
+    public void SetOutcome(long input)
     {
         OutcomeText.text = input.ToString();
     }
-    public void SetPosterCost(int input)
+    public void SetPosterCost(long input)
     {
         PosterCostText.text = input.ToString();
     }
