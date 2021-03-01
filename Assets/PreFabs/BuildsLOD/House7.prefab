@@ -139,6 +139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4f5a132f2b2f44cac115f245581094, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  taxRate: 13200
+  serviceCost: 90000
 --- !u!114 &6845127769235370967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,9 +160,11 @@ MonoBehaviour:
   idxCommerceType: -1
   idxPreFub: -1
   cntPeople: 0
-  maxCntPeople: 4000
+  maxCntPeople: 12000
   cntPosters: 0
   maxCntPosters: 0
+  cost: 3500000
+  posterCost: 10000
   startMenuSizeW: 200
   startMenuSizeH: 100
   isGenBuild: 0

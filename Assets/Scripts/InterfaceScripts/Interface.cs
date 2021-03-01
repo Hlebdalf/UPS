@@ -121,10 +121,7 @@ public class Interface : MonoBehaviour {
         if (PosterPanelActivity)
         {
             PosterPanelAnimator.Play("Back");
-            print(6);
             PosterPanelActivity = false;
-            print(PosterPanelActivity);
-            SetPosterPanelProperties();
             lastMenu = "PosterPlane";
         }
     }
@@ -237,11 +234,6 @@ public class Interface : MonoBehaviour {
             PosterPanelAnimator.Play("Back");
             PosterPanelActivity = false;
         }
-    }
-
-    public void SetPosterPanelProperties()
-    {
-        print(PosterPanelActivity);
     }
     public void ExitToMainMenu() {
         SceneManager.LoadScene("MainMenu");

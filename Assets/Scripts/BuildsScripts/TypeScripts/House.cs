@@ -5,6 +5,7 @@ using UnityEngine;
 public class House : MonoBehaviour {
     [SerializeField]
     private long taxRate = 10000;
+    [SerializeField]
     private long serviceCost = 10000;
     
     public long GetTaxRate() {

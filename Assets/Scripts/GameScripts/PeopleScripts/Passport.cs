@@ -209,33 +209,33 @@ public class Passport : MonoBehaviour {
             }
             if (idxSocialСlass == 2) {
                 budget = (int)UnityEngine.Random.Range(-10000, 100000);
-                if (socialStatus == "Рабочий") salary = (int)UnityEngine.Random.Range(-100, 1000);
+                if (socialStatus == "Рабочий") salary = (int)UnityEngine.Random.Range(-30, 300);
             }
             if (idxSocialСlass == 3) {
                 budget = (int)UnityEngine.Random.Range(-100000, 1000000);
-                if (socialStatus == "Рабочий") salary = (int)UnityEngine.Random.Range(-1000, 10000);
+                if (socialStatus == "Рабочий") salary = (int)UnityEngine.Random.Range(-70, 700);
             }
             if (idxSocialСlass == 4) {
                 budget = (int)UnityEngine.Random.Range(-1000000, 10000000);
-                if (socialStatus == "Рабочий") salary = (int)UnityEngine.Random.Range(-10000, 100000);
+                if (socialStatus == "Рабочий") salary = (int)UnityEngine.Random.Range(-1000, 10000);
             }
         }
         else {
             if (idxSocialСlass == 1) {
                 budget = (int)UnityEngine.Random.Range(-10000, 100000);
-                if (socialStatus == "Рабочий") salary = (int)UnityEngine.Random.Range(-100, 1000);
+                if (socialStatus == "Рабочий") salary = (int)UnityEngine.Random.Range(-20, 200);
             }
             if (idxSocialСlass == 2) {
                 budget = (int)UnityEngine.Random.Range(-100000, 1000000);
-                if (socialStatus == "Рабочий") salary = (int)UnityEngine.Random.Range(-1000, 10000);
+                if (socialStatus == "Рабочий") salary = (int)UnityEngine.Random.Range(-60, 600);
             }
             if (idxSocialСlass == 3) {
                 budget = (int)UnityEngine.Random.Range(-1000000, 10000000);
-                if (socialStatus == "Рабочий") salary = (int)UnityEngine.Random.Range(-10000, 100000);
+                if (socialStatus == "Рабочий") salary = (int)UnityEngine.Random.Range(-140, 1400);
             }
             if (idxSocialСlass == 4) {
                 budget = (int)UnityEngine.Random.Range(-10000000, 100000000);
-                if (socialStatus == "Рабочий") salary = (int)UnityEngine.Random.Range(-100000, 1000000);
+                if (socialStatus == "Рабочий") salary = (int)UnityEngine.Random.Range(-2000, 20000);
             }
         }
     }
