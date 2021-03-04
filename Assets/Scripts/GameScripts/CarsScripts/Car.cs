@@ -28,8 +28,11 @@ public class Car : MonoBehaviour {
             for (int i = 0; i < hits.Length; ++i) {
                 RaycastHit hit = hits[i];
                 if (hit.collider.gameObject.tag == "Car") {
-                    isFollowTheFront = true;
-                    speedTheFront = hit.collider.gameObject.GetComponent <Car> ().speed;
+                    Car carClass = hit.collider.gameObject.GetComponent <Car> ();
+                    if (carClass.idxRoad == idxRoad || (carClass.inCrossroad && inCrossroad)) {
+                        isFollowTheFront = true;
+                        speedTheFront = carClass.speed;
+                    }
                 }
                 else if (hit.collider.gameObject.tag == "TrafficLight" && !inCrossroad) {
                     CrossroadObject crossroadObjectClass = hit.collider.gameObject.GetComponent <CrossroadObject> ();

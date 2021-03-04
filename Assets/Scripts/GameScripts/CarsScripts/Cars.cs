@@ -130,7 +130,9 @@ public class Cars : MonoBehaviour {
                     isShiftVector[i] = false;
                 }
                 else isShiftVector[i] = true;
-                if (objectClasses[i].canChangeLane) numOfLanes[i] = objectClasses[i].numOfLane;
+                if (objectClasses[i].canChangeLane) {
+                    numOfLanes[i] = objectClasses[i].mainNumOfLane = objectClasses[i].numOfLane;
+                }
                 Vector3 vertexNextTo = new Vector3(0, 0, 0);
                 bool isVertexNextTo = false;
                 if (!vertexIsActive[i]) {
