@@ -229,7 +229,7 @@ public class Cars : MonoBehaviour {
                         Vector3 vertexNorm = new Vector3(vertexTo[i].x + sideX, 0f, vertexTo[i].z + sideZ);
                         Vector3 normalizeVertexNorm = new Vector3(vertexNorm.x - vertexTo[i].x, vertexNorm.y - vertexTo[i].y, vertexNorm.z - vertexTo[i].z);
                         Vector3 normalizeVertexNextTo = new Vector3(vertexNextTo.x - vertexTo[i].x, vertexNextTo.y - vertexTo[i].y, vertexNextTo.z - vertexTo[i].z);
-                        float angle = Vector3.Angle(normalizeVertexNorm, normalizeVertexNextTo);
+                        float angle = Vector3.Angle(normalizeVertexNorm, normalizeVertexNextTo) / 57.3f;
                         if (Math.Cos(angle) <= 0) objectClasses[i].numOfLane = 1;
                         if (Math.Cos(angle) >= 0) objectClasses[i].numOfLane = 2;
                     }

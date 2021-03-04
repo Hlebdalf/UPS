@@ -78,8 +78,4 @@ public class Car : MonoBehaviour {
             inCrossroad = false;
         }
     }
-
-    private void OnMouseOver() {
-        if (Input.GetMouseButtonDown(0)) CarsClass.SetLinePath(gameObject);
-    }
 }
