@@ -21,28 +21,28 @@ public class Car : MonoBehaviour {
         numOfLane = (int)UnityEngine.Random.Range(1f, 2.99f);
     }
 
-    // private void Update() {
-    //     if (onVisibleInCamera) {
-    //         isFollowTheFront = isStop = false;
-    //         RaycastHit[] hits = Physics.RaycastAll(transform.position, transform.forward, Distance);
-    //         for (int i = 0; i < hits.Length; ++i) {
-    //             RaycastHit hit = hits[i];
-    //             if (hit.collider.gameObject.tag == "Car") {
-    //                 isFollowTheFront = true;
-    //                 speedTheFront = hit.collider.gameObject.GetComponent <Car> ().speed;
-    //             }
-    //             else if (hit.collider.gameObject.tag == "TrafficLight" && !inCrossroad) {
-    //                 CrossroadObject crossroadObjectClass = hit.collider.gameObject.GetComponent <CrossroadObject> ();
-    //                 if (crossroadObjectClass.idxRoadGO == idxRoad || idxRoad < 0 || crossroadObjectClass.idxRoadGO < 0) isStop = false;
-    //                 else isStop = true;
-    //             }
-    //         }
-    //         if (isStop) speed = 0f;
-    //         else if (isFollowTheFront) speed = Math.Max(Math.Min(speedTheFront - 1f, speed), 0f);
-    //         else speed = Math.Min(mainSpeed, speed + 1f);
-    //     }
-    //     else speed = mainSpeed;
-    // }
+    private void Update() {
+        if (onVisibleInCamera) {
+            isFollowTheFront = isStop = false;
+            RaycastHit[] hits = Physics.RaycastAll(transform.position, transform.forward, Distance);
+            for (int i = 0; i < hits.Length; ++i) {
+                RaycastHit hit = hits[i];
+                if (hit.collider.gameObject.tag == "Car") {
+                    isFollowTheFront = true;
+                    speedTheFront = hit.collider.gameObject.GetComponent <Car> ().speed;
+                }
+                else if (hit.collider.gameObject.tag == "TrafficLight" && !inCrossroad) {
+                    CrossroadObject crossroadObjectClass = hit.collider.gameObject.GetComponent <CrossroadObject> ();
+                    if (crossroadObjectClass.idxRoadGO == idxRoad || idxRoad < 0 || crossroadObjectClass.idxRoadGO < 0) isStop = false;
+                    else isStop = true;
+                }
+            }
+            if (isStop) speed = 0f;
+            else if (isFollowTheFront) speed = Math.Max(Math.Min(speedTheFront - 1f, speed), 0f);
+            else speed = Math.Min(mainSpeed, speed + 1f);
+        }
+        else speed = mainSpeed;
+    }
 
     private void OnTriggerEnter(Collider collider) {
         if (collider.gameObject == CameraCollider) {
