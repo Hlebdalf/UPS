@@ -32,6 +32,8 @@ public class Cars : MonoBehaviour {
     public List <GameObject> objects;
     public List <Car> objectClasses;
     public bool isStarted = false, isRegeneration = false;
+    public LineRenderer linePath;
+    public GameObject visiblePathObj = null;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -130,6 +132,13 @@ public class Cars : MonoBehaviour {
                 if (!vertexIsActive[i]) {
                     numOfLanes[i] = (int)UnityEngine.Random.Range(1f, 2.99f);
                     if (itForQueue[i] < paths[i].pointsPathToStart.Count) {
+                        if (objects[i] == visiblePathObj) {
+                            linePath.positionCount = paths[i].pointsPathToStart.Count;
+                            for (int j = 0; j < paths[i].pointsPathToStart.Count; ++j) {
+                                Vector3 pos = paths[i].pointsPathToStart[j];
+                                linePath.SetPosition(j, new Vector3(pos.x, 0.5f, pos.z));
+                            }
+                        }
                         objectClasses[i].idxRoad = GetIdxRoad(pathsDefault[i].pointsPathToStart[itForQueue[i] - 1], pathsDefault[i].pointsPathToStart[itForQueue[i]]);
                         vertexFrom[i] = paths[i].pointsPathToStart[itForQueue[i] - 1];
                         vertexTo[i] = paths[i].pointsPathToStart[itForQueue[i]++];
@@ -139,12 +148,26 @@ public class Cars : MonoBehaviour {
                         ++cntFrameForDelay[i];
                     }
                     else if (itForQueue[i] == paths[i].pointsPathToStart.Count) {
+                        if (objects[i] == visiblePathObj) {
+                            linePath.positionCount = paths[i].pointsPathToEnd.Count;
+                            for (int j = 0; j < paths[i].pointsPathToEnd.Count; ++j) {
+                                Vector3 pos = paths[i].pointsPathToEnd[j];
+                                linePath.SetPosition(j, new Vector3(pos.x, 0.5f, pos.z));
+                            }
+                        }
                         objectClasses[i].idxRoad = GetIdxRoad(pathsDefault[i].pointsPathToStart[itForQueue[i] - 1], pathsDefault[i].pointsPathToEnd[itForQueue[i] - pathsDefault[i].pointsPathToStart.Count]);
                         vertexFrom[i] = paths[i].pointsPathToStart[itForQueue[i] - 1];
                         vertexTo[i] = paths[i].pointsPathToEnd[itForQueue[i]++ - paths[i].pointsPathToStart.Count];
                         vertexIsActive[i] = true;
                     }
                     else if (itForQueue[i] < paths[i].pointsPathToStart.Count + paths[i].pointsPathToEnd.Count) {
+                        if (objects[i] == visiblePathObj) {
+                            linePath.positionCount = paths[i].pointsPathToEnd.Count;
+                            for (int j = 0; j < paths[i].pointsPathToEnd.Count; ++j) {
+                                Vector3 pos = paths[i].pointsPathToEnd[j];
+                                linePath.SetPosition(j, new Vector3(pos.x, 0.5f, pos.z));
+                            }
+                        }
                         objectClasses[i].idxRoad = GetIdxRoad(pathsDefault[i].pointsPathToEnd[itForQueue[i] - pathsDefault[i].pointsPathToStart.Count - 1], pathsDefault[i].pointsPathToEnd[itForQueue[i] - pathsDefault[i].pointsPathToStart.Count]);
                         vertexFrom[i] = paths[i].pointsPathToEnd[itForQueue[i] - paths[i].pointsPathToStart.Count - 1];
                         vertexTo[i] = paths[i].pointsPathToEnd[itForQueue[i]++ - paths[i].pointsPathToStart.Count];
@@ -154,18 +177,33 @@ public class Cars : MonoBehaviour {
                         ++cntFrameForDelay[i];
                     }
                     else if (itForQueue[i] == paths[i].pointsPathToStart.Count + paths[i].pointsPathToEnd.Count) {
+                        if (objects[i] == visiblePathObj) {
+                            linePath.positionCount = paths[i].pointsPathToParking.Count;
+                            for (int j = 0; j < paths[i].pointsPathToParking.Count; ++j) {
+                                Vector3 pos = paths[i].pointsPathToParking[j];
+                                linePath.SetPosition(j, new Vector3(pos.x, 0.5f, pos.z));
+                            }
+                        }
                         objectClasses[i].idxRoad = GetIdxRoad(pathsDefault[i].pointsPathToEnd[itForQueue[i] - pathsDefault[i].pointsPathToStart.Count - 1], pathsDefault[i].pointsPathToParking[itForQueue[i] - pathsDefault[i].pointsPathToStart.Count - pathsDefault[i].pointsPathToEnd.Count]);
                         vertexFrom[i] = paths[i].pointsPathToEnd[itForQueue[i] - paths[i].pointsPathToStart.Count - 1];
                         vertexTo[i] = paths[i].pointsPathToParking[itForQueue[i]++ - paths[i].pointsPathToStart.Count - paths[i].pointsPathToEnd.Count];
                         vertexIsActive[i] = true;
                     }
                     else if (itForQueue[i] < paths[i].pointsPathToStart.Count + paths[i].pointsPathToEnd.Count + paths[i].pointsPathToParking.Count) {
+                        if (objects[i] == visiblePathObj) {
+                            linePath.positionCount = paths[i].pointsPathToParking.Count;
+                            for (int j = 0; j < paths[i].pointsPathToParking.Count; ++j) {
+                                Vector3 pos = paths[i].pointsPathToParking[j];
+                                linePath.SetPosition(j, new Vector3(pos.x, 0.5f, pos.z));
+                            }
+                        }
                         objectClasses[i].idxRoad = GetIdxRoad(pathsDefault[i].pointsPathToParking[itForQueue[i] - pathsDefault[i].pointsPathToStart.Count - pathsDefault[i].pointsPathToEnd.Count - 1], pathsDefault[i].pointsPathToParking[itForQueue[i] - pathsDefault[i].pointsPathToStart.Count - pathsDefault[i].pointsPathToEnd.Count]);
                         vertexFrom[i] = paths[i].pointsPathToParking[itForQueue[i] - paths[i].pointsPathToStart.Count - paths[i].pointsPathToEnd.Count - 1];
                         vertexTo[i] = paths[i].pointsPathToParking[itForQueue[i]++ - paths[i].pointsPathToStart.Count - paths[i].pointsPathToEnd.Count];
                         vertexIsActive[i] = true;
                     }
                     else {
+                        if (objects[i] == visiblePathObj) linePath.positionCount = 0;
                         DeleteObject(i);
                     }
                 }
@@ -537,5 +575,31 @@ public class Cars : MonoBehaviour {
             numOfLanes[i] = numOfLanes[i + 1];
         }
         Destroy(obj);
+    }
+
+    public void SetLinePath(GameObject obj) {
+        visiblePathObj = obj;
+        int idx = objects.IndexOf(visiblePathObj);
+        if (itForQueue[idx] < paths[idx].pointsPathToStart.Count) {
+            linePath.positionCount = paths[idx].pointsPathToStart.Count;
+            for (int j = 0; j < paths[idx].pointsPathToStart.Count; ++j) {
+                Vector3 pos = paths[idx].pointsPathToStart[j];
+                linePath.SetPosition(j, new Vector3(pos.x, 0.5f, pos.z));
+            }
+        }
+        if (itForQueue[idx] == paths[idx].pointsPathToStart.Count && itForQueue[idx] < paths[idx].pointsPathToStart.Count + paths[idx].pointsPathToEnd.Count) {
+            linePath.positionCount = paths[idx].pointsPathToEnd.Count;
+            for (int j = 0; j < paths[idx].pointsPathToEnd.Count; ++j) {
+                Vector3 pos = paths[idx].pointsPathToEnd[j];
+                linePath.SetPosition(j, new Vector3(pos.x, 0.5f, pos.z));
+            }
+        }
+        if (itForQueue[idx] == paths[idx].pointsPathToStart.Count + paths[idx].pointsPathToEnd.Count && itForQueue[idx] < paths[idx].pointsPathToStart.Count + paths[idx].pointsPathToEnd.Count + paths[idx].pointsPathToParking.Count) {
+            linePath.positionCount = paths[idx].pointsPathToParking.Count;
+            for (int j = 0; j < paths[idx].pointsPathToParking.Count; ++j) {
+                Vector3 pos = paths[idx].pointsPathToParking[j];
+                linePath.SetPosition(j, new Vector3(pos.x, 0.5f, pos.z));
+            }
+        }
     }
 }

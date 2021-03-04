@@ -46,7 +46,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.2, z: 0.01}
+  m_Size: {x: 0.4, y: 0.4, z: 0.6}
   m_Center: {x: 0, y: 0.1, z: 0}
 --- !u!114 &8919939435131980472
 MonoBehaviour:
@@ -62,6 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   mainSpeed: 10
+  speedTheFront: 0
   numOfLane: 0
   idxRoad: -1
   onVisibleInCamera: 0
