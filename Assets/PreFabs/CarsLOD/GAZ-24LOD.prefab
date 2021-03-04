@@ -63,7 +63,7 @@ MonoBehaviour:
   speed: 0
   mainSpeed: 10
   speedTheFront: 0
-  acceleration: 0.5
+  acceleration: 0.2
   braking: 0.5
   numOfLane: 0
   idxRoad: -1
