@@ -81,38 +81,40 @@ public class Cars : MonoBehaviour {
                 if ((int)UnityEngine.Random.Range(0, 1.99f) == 0) localPaths = StartFromHouse();
                 else localPaths = StartFromCommerce();
 
-                List <Vector3> pointsPathToStart = ObjectsToPoints(localPaths.objectPathToStart, "ToStart");
-                List <Vector3> pointsPathToEnd = ObjectsToPoints(localPaths.objectPathToEnd, "ToEnd");
-                List <Vector3> pointsPathToParking = ObjectsToPoints(localPaths.objectPathToParking, "ToParking");
-                
-                List <Vector3> pointsPathToStartDefault = new List <Vector3> ();
-                for (int i = 0; i < pointsPathToStart.Count; ++i)
-                    pointsPathToStartDefault.Add(pointsPathToStart[i]);
+                if (!localPaths.objectPathToStart[0].GetComponent <Parking> ().carInParking) {
+                    List <Vector3> pointsPathToStart = ObjectsToPoints(localPaths.objectPathToStart, "ToStart");
+                    List <Vector3> pointsPathToEnd = ObjectsToPoints(localPaths.objectPathToEnd, "ToEnd");
+                    List <Vector3> pointsPathToParking = ObjectsToPoints(localPaths.objectPathToParking, "ToParking");
+                    
+                    List <Vector3> pointsPathToStartDefault = new List <Vector3> ();
+                    for (int i = 0; i < pointsPathToStart.Count; ++i)
+                        pointsPathToStartDefault.Add(pointsPathToStart[i]);
 
-                List <Vector3> pointsPathToEndDefault = new List <Vector3> ();
-                for (int i = 0; i < pointsPathToEnd.Count; ++i)
-                    pointsPathToEndDefault.Add(pointsPathToEnd[i]);
+                    List <Vector3> pointsPathToEndDefault = new List <Vector3> ();
+                    for (int i = 0; i < pointsPathToEnd.Count; ++i)
+                        pointsPathToEndDefault.Add(pointsPathToEnd[i]);
 
-                List <Vector3> pointsPathToParkingDefault = new List <Vector3> ();
-                for (int i = 0; i < pointsPathToParking.Count; ++i)
-                    pointsPathToParkingDefault.Add(pointsPathToParking[i]);
-                
-                pointsPathToStart = ShiftRoadVectors(pointsPathToStart, 1, pointsPathToStart.Count - 1);
-                pointsPathToEnd = ShiftRoadVectors(pointsPathToEnd, 0, pointsPathToEnd.Count - 1);
-                pointsPathToParking = ShiftRoadVectors(pointsPathToParking, 0, pointsPathToParking.Count - 2);
+                    List <Vector3> pointsPathToParkingDefault = new List <Vector3> ();
+                    for (int i = 0; i < pointsPathToParking.Count; ++i)
+                        pointsPathToParkingDefault.Add(pointsPathToParking[i]);
+                    
+                    pointsPathToStart = ShiftRoadVectors(pointsPathToStart, 1, pointsPathToStart.Count - 1);
+                    pointsPathToEnd = ShiftRoadVectors(pointsPathToEnd, 0, pointsPathToEnd.Count - 1);
+                    pointsPathToParking = ShiftRoadVectors(pointsPathToParking, 0, pointsPathToParking.Count - 2);
 
-                objects.Add(Instantiate(preFubs[(int)UnityEngine.Random.Range(0, preFubs.Length - 0.01f)], pointsPathToStart[0], Quaternion.Euler(0, 0, 0)));
-                objectClasses.Add(objects[objects.Count - 1].GetComponent <Car> ());
-                paths.Add((pointsPathToStart, pointsPathToEnd, pointsPathToParking));
-                pathsDefault.Add((pointsPathToStartDefault, pointsPathToEndDefault, pointsPathToParkingDefault));
-                vertexIsActive[objects.Count - 1] = false;
-                onVisibleInCamera[objects.Count - 1] = false;
-                cntWaitingFrames[objects.Count - 1] = 0;
-                speeds[objects.Count - 1] = 10f;
-                isShiftVector[objects.Count - 1] = false;
-                numOfLanes[objects.Count - 1] = 0;
-                itForQueue.Add(1);
-                cntFrameForDelay.Add(0);
+                    objects.Add(Instantiate(preFubs[(int)UnityEngine.Random.Range(0, preFubs.Length - 0.01f)], pointsPathToStart[0], Quaternion.Euler(0, 0, 0)));
+                    objectClasses.Add(objects[objects.Count - 1].GetComponent <Car> ());
+                    paths.Add((pointsPathToStart, pointsPathToEnd, pointsPathToParking));
+                    pathsDefault.Add((pointsPathToStartDefault, pointsPathToEndDefault, pointsPathToParkingDefault));
+                    vertexIsActive[objects.Count - 1] = false;
+                    onVisibleInCamera[objects.Count - 1] = false;
+                    cntWaitingFrames[objects.Count - 1] = 0;
+                    speeds[objects.Count - 1] = 10f;
+                    isShiftVector[objects.Count - 1] = false;
+                    numOfLanes[objects.Count - 1] = 0;
+                    itForQueue.Add(1);
+                    cntFrameForDelay.Add(0);
+                }
             }
         }
     }
