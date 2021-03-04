@@ -10,6 +10,7 @@ public class Car : MonoBehaviour {
     private const float Distance = 1.5f;
 
     public float speed, mainSpeed = 10f, speedTheFront = 0f;
+    public float acceleration = 0.5f, braking = 0.5f;
     public int numOfLane = 0, idxRoad = -1;
     public bool onVisibleInCamera = false, isFollowTheFront = false, isStop = false, inCrossroad = false;
 
@@ -38,8 +39,8 @@ public class Car : MonoBehaviour {
                 }
             }
             if (isStop) speed = 0f;
-            else if (isFollowTheFront) speed = Math.Max(Math.Min(speedTheFront - 1f, speed), 0f);
-            else speed = Math.Min(mainSpeed, speed + 1f);
+            else if (isFollowTheFront) speed = Math.Max(Math.Min(speedTheFront - braking, speed), 0f);
+            else speed = Math.Min(mainSpeed, speed + acceleration);
         }
         else speed = mainSpeed;
     }
