@@ -63,6 +63,8 @@ MonoBehaviour:
   speed: 0
   mainSpeed: 10
   speedTheFront: 0
+  acceleration: 0.8
+  braking: 1
   numOfLane: 0
   idxRoad: -1
   onVisibleInCamera: 0

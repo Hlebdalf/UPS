@@ -18,7 +18,7 @@ public class Car : MonoBehaviour {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         CameraCollider = MainCamera.transform.Find("CameraCollider").gameObject;
         CarsClass = MainCamera.GetComponent <Cars> ();
-        mainSpeed = speed = UnityEngine.Random.Range(5f, 10f);
+        mainSpeed = speed = UnityEngine.Random.Range(3f, 6f);
         numOfLane = (int)UnityEngine.Random.Range(1f, 2.99f);
     }
 
@@ -38,8 +38,8 @@ public class Car : MonoBehaviour {
                     else isStop = true;
                 }
             }
-            if (isStop) speed = 0f;
-            else if (isFollowTheFront) speed = Math.Max(Math.Min(speedTheFront - braking, speed), 0f);
+            if (isStop) speed = Math.Max(speed - braking, 0f);
+            else if (isFollowTheFront) speed = Math.Max(Math.Max(speedTheFront - 1f, speed - braking), 0f);
             else speed = Math.Min(mainSpeed, speed + acceleration);
         }
         else speed = mainSpeed;
