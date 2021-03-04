@@ -11,15 +11,14 @@ public class Car : MonoBehaviour {
 
     public float speed, mainSpeed = 10f, speedTheFront = 0f;
     public float acceleration = 0.5f, braking = 0.5f;
-    public int numOfLane = 0, idxRoad = -1;
-    public bool onVisibleInCamera = false, isFollowTheFront = false, isStop = false, inCrossroad = false;
+    public int mainNumOfLane = 2, numOfLane = 2, idxRoad = -1;
+    public bool onVisibleInCamera = false, isFollowTheFront = false, isStop = false, inCrossroad = false, canChangeLane = false;
 
     private void Awake() {
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         CameraCollider = MainCamera.transform.Find("CameraCollider").gameObject;
         CarsClass = MainCamera.GetComponent <Cars> ();
         mainSpeed = speed = UnityEngine.Random.Range(3f, 6f);
-        numOfLane = (int)UnityEngine.Random.Range(1f, 2.99f);
     }
 
     private void Update() {
@@ -41,6 +40,20 @@ public class Car : MonoBehaviour {
             if (isStop) speed = Math.Max(speed - braking, 0f);
             else if (isFollowTheFront) speed = Math.Max(Math.Max(speedTheFront - 1f, speed - braking), 0f);
             else speed = Math.Min(mainSpeed, speed + acceleration);
+
+            if (mainNumOfLane != numOfLane) {
+                bool p = true;
+                Vector3 dir = transform.forward;
+                if (numOfLane > mainNumOfLane)  dir = transform.right;
+                else dir = transform.right;
+                Ray ray = new Ray(transform.position, dir);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, 0.5f)) {
+                    if (hit.collider.gameObject.name == "SideCar") p = false;
+                }
+                canChangeLane = p;
+                if (!p) speed = Math.Max(speed - 0.5f, 0f);
+            }
         }
         else speed = mainSpeed;
     }
