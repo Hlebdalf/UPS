@@ -7,11 +7,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuButtonManagment : MonoBehaviour {
     public static long seed = -1;
-    public static int cntRoad = 100;
-    public static int cntCommerce = 15;
-    public static int cntParking = 2;
-    public static int cntCars = 200;
-    public static int cntPeople = 0;
+    public static int cntRoad = 300;
+    public static int cntCommerce = 20;
+    public static int cntParking = 3;
+    public static int cntCars = 500;
+    public static int cntPeople = 200;
 
     private Animator GodAnimator;
     private InputField seedText;

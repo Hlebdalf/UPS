@@ -88,7 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2223084328413075196}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House8HP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -954,7 +954,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5738641409603655550}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1222,7 +1222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6736253226269875787}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House8HP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1505,7 +1505,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1059387081463956795}
   - component: {fileID: 1534901607074007469}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House
   m_TagString: Untagged
   m_Icon: {fileID: 0}
