@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1281074294738461664}
   - component: {fileID: 4339039019422155768}
-  - component: {fileID: 7964427243142086964}
   m_Layer: 0
   m_Name: RTC Variant
   m_TagString: Untagged
@@ -45,22 +44,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 180, y: 120, z: 180}
+  m_Size: {x: 180, y: 120, z: 240}
   m_Center: {x: 0, y: 60, z: 0}
---- !u!114 &7964427243142086964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1913074245877201242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5868b9d6c7cd50446bf1b0a286dee901, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serviceCost: 1500000
-  scienceRate: 300
 --- !u!1 &4649509551585107075
 GameObject:
   m_ObjectHideFlags: 0

@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 4487922156760217056}
   - component: {fileID: 8320551909431972108}
   - component: {fileID: -8733677689780045345}
+  - component: {fileID: 2843061248345127455}
   m_Layer: 0
   m_Name: Kindergarten
   m_TagString: Untagged
@@ -179,12 +180,25 @@ MonoBehaviour:
   maxCntPeople: 500
   cntPosters: 0
   maxCntPosters: 0
-  cost: 12000000
+  cost: 120000000
   posterCost: 10000
   startMenuSizeW: 200
   startMenuSizeH: 100
   isGenBuild: 0
   isDeleting: 0
+--- !u!114 &2843061248345127455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3820070361060110170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0e419b356707754681e2969b23ec73f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taxRate: 3000000
 --- !u!1 &4214321453674164354
 GameObject:
   m_ObjectHideFlags: 0

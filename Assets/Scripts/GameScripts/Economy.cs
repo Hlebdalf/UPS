@@ -197,7 +197,7 @@ public class Economy : MonoBehaviour {
         List <int> avgLoyality = GetAverageLoyalityD();
         for (int i = 0; i < 4; ++i) {
             double a = avgLoyality[i] + 10;
-            deltaTimeDownD[i] = a * a / 10000;
+            deltaTimeDownD[i] = a * a / 2000;
             deltaTimeDown += deltaTimeDownD[i];
         }
         deltaTimeDown /= 4;

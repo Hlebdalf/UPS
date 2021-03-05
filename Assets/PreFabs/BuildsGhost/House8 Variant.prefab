@@ -836,7 +836,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6710843378973836111}
   - component: {fileID: 4213401364010317289}
-  - component: {fileID: 5405287677924900873}
   m_Layer: 0
   m_Name: House8 Variant
   m_TagString: Untagged
@@ -873,20 +872,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 25, y: 20, z: 30}
   m_Center: {x: 1.5, y: 10, z: 2}
---- !u!114 &5405287677924900873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6226900296383388149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d4f5a132f2b2f44cac115f245581094, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  taxRate: 10000
-  serviceCost: 100
 --- !u!1 &7145765102104817931
 GameObject:
   m_ObjectHideFlags: 0

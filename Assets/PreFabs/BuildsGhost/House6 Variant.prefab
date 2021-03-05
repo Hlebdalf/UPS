@@ -151,7 +151,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6733252559595461805}
   - component: {fileID: 677427471975219109}
-  - component: {fileID: 6412995117877910044}
   m_Layer: 0
   m_Name: House6 Variant
   m_TagString: Untagged
@@ -188,20 +187,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 65, y: 85, z: 65}
   m_Center: {x: 0, y: 42, z: 0}
---- !u!114 &6412995117877910044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6213420661069383191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d4f5a132f2b2f44cac115f245581094, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  taxRate: 10000
-  serviceCost: 70000
 --- !u!1 &8036686058982383244
 GameObject:
   m_ObjectHideFlags: 0
