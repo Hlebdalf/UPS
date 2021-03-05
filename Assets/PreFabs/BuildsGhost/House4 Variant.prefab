@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3383344547189004390}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Incorrect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5668505120759407529}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Correct
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 5064103463727384642}
   - component: {fileID: 3059881353068674901}
   - component: {fileID: 918368674880185212}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 4714028188390218317}
   - component: {fileID: 7619168032363864839}
   - component: {fileID: 6384137056392333203}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5805611503442447559}
   - component: {fileID: 5039960665567881259}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House4 Variant
   m_TagString: Untagged
   m_Icon: {fileID: 0}

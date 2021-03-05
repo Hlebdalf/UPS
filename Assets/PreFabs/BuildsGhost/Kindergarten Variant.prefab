@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7884217021159746934}
   - component: {fileID: 5025298962088891452}
   - component: {fileID: 8401685999118299304}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6911524595773713335}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Correct
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8710542024291287177}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Incorrect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 1062019180553482081}
   - component: {fileID: 8078485514852603754}
   - component: {fileID: 5571178424448684590}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7666731171483452406}
   - component: {fileID: 2834303403193509658}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Kindergarten Variant
   m_TagString: Untagged
   m_Icon: {fileID: 0}

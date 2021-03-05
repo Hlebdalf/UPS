@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4413964855256980860}
   - component: {fileID: 8078470843105897991}
   - component: {fileID: 1346852718963706174}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4154181131581723124}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Correct
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9077286246689726167}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Incorrect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6722457895176222622}
   - component: {fileID: 5206960125872203201}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Fabric Variant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 1385702090466022909}
   - component: {fileID: 4317878824703126711}
   - component: {fileID: 777317100938020899}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}

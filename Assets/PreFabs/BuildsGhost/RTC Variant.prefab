@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1281074294738461664}
   - component: {fileID: 4339039019422155768}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RTC Variant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8179280602248749118}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Correct
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 4008610593021505132}
   - component: {fileID: 6710104110448786697}
   - component: {fileID: 4160690561322483216}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 2546521610070221105}
   - component: {fileID: 828698296791160955}
   - component: {fileID: 4225953789034003695}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8541485054293245900}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Incorrect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

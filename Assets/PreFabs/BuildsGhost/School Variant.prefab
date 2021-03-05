@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3673970193955597554}
   - component: {fileID: 6099156383434731542}
   - component: {fileID: 6235066036844703384}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8955303920683728818}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Incorrect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1400645676946798161}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Correct
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 5868492305966055509}
   - component: {fileID: 8765761846043638047}
   - component: {fileID: 5225169344492297611}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4742672485826350803}
   - component: {fileID: 7758236310641291642}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: School Variant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6413449788673847565}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Liceum
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3894976189164145396}
   - component: {fileID: 3465944567056942324}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SYT Variant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6471182937510489815}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Correct
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 3516316887147939167}
   - component: {fileID: 1737079699362495509}
   - component: {fileID: 2972062296306096257}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 3761288319664904523}
   - component: {fileID: 8855097300273261213}
   - component: {fileID: 2909396552007581049}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 122907453360837387}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Incorrect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8697506422558822160}
   - component: {fileID: 5793018211325589082}
   - component: {fileID: 7007976502365852366}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1900550908885220347}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Incorrect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3822337530355981530}
   - component: {fileID: 6269494618081802458}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House1 Variant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7595823579203776190}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Correct
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 3274172337959772234}
   - component: {fileID: 3380886939782471263}
   - component: {fileID: 7147818190558742554}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}

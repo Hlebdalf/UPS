@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2598639104426835822}
   - component: {fileID: 407002060334030596}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SuperMarket Variant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 5157500673393889063}
   - component: {fileID: 8017586928907531885}
   - component: {fileID: 6800869693486404345}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8398197829481272149}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Incorrect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 265524864876469149}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Correct
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 2533577652061697437}
   - component: {fileID: 1792581202017265700}
   - component: {fileID: 8831862287427775655}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}

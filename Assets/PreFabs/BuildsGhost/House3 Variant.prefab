@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3031603396093937373}
   - component: {fileID: 223565408762336176}
   - component: {fileID: 4371556642520834108}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1574682746703504361}
   - component: {fileID: 7854807288829597086}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: House3 Variant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2969781237986230393}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Correct
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3672031178683363515}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Incorrect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 356630793700104600}
   - component: {fileID: 3180718421655937234}
   - component: {fileID: 2090115170477327430}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
