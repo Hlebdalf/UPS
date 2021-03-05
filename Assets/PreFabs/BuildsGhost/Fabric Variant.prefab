@@ -152,7 +152,6 @@ GameObject:
   - component: {fileID: 6722457895176222622}
   - component: {fileID: 5206960125872203201}
   - component: {fileID: 8117688126369305507}
-  - component: {fileID: 2654327262613672241}
   m_Layer: 0
   m_Name: Fabric Variant
   m_TagString: Untagged
@@ -203,34 +202,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serviceCost: 2000000
   productsRate: 15
---- !u!114 &2654327262613672241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6197277968013716772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41432a22634b84e4bae90518bd8f38d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  x: 0
-  y: 0
-  idx: 0
-  connectedRoad: 0
-  idxCommerceType: -1
-  idxPreFub: -1
-  cntPeople: 0
-  maxCntPeople: 50000
-  cntPosters: 0
-  maxCntPosters: 0
-  cost: 100000000
-  posterCost: 10000
-  startMenuSizeW: 200
-  startMenuSizeH: 100
-  isGenBuild: 0
-  isDeleting: 0
 --- !u!1 &7894018274120189638
 GameObject:
   m_ObjectHideFlags: 0
