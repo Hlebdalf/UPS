@@ -50,7 +50,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.2, z: 0.01}
-  m_Center: {x: 0, y: 0.1, z: 0}
+  m_Center: {x: 0, y: 0.1, z: -0.05}
 --- !u!114 &8919939435131980472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
   mainSpeed: 10
   speedTheFront: 0
   acceleration: 0.8
-  braking: 1
+  braking: 0.8
   mainNumOfLane: 2
   numOfLane: 0
   idxRoad: -1
@@ -76,6 +76,8 @@ MonoBehaviour:
   isStop: 0
   inCrossroad: 0
   canChangeLane: 0
+  sideCarLeft: {fileID: 3364873187380489586}
+  sideCarRight: {fileID: 3189921250456660909}
 --- !u!205 &5704478555499913704
 LODGroup:
   m_ObjectHideFlags: 0
@@ -176,6 +178,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 360b759ef3eeda44c93b21126a61ebea, type: 3}
+--- !u!1 &3364873187380489586 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8273322614831590158, guid: 360b759ef3eeda44c93b21126a61ebea,
+    type: 3}
+  m_PrefabInstance: {fileID: 6657113287470270076}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4796860343425919770 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2230141989557218662, guid: 360b759ef3eeda44c93b21126a61ebea,
@@ -251,6 +259,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 360b759ef3eeda44c93b21126a61ebea, type: 3}
+--- !u!1 &3189921250456660909 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8273322614831590158, guid: 360b759ef3eeda44c93b21126a61ebea,
+    type: 3}
+  m_PrefabInstance: {fileID: 6815177055253971107}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4640767270945287621 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2230141989557218662, guid: 360b759ef3eeda44c93b21126a61ebea,
