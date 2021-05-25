@@ -31,7 +31,7 @@ public class Economy : MonoBehaviour {
     private double deltaTime = 0.1; // Не более 6 знаков после запятой
     [SerializeField]
     private double deltaTimeDown = 0.1, deltaTimeUp = 0.1;
-    
+
     private List <int> cntHousesD;
     private List <int> cntShopsD;
     private List <int> cntSciencesD;
@@ -167,7 +167,7 @@ public class Economy : MonoBehaviour {
         money += GetMoneyPerDay();
         WriteMoney(false);
     }
-    
+
     IEnumerator AddMoneyWithDelay(long dMoney) {
         optMoney += dMoney;
         WriteMoney(false);
@@ -197,7 +197,7 @@ public class Economy : MonoBehaviour {
         List <int> avgLoyality = GetAverageLoyalityD();
         for (int i = 0; i < 4; ++i) {
             double a = avgLoyality[i] + 10;
-            deltaTimeDownD[i] = a * a / 10000;
+            deltaTimeDownD[i] = a * a / 2000;
             deltaTimeDown += deltaTimeDownD[i];
         }
         deltaTimeDown /= 4;
